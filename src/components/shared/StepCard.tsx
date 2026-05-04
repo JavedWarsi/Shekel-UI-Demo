@@ -1,0 +1,113 @@
+// StepCard.tsx
+// Reusable component for the "How It Works" section.
+// Design tokens sourced from Figma node 500:22358.
+// Number bubble: w-20 h-20, rounded-full, bg-white + drop shadow.
+// Number text: Inter SemiBold 30px, gradient #2864e4 → #ecf2ff.
+// Title: Poppins Medium 24px, #1a1c1c.
+// Body: Inter Regular 16px, lh 24px, #414753.
+
+import { colors, typography } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
+import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+import Link from "next/link";
+
+type StepCardProps = {
+  number: string;      // e.g. "01"
+  title: string;
+  description: string;
+  href?: string;
+};
+
+export default function StepCard({ number, title, description, href }: StepCardProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const [isHovered, setIsHovered] = useState(false);
+  const { isDark } = useThemeTokens();
+
+  const content = (
+    <motion.div
+      className="flex flex-col items-center gap-3 text-center"
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileHover={
+        prefersReducedMotion
+          ? undefined
+          : {
+              y: -6,
+              scale: 1.01,
+            }
+      }
+      transition={{ duration: 0.22, ease: "easeOut" }}
+    >
+      {/* Number Bubble — 80×80px, rounded-full, white bg, Figma shadow */}
+      <motion.div
+        className="flex items-center justify-center w-20 h-20 rounded-full"
+        style={{
+          backgroundColor: isDark ? "#201c1c" : isHovered ? colors.white : "transparent",
+          boxShadow: isDark
+            ? "0px 12px 16px rgba(0,0,0,0.04), 0px 4px 4px rgba(0,0,0,0.02)"
+            : isHovered
+              ? "0px 12px 32px 0px rgba(0,0,0,0.04), 0px 4px 8px 0px rgba(0,0,0,0.02)"
+              : "none",
+        }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+      >
+        {/* Gradient number text: Inter SemiBold 30px */}
+        <span
+          className={`select-none ${isHovered ? "bg-clip-text text-transparent" : ""}`}
+          style={{
+            fontFamily: typography.fonts.inter,
+            fontWeight: 600,
+            fontSize: 30,
+            lineHeight: "36px",
+            color: isHovered ? "transparent" : colors.brand.blueStart,
+            backgroundImage: isHovered
+              ? "linear-gradient(to bottom, #2864e4, #ecf2ff)"
+              : "none",
+          }}
+        >
+          {number}
+        </span>
+      </motion.div>
+
+      {/* Title — Poppins Medium 24px, #1a1c1c, pt-5 inferred from y=92 - y=80 = 12 + 20pt gap  */}
+      <div className="pt-5">
+        <h3
+          className="whitespace-nowrap"
+          style={{
+            margin: 0,
+            fontFamily: typography.fonts.poppins,
+            fontWeight: 500,
+            fontSize: 24,
+            lineHeight: "28px",
+            color: isDark ? colors.white : colors.text.dark,
+          }}
+        >
+          {title}
+        </h3>
+      </div>
+
+      {/* Body — Inter Regular 16px, lh 24px, #414753 */}
+      <p
+        style={{
+          margin: 0,
+          maxWidth: 320,
+          whiteSpace: "pre-line",
+          fontFamily: typography.fonts.inter,
+          fontWeight: 400,
+          fontSize: 16,
+          lineHeight: "24px",
+          color: isDark ? colors.white : colors.text.body,
+        }}
+      >
+        {description}
+      </p>
+    </motion.div>
+  );
+
+  if (href) {
+    return <Link href={href}>{content}</Link>;
+  }
+
+  return content;
+}

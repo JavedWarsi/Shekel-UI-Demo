@@ -1,0 +1,72 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# local IDE / editor (not needed for deployment)
+.cursor/
+.idea/
+.vscode/
+
+# logs / OS clutter
+*.log
+Thumbs.db
+
+# Agent/workflow docs (not used by Next.js build or production runtime)
+AGENTS.md
+CLAUDE.md
+NEW_PAGE.md
+PROGRESS.md
+
+# Local/tooling scripts and scratch output (design pipelines, probes, helpers)
+.agent/
+debug-utf8-probe.mjs
+download_assets.ps1
+download-img.js
+dump-node.js
+inspect_yaml.py
+parse_figma_resolved.py
+parse_yaml.py
+parse-figma.js
+parse-figma.py
+output.json
+
+# Note: keep new-images/ tracked — components import bundled assets via
+# ../../../../new-images/… (marketplace Hero, CTA, workflows; home CtaWaitlist).
