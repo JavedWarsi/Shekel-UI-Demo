@@ -1,16 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { typography, colors, radiuses } from "@/tokens/design-tokens";
 import { ArrowRight, BarChart3, Code2, Sparkles, TrendingUp, Clock, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
 
-const FADE_UP_ANIMATION_VARIANTS = {
+const FADE_UP_ANIMATION_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } },
 };
 
-const STAGGER_CONTAINER = {
+const STAGGER_CONTAINER: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
