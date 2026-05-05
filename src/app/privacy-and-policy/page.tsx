@@ -16,7 +16,8 @@ import {
   BarChart2,
   Gavel,
   Terminal,
-  Fingerprint
+  Fingerprint,
+  Star
 } from "lucide-react";
 
 // --- Mock Data for Sidebar ---
@@ -57,13 +58,13 @@ const TRENDING_AGENTS = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
-      {/* --- Global SVG Gradient for Icons --- */}
-      <svg width="0" height="0" className="absolute">
+    <div className="min-h-screen bg-white">
+      {/* Global SVG Gradient for Icons */}
+      <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none', opacity: 0 }}>
         <defs>
           <linearGradient id="icon-blue-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="100%" stopColor="#D4E3FF" />
+            <stop offset="100%" stopColor="#FFFFFF" />
           </linearGradient>
         </defs>
       </svg>
@@ -71,7 +72,7 @@ export default function PrivacyPolicyPage() {
       <main className="max-w-[1200px] mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row gap-10 lg:gap-16">
         
         {/* --- LEFT: Main Content --- */}
-        <div className="flex-1 max-w-[760px] bg-white border border-[#F0F0F0] rounded-[24px] p-8 md:p-12 shadow-[0_2px_15px_rgba(0,0,0,0.015)]">
+        <div className="flex-1 max-w-[760px] bg-white border-2 border-[#D4D4D4] rounded-[24px] p-4 md:p-8 shadow-[0_2px_15px_rgba(0,0,0,0.015)]">
           
           <header className="mb-10">
             <h1 
@@ -103,13 +104,13 @@ export default function PrivacyPolicyPage() {
             >
               <p>We gather information that you provide directly to us when creating an account, curating collections, or transacting within the marketplace. This includes your name, digital wallet addresses, and communication preferences.</p>
               
-              <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E5E7EB] rounded-[6px] text-[12px] text-[#4B5563]">
-                  <Box size={12} strokeWidth={2} stroke="url(#icon-blue-gradient)" />
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <div className="flex items-center gap-3 px-5 py-4 bg-white border border-[#F3F4F6] rounded-[12px] text-[13px] text-[#4B5563] shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex-1">
+                  <Box size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" />
                   Identity Verification Data
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E5E7EB] rounded-[6px] text-[12px] text-[#4B5563]">
-                  <Box size={12} strokeWidth={2} stroke="url(#icon-blue-gradient)" />
+                <div className="flex items-center gap-3 px-5 py-4 bg-white border border-[#F3F4F6] rounded-[12px] text-[13px] text-[#4B5563] shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex-1">
+                  <Box size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" />
                   Blockchain Transaction Metadata
                 </div>
               </div>
@@ -233,48 +234,56 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* --- RIGHT: Sidebar --- */}
-        <aside className="w-full lg:w-[320px] shrink-0 pt-4 lg:pt-0">
+        <aside className="w-full lg:w-[340px] shrink-0 pt-4 lg:pt-0">
           <div className="sticky top-24">
-            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-bold tracking-tight mb-8" style={{ fontFamily: typography.fonts.inter }}>
-              <span className="text-black">Trending </span>
-              <span className="text-[#3B82F6]">AI</span><br/>
-              <span className="text-[#E0E7FF]">Agents</span>
+            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-bold tracking-tight mb-8">
+              <span className="text-[#111827]">Trending </span>
+              <span className="text-[#2864e4]">AI</span><br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
             </h2>
             
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-5">
               {TRENDING_AGENTS.map((agent) => {
                 const AgentIcon = agent.Icon;
                 return (
-                  <div key={agent.name} className="p-4 rounded-[12px] bg-white border border-[#F0F0F0] shadow-[0_2px_8px_rgba(0,0,0,0.015)] flex flex-col hover:border-[#E5E7EB] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-all">
-                    <div className="flex justify-between items-center mb-3">
-                      <div>
-                        <AgentIcon size={16} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />
+                  <div key={agent.name} className="p-6 rounded-[24px] bg-white border border-[#F3F4F6] shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col hover:border-[#E5E7EB] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all group">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="relative">
+                        <AgentIcon 
+                          size={24} 
+                          strokeWidth={2.4} 
+                          // stroke="url(#icon-blue-gradient)" 
+                          strokeLinecap="square" 
+                          strokeLinejoin="miter"
+                        />
                       </div>
-                      <div className="flex items-center text-[10px] font-bold text-[#111827]">
-                        <ArrowUp size={10} className="text-[#10B981] mr-1" strokeWidth={3} /> {agent.rating}
+                      <div className="flex items-center text-[13px] font-bold text-[#111827]">
+                        <Star size={16} fill="url(#icon-blue-gradient)" stroke="url(#icon-blue-gradient)" className="mr-1.5" />
+                        {agent.rating}
                       </div>
                     </div>
                     
-                    <h3 className="text-[12px] font-bold text-[#111827] mb-1.5 tracking-widest uppercase" style={{ fontFamily: typography.fonts.inter }}>
+                    <h3 className="text-[20px] font-bold text-[#111827] mb-3 uppercase tracking-tight">
                       {agent.name}
                     </h3>
                     
-                    <p className="text-[11px] text-[#6B7280] leading-[1.5] mb-5 flex-grow" style={{ fontFamily: typography.fonts.inter }}>
+                    <p className="text-[14px] text-[#4B5563] leading-[1.6] mb-8 flex-grow font-light">
                       {agent.description}
                     </p>
                     
-                    <div className="mb-4 space-y-1">
-                      <div className="text-[9px] font-bold tracking-wider uppercase" style={{ color: '#8AB4F8' }}>
+                    <div className="mb-8 space-y-1.5">
+                      <div className="text-[10px] font-bold text-[#96B3FF] uppercase tracking-widest">
                         {agent.runs}
                       </div>
-                      <div className="text-[10px] font-bold text-[#111827] tracking-wider uppercase">
+                      <div className="text-[14px] font-bold text-[#111827] uppercase">
                         {agent.price}
                       </div>
                     </div>
                     
-                    <Link href="/agent-detail" className="block w-full mt-auto">
+                    <Link href="/agent-detail" className="block w-full">
                       <button 
-                        className="w-full py-2 rounded-[6px] text-[10px] font-bold uppercase tracking-widest btn-primary-gradient" 
+                        className="w-full h-12 rounded-[8px] text-[12px] font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-blue-500/10 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                        style={{ background: 'linear-gradient(180deg, #3B82F6 0%, #FFFFFF 140%)' }}
                       >
                         RUN AGENT
                       </button>

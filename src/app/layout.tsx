@@ -39,13 +39,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable} ${plusJakartaSans.variable} h-full antialiased`}
+      className={`${inter.variable} ${poppins.variable} ${plusJakartaSans.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-black">
+      <body className="min-h-screen flex flex-col bg-black">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <Header />
-          {children}
+          <main className="flex-grow">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
