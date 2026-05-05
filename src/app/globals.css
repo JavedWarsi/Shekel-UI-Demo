@@ -77,6 +77,7 @@
   --font-display: var(--font-poppins), "Poppins", sans-serif;
   --font-heading: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 8s linear infinite;
   
   @keyframes float {
     0%, 100% {
@@ -124,4 +125,15 @@ body {
 .btn-primary-gradient:active {
   transform: translateY(0px);
   filter: brightness(0.95);
+}
+
+/* Global Image Hover Effect */
+img {
+  transition: all 0.3s ease-in-out !important;
+  border: 1px solid transparent;
+}
+
+img:hover {
+  border-color: #E5E7EB !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
 }

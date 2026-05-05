@@ -29,236 +29,214 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#F8F9FB" }}>
+    <div 
+      className="min-h-screen flex flex-col"
+      style={{ 
+        background: 'linear-gradient(to bottom, #dfe6f1 0%, #c9d6ea 50%, #f2f3f5 100%)' 
+      }}
+    >
       {/* --- Simple Navbar --- */}
-      <header className="h-[80px] px-8 flex items-center justify-between border-b border-gray-200 bg-white">
+      <header className="h-[80px] px-8 flex items-center justify-between bg-transparent relative z-20">
         <Link href="/" className="shrink-0">
-          <Image src="/shared/header-logo.svg" alt="Shekel" width={120} height={32} />
+          <Image src="/shared/header-logo.svg" alt="Shekel" width={110} height={28} />
         </Link>
         <Link href="/connect-us">
-          <Button variant="outline" className="border-gray-300 text-gray-700 h-10 px-6 font-semibold">Get Started</Button>
+          <Button variant="outline" className="border-gray-200 text-gray-500 h-9 px-6 font-semibold rounded-full text-xs">Contact Us</Button>
         </Link>
       </header>
 
       {/* --- Main Content --- */}
-      <main className="flex-1 flex flex-col md:flex-row">
-        {/* Left Column: Visual Mascot (Pure Black) */}
-        <div className="hidden md:flex flex-1 items-center justify-center bg-[#000000] relative overflow-hidden">
-          {/* Precise Background Glow */}
-          <div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0066FF] rounded-full opacity-[0.15] blur-[150px]" 
-          />
-
-          <Float 
-            motion3d 
-            amplitude={12} 
-            rotate={1.5} 
-            duration={7.5}
-            className="relative z-10 w-[75%] max-w-[480px] aspect-square"
-            style={{ perspective: "1200px" }}
-          >
-            <Image 
-              src="/images/hero/astronaut.png" 
-              alt="Mascot Astronaut" 
-              fill 
-              className="object-contain"
-              priority
+      <main className="flex-1 flex items-center justify-center py-10 px-6 lg:px-20">
+        <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+          
+          {/* LEFT SIDE: Illustration (50%) */}
+          <div className="hidden lg:flex flex-1 items-center justify-center relative">
+            {/* Concentrated Radial Glow */}
+            <div 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-white rounded-full opacity-[0.5] blur-[100px] pointer-events-none" 
             />
-          </Float>
-
-          <div className="absolute bottom-16 left-16 z-20 space-y-3">
-            <h2 className="text-white text-4xl font-bold tracking-tight" style={{ fontFamily: typography.fonts.poppins }}>
-              The future of AI agents is here.
-            </h2>
-            <p className="text-gray-400 text-lg max-w-sm leading-relaxed" style={{ fontFamily: typography.fonts.inter }}>
-              Join the Shekel network and start building your autonomous workflow ecosystem today.
-            </p>
-          </div>
-        </div>
-
-        {/* Right Column: Form Card */}
-        <div className="flex-1 flex items-center justify-center p-6 md:p-12 lg:p-20">
-          <div 
-            className="w-full max-w-[480px] bg-white p-12 shadow-[0px_4px_20px_rgba(0,0,0,0.05)]"
-            style={{ borderRadius: '32px' }}
-          >
-            <div className="mb-10">
-              <h1 className="text-[24px] font-bold mb-2 text-[#111827]" style={{ fontFamily: typography.fonts.poppins }}>
-                Create your account
-              </h1>
-              <p className="text-[14px] text-[#6B7280]" style={{ fontFamily: typography.fonts.inter }}>
-                Start building and exploring AI agents.
-              </p>
+            
+            <div className="relative z-10 w-full max-w-[1200px] aspect-square flex items-center justify-center">
+              <Float 
+                motion3d 
+                amplitude={8} 
+                rotate={1} 
+                duration={6}
+                className="relative w-full h-full"
+              >
+                <Image 
+                  src="/section-11/cta-robot.png" 
+                  alt="Futuristic Robot" 
+                  fill 
+                  className="object-contain"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 1200px"
+                />
+              </Float>
             </div>
+          </div>
 
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              {/* Full Name */}
-              <div className="space-y-2">
-                <label className="text-[12px] font-bold text-[#374151] uppercase tracking-[0.05em]" style={{ fontFamily: typography.fonts.inter }}>
-                  Full Name
-                </label>
-                <input 
-                  type="text" 
-                  placeholder="John Doe"
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:border-[#0052CC] focus:ring-1 focus:ring-[#0052CC] outline-none transition-all placeholder:text-gray-400"
-                />
+          {/* RIGHT SIDE: Form Section (50%) */}
+          <div className="flex-1 flex items-center justify-center lg:justify-end">
+            <div 
+              className="w-full max-w-[480px] bg-white p-8 md:p-10 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-white/50"
+              style={{ borderRadius: '16px' }}
+            >
+              <div className="mb-8 text-left">
+                <h1 className="text-[30px] font-bold mb-2 text-[#0B1B2B]" style={{ fontFamily: typography.fonts.jakarta }}>
+                  Create your account
+                </h1>
+                <p className="text-[15px] text-[#6B7A90]" style={{ fontFamily: typography.fonts.inter }}>
+                  Start building and exploring AI agents.
+                </p>
               </div>
 
-              {/* Email */}
-              <div className="space-y-2">
-                <label className="text-[12px] font-bold text-[#374151] uppercase tracking-[0.05em]" style={{ fontFamily: typography.fonts.inter }}>
-                  Email Address
-                </label>
-                <input 
-                  type="email" 
-                  placeholder="you@example.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:border-[#0052CC] focus:ring-1 focus:ring-[#0052CC] outline-none transition-all placeholder:text-gray-400"
-                />
-              </div>
-
-              {/* Password */}
-              <div className="space-y-2">
-                <label className="text-[12px] font-bold text-[#374151] uppercase tracking-[0.05em]" style={{ fontFamily: typography.fonts.inter }}>
-                  Password
-                </label>
-                <div className="relative">
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                {/* Full Name */}
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                    FULL NAME
+                  </label>
                   <input 
-                    type={showPassword ? "text" : "password"} 
-                    placeholder="Create a password"
-                    className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:border-[#0052CC] focus:ring-1 focus:ring-[#0052CC] outline-none transition-all pr-12 placeholder:text-gray-400"
-                    value={formData.password}
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    type="text" 
+                    placeholder="John Doe"
+                    value={formData.fullName}
+                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-[#A0AEC0]"
                   />
-                  <button 
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </button>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-[12px] font-bold text-[#374151] uppercase tracking-[0.05em]" style={{ fontFamily: typography.fonts.inter }}>
-                    Confirm Password
+                {/* Email */}
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                    EMAIL
+                  </label>
+                  <input 
+                    type="email" 
+                    placeholder="you@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-[#A0AEC0]"
+                  />
+                </div>
+
+                {/* Password */}
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                    PASSWORD
+                  </label>
+                  <div className="relative">
+                    <input 
+                      type={showPassword ? "text" : "password"} 
+                      placeholder="Create a password"
+                      className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all pr-12 placeholder:text-[#A0AEC0]"
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    />
+                    <button 
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-5 top-1/2 -translate-y-1/2 text-[#8A94A6]"
+                    >
+                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Confirm Password */}
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                    CONFIRM PASSWORD
                   </label>
                   <input 
                     type={showPassword ? "text" : "password"} 
                     placeholder="Repeat your password"
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    className="w-full h-12 px-4 rounded-xl border border-gray-200 text-sm focus:border-[#0052CC] focus:ring-1 focus:ring-[#0052CC] outline-none transition-all pr-12 placeholder:text-gray-400"
+                    className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-[#A0AEC0]"
                   />
                 </div>
 
                 {/* Password Validation Checklist */}
-                <div className="flex flex-col gap-1.5 mt-3">
-                  <div className={`flex items-center gap-2 text-[11px] font-bold tracking-tight uppercase ${passwordValidation.length ? 'text-green-600' : 'text-gray-400'}`}>
-                    {passwordValidation.length ? <CheckCircle2 size={14} /> : <Circle size={14} />}
-                    <span>At least 8 characters</span>
+                <div className="flex flex-col gap-2 px-1 py-1">
+                  <div className={`flex items-center gap-2 text-[12px] ${passwordValidation.length ? 'text-[#2F6FED]' : 'text-[#8A94A6]'}`}>
+                     <CheckCircle2 size={13} className={passwordValidation.length ? 'text-[#2F6FED]' : 'text-[#E6EAF0]'} />
+                     <span>At least 8 characters</span>
                   </div>
-                  <div className={`flex items-center gap-2 text-[11px] font-bold tracking-tight uppercase ${passwordValidation.number ? 'text-green-600' : 'text-gray-400'}`}>
-                    {passwordValidation.number ? <CheckCircle2 size={14} /> : <Circle size={14} />}
-                    <span>Includes a number</span>
-                  </div>
-                  <div className={`flex items-center gap-2 text-[11px] font-bold tracking-tight uppercase ${passwordValidation.match ? 'text-green-600' : 'text-gray-400'}`}>
-                    {passwordValidation.match ? <CheckCircle2 size={14} /> : <Circle size={14} />}
-                    <span>Passwords match</span>
+                  <div className={`flex items-center gap-2 text-[12px] ${passwordValidation.number ? 'text-[#2F6FED]' : 'text-[#8A94A6]'}`}>
+                     <CheckCircle2 size={13} className={passwordValidation.number ? 'text-[#2F6FED]' : 'text-[#E6EAF0]'} />
+                     <span>Includes a number</span>
                   </div>
                 </div>
-              </div>
 
-              {/* Terms Checkbox */}
-              <div className="flex items-start gap-3 pt-2">
-                <input 
-                  type="checkbox" 
-                  id="terms"
-                  className="mt-1 w-4 h-4 rounded border-gray-300 text-[#0052CC] focus:ring-[#0052CC]"
-                  checked={formData.agreeToTerms}
-                  onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
-                />
-                <label htmlFor="terms" className="text-sm text-gray-500 leading-snug" style={{ fontFamily: typography.fonts.inter }}>
-                  I agree to <Link href="/terms" className="text-[#0052CC] font-semibold hover:underline">Terms & Conditions</Link>.
-                </label>
-              </div>
-
-              {/* Submit Button */}
-              <button 
-                className="w-full h-14 text-[14px] font-bold tracking-[0.05em] bg-[#0052CC] hover:bg-[#0041A3] text-white transition-all hover:scale-[1.01] active:scale-[0.98] shadow-lg shadow-blue-500/10 uppercase"
-                style={{ borderRadius: '12px' }}
-              >
-                CREATE ACCOUNT
-              </button>
-
-              {/* Separator */}
-              <div className="relative flex items-center justify-center py-2">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-100"></div>
+                {/* Terms Checkbox */}
+                <div className="flex items-center gap-2.5 pt-1 px-1">
+                  <input 
+                    type="checkbox" 
+                    id="terms"
+                    className="w-4 h-4 rounded border-[#E6EAF0] text-[#2F6FED] focus:ring-[#2F6FED]"
+                    checked={formData.agreeToTerms}
+                    onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
+                  />
+                  <label htmlFor="terms" className="text-[14px] text-[#6B7A90]">
+                    I agree to <Link href="/terms-of-service" className="text-[#2B6CB0] font-semibold hover:underline">Terms & Conditions</Link>
+                  </label>
                 </div>
-                <span className="relative px-4 bg-white text-[11px] font-bold text-gray-300 uppercase tracking-[0.1em]" style={{ fontFamily: typography.fonts.inter }}>
-                  OR
-                </span>
-              </div>
 
-              {/* Social Login Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+                {/* Submit Button */}
                 <button 
-                  type="button"
-                  className="flex-1 h-12 flex items-center justify-center gap-3 border border-gray-200 rounded-xl bg-white hover:bg-gray-50 transition-all hover:border-gray-300"
+                  className="w-full h-12 text-[14px] font-semibold bg-[#2F6FED] hover:bg-[#1e5ad1] text-white transition-all rounded-[12px] shadow-sm uppercase tracking-wide"
                 >
-                  <Image src="/section-1-create-ai-agent-page/logo-google-ai.png" alt="Google" width={80} height={30} className="object-contain h-5 w-auto opacity-90" />
+                  Create Account
                 </button>
-                <button 
-                  type="button"
-                  className="flex-1 h-12 flex items-center justify-center gap-3 border border-gray-200 rounded-xl bg-white hover:bg-gray-50 transition-all hover:border-gray-300"
-                >
-                  <Image src="/section-1-developer-builder/icon-github.png" alt="GitHub" width={18} height={18} className="opacity-90" />
-                  <span className="text-[12px] font-bold uppercase tracking-[0.05em] text-[#111827]">GitHub</span>
-                </button>
-              </div>
 
-              <div className="text-center pt-4">
-                <p className="text-sm text-gray-500" style={{ fontFamily: typography.fonts.inter }}>
-                  Already have an account? <Link href="/signin" className="text-[#0052CC] font-bold hover:underline">Sign in</Link>
-                </p>
-              </div>
-            </form>
+                {/* Divider */}
+                <div className="relative flex items-center justify-center py-2">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-[#E6EAF0]"></div>
+                  </div>
+                  <span className="relative px-4 bg-white text-[12px] font-semibold text-[#8A94A6] uppercase">
+                    OR
+                  </span>
+                </div>
+
+                {/* Social Login Buttons */}
+                <div className="flex gap-3">
+                  <button 
+                    type="button"
+                    className="flex-1 h-11 flex items-center justify-center gap-3 border border-[#E6EAF0] rounded-[10px] bg-white hover:bg-[#F5F7FA] transition-all font-semibold text-[13px] text-[#0B1B2B] uppercase tracking-wider"
+                  >
+                    <div className="w-5 h-5 rounded-full border border-[#0B1B2B] flex items-center justify-center relative">
+                      <div className="w-2.5 h-2.5 rounded-full border border-[#0B1B2B] mt-[-2px]" />
+                      <div className="absolute bottom-0 w-3 h-1.5 border border-[#0B1B2B] rounded-t-full border-b-0" />
+                    </div>
+                    Google
+                  </button>
+                  <button 
+                    type="button"
+                    className="flex-1 h-11 flex items-center justify-center gap-3 border border-[#E6EAF0] rounded-[10px] bg-white hover:bg-[#F5F7FA] transition-all font-semibold text-[13px] text-[#0B1B2B] uppercase tracking-wider"
+                  >
+                    <span className="text-[14px] font-bold tracking-tighter text-[#0B1B2B]">{"< >"}</span>
+                    GitHub
+                  </button>
+                </div>
+
+                <div className="text-center pt-4">
+                  <p className="text-[14px] text-[#6B7A90]">
+                    Already have an account? <Link href="/signin" className="text-[#2B6CB0] font-semibold hover:underline ml-1">Sign in</Link>
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </main>
 
-      {/* --- High-Fidelity Footer --- */}
-      <footer className="bg-black py-20 px-6 md:px-12 lg:px-24">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-[80px]">
-            {[
-              { title: "Product", links: ["Marketplace", "Workflows", "Pricing"] },
-              { title: "Platform", links: ["Dev Studio", "Network Status", "Documentation"] },
-              { title: "Company", links: ["About Us", "Contact", "Terms"] },
-              { title: "Resources", links: ["Blog", "Community", "Support"] },
-            ].map(col => (
-              <div key={col.title} className="space-y-6">
-                <h4 className="text-white text-[16px] font-semibold tracking-tight">{col.title}</h4>
-                <ul className="space-y-4">
-                  {col.links.map(link => (
-                    <li key={link}>
-                      <Link href="#" className="text-gray-400 text-[14px] hover:text-white transition-colors leading-[2]">{link}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-16 pt-8 border-t border-[#1F2937]">
-            <p className="text-gray-500 text-[14px]">
-              © 2026 Shekel AI. All rights reserved.
-            </p>
-          </div>
+      {/* --- Simple Footer --- */}
+      <footer className="bg-transparent py-8 px-8 border-t border-gray-200/10">
+        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <Image src="/shared/header-logo.svg" alt="Shekel" width={90} height={24} />
+          <p className="text-[12px] text-gray-400">© 2026 Shekel AI. All rights reserved.</p>
         </div>
       </footer>
     </div>
