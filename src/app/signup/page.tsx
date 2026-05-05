@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { 
+  Eye, 
+  EyeOff, 
+  CheckCircle2, 
+  Circle
+} from "lucide-react";
 import { Button } from "@/components/shared/Button";
-import { Float } from "@/components/shared/motion/Float";
 import { typography } from "@/tokens/design-tokens";
-import { Eye, EyeOff, CheckCircle2, Circle } from "lucide-react";
-
-// -----------------------------------------------------------------------------
-// SIGN UP PAGE — High-Fidelity Figma Implementation
-// -----------------------------------------------------------------------------
+import { Float } from "@/components/shared/motion/Float";
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,22 +20,23 @@ export default function SignupPage() {
     email: "",
     password: "",
     confirmPassword: "",
-    agreeToTerms: false,
+    agreeToTerms: false
   });
 
-  const passwordValidation = {
-    length: formData.password.length >= 8,
-    number: /\d/.test(formData.password),
-    match: formData.password !== "" && formData.password === formData.confirmPassword,
-  };
+  const [passwordValidation, setPasswordValidation] = useState({
+    length: false,
+    number: false
+  });
+
+  useEffect(() => {
+    setPasswordValidation({
+      length: formData.password.length >= 8,
+      number: /\d/.test(formData.password)
+    });
+  }, [formData.password]);
 
   return (
-    <div 
-      className="min-h-screen flex flex-col"
-      style={{ 
-        background: 'linear-gradient(to bottom, #dfe6f1 0%, #c9d6ea 50%, #f2f3f5 100%)' 
-      }}
-    >
+    <div className="min-h-screen bg-white flex flex-col font-sans">
       {/* --- Simple Navbar --- */}
       <header className="h-[80px] px-8 flex items-center justify-between bg-transparent relative z-20">
         <Link href="/" className="shrink-0">
@@ -46,55 +48,46 @@ export default function SignupPage() {
       </header>
 
       {/* --- Main Content --- */}
-      <main className="flex-1 flex items-center justify-center py-10 px-6 lg:px-20">
+      <main className="flex-1 flex items-center justify-center py-10 px-6 lg:px-20 relative overflow-hidden">
+        {/* Soft Background Glow */}
+        <div className="absolute left-[15%] top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#3B82F6] opacity-[0.12] blur-[140px] rounded-full pointer-events-none" />
+
         <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           
-          {/* LEFT SIDE: Illustration (50%) */}
+          {/* LEFT SIDE: Illustration */}
           <div className="hidden lg:flex flex-1 items-center justify-center relative">
-            {/* Concentrated Radial Glow */}
-            <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-white rounded-full opacity-[0.5] blur-[100px] pointer-events-none" 
-            />
-            
-            <div className="relative z-10 w-full max-w-[1200px] aspect-square flex items-center justify-center">
-              <Float 
-                motion3d 
-                amplitude={8} 
-                rotate={1} 
-                duration={6}
-                className="relative w-full h-full"
-              >
+            <div className="relative z-10 w-full max-w-[1000px] aspect-square flex items-center justify-center">
+              {/* <Float motion3d amplitude={10} rotate={1} duration={6}> */}
                 <Image 
                   src="/section-11/cta-robot.png" 
                   alt="Futuristic Robot" 
-                  fill 
-                  className="object-contain"
+                  width={800}
+                  height={800}
+                  className="object-contain pointer-events-none scale-200"
                   priority
-                  sizes="(max-width: 1024px) 100vw, 1200px"
                 />
-              </Float>
+              {/* </Float> */}
             </div>
           </div>
 
-          {/* RIGHT SIDE: Form Section (50%) */}
+          {/* RIGHT SIDE: Form Section */}
           <div className="flex-1 flex items-center justify-center lg:justify-end">
             <div 
-              className="w-full max-w-[480px] bg-white p-8 md:p-10 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-white/50"
-              style={{ borderRadius: '16px' }}
+              className="w-full max-w-[500px] bg-white p-10 md:p-14 shadow-[0px_20px_60px_rgba(0,0,0,0.06)] border border-gray-100/30 rounded-[48px]"
             >
-              <div className="mb-8 text-left">
-                <h1 className="text-[30px] font-bold mb-2 text-[#0B1B2B]" style={{ fontFamily: typography.fonts.jakarta }}>
+              <div className="mb-10 text-left">
+                <h1 className="text-[32px] md:text-[38px] font-extrabold text-[#111827] tracking-tight leading-tight mb-2">
                   Create your account
                 </h1>
-                <p className="text-[15px] text-[#6B7A90]" style={{ fontFamily: typography.fonts.inter }}>
+                <p className="text-[16px] text-[#6B7280] font-light">
                   Start building and exploring AI agents.
                 </p>
               </div>
 
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 {/* Full Name */}
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                <div className="space-y-2.5">
+                  <label className="text-[11px] font-extrabold text-[#4B5563] uppercase tracking-[0.15em] px-1">
                     FULL NAME
                   </label>
                   <input 
@@ -102,13 +95,13 @@ export default function SignupPage() {
                     placeholder="John Doe"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-[#A0AEC0]"
+                    className="w-full h-14 px-6 rounded-[14px] bg-[#F3F4F6] border-none text-[15px] focus:bg-white focus:ring-2 focus:ring-blue-500/20 outline-none transition-all placeholder:text-[#9CA3AF] font-medium"
                   />
                 </div>
 
                 {/* Email */}
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                <div className="space-y-2.5">
+                  <label className="text-[11px] font-extrabold text-[#4B5563] uppercase tracking-[0.15em] px-1">
                     EMAIL
                   </label>
                   <input 
@@ -116,27 +109,27 @@ export default function SignupPage() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-[#A0AEC0]"
+                    className="w-full h-14 px-6 rounded-[14px] bg-[#F3F4F6] border-none text-[15px] focus:bg-white focus:ring-2 focus:ring-blue-500/20 outline-none transition-all placeholder:text-[#9CA3AF] font-medium"
                   />
                 </div>
 
                 {/* Password */}
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                <div className="space-y-2.5">
+                  <label className="text-[11px] font-extrabold text-[#4B5563] uppercase tracking-[0.15em] px-1">
                     PASSWORD
                   </label>
                   <div className="relative">
                     <input 
                       type={showPassword ? "text" : "password"} 
                       placeholder="Create a password"
-                      className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all pr-12 placeholder:text-[#A0AEC0]"
+                      className="w-full h-14 px-6 rounded-[14px] bg-[#F3F4F6] border-none text-[15px] focus:bg-white focus:ring-2 focus:ring-blue-500/20 outline-none transition-all pr-14 placeholder:text-[#9CA3AF] font-medium"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     />
                     <button 
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-5 top-1/2 -translate-y-1/2 text-[#8A94A6]"
+                      className="absolute right-6 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#111827] transition-colors"
                     >
                       {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
@@ -144,8 +137,8 @@ export default function SignupPage() {
                 </div>
 
                 {/* Confirm Password */}
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#8A94A6] uppercase tracking-widest px-1">
+                <div className="space-y-2.5">
+                  <label className="text-[11px] font-extrabold text-[#4B5563] uppercase tracking-[0.15em] px-1">
                     CONFIRM PASSWORD
                   </label>
                   <input 
@@ -153,77 +146,74 @@ export default function SignupPage() {
                     placeholder="Repeat your password"
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    className="w-full h-12 px-5 rounded-full bg-[#F5F7FA] border border-[#E6EAF0]/50 text-sm focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-[#A0AEC0]"
+                    className="w-full h-14 px-6 rounded-[14px] bg-[#F3F4F6] border-none text-[15px] focus:bg-white focus:ring-2 focus:ring-blue-500/20 outline-none transition-all placeholder:text-[#9CA3AF] font-medium"
                   />
                 </div>
 
                 {/* Password Validation Checklist */}
-                <div className="flex flex-col gap-2 px-1 py-1">
-                  <div className={`flex items-center gap-2 text-[12px] ${passwordValidation.length ? 'text-[#2F6FED]' : 'text-[#8A94A6]'}`}>
-                     <CheckCircle2 size={13} className={passwordValidation.length ? 'text-[#2F6FED]' : 'text-[#E6EAF0]'} />
-                     <span>At least 8 characters</span>
+                <div className="flex flex-col gap-2.5 pt-1">
+                  <div className={`flex items-center gap-2.5 text-[11px] font-bold transition-all ${passwordValidation.length ? 'text-[#0061C1]' : 'text-[#9CA3AF]'}`}>
+                     {passwordValidation.length ? <CheckCircle2 size={15} strokeWidth={2.5} /> : <Circle size={15} className="opacity-40" />}
+                     <span className="uppercase tracking-[0.12em]">At least 8 characters</span>
                   </div>
-                  <div className={`flex items-center gap-2 text-[12px] ${passwordValidation.number ? 'text-[#2F6FED]' : 'text-[#8A94A6]'}`}>
-                     <CheckCircle2 size={13} className={passwordValidation.number ? 'text-[#2F6FED]' : 'text-[#E6EAF0]'} />
-                     <span>Includes a number</span>
+                  <div className={`flex items-center gap-2.5 text-[11px] font-bold transition-all ${passwordValidation.number ? 'text-[#0061C1]' : 'text-[#9CA3AF]'}`}>
+                     {passwordValidation.number ? <CheckCircle2 size={15} strokeWidth={2.5} /> : <Circle size={15} className="opacity-40" />}
+                     <span className="uppercase tracking-[0.12em]">Include a number</span>
                   </div>
                 </div>
 
                 {/* Terms Checkbox */}
-                <div className="flex items-center gap-2.5 pt-1 px-1">
+                <div className="flex items-center gap-3 pt-3">
                   <input 
                     type="checkbox" 
                     id="terms"
-                    className="w-4 h-4 rounded border-[#E6EAF0] text-[#2F6FED] focus:ring-[#2F6FED]"
+                    className="w-5 h-5 rounded-[6px] border-gray-200 text-[#0061C1] focus:ring-[#0061C1] transition-all cursor-pointer"
                     checked={formData.agreeToTerms}
                     onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
                   />
-                  <label htmlFor="terms" className="text-[14px] text-[#6B7A90]">
-                    I agree to <Link href="/terms-of-service" className="text-[#2B6CB0] font-semibold hover:underline">Terms & Conditions</Link>
+                  <label htmlFor="terms" className="text-[14px] text-[#4B5563] font-medium cursor-pointer">
+                    I agree to <Link href="/terms-of-service" className="text-[#3B82F6] font-bold hover:underline">Terms & Conditions</Link>
                   </label>
                 </div>
 
                 {/* Submit Button */}
                 <button 
-                  className="w-full h-12 text-[14px] font-semibold bg-[#2F6FED] hover:bg-[#1e5ad1] text-white transition-all rounded-[12px] shadow-sm uppercase tracking-wide"
+                  className="w-full h-16 text-[15px] font-extrabold bg-[#0061C1] hover:bg-[#0052A3] text-white transition-all rounded-[16px] shadow-lg shadow-blue-500/10 uppercase tracking-[0.15em] mt-2"
                 >
                   Create Account
                 </button>
 
                 {/* Divider */}
-                <div className="relative flex items-center justify-center py-2">
+                <div className="relative flex items-center justify-center py-5">
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-[#E6EAF0]"></div>
+                    <div className="w-full border-t border-gray-100"></div>
                   </div>
-                  <span className="relative px-4 bg-white text-[12px] font-semibold text-[#8A94A6] uppercase">
+                  <span className="relative px-6 bg-white text-[11px] font-extrabold text-[#9CA3AF] uppercase tracking-[0.2em]">
                     OR
                   </span>
                 </div>
 
                 {/* Social Login Buttons */}
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     type="button"
-                    className="flex-1 h-11 flex items-center justify-center gap-3 border border-[#E6EAF0] rounded-[10px] bg-white hover:bg-[#F5F7FA] transition-all font-semibold text-[13px] text-[#0B1B2B] uppercase tracking-wider"
+                    className="flex-1 h-14 flex items-center justify-center gap-3 border border-gray-100 rounded-[16px] bg-white hover:bg-gray-50 transition-all font-extrabold text-[12px] text-[#111827] uppercase tracking-[0.15em] shadow-sm"
                   >
-                    <div className="w-5 h-5 rounded-full border border-[#0B1B2B] flex items-center justify-center relative">
-                      <div className="w-2.5 h-2.5 rounded-full border border-[#0B1B2B] mt-[-2px]" />
-                      <div className="absolute bottom-0 w-3 h-1.5 border border-[#0B1B2B] rounded-t-full border-b-0" />
-                    </div>
+                    <Image src="/shared/google-icon.svg" alt="Google" width={20} height={20} />
                     Google
                   </button>
                   <button 
                     type="button"
-                    className="flex-1 h-11 flex items-center justify-center gap-3 border border-[#E6EAF0] rounded-[10px] bg-white hover:bg-[#F5F7FA] transition-all font-semibold text-[13px] text-[#0B1B2B] uppercase tracking-wider"
+                    className="flex-1 h-14 flex items-center justify-center gap-3 border border-gray-100 rounded-[16px] bg-white hover:bg-gray-50 transition-all font-extrabold text-[12px] text-[#111827] uppercase tracking-[0.15em] shadow-sm"
                   >
-                    <span className="text-[14px] font-bold tracking-tighter text-[#0B1B2B]">{"< >"}</span>
+                    <span className="text-[16px] font-extrabold tracking-tighter text-[#111827]">{"< >"}</span>
                     GitHub
                   </button>
                 </div>
 
-                <div className="text-center pt-4">
-                  <p className="text-[14px] text-[#6B7A90]">
-                    Already have an account? <Link href="/signin" className="text-[#2B6CB0] font-semibold hover:underline ml-1">Sign in</Link>
+                <div className="text-center pt-8">
+                  <p className="text-[15px] text-[#6B7280] font-medium">
+                    Already have an account? <Link href="/signin" className="text-[#3B82F6] font-extrabold hover:underline ml-1">Sign in</Link>
                   </p>
                 </div>
               </form>
@@ -231,14 +221,6 @@ export default function SignupPage() {
           </div>
         </div>
       </main>
-
-      {/* --- Simple Footer --- */}
-      <footer className="bg-transparent py-8 px-8 border-t border-gray-200/10">
-        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <Image src="/shared/header-logo.svg" alt="Shekel" width={90} height={24} />
-          <p className="text-[12px] text-gray-400">© 2026 Shekel AI. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }
