@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useReducedMotion, type HTMLMotionProps } from 'framer-motion';
 
 type ButtonProps = Omit<HTMLMotionProps<'button'>, 'children'> & {
-  variant?: 'primary' | 'outline' | 'nav' | 'hero' | 'hero-primary';
+  variant?: 'primary' | 'outline' | 'nav' | 'hero' | 'hero-primary' | 'ghost';
   children: React.ReactNode;
 };
 
@@ -33,6 +33,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       'hero-primary':
         'bg-[linear-gradient(90deg,#AA8BFF_0%,#76A2FF_100%)] font-semibold text-white text-[16px] px-[32px] py-[17px] rounded-[12px] shadow-[0px_4px_24px_rgba(186,158,255,0.4)] border-none',
       nav: 'font-medium text-white text-[14px] uppercase tracking-[-0.35px] px-[24px] py-[8px] rounded-[5px]',
+      ghost: '',
     };
 
     const navStyle =

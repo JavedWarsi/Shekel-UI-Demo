@@ -75,10 +75,9 @@ export default function LoginPage() {
                 <Image 
                   src="/images/hero/robot.png" 
                   alt="Floating Astronaut" 
-                //   fill 
-                width={600}
-                height={600}
-                  className="object-contain pointer-events-none scale-[1.4]"
+                  width={600}
+                  height={600}
+                  className="object-contain pointer-events-none scale-[1.4] animate-float-x"
                   priority
                 />
               {/* </Float> */}

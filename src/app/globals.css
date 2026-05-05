@@ -77,6 +77,8 @@
   --font-display: var(--font-poppins), "Poppins", sans-serif;
   --font-heading: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-float-y: floatY 4s ease-in-out infinite;
+  --animate-float-x: floatX 4s ease-in-out infinite;
   --animate-spin-slow: spin 8s linear infinite;
   
   @keyframes float {
@@ -85,6 +87,24 @@
     }
     50% {
       transform: translateY(-20px);
+    }
+  }
+
+  @keyframes floatY {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes floatX {
+    0%, 100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(20px);
     }
   }
 }
