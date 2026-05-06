@@ -8,9 +8,9 @@ import { Float } from "@/components/shared/motion/Float";
 
 const StartUsingAI = () => {
   return (
-    <div className="bg-white rounded-[64px] overflow-hidden shadow-[0px_60px_120px_rgba(0,0,0,0.06)] border border-gray-100 relative min-h-[620px] group mb-10">
+    <div className="bg-white dark:bg-[#0F172A] rounded-[64px] overflow-hidden shadow-[0px_60px_120px_rgba(0,0,0,0.06)] dark:shadow-none border border-gray-100 dark:border-white/5 relative min-h-[620px] group mb-10">
       {/* Background Atmosphere */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#F0F7FF] via-[#F8F4FF] to-[#FFF0F7] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#F0F7FF] via-[#F8F4FF] to-[#FFF0F7] dark:from-blue-900/10 dark:via-purple-900/10 dark:to-pink-900/10 pointer-events-none transition-colors duration-300" />
       
       {/* Circuit Pattern */}
       <div className="absolute inset-0 opacity-[0.06] pointer-events-none overflow-hidden">
@@ -30,7 +30,7 @@ const StartUsingAI = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 h-full relative z-10">
         {/* Left Content */}
         <div className="lg:col-span-6 p-12 md:p-24 flex flex-col justify-center">
-          <h2 className="text-[56px] md:text-[74px] font-bold text-[#111827] leading-[1.0] tracking-tighter mb-16">
+          <h2 className="text-[56px] md:text-[74px] font-bold text-[#111827] dark:text-white leading-[1.0] tracking-tighter mb-16">
             Start Using AI <br /> Agents Today
           </h2>
           <div className="flex flex-col items-center sm:items-start gap-14">
@@ -38,7 +38,7 @@ const StartUsingAI = () => {
               <Button className="h-16 px-16 bg-[#0061C1] hover:bg-[#0051A1] rounded-[22px] text-[13px] font-extrabold uppercase tracking-[0.2em] shadow-2xl shadow-blue-500/30 border-none text-white transition-all transform hover:-translate-y-1">
                 Explore Agents
               </Button>
-              <Button variant="ghost" className="h-16 px-16 border border-blue-100 bg-white/60 backdrop-blur-md text-[#0061C1] hover:bg-white rounded-[22px] text-[13px] font-extrabold uppercase tracking-[0.2em] transition-all shadow-sm">
+              <Button variant="ghost" className="h-16 px-16 border border-blue-100 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-md text-[#0061C1] dark:text-blue-400 hover:bg-white dark:hover:bg-white/10 rounded-[22px] text-[13px] font-extrabold uppercase tracking-[0.2em] transition-all shadow-sm">
                 Start Building
               </Button>
             </div>

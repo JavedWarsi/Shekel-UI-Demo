@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -134,7 +135,7 @@ body {
 }
 
 .btn-primary-gradient {
-  background: linear-gradient(180deg, #3B82F6 0%, #D4E3FF 100%);
+  background: linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%);
   color: white;
   transition: all 0.2s ease-in-out;
 }

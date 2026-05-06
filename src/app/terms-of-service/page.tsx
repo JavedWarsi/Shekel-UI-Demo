@@ -30,7 +30,7 @@ const TRENDING_AGENTS = [
     runs: "850 RUNS",
     price: "$5/MONTH",
     rating: "4.2",
-    Icon: ChartNoAxesColumn
+    Icon: (props: any) => <Image src="/graphq.svg" alt="GraphQ" width={props.size || 24} height={props.size || 24} className="object-contain" />
   },
   {
     name: "LEGALEAGLE",
@@ -52,19 +52,19 @@ const TRENDING_AGENTS = [
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-transparent transition-colors duration-300">
       <main className="max-w-[1200px] mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row gap-16 lg:gap-24">
 
         {/* --- LEFT: Main Content --- */}
-        <div className="flex-1 max-w-[1200px] border-2 border-[#D4D4D4] p-4">
+        <div className="flex-1 max-w-[1200px] border-2 border-[#D4D4D4] dark:border-white/5 bg-white dark:bg-[#0F172A] rounded-[24px] p-4 md:p-8 shadow-[0_2px_15px_rgba(0,0,0,0.015)] dark:shadow-none transition-colors duration-300">
           <header className="mb-16">
             <h1
-              className="text-[40px] md:text-[56px] font-bold text-[#111827] tracking-tight leading-[1.1] mb-6"
-              style={{}}
+              className="text-[40px] md:text-[56px] font-medium text-[#111827] dark:text-white tracking-tight leading-[1.1] mb-6"
+              style={{ fontFamily:'Poppins' }}
             >
               Terms & Conditions
             </h1>
-            <p className="text-[15px] md:text-[16px] text-[#4B5563] leading-[1.6] mb-8 max-w-[600px] font-light" style={{}}>
+            <p className="text-[15px] md:text-[16px] text-[#4B5563] dark:text-gray-300 leading-[1.6] mb-8 max-w-[600px] font-light" style={{}}>
               Please read these terms carefully before using Shekel. This agreement outlines the rules and regulations for the use of our AI platform.
             </p>
 
@@ -78,7 +78,7 @@ export default function TermsOfServicePage() {
             </p>
           </header>
 
-          <hr className="border-[#F3F4F6] mb-16" />
+          <hr className="border-[#F3F4F6] dark:border-white/10 mb-16" />
 
           <div className="space-y-8">
             {/* Section 1 */}
@@ -86,10 +86,10 @@ export default function TermsOfServicePage() {
 
             {/* Section 2    style =  fontFamily: typography.fonts.jakarta */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 2. Use of the Platform
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-100 leading-[2.2] font-light" style={{fontFamily:''}}>
                 <p>
                   You may use Shekel only for lawful purposes and in accordance with these Terms. You are responsible for ensuring that your use of the platform does not violate any local, state, or international laws.
                 </p>
@@ -101,10 +101,10 @@ export default function TermsOfServicePage() {
 
             {/* Section 3 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 3. Accounts
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
                 <p>
                   When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.
                 </p>
@@ -119,10 +119,10 @@ export default function TermsOfServicePage() {
 
             {/* Section 4 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 4. AI Agents & Workflows
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
                 <p>
                   Shekel allows you to use and build customized autonomous AI agents. You are in
                   command of the agents, and you remain responsible for those agents' behavior, outputs,
@@ -141,7 +141,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 5 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 5. Restrictions
               </h2>
               <ul className="space-y-6 mt-6 font-light" style={{}}>
@@ -149,29 +149,29 @@ export default function TermsOfServicePage() {
                   <div className="w-5 h-5 rounded-full border-2 border-[#FF8E8E] flex items-center justify-center mt-1.5 shrink-0">
                     <div className="w-2.5 h-0.5 bg-[#FF8E8E] rounded-full"></div>
                   </div>
-                  <span className="text-[16px] text-[#4B5563] leading-[2.2]">Reverse engineering or attempting to extract the source code of the underlying functionality.</span>
+                  <span className="text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2]">Reverse engineering or attempting to extract the source code of the underlying functionality.</span>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full border-2 border-[#FF8E8E] flex items-center justify-center mt-1.5 shrink-0">
                     <div className="w-2.5 h-0.5 bg-[#FF8E8E] rounded-full"></div>
                   </div>
-                  <span className="text-[16px] text-[#4B5563] leading-[2.2]">Using the service to generate malicious code, spam, or deceptive content.</span>
+                  <span className="text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2]">Using the service to generate malicious code, spam, or deceptive content.</span>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full border-2 border-[#FF8E8E] flex items-center justify-center mt-1.5 shrink-0">
                     <div className="w-2.5 h-0.5 bg-[#FF8E8E] rounded-full"></div>
                   </div>
-                  <span className="text-[16px] text-[#4B5563] leading-[2.2]">Automated scraping of the platform interface without explicit prior permission.</span>
+                  <span className="text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2]">Automated scraping of the platform interface without explicit prior permission.</span>
                 </li>
               </ul>
             </section>
 
             {/* Section 6 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 6. Intellectual Property
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
                 <p>
                   The Service and its original content, features, and functionality are and will remain the exclusive property of Shekel AI and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries.
                 </p>
@@ -183,10 +183,10 @@ export default function TermsOfServicePage() {
 
             {/* Section 7 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 7. Limitation of Liability
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
                 <p>
                   In no event shall Shekel AI, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service.
                 </p>
@@ -195,10 +195,10 @@ export default function TermsOfServicePage() {
 
             {/* Section 8 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 8. Changes to Terms
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
                 <p>
                   We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
                 </p>
@@ -207,10 +207,10 @@ export default function TermsOfServicePage() {
 
             {/* Section 9 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]" style={{}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 9. Contact
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
                 <p>
                   If you have any questions about these Terms, please contact us at support@shekel.ai or through our support portal.
                 </p>
@@ -231,15 +231,11 @@ export default function TermsOfServicePage() {
               <p className="text-[#A1A1AA] text-[15px] md:text-[16px] leading-[1.5] mb-8 font-light">
                 Our legal and technical teams are available to clarify any sections of this agreement or assist with enterprise compliance.
               </p>
-              <button
-                className="px-10 h-14 text-white text-[15px] font-bold rounded-[14px] w-fit shadow-[0_0_25px_rgba(59,130,246,0.4)] transition-all hover:scale-[1.05] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] active:scale-[0.98]"
-                style={{
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #9A7BFF 100%)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)'
-                }}
-              >
-                Contact Support
-              </button>
+              <button 
+                  className="w-[224px] h-[44px]   rounded-[8px] text-[13px] font-bold text-white flex items-center justify-center  btn-primary-gradient  md:w-auto justify-center shadow-sm"
+                >
+                   Contact Support
+                </button>
             </div>
 
             {/* Astronaut Image - Overflowing significantly */}
@@ -260,9 +256,9 @@ export default function TermsOfServicePage() {
 
         {/* --- RIGHT: Sidebar --- */}
         <aside className="w-full lg:w-[340px] shrink-0 pt-4 lg:pt-0">
-          <div className="sticky top-24">
-            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-bold tracking-tight mb-8" style={{}}>
-              <span className="text-[#111827]">Trending </span>
+          <div className="sticky top-24" >
+            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8" style={{ fontFamily:'Poppins' }}>
+              <span className="text-[#111827] dark:text-white">Trending </span>
               <span className="text-[#2864e4]">AI</span><br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
             </h2>
@@ -271,7 +267,7 @@ export default function TermsOfServicePage() {
               {TRENDING_AGENTS.map((agent) => {
                 const AgentIcon = agent.Icon;
                 return (
-                  <div key={agent.name} className="p-6 rounded-[24px] bg-white border border-[#F3F4F6] shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col hover:border-[#E5E7EB] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all group">
+                  <div key={agent.name} className="p-6 rounded-[8px] bg-white dark:bg-[#0F172A] border border-[#F3F4F6] dark:border-white/5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-none flex flex-col hover:border-[#E5E7EB] dark:hover:border-white/20 transition-all group">
                     <div className="flex justify-between items-start mb-4">
                       <div className="relative">
                         <AgentIcon
@@ -283,17 +279,17 @@ export default function TermsOfServicePage() {
                           strokeLinejoin="miter"
                         />
                       </div>
-                      <div className="flex items-center text-[13px] font-bold text-[#111827]">
-                        <Star size={16} fill="url(#icon-gradient)" stroke="url(#icon-gradient)" className="mr-1.5" />
+                      <div className="flex items-center text-[13px] font-bold text-[#111827] dark:text-white">
+                        <Star size={16} className="mr-1.5" fill="url(#icon-gradient)" stroke="url(#icon-gradient)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" />
                         {agent.rating}
                       </div>
                     </div>
 
-                    <h3 className="text-[20px] font-bold text-[#111827] mb-3 uppercase tracking-tight">
+                    <h3 className="text-[20px] font-bold text-[#111827] dark:text-white mb-3 uppercase tracking-tight">
                       {agent.name}
                     </h3>
 
-                    <p className="text-[14px] text-[#4B5563] leading-[1.6] mb-8 flex-grow font-light">
+                    <p className="text-[14px] text-[#4B5563] dark:text-gray-300 leading-[1.6] mb-8 flex-grow font-light">
                       {agent.description}
                     </p>
 
@@ -301,7 +297,7 @@ export default function TermsOfServicePage() {
                       <div className="text-[10px] font-bold text-[#96B3FF] uppercase tracking-widest">
                         {agent.runs}
                       </div>
-                      <div className="text-[14px] font-bold text-[#111827] uppercase">
+                      <div className="text-[14px] font-bold text-[#111827] dark:text-white uppercase">
                         {agent.price}
                       </div>
                     </div>
@@ -309,7 +305,7 @@ export default function TermsOfServicePage() {
                     <Link href="/agent-detail" className="block w-full">
                       <button
                         className="w-full h-12 rounded-[8px] text-[12px] font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-blue-500/10 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                        style={{ background: 'linear-gradient(180deg, #3B82F6 0%, #FFFFFF 140%)' }}
+                        style={{ background: 'linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%)' }}
                       >
                         RUN AGENT
                       </button>

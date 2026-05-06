@@ -36,7 +36,7 @@ const TRENDING_AGENTS = [
     runs: "850 RUNS",
     price: "$5/MONTH",
     rating: "4.2",
-    Icon: BarChart2
+    Icon: (props: any) => <Image src="/graphq.svg" alt="GraphQ" width={props.size || 24} height={props.size || 24} className="object-contain" />
   },
   {
     name: "LEGALEAGLE",
@@ -58,7 +58,7 @@ const TRENDING_AGENTS = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-transparent transition-colors duration-300">
       {/* Global SVG Gradient for Icons */}
       <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none', opacity: 0 }}>
         <defs>
@@ -72,16 +72,16 @@ export default function PrivacyPolicyPage() {
       <main className="max-w-[1200px] mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row gap-10 lg:gap-16">
         
         {/* --- LEFT: Main Content --- */}
-        <div className="flex-1 max-w-[760px] bg-white border-2 border-[#D4D4D4] rounded-[24px] p-4 md:p-8 shadow-[0_2px_15px_rgba(0,0,0,0.015)]">
+        <div className="flex-1 max-w-[760px] bg-white dark:bg-[#0F172A] border-2 border-[#D4D4D4] dark:border-white/5 rounded-[24px] p-4 md:p-8 shadow-[0_2px_15px_rgba(0,0,0,0.015)] dark:shadow-none transition-colors duration-300">
           
           <header className="mb-10">
             <h1 
-              className="text-[40px] md:text-[52px] font-bold text-black tracking-tight leading-[1.1] mb-6"
-              style={{ fontFamily: typography.fonts.inter }}
+              className="text-[40px] md:text-[52px] font-light text-black dark:text-white tracking-tight leading-[1.1] mb-6"
+              style={{ fontFamily: 'Poppins' }}
             >
               Privacy Policy
             </h1>
-            <p className="text-[13px] md:text-[14px] text-[#4B5563] leading-[1.7] mb-8" style={{ fontFamily: typography.fonts.inter }}>
+            <p className="text-[13px] md:text-[14px] text-[#4B5563] dark:text-gray-300 leading-[1.7] mb-8" style={{ fontFamily: typography.fonts.inter }}>
               Your data is a digital extension of your identity. At Ethereal, we treat your information with the same curation and precision as the assets in our marketplace.
             </p>
             
@@ -93,37 +93,38 @@ export default function PrivacyPolicyPage() {
             </div>
           </header>
 
-          <hr className="border-[#F3F4F6] mb-10" />
+          <hr className="border-[#F3F4F6] dark:border-white/10 mb-10" />
 
           <div className="space-y-8">
             {/* Section 1 */}
             <PolicySection 
               number="1." 
               title="Information We Collect" 
+              // style={{fontFamily:'Plus Jakarta Sans'}}
               icon={<Fingerprint size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
             >
               <p>We gather information that you provide directly to us when creating an account, curating collections, or transacting within the marketplace. This includes your name, digital wallet addresses, and communication preferences.</p>
               
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <div className="flex items-center gap-3 px-5 py-4 bg-white border border-[#F3F4F6] rounded-[12px] text-[13px] text-[#4B5563] shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex-1">
+                <div className="flex items-center gap-3 px-5 py-4 bg-white dark:bg-white/5 border border-[#F3F4F6] dark:border-white/10 rounded-[12px] text-[13px] text-[#4B5563] dark:text-gray-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-none flex-1">
                   <Box size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" />
                   Identity Verification Data
                 </div>
-                <div className="flex items-center gap-3 px-5 py-4 bg-white border border-[#F3F4F6] rounded-[12px] text-[13px] text-[#4B5563] shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex-1">
+                <div className="flex items-center gap-3 px-5 py-4 bg-white dark:bg-white/5 border border-[#F3F4F6] dark:border-white/10 rounded-[12px] text-[13px] text-[#4B5563] dark:text-gray-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-none flex-1">
                   <Box size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" />
                   Blockchain Transaction Metadata
                 </div>
               </div>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 2 */}
             <PolicySection 
               number="2." 
               title="How We Use Your Information" 
               icon={
-                <div className="relative flex items-center justify-center w-7 h-7 rounded-full border-[1.5px]" style={{ borderColor: 'url(#icon-blue-gradient)' }}>
+                <div className="relative flex items-center justify-center w-7 h-7 rounded-full border-[1.5px]" style={{ borderColor: 'url(#icon-blue-gradient)', fontFamily:'Plus Jakarta Sans' }}>
                   <TrendingUp size={16} strokeWidth={2} stroke="url(#icon-blue-gradient)" />
                 </div>
               }
@@ -131,7 +132,7 @@ export default function PrivacyPolicyPage() {
               <p>Our primary goal is to provide a seamless, high-fidelity experience. We use your data to facilitate smart contract interactions, personalize your exhibition feed, and ensure the integrity of high-value marketplace exchanges.</p>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 3 */}
             <PolicySection 
@@ -142,7 +143,7 @@ export default function PrivacyPolicyPage() {
               <p>We do not sell your personal data. Sharing only occurs with service providers necessary for platform operation (e.g., node providers or identity verifiers) or when mandated by legal frameworks to prevent fraudulent activity.</p>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 4 */}
             <PolicySection 
@@ -153,7 +154,7 @@ export default function PrivacyPolicyPage() {
               <p>We utilize performance-optimized cookies to remember your display preferences and session state. These are ephemeral tools designed to enhance UI responsiveness, not to profile your behavior across the broader web.</p>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 5 */}
             <PolicySection 
@@ -164,7 +165,7 @@ export default function PrivacyPolicyPage() {
               <p>Security is embedded in our architecture. We employ AES-256 encryption at rest and TLS 1.3 for data in transit. Our infrastructure is audited quarterly to maintain the "Neon Curator" standard of digital safety.</p>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 6 */}
             <PolicySection 
@@ -174,17 +175,17 @@ export default function PrivacyPolicyPage() {
             >
               <p>Depending on your jurisdiction (GDPR, CCPA), you have the right to access, rectify, or request the deletion of your data. You may also object to processing or request a portable copy of your marketplace history.</p>
               
-              <div className="mt-6 border-l-[3px] border-[#E0E7FF] pl-5">
+              <div className="mt-6 border-l-[3px] border-[#E0E7FF] dark:border-blue-500/30 pl-5">
                 <h4 className="font-bold mb-1.5 uppercase text-[10px] tracking-widest" style={{ color: '#8AB4F8', fontFamily: typography.fonts.inter }}>
                   EXERCISING YOUR RIGHTS
                 </h4>
-                <p className="text-[#4B5563] text-[13px] leading-relaxed" style={{ fontFamily: typography.fonts.inter }}>
+                <p className="text-[#4B5563] dark:text-gray-300 text-[13px] leading-relaxed" style={{ fontFamily: typography.fonts.inter }}>
                   To submit a Data Subject Request, please use the button in your Profile Settings or contact our Data Privacy Officer via the support channel below.
                 </p>
               </div>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 7 */}
             <PolicySection 
@@ -195,7 +196,7 @@ export default function PrivacyPolicyPage() {
               <p>Our platform integrates with external protocols and wallet providers. These third-party entities have their own privacy policies. We recommend reviewing the terms of any wallet or oracle you connect to the Ethereal ecosystem.</p>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 8 */}
             <PolicySection 
@@ -206,15 +207,15 @@ export default function PrivacyPolicyPage() {
               <p>We evolve alongside the digital landscape. Any material changes to this policy will be communicated via the Ethereal Dashboard and updated on this page with a revised 'Last Updated' timestamp.</p>
             </PolicySection>
 
-            <hr className="border-[#F3F4F6]" />
+            <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 9 / Support Box */}
-            <div className="mt-10 bg-gradient-to-br from-[#F4F8FF] to-[#FAFCFF] border border-[#EBF1FF] rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div className="mt-10 bg-gradient-to-br from-[#F4F8FF] to-[#FAFCFF] dark:from-blue-900/10 dark:to-blue-900/5 border border-[#EBF1FF] dark:border-white/10 rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
               <div className="flex-1 max-w-[400px]">
-                <h2 className="text-[18px] md:text-[20px] font-bold text-black mb-2" style={{ fontFamily: typography.fonts.inter }}>
+                <h2 className="text-[18px] md:text-[20px] font-bold text-black dark:text-white mb-2" style={{ fontFamily: typography.fonts.inter }}>
                   9. Have questions about your data?
                 </h2>
-                <p className="text-[#4B5563] text-[13px] leading-relaxed" style={{ fontFamily: typography.fonts.inter }}>
+                <p className="text-[#4B5563] dark:text-gray-300 text-[13px] leading-relaxed" style={{ fontFamily: typography.fonts.inter }}>
                   Our privacy team is available to clarify how we handle your digital footprint and assist with any data portability requests.
                 </p>
               </div>
@@ -236,8 +237,8 @@ export default function PrivacyPolicyPage() {
         {/* --- RIGHT: Sidebar --- */}
         <aside className="w-full lg:w-[340px] shrink-0 pt-4 lg:pt-0">
           <div className="sticky top-24">
-            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-bold tracking-tight mb-8">
-              <span className="text-[#111827]">Trending </span>
+            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8" style={{fontFamily:'Poppins'}}>
+              <span className="text-[#111827] dark:text-white">Trending </span>
               <span className="text-[#2864e4]">AI</span><br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
             </h2>
@@ -246,7 +247,7 @@ export default function PrivacyPolicyPage() {
               {TRENDING_AGENTS.map((agent) => {
                 const AgentIcon = agent.Icon;
                 return (
-                  <div key={agent.name} className="p-6 rounded-[24px] bg-white border border-[#F3F4F6] shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col hover:border-[#E5E7EB] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all group">
+                  <div key={agent.name} className="p-6 rounded-[8px] bg-white dark:bg-[#0F172A] border border-[#F3F4F6] dark:border-white/5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-none flex flex-col hover:border-[#E5E7EB] dark:hover:border-white/20 transition-all group">
                     <div className="flex justify-between items-start mb-4">
                       <div className="relative">
                         <AgentIcon 
@@ -257,17 +258,17 @@ export default function PrivacyPolicyPage() {
                           strokeLinejoin="miter"
                         />
                       </div>
-                      <div className="flex items-center text-[13px] font-bold text-[#111827]">
+                      <div className="flex items-center text-[13px] font-bold text-[#111827] dark:text-white">
                         <Star size={16} fill="url(#icon-blue-gradient)" stroke="url(#icon-blue-gradient)" className="mr-1.5" />
                         {agent.rating}
                       </div>
                     </div>
                     
-                    <h3 className="text-[20px] font-bold text-[#111827] mb-3 uppercase tracking-tight">
+                    <h3 className="text-[20px] font-bold text-[#111827] dark:text-white mb-3 uppercase tracking-tight">
                       {agent.name}
                     </h3>
                     
-                    <p className="text-[14px] text-[#4B5563] leading-[1.6] mb-8 flex-grow font-light">
+                    <p className="text-[14px] text-[#4B5563] dark:text-gray-300 leading-[1.6] mb-8 flex-grow font-light">
                       {agent.description}
                     </p>
                     
@@ -275,7 +276,7 @@ export default function PrivacyPolicyPage() {
                       <div className="text-[10px] font-bold text-[#96B3FF] uppercase tracking-widest">
                         {agent.runs}
                       </div>
-                      <div className="text-[14px] font-bold text-[#111827] uppercase">
+                      <div className="text-[14px] font-bold text-[#111827] dark:text-white uppercase">
                         {agent.price}
                       </div>
                     </div>
@@ -283,7 +284,7 @@ export default function PrivacyPolicyPage() {
                     <Link href="/agent-detail" className="block w-full">
                       <button 
                         className="w-full h-12 rounded-[8px] text-[12px] font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-blue-500/10 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                        style={{ background: 'linear-gradient(180deg, #3B82F6 0%, #FFFFFF 140%)' }}
+                        style={{ background: 'linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%)' }}
                       >
                         RUN AGENT
                       </button>
@@ -310,13 +311,13 @@ function PolicySection({ number, title, icon, children }: { number: string; titl
       </div>
       <div className="flex-1">
         <h2 
-          className="text-[20px] font-bold text-black mb-2" 
+          className="text-[20px] font-bold text-black dark:text-white mb-2" 
           style={{ fontFamily: typography.fonts.inter, letterSpacing: '-0.02em' }}
         >
           {number} {title}
         </h2>
         <div 
-          className="text-[#4B5563] text-[13px] leading-[1.7]" 
+          className="text-[#4B5563] dark:text-gray-300 text-[13px] leading-[1.7]" 
           style={{ fontFamily: typography.fonts.inter }}
         >
           {children}

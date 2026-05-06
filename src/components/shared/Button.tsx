@@ -24,7 +24,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        'bg-[linear-gradient(180deg,#3B82F6_0%,#D4E3FF_100%)] font-semibold text-white text-[16px] px-[32px] py-[17px] rounded-[12px] shadow-[0px_10px_15px_-3px_rgba(59,130,246,0.3),0px_4px_6px_-4px_rgba(59,130,246,0.2)]',
+        'bg-[linear-gradient(180deg,#2864E4_0%,#ECF2FF_100%)] font-semibold text-white text-[16px] px-[32px] py-[17px] rounded-[12px] shadow-[0px_10px_15px_-3px_rgba(59,130,246,0.3),0px_4px_6px_-4px_rgba(59,130,246,0.2)]',
       outline:
         'bg-[#1a1f2d] border border-[rgba(255,255,255,0.2)] font-semibold text-white text-[16px] px-[33px] py-[17px] rounded-[12px] hover:bg-white/8',
       /** Home hero CTAs: outline at rest, gradient + glow on hover (both buttons match). */
@@ -76,7 +76,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 ? {
                   y: -3,
                   scale: 1.025,
-                  background: 'linear-gradient(180deg, #4F8DF7 0%, #E3EDFF 100%)',
+                  background: 'linear-gradient(180deg, #3974F6 0%, #FFFFFF 100%)',
                   color: '#ffffff',
                   boxShadow:
                     '0px 18px 34px -8px rgba(59, 130, 246, 0.55), 0px 8px 18px -8px rgba(59, 130, 246, 0.4)',

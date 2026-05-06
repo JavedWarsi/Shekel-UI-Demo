@@ -14,7 +14,7 @@ const TermsIntro = () => {
       </h2>
       
       <div 
-        className="space-y-8 text-[16px] text-[#4B5563] leading-[2.2] font-light"
+        className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light"
         
       >
         <p>

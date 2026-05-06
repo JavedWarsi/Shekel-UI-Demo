@@ -42,7 +42,7 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${plusJakartaSans.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen flex flex-col bg-black">
+      <body className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <Header />
           <main className="flex-grow">
