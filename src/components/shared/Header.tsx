@@ -71,7 +71,7 @@ export default function Header() {
     <>
       <header
         ref={headerRef}
-        className="fixed top-0 left-0 right-0 z-50 h-[75px] border-b border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-md transition-colors duration-300"
+        className="fixed top-0 left-0 right-0 z-50 h-[75px] border-b border-white/10 bg-black/90 backdrop-blur-md transition-colors duration-300"
       >
         <div className="flex h-full w-full items-center px-4 sm:px-6 lg:px-8">
           <div className="flex min-w-0 items-center">
@@ -81,7 +81,7 @@ export default function Header() {
                 alt="Shekel"
                 width={127}
                 height={34}
-                className="invert dark:invert-0 transition-all duration-300"
+                className="transition-all duration-300"
                 priority
               />
             </Link>
@@ -93,7 +93,7 @@ export default function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="whitespace-nowrap text-gray-500 dark:text-[#737373] transition-[color,opacity] duration-200 ease-out hover:text-black dark:hover:text-white hover:opacity-95"
+                  className="whitespace-nowrap text-[#737373] transition-[color,opacity] duration-200 ease-out hover:text-white hover:opacity-95"
                   style={{
                     fontFamily: "var(--font-inter, 'Inter', sans-serif)",
                     fontWeight: 400,
@@ -145,7 +145,7 @@ export default function Header() {
         ref={drawerRef}
         id="mobile-nav-drawer"
         aria-hidden={!isMenuOpen}
-        className={`fixed right-0 top-[75px] z-50 h-[calc(100vh-75px)] w-[290px] max-w-[85vw] border-l border-black/10 dark:border-white/10 bg-white dark:bg-black px-6 py-6 shadow-2xl transition-transform duration-200 ease-out lg:hidden ${
+        className={`fixed right-0 top-[75px] z-50 h-[calc(100vh-75px)] w-[290px] max-w-[85vw] border-l border-white/10 bg-black px-6 py-6 shadow-2xl transition-transform duration-200 ease-out lg:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -158,7 +158,7 @@ export default function Header() {
               key={`mobile-${link.label}`}
               href={link.href}
               onClick={closeOverlays}
-              className="text-[17px] leading-7 text-gray-600 dark:text-[#b7b7b8] transition-colors duration-200 ease-out hover:text-black dark:hover:text-white"
+              className="text-[17px] leading-7 text-[#b7b7b8] transition-colors duration-200 ease-out hover:text-white"
               style={{ fontFamily: "var(--font-inter, 'Inter', sans-serif)" }}
             >
               {link.label}
