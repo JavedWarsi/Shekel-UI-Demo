@@ -14,8 +14,8 @@ const TermsIntro = () => {
       </h2>
       
       <div 
-        className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light"
-        
+        className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle"
+        style={{ fontFamily: "Inter" }}
       >
         <p>
           Welcome to Shekel AI. By accessing or using our platform, you agree to comply with and be bound by these Terms & Conditions. These terms apply to all visitors, users, and others who access or use the Service.

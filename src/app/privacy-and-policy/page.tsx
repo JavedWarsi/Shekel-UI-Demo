@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
             >
               Privacy Policy
             </h1>
-            <p className="text-[13px] md:text-[14px] text-[#4B5563] dark:text-gray-300 leading-[1.7] mb-8" style={{ fontFamily: typography.fonts.inter }}>
+            <p className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle mb-8" style={{ fontFamily: typography.fonts.inter }}>
               Your data is a digital extension of your identity. At Ethereal, we treat your information with the same curation and precision as the assets in our marketplace.
             </p>
             
@@ -179,7 +179,7 @@ export default function PrivacyPolicyPage() {
                 <h4 className="font-bold mb-1.5 uppercase text-[10px] tracking-widest" style={{ color: '#8AB4F8', fontFamily: typography.fonts.inter }}>
                   EXERCISING YOUR RIGHTS
                 </h4>
-                <p className="text-[#4B5563] dark:text-gray-300 text-[13px] leading-relaxed" style={{ fontFamily: typography.fonts.inter }}>
+                <p className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: typography.fonts.inter }}>
                   To submit a Data Subject Request, please use the button in your Profile Settings or contact our Data Privacy Officer via the support channel below.
                 </p>
               </div>
@@ -215,7 +215,7 @@ export default function PrivacyPolicyPage() {
                 <h2 className="text-[18px] md:text-[20px] font-bold text-black dark:text-white mb-2" style={{ fontFamily: typography.fonts.inter }}>
                   9. Have questions about your data?
                 </h2>
-                <p className="text-[#4B5563] dark:text-gray-300 text-[13px] leading-relaxed" style={{ fontFamily: typography.fonts.inter }}>
+                <p className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: typography.fonts.inter }}>
                   Our privacy team is available to clarify how we handle your digital footprint and assist with any data portability requests.
                 </p>
               </div>
@@ -254,6 +254,7 @@ export default function PrivacyPolicyPage() {
                           size={24} 
                           strokeWidth={2.4} 
                           // stroke="url(#icon-blue-gradient)" 
+                          stroke="#2864E4"
                           strokeLinecap="square" 
                           strokeLinejoin="miter"
                         />
@@ -317,7 +318,7 @@ function PolicySection({ number, title, icon, children }: { number: string; titl
           {number} {title}
         </h2>
         <div 
-          className="text-[#4B5563] dark:text-gray-300 text-[13px] leading-[1.7]" 
+          className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" 
           style={{ fontFamily: typography.fonts.inter }}
         >
           {children}

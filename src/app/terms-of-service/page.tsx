@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
             >
               Terms & Conditions
             </h1>
-            <p className="text-[15px] md:text-[16px] text-[#4B5563] dark:text-gray-300 leading-[1.6] mb-8 max-w-[600px] font-light" style={{}}>
+            <p className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle mb-8 max-w-[600px]" style={{ fontFamily: "Inter" }}>
               Please read these terms carefully before using Shekel. This agreement outlines the rules and regulations for the use of our AI platform.
             </p>
 
@@ -89,7 +89,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 2. Use of the Platform
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-100 leading-[2.2] font-light" style={{fontFamily:''}}>
+              <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
                 <p>
                   You may use Shekel only for lawful purposes and in accordance with these Terms. You are responsible for ensuring that your use of the platform does not violate any local, state, or international laws.
                 </p>
@@ -104,7 +104,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 3. Accounts
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
                 <p>
                   When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.
                 </p>
@@ -122,7 +122,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 4. AI Agents & Workflows
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
                 <p>
                   Shekel allows you to use and build customized autonomous AI agents. You are in
                   command of the agents, and you remain responsible for those agents' behavior, outputs,
@@ -149,19 +149,19 @@ export default function TermsOfServicePage() {
                   <div className="w-5 h-5 rounded-full border-2 border-[#FF8E8E] flex items-center justify-center mt-1.5 shrink-0">
                     <div className="w-2.5 h-0.5 bg-[#FF8E8E] rounded-full"></div>
                   </div>
-                  <span className="text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2]">Reverse engineering or attempting to extract the source code of the underlying functionality.</span>
+                  <span className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>Reverse engineering or attempting to extract the source code of the underlying functionality.</span>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full border-2 border-[#FF8E8E] flex items-center justify-center mt-1.5 shrink-0">
                     <div className="w-2.5 h-0.5 bg-[#FF8E8E] rounded-full"></div>
                   </div>
-                  <span className="text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2]">Using the service to generate malicious code, spam, or deceptive content.</span>
+                  <span className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>Using the service to generate malicious code, spam, or deceptive content.</span>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full border-2 border-[#FF8E8E] flex items-center justify-center mt-1.5 shrink-0">
                     <div className="w-2.5 h-0.5 bg-[#FF8E8E] rounded-full"></div>
                   </div>
-                  <span className="text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2]">Automated scraping of the platform interface without explicit prior permission.</span>
+                  <span className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>Automated scraping of the platform interface without explicit prior permission.</span>
                 </li>
               </ul>
             </section>
@@ -171,7 +171,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 6. Intellectual Property
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
                 <p>
                   The Service and its original content, features, and functionality are and will remain the exclusive property of Shekel AI and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries.
                 </p>
@@ -186,7 +186,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 7. Limitation of Liability
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
                 <p>
                   In no event shall Shekel AI, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service.
                 </p>
@@ -198,7 +198,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 8. Changes to Terms
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
                 <p>
                   We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
                 </p>
@@ -210,7 +210,7 @@ export default function TermsOfServicePage() {
               <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
                 9. Contact
               </h2>
-              <div className="space-y-8 text-[16px] text-[#4B5563] dark:text-gray-300 leading-[2.2] font-light" style={{}}>
+              <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
                 <p>
                   If you have any questions about these Terms, please contact us at support@shekel.ai or through our support portal.
                 </p>
