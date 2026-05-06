@@ -226,7 +226,7 @@ export default function PrivacyPolicyPage() {
                 >
                   <Mail size={16} strokeWidth={1.5} /> Contact Support
                 </button>
-                <Link href="#" className="text-[#9CA3AF] text-[14px] font-light hover:text-[#000000] transition-colors">
+                <Link href="#" className="text-[#000000] text-[14px] font-light hover:text-[#000000] transition-colors">
                   View Help Center
                 </Link>
               </div>

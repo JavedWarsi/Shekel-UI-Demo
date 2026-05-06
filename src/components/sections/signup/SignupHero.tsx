@@ -111,13 +111,25 @@ export default function SignupHero() {
 
       {/* --- Main Content --- */}
       <main className="flex-1 flex items-center justify-center pt-[75px] py-10 px-6 lg:px-20 relative overflow-hidden">
-        {/* Soft Background Glow */}
-        <div className="absolute left-[15%] top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#3B82F6] opacity-[0.08] blur-[140px] rounded-full pointer-events-none" />
 
         <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
 
           {/* LEFT SIDE: Illustration */}
           <div className="hidden lg:flex flex-1 items-center justify-center relative">
+            {/* Blue blur glow behind robot — Ellipse 43668 */}
+            <div
+              className="absolute pointer-events-none z-0"
+              style={{
+                width: 338.16,
+                height: 338.16,
+                top: 100,
+                left: 125,
+                transform: "rotate(-56.87deg)",
+                backgroundColor: "#2864E4",
+                borderRadius: "50%",
+                filter: "blur(257.5px)",
+              }}
+            />
             <div className="relative z-10 w-full max-w-[1000px] aspect-square flex items-center justify-center">
               <Image
                 src="/section-11/cta-robot.png"
@@ -162,7 +174,7 @@ export default function SignupHero() {
                     placeholder="John Doe"
                     value={formData.fullName}
                     onChange={(e) => handleInputChange("fullName", e.target.value)}
-                    className={`w-full h-14 px-6 rounded-[16px] text-[15px] outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.fullName
+                    className={`w-full h-14 px-6    text-[15px] outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.fullName
                       ? 'bg-red-50/50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/50 focus:border-red-200'
                       : 'bg-[#F9FAFB] dark:bg-[#1E293B] border border-transparent dark:border-white/5 focus:bg-white dark:focus:bg-[#0F172A] focus:border-blue-500/20 shadow-sm text-[#111827] dark:text-white'
                       }`}
@@ -186,7 +198,7 @@ export default function SignupHero() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
-                    className={`w-full h-14 px-6 rounded-[16px] text-[15px] outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.email
+                    className={`w-full h-14 px-6    text-[15px] outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.email
                       ? 'bg-red-50/50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/50 focus:border-red-200'
                       : 'bg-[#F9FAFB] dark:bg-[#1E293B] border border-transparent dark:border-white/5 focus:bg-white dark:focus:bg-[#0F172A] focus:border-blue-500/20 shadow-sm text-[#111827] dark:text-white'
                       }`}
@@ -211,7 +223,7 @@ export default function SignupHero() {
                       placeholder="Create a password"
                       value={formData.password}
                       onChange={(e) => handleInputChange("password", e.target.value)}
-                      className={`w-full h-14 px-6 rounded-[16px] text-[15px] outline-none transition-all pr-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.password
+                      className={`w-full h-14 px-6    text-[15px] outline-none transition-all pr-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.password
                         ? 'bg-red-50/50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/50 focus:border-red-200'
                         : 'bg-[#F9FAFB] dark:bg-[#1E293B] border border-transparent dark:border-white/5 focus:bg-white dark:focus:bg-[#0F172A] focus:border-blue-500/20 shadow-sm text-[#111827] dark:text-white'
                         }`}
@@ -243,7 +255,7 @@ export default function SignupHero() {
                     placeholder="Repeat your password"
                     value={formData.confirmPassword}
                     onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                    className={`w-full h-14 px-6 rounded-[16px] text-[15px] outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.confirmPassword
+                    className={`w-full h-14 px-6    text-[15px] outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 font-normal font-heading ${errors.confirmPassword
                       ? 'bg-red-50/50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/50 focus:border-red-200'
                       : 'bg-[#F9FAFB] dark:bg-[#1E293B] border border-transparent dark:border-white/5 focus:bg-white dark:focus:bg-[#0F172A] focus:border-blue-500/20 shadow-sm text-[#111827] dark:text-white'
                       }`}

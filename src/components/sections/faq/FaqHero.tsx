@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { colors, typography, radiuses } from "@/tokens/design-tokens";
+import { colors, typography } from "@/tokens/design-tokens";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // FaqHero.tsx — FAQ Hero Section
@@ -37,79 +37,97 @@ export default function FaqHero() {
             transformOrigin: "top left",
           }}
         >
-          {/* Background decoration */}
-          <div
-            className="absolute"
-            style={{ left: 278, top: 186, width: 676, height: 577 }}
-          >
-            <Image
-              src="/section-1-faq/main-image.png"
-              alt=""
-              width={676}
-              height={577}
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          <div
-            className="absolute"
-            style={{ left: 17, top: 245, width: 351.77, height: 380.8, filter: "blur(13.1px)" }}
-          >
-            <Image
-              src="/section-1-faq/decor-1.png"
-              alt=""
-              width={352}
-              height={381}
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          <div
-            className="absolute"
-            style={{ left: 900, top: 495, width: 351.77, height: 380.8, filter: "blur(13.1px)" }}
-          >
-            <Image
-              src="/section-1-faq/decor-2.png"
-              alt=""
-              width={352}
-              height={381}
-              className="h-full w-full object-cover"
-            />
-          </div>
-
+          {/* Top blue glow */}
           <div
             className="absolute"
             style={{ left: -19, top: -49, width: 1343, height: 211, filter: "blur(1000px)", background: "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(236, 242, 255, 1) 100%)" }}
           />
 
+          {/* Corner glows */}
           <div
             className="absolute"
             style={{ left: -98, top: -139, width: 163, height: 163, filter: "blur(203px)", background: "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(236, 242, 255, 1) 100%)", borderRadius: "50%" }}
           />
-
           <div
             className="absolute"
             style={{ left: 1252, top: -82, width: 163, height: 163, filter: "blur(215px)", background: "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(236, 242, 255, 1) 100%)", borderRadius: "50%" }}
           />
 
+          {/* Bottom fade to black */}
           <div
             className="absolute"
-            style={{ left: 0, top: 626, width: 34, height: 90, background: "linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)" }}
+            style={{ left: -7, top: 468, width: 1293, height: 278, background: "linear-gradient(0deg, rgba(2, 4, 10, 1) 0%, rgba(2, 4, 10, 0) 100%)", zIndex: 9 }}
           />
 
+          {/* Left rocket — blurred, angled, depth-of-field */}
           <div
-            className="absolute"
-            style={{ left: -7, top: 468, width: 1293, height: 278, background: "linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)" }}
-          />
+            className="absolute border-2 border-red-500"
+            style={{
+              left: -10,
+              top: 280,
+              width: 480,
+              height: 430,
+              zIndex: 5,
+              filter: "blur(2px)",
+              transform: "rotate(15deg)",
+              
+            }}
+          >
+            <Image
+              src="/section-2-faq/rocketfaq.png"
+              alt="Rocket decoration"
+              width={480}
+              height={430}
+              className="h-full w-full object-contain"
+              unoptimized
+            />
+          </div>
 
+          {/* Right rocket — blurred, flipped, angled, depth-of-field */}
+          <div
+            className="absolute border-2 border-blue-500"
+            style={{
+              left: 1040,
+              top: 360,
+              width: 240,
+              height: 200,
+              zIndex: 5,
+              filter: "blur(5px)",
+              transform: "scaleX(-1) rotate(-10deg)",
+            }}
+          >
+            <Image
+              src="/section-2-faq/rocketfaq.png"
+              alt="Rocket decoration"
+              width={240}
+              height={200}
+              className="h-full w-full object-contain"
+              unoptimized
+            />
+          </div>
+
+          {/* Center astronaut + question mark */}
+          <div
+            className="absolute border-2 border-green-500"
+            style={{ left: 250, top: 80, width: 950, height: 840, zIndex: 8 }}
+          >
+            <Image
+              src="/section-2-faq/faqrob.png"
+              alt="FAQ Astronaut with question mark"
+              width={950}
+              height={840}
+              className="h-full w-full object-contain"
+              unoptimized
+            />
+          </div>
 
           {/* Text Content */}
           <div
             className="absolute flex flex-col items-center text-center w-full"
-            style={{ left: 0, top: 67, zIndex: 10 }}
+            style={{ left: 0, top: 57, zIndex: 10 }}
           >
             <HeroHeading fontSize={56} lineHeight="1.1" />
-            <div className="mt-6 max-w-2xl">
+            <div className="mt-5 max-w-2xl">
               <HeroBody fontSize={16} lineHeight="24px" />
             </div>
           </div>
@@ -134,19 +152,20 @@ export default function FaqHero() {
         />
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          <HeroHeading fontSize={40} lineHeight="1.2" />
-          <div className="mt-6">
-            <HeroBody fontSize={16} lineHeight="24px" />
+          <HeroHeading fontSize={60} lineHeight="1.2" />
+          <div className="mt-5">
+            <HeroBody fontSize={20} lineHeight="22px" />
           </div>
         </div>
         
         <div className="relative z-0 mt-8 w-full max-w-sm">
              <Image
-              src="/section-1-faq/main-image.png"
-              alt=""
-              width={676}
-              height={577}
-              className="h-auto w-full object-cover"
+              src="/section-2-faq/faqrob.png"
+              alt="FAQ Astronaut"
+              width={680}
+              height={560}
+              className="h-auto w-full object-contain"
+              unoptimized
             />
         </div>
       </section>
@@ -169,11 +188,12 @@ function HeroHeading({
     <h1
       style={{
         margin: 0,
-        fontFamily: typography.fonts.inter,
+        fontFamily: typography.fonts.poppins,
         fontWeight: 400,
+        // fontStyle: "italic",
         fontSize,
         lineHeight,
-        letterSpacing: "-0.04em",
+        letterSpacing: "-0.02em",
         color: colors.white,
       }}
     >
@@ -206,7 +226,7 @@ function HeroBody({
         fontWeight: 400,
         fontSize,
         lineHeight,
-        color: "rgba(255, 255, 255, 0.6)",
+        color: "rgba(255, 255, 255, 0.5)",
       }}
     >
       Find answers about Shekel, AI agents, and how workflows work.
