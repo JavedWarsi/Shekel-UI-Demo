@@ -101,7 +101,7 @@ export default function PrivacyPolicyPage() {
               number="1." 
               title="Information We Collect" 
               // style={{fontFamily:'Plus Jakarta Sans'}}
-              icon={<Fingerprint size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
+              icon={<Image src="/section-13/fingIcon.svg" alt="Fingerprint" width={28} height={28} className="object-contain" />}
             >
               <p>We gather information that you provide directly to us when creating an account, curating collections, or transacting within the marketplace. This includes your name, digital wallet addresses, and communication preferences.</p>
               
@@ -123,11 +123,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="2." 
               title="How We Use Your Information" 
-              icon={
-                <div className="relative flex items-center justify-center w-7 h-7 rounded-full border-[1.5px]" style={{ borderColor: 'url(#icon-blue-gradient)', fontFamily:'Plus Jakarta Sans' }}>
-                  <TrendingUp size={16} strokeWidth={2} stroke="url(#icon-blue-gradient)" />
-                </div>
-              }
+              icon={<Image src="/section-13/growpp.svg" alt="Growth" width={28} height={28} className="object-contain" />}
             >
               <p>Our primary goal is to provide a seamless, high-fidelity experience. We use your data to facilitate smart contract interactions, personalize your exhibition feed, and ensure the integrity of high-value marketplace exchanges.</p>
             </PolicySection>
@@ -138,7 +134,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="3." 
               title="Data Sharing" 
-              icon={<Share2 size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
+              icon={<Image src="/section-13/ds.png" alt="Data Sharing" width={28} height={28} className="object-contain" />}
             >
               <p>We do not sell your personal data. Sharing only occurs with service providers necessary for platform operation (e.g., node providers or identity verifiers) or when mandated by legal frameworks to prevent fraudulent activity.</p>
             </PolicySection>
@@ -149,7 +145,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="4." 
               title="Cookies & Tracking" 
-              icon={<Cookie size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
+              icon={<Image src="/section-13/coockies.png" alt="Cookies" width={28} height={28} className="object-contain" />}
             >
               <p>We utilize performance-optimized cookies to remember your display preferences and session state. These are ephemeral tools designed to enhance UI responsiveness, not to profile your behavior across the broader web.</p>
             </PolicySection>
@@ -160,7 +156,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="5." 
               title="Data Security" 
-              icon={<Shield size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
+              icon={<Image src="/section-13/sec.png" alt="Security" width={28} height={28} className="object-contain" />}
             >
               <p>Security is embedded in our architecture. We employ AES-256 encryption at rest and TLS 1.3 for data in transit. Our infrastructure is audited quarterly to maintain the "Neon Curator" standard of digital safety.</p>
             </PolicySection>
@@ -171,7 +167,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="6." 
               title="User Rights" 
-              icon={<Gavel size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
+              icon={<Image src="/section-13/hum.png" alt="User Rights" width={28} height={28} className="object-contain" />}
             >
               <p>Depending on your jurisdiction (GDPR, CCPA), you have the right to access, rectify, or request the deletion of your data. You may also object to processing or request a portable copy of your marketplace history.</p>
               
@@ -191,7 +187,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="7." 
               title="Third-Party Services" 
-              icon={<Network size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
+              icon={<Image src="/section-13/netw.png" alt="Network" width={28} height={28} className="object-contain" />}
             >
               <p>Our platform integrates with external protocols and wallet providers. These third-party entities have their own privacy policies. We recommend reviewing the terms of any wallet or oracle you connect to the Ethereal ecosystem.</p>
             </PolicySection>
@@ -202,7 +198,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="8." 
               title="Changes to Policy" 
-              icon={<History size={28} strokeWidth={1.5} stroke="url(#icon-blue-gradient)" />}
+              icon={<Image src="/section-13/change.png" alt="Changes" width={28} height={28} className="object-contain" />}
             >
               <p>We evolve alongside the digital landscape. Any material changes to this policy will be communicated via the Ethereal Dashboard and updated on this page with a revised 'Last Updated' timestamp.</p>
             </PolicySection>
@@ -210,8 +206,13 @@ export default function PrivacyPolicyPage() {
             <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 9 / Support Box */}
-            <div className="mt-10 bg-gradient-to-br from-[#F4F8FF] to-[#FAFCFF] dark:from-blue-900/10 dark:to-blue-900/5 border border-[#EBF1FF] dark:border-white/10 rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-              <div className="flex-1 max-w-[400px]">
+            <div className="relative mt-10  dark:from-blue-900/10 dark:to-blue-900/5 border border-[#EBF1FF] dark:border-white/10 rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 overflow-hidden">
+              {/* Subtle Glow Effect */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0">
+                <Image src="/section-13/Subtle Glow.svg" alt="" width={241} height={241} className="opacity-80" aria-hidden="true" />
+              </div>
+
+              <div className="flex-1 max-w-[400px] relative z-10">
                 <h2 className="text-[18px] md:text-[20px] font-bold text-black dark:text-white mb-2" style={{ fontFamily: typography.fonts.inter }}>
                   9. Have questions about your data?
                 </h2>
@@ -219,13 +220,13 @@ export default function PrivacyPolicyPage() {
                   Our privacy team is available to clarify how we handle your digital footprint and assist with any data portability requests.
                 </p>
               </div>
-              <div className="flex flex-col items-center gap-3 shrink-0">
+              <div className="flex flex-col items-center gap-3 shrink-0 relative z-10">
                 <button 
                   className="px-6 py-2.5 rounded-[8px] text-[13px] font-bold text-white flex items-center gap-2 btn-primary-gradient w-full md:w-auto justify-center shadow-sm"
                 >
                   <Mail size={16} strokeWidth={1.5} /> Contact Support
                 </button>
-                <Link href="#" className="text-[#9CA3AF] text-[11px] font-medium hover:text-[#4B5563] transition-colors">
+                <Link href="#" className="text-[#9CA3AF] text-[14px] font-light hover:text-[#000000] transition-colors">
                   View Help Center
                 </Link>
               </div>
