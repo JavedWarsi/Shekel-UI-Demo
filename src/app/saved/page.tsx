@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Sparkles, 
-  GitBranch, 
-  Brain, 
-  Trash2, 
-  Zap, 
-  Target, 
-  Clock, 
+import {
+  Sparkles,
+  GitBranch,
+  Brain,
+  Trash2,
+  Zap,
+  Target,
+  Clock,
   ChevronRight,
   Plus,
   LayoutGrid,
@@ -58,33 +58,31 @@ const SAVED_AGENTS = [
 
 // --- Helper Components ---
 
-const SavedTab = ({ 
-  label, 
-  count, 
-  active, 
-  onClick, 
-  icon 
-}: { 
-  label: string, 
-  count?: number, 
-  active?: boolean, 
+const SavedTab = ({
+  label,
+  count,
+  active,
+  onClick,
+  icon
+}: {
+  label: string,
+  count?: number,
+  active?: boolean,
   onClick: () => void,
   icon: React.ReactNode
 }) => (
-  <button 
+  <button
     onClick={onClick}
-    className={`flex items-center gap-3 pb-5 border-b-[3px] transition-all relative group/tab ${
-      active ? 'border-[#0061C1] text-[#0061C1] dark:text-blue-400' : 'border-transparent text-gray-400 hover:text-gray-600 dark:hover:text-white'
-    }`}
+    className={`flex items-center gap-3 pb-5 border-b-[3px] transition-all relative group/tab ${active ? 'border-[#0061C1] text-[#0061C1] dark:text-blue-400' : 'border-transparent text-gray-400 hover:text-gray-600 dark:hover:text-white'
+      }`}
   >
     <span className={`${active ? 'text-[#0061C1] dark:text-blue-400' : 'text-gray-400 group-hover/tab:text-gray-600 dark:group-hover/tab:text-white'} transition-colors`}>
       {icon}
     </span>
     <span className="text-[15px] font-bold tracking-tight">{label}</span>
     {count !== undefined && (
-      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ml-1 ${
-        active ? 'bg-blue-50 dark:bg-blue-500/20 text-[#0061C1] dark:text-blue-400' : 'bg-gray-100 dark:bg-white/10 text-gray-400 group-hover/tab:bg-gray-200 dark:group-hover/tab:bg-white/20'
-      } transition-colors`}>
+      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ml-1 ${active ? 'bg-blue-50 dark:bg-blue-500/20 text-[#0061C1] dark:text-blue-400' : 'bg-gray-100 dark:bg-white/10 text-gray-400 group-hover/tab:bg-gray-200 dark:group-hover/tab:bg-white/20'
+        } transition-colors`}>
         {count}
       </span>
     )}
@@ -101,7 +99,7 @@ const SavedCard = ({ agent }: { agent: typeof SAVED_AGENTS[0] }) => (
         <Trash2 size={22} strokeWidth={1.5} />
       </button>
     </div>
-    
+
     <div className="space-y-4 mb-10">
       <span className="text-[11px] font-bold text-[#0061C1] uppercase tracking-[0.2em]">{agent.type}</span>
       <h3 className="text-[24px] font-bold text-[#111827] dark:text-white tracking-tight leading-tight">{agent.title}</h3>
@@ -118,7 +116,7 @@ const SavedCard = ({ agent }: { agent: typeof SAVED_AGENTS[0] }) => (
           </div>
         ))}
       </div>
-      <Button variant="ghost" className="h-12 px-8 bg-[#ECF2FF] dark:bg-blue-500/10 text-[#0061C1] dark:text-blue-400 hover:bg-[#DCE7FF] dark:hover:bg-blue-500/20 rounded-2xl text-[13px] font-extrabold tracking-wide transition-colors">
+      <Button variant="ghost" className="h-12 px-8 bg-[#ECF2FF] dark:bg-blue-500/10 text-[#0061C1] dark:text-blue-400 hover:bg-[#DCE7FF] dark:hover:bg-blue-500/20 rounded-[25px] text-[13px] font-extrabold tracking-wide transition-colors">
         Open Artifact
       </Button>
     </div>
@@ -134,7 +132,7 @@ export default function SavedPage() {
   return (
     <div className="min-h-screen bg-[#F9FAFB] dark:bg-transparent flex flex-col font-sans selection:bg-blue-100 pb-32 transition-colors duration-300">
       <main className="max-w-[1400px] mx-auto w-full pt-44 pb-12 px-8 md:px-12 space-y-16">
-        
+
         {/* --- 1. Header Section --- */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
           <div className="space-y-5">
@@ -143,25 +141,23 @@ export default function SavedPage() {
               Your curated collection of high-performance AI agents and automated operational workflows.
             </p>
           </div>
-          
+
           <div className="bg-[#F3F4F6]/60 dark:bg-white/5 p-1.5 rounded-[24px] border border-gray-100 dark:border-white/10 flex items-center min-w-[240px] shadow-sm">
-            <button 
+            <button
               onClick={() => setFilter("All")}
-              className={`flex-1 py-3 rounded-[20px] text-[14px] font-extrabold transition-all duration-300 ${
-                filter === "All" 
-                  ? 'bg-white dark:bg-[#0061C1] text-[#0061C1] dark:text-white shadow-[0_4px_12px_rgba(0,0,0,0.08)]' 
+              className={`flex-1 py-3 rounded-[20px] text-[14px] font-extrabold transition-all duration-300 ${filter === "All"
+                  ? 'bg-white dark:bg-[#0061C1] text-[#0061C1] dark:text-white shadow-[0_4px_12px_rgba(0,0,0,0.08)]'
                   : 'text-gray-400 hover:text-gray-600 dark:hover:text-white'
-              }`}
+                }`}
             >
               All
             </button>
-            <button 
+            <button
               onClick={() => setFilter("Recent")}
-              className={`flex-1 py-3 rounded-[20px] text-[14px] font-extrabold transition-all duration-300 ${
-                filter === "Recent" 
-                  ? 'bg-white dark:bg-[#0061C1] text-[#0061C1] dark:text-white shadow-[0_4px_12px_rgba(0,0,0,0.08)]' 
+              className={`flex-1 py-3 rounded-[20px] text-[14px] font-extrabold transition-all duration-300 ${filter === "Recent"
+                  ? 'bg-white dark:bg-[#0061C1] text-[#0061C1] dark:text-white shadow-[0_4px_12px_rgba(0,0,0,0.08)]'
                   : 'text-gray-400 hover:text-gray-600 dark:hover:text-white'
-              }`}
+                }`}
             >
               Recent
             </button>
@@ -170,24 +166,24 @@ export default function SavedPage() {
 
         {/* --- 2. Navigation Tabs --- */}
         <div className="flex items-center gap-14 border-b border-gray-100 dark:border-white/10">
-          <SavedTab 
-            label="Agents" 
-            count={12} 
-            active={activeTab === "Agents"} 
-            onClick={() => setActiveTab("Agents")} 
+          <SavedTab
+            label="Agents"
+            count={12}
+            active={activeTab === "Agents"}
+            onClick={() => setActiveTab("Agents")}
             icon={<Brain size={20} strokeWidth={1.5} />}
           />
-          <SavedTab 
-            label="Workflows" 
-            count={4} 
-            active={activeTab === "Workflows"} 
-            onClick={() => setActiveTab("Workflows")} 
+          <SavedTab
+            label="Workflows"
+            count={4}
+            active={activeTab === "Workflows"}
+            onClick={() => setActiveTab("Workflows")}
             icon={<GitBranch size={20} strokeWidth={1.5} />}
           />
-          <SavedTab 
-            label="Categories" 
-            active={activeTab === "Categories"} 
-            onClick={() => setActiveTab("Categories")} 
+          <SavedTab
+            label="Categories"
+            active={activeTab === "Categories"}
+            onClick={() => setActiveTab("Categories")}
             icon={<Layers size={20} strokeWidth={1.5} />}
           />
         </div>
@@ -215,21 +211,21 @@ export default function SavedPage() {
         <div className="bg-white dark:bg-[#0F172A] rounded-[80px] shadow-[0px_60px_120px_rgba(0,0,0,0.05)] dark:shadow-none border border-gray-100/60 dark:border-white/5 p-12 md:p-20 relative group overflow-hidden transition-colors duration-300">
           {/* Background Ambient Glow */}
           <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-blue-400/5 blur-[140px] rounded-full pointer-events-none -translate-x-1/4 translate-y-1/4" />
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
             {/* Rocket Illustration in Black Rounded Box */}
             <div className="lg:col-span-5">
               <div className="relative aspect-square bg-black rounded-[56px] overflow-hidden shadow-2xl flex items-center justify-center group-hover:scale-[1.01] transition-transform duration-700">
-                <Float motion3d amplitude={14} duration={5}>
-                  <div className="relative w-full h-full">
-                    <Image 
-                      src="/section-8/rocket.webp" 
-                      alt="Hyperion Intelligence" 
-                      fill 
-                      className="object-contain p-12 drop-shadow-[0_40px_80px_rgba(255,255,255,0.2)] scale-125 animate-float"
-                    />
-                  </div>
-                </Float>
+                {/* <Float motion3d amplitude={14} duration={5}> */}
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/section-14-saved/rocketsave.png"
+                    alt="Hyperion Intelligence"
+                    fill
+                    className="object-contain drop-shadow-[0_40px_80px_rgba(255,255,255,0.2)] scale-125 animate-float"
+                  />
+                </div>
+                {/* </Float> */}
               </div>
             </div>
 
@@ -242,9 +238,9 @@ export default function SavedPage() {
               <p className="text-[18px] text-gray-400 max-w-[560px] leading-relaxed mb-14">
                 Our latest curated artifact features a breakthrough in sparse-attention mechanisms, allowing for 10x larger context windows with zero latency loss. Perfect for deep architectural planning.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-5">
-                <Button className="h-14 px-12 bg-[#2563EB] hover:bg-[#1D4ED8] rounded-[20px] text-[15px] font-bold text-white shadow-[0_8px_20px_rgba(37,99,235,0.2)] border-none transition-all transform hover:-translate-y-0.5">
+                <Button className="h-14 px-12 border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-[#111827] dark:text-white hover:bg-gray-50 dark:hover:bg-white/10 rounded-[20px] text-[15px] font-bold transition-all transform hover:-translate-y-0.5">
                   Quick Save
                 </Button>
                 <Button variant="ghost" className="h-14 px-12 border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-[#111827] dark:text-white hover:bg-gray-50 dark:hover:bg-white/10 rounded-[20px] text-[15px] font-bold transition-all shadow-sm">

@@ -132,7 +132,7 @@ export default function SignupHero() {
             />
             <div className="relative z-10 w-full max-w-[700px] aspect-square flex items-center justify-center">
               <Image
-                src="/section-11/cta-robot.png"
+                src="/section-2-faq/faqbot.png"
                 alt="Futuristic Robot"
                 width={600}
                 height={600}
