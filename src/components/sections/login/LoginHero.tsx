@@ -66,16 +66,7 @@ export default function LoginHero() {
                                 priority
                             />
 
-                            {/* Floating Geometric Elements (matching the image) */}
-                            <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-[#4ADE80] rounded-full blur-[2px] animate-pulse" />
-                            <div className="absolute top-1/3 left-[15%] w-8 h-8 bg-purple-500 rounded-full opacity-60 blur-[1px]" />
-                            <div className="absolute bottom-1/3 left-1/4 w-5 h-5 bg-[#111827] rotate-12 opacity-80" />
-                            <div className="absolute bottom-[20%] left-1/2 w-10 h-10 border-[6px] border-[#3B82F6] rotate-[30deg] clip-path-triangle opacity-60">
-                                <div className="w-full h-full bg-[#3B82F6]/20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
-                            </div>
-                            <div className="absolute bottom-1/4 right-1/4 w-8 h-8 border-4 border-[#3B82F6] rotate-45 opacity-40" />
-                            <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-red-500 rounded-sm rotate-12 opacity-60" />
-                            <div className="absolute top-1/2 right-[15%] w-4 h-4 bg-[#111827] opacity-40 blur-[0.5px]" />
+                            
                         </div>
                     </div>
 

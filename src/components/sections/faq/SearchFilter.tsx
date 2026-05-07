@@ -21,7 +21,7 @@ export default function SearchFilter() {
           TABLET & DESKTOP (≥ 768px) — scaled Figma canvas, edge-to-edge
           ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative hidden w-full overflow-hidden md:block"
+        className="relative hidden w-full overflow-hidden md:block mt-18"
         style={{
           backgroundColor: colors.white,
           aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
@@ -42,23 +42,32 @@ export default function SearchFilter() {
             style={{ width: 768, gap: 32, padding: "0 32px" }}
           >
             {/* Search Input */}
-            <div className="relative w-full">
+            <div className="relative w-[704px] h-[64px]">
               <input
                 type="text"
                 placeholder="Search questions..."
-                className="w-full rounded-[16px] border border-[#E5E7EB] bg-white outline-none"
+                className="w-full h-full rounded-[16px] border border-[#E5E7EB] bg-white outline-none"
                 style={{
                   padding: "21px 24px 21px 56px",
                   boxShadow: "0px 4px 20px -2px rgba(0, 0, 0, 0.05)",
                   fontFamily: typography.fonts.inter,
                   fontWeight: 500,
-                  fontSize: 16,
+                  fontSize: "16px",
+                  lineHeight: "22px",
                   color: "rgba(0, 0, 0, 0.6)",
+                  opacity: 1,
                 }}
               />
+
               <div
-                className="absolute"
-                style={{ left: 23, top: 23, width: 18, height: 18 }}
+                className="absolute flex items-center justify-center"
+                style={{
+                  left: "24px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "18px",
+                  height: "18px",
+                }}
               >
                 <Image
                   src="/section-2-faq/search-icon.svg"
@@ -70,7 +79,7 @@ export default function SearchFilter() {
             </div>
 
             {/* Filter Buttons */}
-            <div className="flex w-full flex-wrap justify-center gap-2">
+            <div className="flex w-full flex-wrap justify-center gap-2 font-semibold">
               {FILTERS.map((filter, index) => (
                 <button
                   key={filter}
@@ -80,7 +89,7 @@ export default function SearchFilter() {
                     backgroundColor: index === 0 ? "#2F80ED" : "#F8FAFC",
                     border: index === 0 ? "none" : "1px solid rgba(229, 231, 235, 0.3)",
                     color: index === 0 ? "#FFFFFF" : "rgba(0, 0, 0, 0.6)",
-                    fontFamily: typography.fonts.inter,
+                    fontFamily: 'Inter',
                     fontWeight: 600,
                     fontSize: 14,
                     lineHeight: "20px",

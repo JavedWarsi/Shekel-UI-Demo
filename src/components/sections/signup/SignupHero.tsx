@@ -130,13 +130,13 @@ export default function SignupHero() {
                 filter: "blur(257.5px)",
               }}
             />
-            <div className="relative z-10 w-full max-w-[1000px] aspect-square flex items-center justify-center">
+            <div className="relative z-10 w-full max-w-[700px] aspect-square flex items-center justify-center">
               <Image
                 src="/section-11/cta-robot.png"
                 alt="Futuristic Robot"
-                width={900}
-                height={900}
-                className="object-contain pointer-events-none scale-[2.5] animate-float"
+                width={600}
+                height={600}
+                className="object-contain pointer-events-none scale-[1.5] animate-float "
                 priority
               />
             </div>

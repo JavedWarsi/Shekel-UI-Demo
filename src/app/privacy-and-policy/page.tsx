@@ -17,7 +17,8 @@ import {
   Gavel,
   Terminal,
   Fingerprint,
-  Star
+  Star,
+  Check
 } from "lucide-react";
 
 // --- Mock Data for Sidebar ---
@@ -76,7 +77,7 @@ export default function PrivacyPolicyPage() {
           
           <header className="mb-10">
             <h1 
-              className="text-[40px] md:text-[52px] font-light text-black dark:text-white tracking-tight leading-[1.1] mb-6"
+              className="text-[40px] md:text-[52px] font-medium text-black dark:text-white tracking-tight leading-[1.1] mb-6"
               style={{ fontFamily: 'Poppins' }}
             >
               Privacy Policy
@@ -107,11 +108,11 @@ export default function PrivacyPolicyPage() {
               
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <div className="flex items-center gap-3 px-5 py-4 bg-white dark:bg-white/5 border border-[#F3F4F6] dark:border-white/10 rounded-[12px] text-[13px] text-[#4B5563] dark:text-gray-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-none flex-1">
-                  <Box size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" />
+                  <Check size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" className="border border-blue-500 rounded-[50px]"/>
                   Identity Verification Data
                 </div>
                 <div className="flex items-center gap-3 px-5 py-4 bg-white dark:bg-white/5 border border-[#F3F4F6] dark:border-white/10 rounded-[12px] text-[13px] text-[#4B5563] dark:text-gray-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-none flex-1">
-                  <Box size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" />
+                  <Check size={14} strokeWidth={2.5} stroke="url(#icon-blue-gradient)" className="border border-blue-500 rounded-[50px]" />
                   Blockchain Transaction Metadata
                 </div>
               </div>
@@ -226,7 +227,7 @@ export default function PrivacyPolicyPage() {
                 >
                   <Mail size={16} strokeWidth={1.5} /> Contact Support
                 </button>
-                <Link href="#" className="text-[#000000] text-[14px] font-light hover:text-[#000000] transition-colors">
+                <Link href="#" className="text-[#000000] text-[14px] font-light dark:text-gray-300 hover:text-[#000000] transition-colors">
                   View Help Center
                 </Link>
               </div>
@@ -237,18 +238,25 @@ export default function PrivacyPolicyPage() {
 
         {/* --- RIGHT: Sidebar --- */}
         <aside className="w-full lg:w-[340px] shrink-0 pt-4 lg:pt-0">
-          <div className="sticky top-24">
-            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8" style={{fontFamily:'Poppins'}}>
+          {/* <div className="border border-[#D4D4D4]  md:p-0 w-full" style={{width:'400px'}}>
+            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8 ml-5" style={{fontFamily:'Poppins',}}>
               <span className="text-[#111827] dark:text-white">Trending </span>
-              <span className="text-[#2864e4]">AI</span><br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#2473f2ff] to-[#FFFFFF]">AI</span><br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
+            </h2>
+          </div> */}
+          <div className="sticky top-24">
+            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8 ml-5" style={{fontFamily:'Poppins',}}>
+              <span className="text-[#111827] dark:text-white">Trending </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#2473f2ff] to-[#FFFFFF]">AI</span><br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
             </h2>
             
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 ">
               {TRENDING_AGENTS.map((agent) => {
                 const AgentIcon = agent.Icon;
                 return (
-                  <div key={agent.name} className="p-6 rounded-[8px] bg-white dark:bg-[#0F172A] border border-[#F3F4F6] dark:border-white/5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-none flex flex-col hover:border-[#E5E7EB] dark:hover:border-white/20 transition-all group">
+                  <div key={agent.name} className="p-6 rounded-[8px] bg-white dark:bg-[#0F172A] border border-[#F3F4F6] dark:border-white/5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-none flex flex-col hover:border-[#E5E7EB] dark:hover:border-white/20 transition-all group pt-10">
                     <div className="flex justify-between items-start mb-4">
                       <div className="relative">
                         <AgentIcon 
@@ -278,7 +286,7 @@ export default function PrivacyPolicyPage() {
                       <div className="text-[10px] font-bold text-[#96B3FF] uppercase tracking-widest">
                         {agent.runs}
                       </div>
-                      <div className="text-[14px] font-bold text-[#111827] dark:text-white uppercase">
+                      <div className="text-[14px] font-light text-[#111827] dark:text-white uppercase">
                         {agent.price}
                       </div>
                     </div>

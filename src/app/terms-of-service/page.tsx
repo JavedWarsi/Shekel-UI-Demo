@@ -38,7 +38,8 @@ const TRENDING_AGENTS = [
     runs: "920 RUNS",
     price: "ENTERPRISE PRO",
     rating: "4.9",
-    Icon: Gavel
+    Icon: (props: any) => <Image src="/ham.svg" alt="ham" width={props.size || 24} height={props.size || 24} className="object-contain" />
+  
   },
   {
     name: "SWIFTCODE",
@@ -46,7 +47,7 @@ const TRENDING_AGENTS = [
     runs: "780 RUNS",
     price: "FREE",
     rating: "4.3",
-    Icon: Terminal
+    Icon: (props: any) => <Image src="/terminal.svg" alt="terminal" width={props.size || 24} height={props.size || 24} className="object-contain" />
   }
 ];
 
@@ -56,11 +57,11 @@ export default function TermsOfServicePage() {
       <main className="max-w-[1200px] mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row gap-16 lg:gap-24">
 
         {/* --- LEFT: Main Content --- */}
-        <div className="flex-1 max-w-[1200px] border-2 border-[#D4D4D4] dark:border-white/5 bg-white dark:bg-[#0F172A] rounded-[24px] p-4 md:p-8 shadow-[0_2px_15px_rgba(0,0,0,0.015)] dark:shadow-none transition-colors duration-300">
+        <div className="flex-1 max-w-[1200px] border-2 border-[#D4D4D4] dark:border-white/5 bg-white dark:bg-[#0F172A] p-4 md:p-8 shadow-[0_2px_15px_rgba(0,0,0,0.015)] dark:shadow-none transition-colors duration-300">
           <header className="mb-16">
             <h1
               className="text-[40px] md:text-[56px] font-medium text-[#111827] dark:text-white tracking-tight leading-[1.1] mb-6"
-              style={{ fontFamily:'Poppins' }}
+              style={{ fontFamily: 'Poppins' }}
             >
               Terms & Conditions
             </h1>
@@ -86,7 +87,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 2    style =  fontFamily: typography.fonts.jakarta */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 2. Use of the Platform
               </h2>
               <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
@@ -101,7 +102,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 3 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 3. Accounts
               </h2>
               <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
@@ -119,7 +120,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 4 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 4. AI Agents & Workflows
               </h2>
               <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
@@ -141,7 +142,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 5 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 5. Restrictions
               </h2>
               <ul className="space-y-6 mt-6 font-light" style={{}}>
@@ -168,7 +169,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 6 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 6. Intellectual Property
               </h2>
               <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
@@ -183,7 +184,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 7 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 7. Limitation of Liability
               </h2>
               <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
@@ -195,7 +196,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 8 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 8. Changes to Terms
               </h2>
               <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
@@ -207,7 +208,7 @@ export default function TermsOfServicePage() {
 
             {/* Section 9 */}
             <section>
-              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{fontFamily:'Plus Jakarta Sans'}}>
+              <h2 className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#2864E4] to-[#ECF2FF]" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                 9. Contact
               </h2>
               <div className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: "Inter" }}>
@@ -231,11 +232,11 @@ export default function TermsOfServicePage() {
               <p className="text-[#A1A1AA] text-[15px] md:text-[16px] leading-[1.5] mb-8 font-light">
                 Our legal and technical teams are available to clarify any sections of this agreement or assist with enterprise compliance.
               </p>
-              <button 
-                  className="w-[224px] h-[44px]   rounded-[8px] text-[13px] font-bold text-white flex items-center justify-center  btn-primary-gradient  md:w-auto justify-center shadow-sm"
-                >
-                   Contact Support
-                </button>
+              <button
+                className="w-[224px] h-[44px]   rounded-[8px] text-[13px] font-bold text-white flex items-center justify-center  btn-primary-gradient  md:w-auto justify-center shadow-sm"
+              >
+                Contact Support
+              </button>
             </div>
 
             {/* Astronaut Image - Overflowing significantly */}
@@ -257,7 +258,7 @@ export default function TermsOfServicePage() {
         {/* --- RIGHT: Sidebar --- */}
         <aside className="w-full lg:w-[340px] shrink-0 pt-4 lg:pt-0">
           <div className="sticky top-24" >
-            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8" style={{ fontFamily:'Poppins' }}>
+            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8" style={{ fontFamily: 'Poppins' }}>
               <span className="text-[#111827] dark:text-white">Trending </span>
               <span className="text-[#2864e4]">AI</span><br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
@@ -267,7 +268,7 @@ export default function TermsOfServicePage() {
               {TRENDING_AGENTS.map((agent) => {
                 const AgentIcon = agent.Icon;
                 return (
-                  <div key={agent.name} className="p-6 rounded-[8px] bg-white dark:bg-[#0F172A] border border-[#F3F4F6] dark:border-white/5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-none flex flex-col hover:border-[#E5E7EB] dark:hover:border-white/20 transition-all group">
+                  <div key={agent.name} className="p-6 rounded-[8px] bg-white dark:bg-[#0F172A] border border-[#F3F4F6] dark:border-white/5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-none flex flex-col hover:border-[#E5E7EB] dark:hover:border-white/20 transition-all group pt-10">
                     <div className="flex justify-between items-start mb-4">
                       <div className="relative">
                         <AgentIcon
