@@ -10,7 +10,7 @@ const productLinks = [
   { label: "Categories", href: "/category-page" },
   { label: "Agent Details", href: "/agent-detail" },
   { label: "Pricing", href: "/pricing" },
-  { label: "AI Agents Statistics", href: "#" },
+  { label: "AI Agents Statistics", href: "/agent-statistics" },
 ];
 const platformLinks = [
   { label: "Create / Publish Agents", href: "/create-ai-agent-page" },
@@ -22,11 +22,11 @@ const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/connect-us" },
   { label: "FAQ", href: "/faq" },
-  { label: "Testimonials / Reviews", href: "#" },
+  { label: "Testimonials / Reviews", href: "/testimonials" },
 ];
 const resourceLinks = [
-  { label: "Blog", href: "#" },
-  { label: "Case Studies", href: "#" },
+  { label: "Blog", href: "/blog" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Brand Assets / Media Kit", href: "#" },
   { label: "Privacy Policy", href: "/privacy-and-policy" },
   { label: "Terms of Service", href: "/terms-of-service" },

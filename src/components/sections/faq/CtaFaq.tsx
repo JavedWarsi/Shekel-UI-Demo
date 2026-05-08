@@ -280,7 +280,7 @@ export default function CtaFaq() {
           </div>
 
           {/* Robot — centered float on mobile */}
-          <div className="relative z-10 w-full max-w-[400px] border border-red-500 aspect-square flex items-center justify-center">
+          <div className="relative z-10 w-full max-w-[400px] aspect-square flex items-center justify-center">
             <Image
               src="/section-2-faq/faqbot.png"
               alt="Futuristic Robot"

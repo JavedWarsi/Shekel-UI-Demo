@@ -1,14 +1,29 @@
-import StartUsingAI from "@/components/sections/creator-analytics/StartUsingAI";
+import DashboardSidebar from "@/components/shared/DashboardSidebar";
+import DashboardHeader from "@/components/shared/DashboardHeader";
 import GraphBarCounter from "@/components/sections/creator-analytics/GraphBarCounter";
-import DashboardHeader from "@/components/sections/creator-analytics/DashboardHeader";
+import StartUsingAI from "@/components/sections/creator-analytics/StartUsingAI";
+
+export const metadata = {
+  title: "Creator Analytics | Shekel",
+  description: "Real-time performance metrics and intelligent insights for your active AI agents.",
+};
 
 export default function CreatorAnalyticsPage() {
   return (
-    <div className="min-h-screen bg-[#F9FAFB] dark:bg-transparent flex flex-col font-sans overflow-x-clip selection:bg-blue-100 pb-20">
-      <main className="max-w-[1400px] mx-auto w-full pt-40 pb-12 px-8 md:px-12 space-y-12">
-        <DashboardHeader />
-        <GraphBarCounter />
-        <StartUsingAI />
+    <div className="min-h-screen bg-[#f8fafd] flex">
+      <DashboardSidebar />
+
+      {/* Main Content */}
+      <main className="flex-1 p-6 lg:p-12 overflow-y-auto">
+        <DashboardHeader 
+          title="Creator Analytics" 
+          subtitle="Real-time performance metrics and intelligent insights for your active AI agents." 
+        />
+
+        <div className="space-y-12">
+          <GraphBarCounter />
+          <StartUsingAI />
+        </div>
       </main>
     </div>
   );

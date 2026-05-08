@@ -312,7 +312,7 @@ function HeroDesktop() {
             alt="AI robot hero illustration"
             fill
             sizes="645px"
-            className="object-contain"
+            className="object-contain animate-float-x"
             priority
           />
         </Float>
