@@ -1,4 +1,5 @@
-import TestimonialsHero, { TestimonialsGrid, TestimonialsStats, TestimonialsTrending, TestimonialsCTA } from "@/components/sections/testimonials/TestimonialsGrid";
+import TestimonialsHero, { TestimonialsGrid, TestimonialsStats, TestimonialsTrending } from "@/components/sections/testimonials/TestimonialsGrid";
+import { TestimonialsCTA } from "@/components/sections/testimonials/TestimonialsCTA";
 
 export const metadata = {
   title: "Testimonials | Shekel",
