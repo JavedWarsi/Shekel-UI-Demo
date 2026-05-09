@@ -474,7 +474,7 @@ export function TestimonialsStats() {
           <div className="relative aspect-[1.15/1] overflow-hidden rounded-[16px] bg-[#0b0f18] shadow-[0_18px_50px_rgba(12,26,60,0.35)]">
 
             <Image
-              src="/section-15-testimonials/testimoglob.png"
+              src="/section-15-testimonials/testimoGlob.png"
               alt="Globe"
               width={860}
               height={920}
@@ -493,62 +493,8 @@ export function TestimonialsStats() {
   );
 }
 
-export function TestimonialsTrending() {
-  const agents = [
-    { name: "MARKETWISE", desc: "Gain real-time market insights and generate winning SEO strategies.", category: "MARKETING", id: "01", icon: BarChart3 },
-    { name: "CRYPRO", desc: "Complex crypto logic handled by intelligent autonomous agents.", category: "FINANCE", id: "02", icon: Shield },
-    { name: "TECHLEADER", desc: "Autonomous CI/CD and developer productivity at scale.", category: "DEVELOPMENT", id: "03", icon: Bot },
-    { name: "SERVITODO", desc: "Smart customer support and workflow orchestration.", category: "SERVICES", id: "04", icon: Briefcase },
-  ];
 
-  return (
-    <section className="w-full bg-[#f3f6fb] py-12 md:py-16" style={{ fontFamily: typography.fonts.inter }}>
-      <div className="mx-auto max-w-[1100px] px-4 md:px-6">
-        <div className="mb-8 flex items-end justify-between md:mb-10">
-          <div>
-            <h2 className="text-[30px] font-medium text-[#0b0b0b] md:text-[40px]" style={{ fontFamily: typography.fonts.poppins }}>
-              Trending <span className="bg-gradient-to-b from-[#2864E4] to-[#ECF2FF] bg-clip-text text-transparent">AI Agents</span>
-            </h2>
-            <p className="mt-1 text-[12px] text-[#647083]">Find the agents used by the community.</p>
-          </div>
-          <Link href="/marketplace" className="hidden items-center gap-2 text-[11px] font-semibold tracking-[0.12em] text-[#2864e4] hover:underline md:flex">
-            EXPLORE AGENTS <ArrowRight size={16} />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {agents.map((agent, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -5 }}
-              className="group cursor-pointer border border-[#e8edf5] bg-white p-4 shadow-[0_8px_24px_rgba(12,24,54,0.05)]"
-              style={{ borderRadius: "10px" }}
-            >
-              <div className="mb-10 flex items-start justify-between">
-                <div className="flex h-8 w-8 items-center justify-center rounded-md border border-[#e4e9f2] bg-[#f8fbff] text-[#2864e4]">
-                  <agent.icon size={15} />
-                </div>
-                <div className="text-[10px] font-bold text-black/25">#{agent.id}</div>
-              </div>
-              <h3 className="mb-3 text-[13px] font-semibold tracking-[0.04em] text-[#1a1c1c]">{agent.name}</h3>
-              <p className="mb-7 text-[11px] leading-[1.65] text-[#4a5668]">
-                {agent.desc}
-              </p>
-              <div className="flex flex-col gap-4 border-t border-black/5 pt-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-semibold tracking-[0.12em] text-[#6f7888]">{agent.category}</span>
-                </div>
-                <button className="w-full rounded-md border border-[#e3e8f2] bg-[#f8fbff] py-2.5 text-[11px] font-semibold text-[#1a1c1c] transition-colors hover:bg-gray-100">
-                  View agent
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+    
 
 
 // export default function CreateAgentCta() {

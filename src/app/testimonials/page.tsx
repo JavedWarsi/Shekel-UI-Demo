@@ -1,6 +1,6 @@
-import TestimonialsHero, { TestimonialsGrid, TestimonialsStats, TestimonialsTrending } from "@/components/sections/testimonials/TestimonialsGrid";
+import TestimonialsHero, { TestimonialsGrid, TestimonialsStats} from "@/components/sections/testimonials/TestimonialsGrid";
 import { TestimonialsCTA } from "@/components/sections/testimonials/TestimonialsCTA";
-
+import TrendingAgents from "@/components/sections/search-result/TrendingAgents";
 export const metadata = {
   title: "Testimonials | Shekel",
   description: "Read what industry leaders and developers are saying about the Shekel AI Agent platform.",
@@ -12,7 +12,8 @@ export default function TestimonialsPage() {
       <TestimonialsHero />
       <TestimonialsGrid />
       <TestimonialsStats />
-      <TestimonialsTrending />
+      {/* <TestimonialsTrending /> */}
+      <TrendingAgents />
       <TestimonialsCTA />
     </div>
   );
