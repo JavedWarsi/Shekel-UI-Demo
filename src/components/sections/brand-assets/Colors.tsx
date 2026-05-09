@@ -1,56 +1,71 @@
 "use client";
 
-import { typography, colors, radiuses } from "@/tokens/design-tokens";
+import { typography } from "@/tokens/design-tokens";
 import { motion } from "framer-motion";
 import { Copy } from "lucide-react";
 
 const COLOR_PALETTE = [
-  { name: "Shekel Blue", hex: "#2864E4", rgb: "40, 100, 228", usage: "Primary Brand Color" },
-  { name: "Electric Cyan", hex: "#56CCF2", rgb: "86, 204, 242", usage: "Accent & Gradients" },
-  { name: "Deep Navy", hex: "#0B0B0B", rgb: "11, 11, 11", usage: "Text & Backgrounds" },
-  { name: "Soft Sky", hex: "#ECF2FF", rgb: "236, 242, 255", usage: "Subtle Backgrounds" }
+  { name: "PRIMARY BLUE", hex: "#2F80ED", hexText: "#2F80ED" },
+  { name: "LIGHT BLUE", hex: "#56CCF2", hexText: "#56CCF2" },
+  { name: "MIDNIGHT BLACK", hex: "#0B0B0B", hexText: "#0B0B0B" },
+  { name: "SOFT WHITE", hex: "#F5F7FA", hexText: "#F5F7FA" }
 ];
 
 export default function BrandAssetsColors() {
   return (
-    <section className="relative w-full py-24 bg-[#f9f9f9]" style={{ fontFamily: typography.fonts.inter }}>
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12">
-        <h2 className="text-[28px] md:text-[32px] font-bold text-[#0b0b0b] mb-12" style={{ fontFamily: typography.fonts.poppins }}>
-          Color Palette
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="relative w-full py-28 bg-white" style={{ fontFamily: typography.fonts.inter }}>
+      <div className="mx-auto max-w-[1280px] px-6 md:px-12 relative z-10">
+        <div className="mb-16 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[48px] md:text-[48px] font-medium text-[#000000] mb-4 tracking-tight" 
+            style={{ fontFamily: typography.fonts.poppins }}
+          >
+            Core Palette
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-[18px] text-[#4A5568]"
+          >
+            Precision and depth define our tonal range.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {COLOR_PALETTE.map((color, i) => (
-            <motion.div 
+            <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white border border-[rgba(0,0,0,0.06)] rounded-[24px] overflow-hidden shadow-sm"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col h-full"
             >
+              {/* Color Block */}
               <div 
-                className="h-40 w-full relative group"
+                className="w-full aspect-[4/3] flex-grow"
                 style={{ backgroundColor: color.hex }}
-              >
-                <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 text-white gap-2 font-bold text-[14px]">
-                  <Copy size={16} /> Copy HEX
-                </button>
-              </div>
-              <div className="p-6">
-                <h3 className="text-[18px] font-bold text-[#0b0b0b] mb-4">{color.name}</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[12px] font-bold text-[#94A3B8] uppercase tracking-wider">HEX</span>
-                    <span className="text-[14px] font-mono font-medium text-[#1a1c1c]">{color.hex}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[12px] font-bold text-[#94A3B8] uppercase tracking-wider">RGB</span>
-                    <span className="text-[14px] font-mono font-medium text-[#1a1c1c]">{color.rgb}</span>
-                  </div>
-                  <div className="pt-3 border-t border-gray-50">
-                    <span className="text-[12px] italic text-[#475569]">{color.usage}</span>
-                  </div>
+              />
+
+              {/* Bottom Info Area */}
+              <div className="p-6 flex justify-between items-center bg-white border-t border-[rgba(0,0,0,0.02)]">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-bold text-[#718096] uppercase tracking-wider">
+                    {color.name}
+                  </span>
+                  <span className="text-[18px] font-bold text-[#1A202C]" style={{ fontFamily: typography.fonts.poppins }}>
+                    {color.hexText}
+                  </span>
                 </div>
+                
+                <button className="p-2.5 rounded-lg bg-[#F7FAFC] text-[#4A5568] hover:bg-gray-100 transition-colors">
+                  <Copy size={16} />
+                </button>
               </div>
             </motion.div>
           ))}
