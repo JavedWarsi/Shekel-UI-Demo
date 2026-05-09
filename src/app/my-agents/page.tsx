@@ -1,32 +1,29 @@
-import DashboardSidebar from "@/components/shared/DashboardSidebar";
-import DashboardHeader from "@/components/shared/DashboardHeader";
-import MyAgentsList from "@/components/sections/my-agents/MyAgentsList";
-import { Plus } from "lucide-react";
+import MyAgentsHeader from "@/components/sections/my-agents/Header";
+import MyAgentsGrid from "@/components/sections/my-agents/AgentGrid";
+import MyAgentsEmptyState from "@/components/sections/my-agents/EmptyState";
 
 export const metadata = {
-  title: "My Agents | Shekel",
-  description: "View and manage all your deployed AI agents on the Shekel network.",
+  title: "My Agents | Shekel Workspace",
+  description: "Curate and manage your autonomous intelligence workforce.",
 };
 
 export default function MyAgentsPage() {
   return (
-    <div className="min-h-screen bg-[#f8fafd] flex">
-      <DashboardSidebar />
-
-      {/* Main Content */}
-      <main className="flex-1 p-6 lg:p-12 overflow-y-auto">
-        <DashboardHeader 
-          title="My Agents" 
-          subtitle="Manage, monitor, and scale your agent fleet." 
-        />
-
-        <div className="mb-8 flex justify-end md:hidden">
-           <button className="flex items-center gap-2 px-6 py-2.5 bg-[#2864e4] text-white font-bold rounded-xl hover:bg-[#2054c2] transition-colors shadow-lg shadow-[#2864e4]/20">
-              <Plus size={18} /> Create New Agent
-            </button>
+    <div className="min-h-screen relative bg-[#FAFAFA]">
+      {/* Soft Blue Top Gradient */}
+      <div 
+        className="absolute top-0 left-0 w-full h-[600px] pointer-events-none"
+        style={{
+          background: "linear-gradient(180deg, #D4E1FE 0%, rgba(212, 225, 254, 0.4) 40%, #FAFAFA 100%)"
+        }}
+      />
+      
+      <main className="relative z-10 pt-[100px]">
+        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
+          <MyAgentsHeader />
+          <MyAgentsGrid />
+          <MyAgentsEmptyState />
         </div>
-
-        <MyAgentsList />
       </main>
     </div>
   );

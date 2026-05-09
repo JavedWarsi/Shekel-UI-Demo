@@ -36,7 +36,7 @@ export default function MyAgentsList() {
               <div>
                 <h3 className="text-[18px] font-bold text-[#0b0b0b] mb-1">{agent.name}</h3>
                 <div className="flex items-center gap-2">
-                  <span className={`w-2 h-2 rounded-full ${agent.status === 'active' ? 'bg-[#10b981]' : 'bg-gray-300'}`} />
+                  <span className={`w-2 h-2 rounded-sm ${agent.status === 'active' ? 'bg-[#10b981]' : 'bg-gray-300'}`} />
                   <span className="text-[12px] font-bold text-[#94A3B8] uppercase tracking-wider">{agent.status}</span>
                 </div>
               </div>
@@ -82,7 +82,7 @@ export default function MyAgentsList() {
         animate={{ opacity: 1 }}
         className="bg-white border-2 border-dashed border-gray-200 p-6 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-[#2864e4] hover:bg-[#2864e4]/[0.02] transition-all group min-h-[250px]"
       >
-        <div className="w-14 h-14 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#2864e4] group-hover:text-white transition-all">
+        <div className="w-14 h-14 rounded-sm bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#2864e4] group-hover:text-white transition-all">
           <Play size={24} className="ml-1" />
         </div>
         <div className="text-center">
