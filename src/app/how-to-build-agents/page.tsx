@@ -1,6 +1,11 @@
 import HowToBuildHero from "@/components/sections/how-to-build/Hero";
-import HowToBuildSteps from "@/components/sections/how-to-build/Steps";
-import HowToBuildResources from "@/components/sections/how-to-build/Resources";
+import GettingStarted from "@/components/sections/how-to-build/GettingStarted";
+import CreateSteps from "@/components/sections/how-to-build/CreateSteps";
+import AddCapabilities from "@/components/sections/how-to-build/AddCapabilities";
+import ConfigSandbox from "@/components/sections/how-to-build/ConfigSandbox";
+import PublishStep from "@/components/sections/how-to-build/PublishStep";
+import CtaFaq from "@/components/sections/how-to-build/CtaFaq";
+// import FinalCTA from "@/components/sections/how-to-build/FinalCTA";
 
 export const metadata = {
   title: "How to Build Agents | Shekel Developer Portal",
@@ -9,10 +14,15 @@ export const metadata = {
 
 export default function HowToBuildPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <HowToBuildHero />
-      <HowToBuildSteps />
-      <HowToBuildResources />
+      <GettingStarted />
+      <CreateSteps />
+      <AddCapabilities />
+      <ConfigSandbox />
+      <PublishStep />
+      <CtaFaq />
+      {/* <FinalCTA /> */}
     </div>
   );
 }
