@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
     <main className="relative w-full min-h-screen bg-white flex flex-col items-start justify-start overflow-hidden pt-[165px]">
       {/* Background Gradients */}
