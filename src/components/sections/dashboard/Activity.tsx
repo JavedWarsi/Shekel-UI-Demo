@@ -1,43 +1,91 @@
 "use client";
 
-import { typography, colors, radiuses } from "@/tokens/design-tokens";
+import { typography } from "@/tokens/design-tokens";
 import { motion } from "framer-motion";
-import { CheckCircle2, Clock, MoreVertical, Terminal } from "lucide-react";
+import { PlayCircle, CheckCircle2, Users, AlertTriangle } from "lucide-react";
 
 const ACTIVITIES = [
-  { action: "Agent 'DataHarvester' completed run", time: "2 minutes ago", status: "success", type: "Run" },
-  { action: "New subscription: Pro Plan", time: "15 minutes ago", status: "success", type: "Finance" },
-  { action: "Agent 'LingoMaster' encountered a warning", time: "1 hour ago", status: "warning", type: "System" },
-  { action: "Deployment of 'TrendForecaster' v2.1", time: "3 hours ago", status: "success", type: "Deploy" },
-  { action: "Payout processed: $1,250", time: "5 hours ago", status: "success", type: "Finance" }
+  {
+    title: "Agent executed",
+    desc: "Data Scraper Pro completed a crawl",
+    time: "2M AGO",
+    icon: PlayCircle,
+    iconColor: "text-[#10B981]",
+    iconBg: "bg-[#D1FAE5]"
+  },
+  {
+    title: "Workflow completed",
+    desc: "Marketing Campaign Pipeline finished",
+    time: "15M AGO",
+    icon: CheckCircle2,
+    iconColor: "text-[#3B82F6]",
+    iconBg: "bg-[#DBEAFE]"
+  },
+  {
+    title: "New agent added",
+    desc: "Support GPT-4 added to your workspace",
+    time: "1H AGO",
+    icon: Users,
+    iconColor: "text-[#8B5CF6]",
+    iconBg: "bg-[#EDE9FE]"
+  },
+  {
+    title: "Agent quota reached",
+    desc: "Free tier limit hit for Image Gen model",
+    time: "3H AGO",
+    icon: AlertTriangle,
+    iconColor: "text-[#F59E0B]",
+    iconBg: "bg-[#FEF3C7]"
+  }
 ];
 
 export default function DashboardActivity() {
   return (
-    <div className="bg-white border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-sm overflow-hidden" style={{ fontFamily: typography.fonts.inter }}>
-      <div className="p-6 border-b border-gray-50 flex justify-between items-center">
-        <h3 className="font-bold text-[#0b0b0b]">Recent Activity</h3>
-        <button className="text-[13px] font-bold text-[#2864e4] hover:underline">View All</button>
-      </div>
-      <div className="divide-y divide-gray-50">
-        {ACTIVITIES.map((activity, i) => (
-          <div key={i} className="p-6 flex items-center gap-4 hover:bg-[#f8fafd] transition-colors group">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${activity.status === 'success' ? 'bg-[#10b981]/10 text-[#10b981]' : 'bg-[#ffb800]/10 text-[#ffb800]'}`}>
-              {activity.status === 'success' ? <CheckCircle2 size={18} /> : <Clock size={18} />}
-            </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[14px] font-bold text-[#1a1c1c]">{activity.action}</span>
-                <span className="text-[11px] font-bold px-2 py-0.5 bg-gray-100 rounded text-[#475569] uppercase tracking-wider">{activity.type}</span>
+    <div className="w-full flex flex-col h-full" style={{ fontFamily: typography.fonts.inter }}>
+      <h2 className="text-[20px] font-bold text-[#0b0b0b] mb-6 tracking-tight">
+        Recent Activity
+      </h2>
+      
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="bg-white rounded-[16px] shadow-sm border border-[rgba(0,0,0,0.04)] flex flex-col flex-grow overflow-hidden"
+      >
+        <div className="flex flex-col">
+          {ACTIVITIES.map((activity, i) => (
+            <div 
+              key={i}
+              className={`p-6 flex items-center gap-4 hover:bg-[#F8FAFC] transition-colors cursor-pointer ${
+                i !== ACTIVITIES.length - 1 ? 'border-b border-[rgba(0,0,0,0.04)]' : ''
+              }`}
+            >
+              <div className={`w-10 h-10 rounded-full ${activity.iconBg} ${activity.iconColor} flex items-center justify-center flex-shrink-0`}>
+                <activity.icon size={20} strokeWidth={2} />
               </div>
-              <div className="text-[12px] text-[#94A3B8] font-medium">{activity.time}</div>
+              
+              <div className="flex flex-col flex-grow">
+                <h3 className="text-[14px] font-bold text-[#0b0b0b]">
+                  {activity.title}
+                </h3>
+                <p className="text-[13px] text-[#64748B] mt-0.5">
+                  {activity.desc}
+                </p>
+              </div>
+              
+              <div className="text-[11px] font-bold text-[#94A3B8] uppercase tracking-wider flex-shrink-0">
+                {activity.time}
+              </div>
             </div>
-            <button className="p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-              <MoreVertical size={18} className="text-[#94A3B8]" />
-            </button>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+
+        <div className="mt-auto border-t border-[rgba(0,0,0,0.04)]">
+          <button className="w-full py-4 text-[13px] font-bold text-[#2864E4] hover:bg-[#F8FAFC] transition-colors uppercase tracking-wider">
+            VIEW ALL LOGS
+          </button>
+        </div>
+      </motion.div>
     </div>
   );
 }
