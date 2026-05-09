@@ -14,7 +14,7 @@ export default function SearchResultPage() {
     <div className="min-h-screen bg-white">
       <SearchResultHero />
       <SearchResultGrid />
-      {/* <WorkflowCTA /> */}
+      <WorkflowCTA />
       <TrendingAgents />
       <CtaFaq />
     </div>
