@@ -120,6 +120,28 @@ body {
   font-family: var(--font-sans);
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   HEADER / FOOTER ALWAYS-DARK SCOPING
+   These wrappers override the body-level theme so Header & Footer
+   remain permanently dark regardless of the user-selected theme.
+   ═══════════════════════════════════════════════════════════════════ */
+.always-dark {
+  --background: #05070c;
+  --foreground: #edf2ff;
+  --color-text-primary: #edf2ff;
+  --color-text-secondary: #bcc5da;
+  --color-text-muted: #aab4cc;
+  --color-text-placeholder: #8f98b0;
+  --color-text-heading-dark: #ffffff;
+  --color-text-light: #e5e7f6;
+  --color-surface-dark: #0f1422;
+  --color-surface-white: #0d111b;
+  --color-border-light: rgba(255, 255, 255, 0.2);
+  --color-border-dark: rgba(255, 255, 255, 0.35);
+  --color-border-input: rgba(255, 255, 255, 0.22);
+  color-scheme: dark;
+}
+
 /* GSAP roadmap: glow on milestones that reached the active scroll tier */
 
 .roadmap-milestone-anchor[data-roadmap-active="true"][data-milestone-shape="icon"] > div:last-child {
@@ -147,4 +169,3 @@ body {
   transform: translateY(0px);
   filter: brightness(0.95);
 }
-

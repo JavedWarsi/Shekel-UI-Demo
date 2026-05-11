@@ -21,17 +21,17 @@ export default function DashboardStats() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="bg-white rounded-[16px] p-6 shadow-sm border border-[rgba(0,0,0,0.04)]"
+            className="bg-white dark:bg-[#0d111b] rounded-[16px] p-6 shadow-sm border border-[rgba(0,0,0,0.04)] dark:border-white/10"
           >
-            <h3 className="text-[11px] font-medium text-[#94A3B8] uppercase tracking-wider mb-4">
+            <h3 className="text-[11px] font-medium text-[#94A3B8] dark:text-[#64748B] uppercase tracking-wider mb-4">
               {stat.label}
             </h3>
             
             <div className="flex items-center justify-between">
-              <div className="text-[32px] md:text-[40px] font-medium text-[#0b0b0b] leading-none" style={{ fontFamily: typography.fonts.poppins }}>
+              <div className="text-[32px] md:text-[40px] font-medium text-[#0b0b0b] dark:text-white leading-none" style={{ fontFamily: typography.fonts.poppins }}>
                 {stat.value}
               </div>
-              <div className="w-10 h-10 rounded-full bg-[#EFF6FF] text-[#3B82F6] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-[#EFF6FF] dark:bg-blue-500/10 text-[#3B82F6] flex items-center justify-center">
                 <stat.icon size={20} strokeWidth={2.5} />
               </div>
             </div>

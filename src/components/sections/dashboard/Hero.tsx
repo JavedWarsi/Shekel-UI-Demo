@@ -41,12 +41,12 @@ export default function DashboardHero() {
           transition={{ duration: 0.5 }}
         >
           <h1 
-            className="text-[32px] md:text-[40px] font-medium text-[#0b0b0b] mb-2 text-left " 
+            className="text-[32px] md:text-[40px] font-medium text-[#0b0b0b] dark:text-white mb-2 text-left" 
             style={{ fontFamily: typography.fonts.poppins }}
           >
             Welcome back <span className="text-[36px]">👋</span>
           </h1>
-          <p className="text-[16px] text-[#64748B]">
+          <p className="text-[16px] text-[#64748B] dark:text-[#94A3B8]">
             Here's what's happening with your AI workflows.
           </p>
         </motion.div>

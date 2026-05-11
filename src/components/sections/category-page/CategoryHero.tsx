@@ -173,7 +173,7 @@ function CategoryHeroDesktop() {
             paddingBottom: 18,
           }}
         >
-          <span
+          {/* <span
             className="transition-colors duration-300 dark:hidden"
             style={{
               display: "block",
@@ -185,7 +185,7 @@ function CategoryHeroDesktop() {
             }}
           >
             Marketing
-          </span>
+          </span> */}
           <span
             className="hidden dark:block transition-colors duration-300"
             style={{

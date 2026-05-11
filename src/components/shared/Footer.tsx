@@ -34,8 +34,9 @@ const resourceLinks = [
 
 export default function Footer() {
   return (
+    /* Footer is ALWAYS dark — wrapped in .always-dark in layout.tsx */
     <footer
-      className="w-full border-t border-black/5 dark:border-white/10 bg-white dark:bg-black text-[#1a1c1c] dark:text-white transition-all duration-300"
+      className="w-full border-t border-white/10 bg-black text-white transition-all duration-300"
       style={{ fontFamily: typography.fonts.inter }}
     >
       <div className="mx-auto flex w-full flex-col">
@@ -47,9 +48,9 @@ export default function Footer() {
                 alt="Shekel logo" 
                 width={127} 
                 height={34} 
-                className="transition-all duration-300 dark:invert-0 invert" 
+                className="transition-all duration-300" 
               />
-              <p className="max-w-[313px] text-[14px] leading-[22.75px] text-[#475569] dark:text-white/70">
+              <p className="max-w-[313px] text-[14px] leading-[22.75px] text-white/70">
                 AI-powered marketplace to discover, build, and scale intelligent agents. Built for the Nocturnal
                 Architect.
               </p>
@@ -60,7 +61,7 @@ export default function Footer() {
                 alt="Social icons" 
                 width={54} 
                 height={20} 
-                className="transition-all duration-300 dark:invert-0 invert" 
+                className="transition-all duration-300" 
               />
             </div>
           </div>
@@ -68,13 +69,13 @@ export default function Footer() {
           <div className="grid w-full grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4 md:gap-x-10 lg:col-span-2 xl:gap-x-14">
             <nav className="flex w-full flex-col gap-[14px]">
               <h3
-                className="text-[14px] leading-5 font-bold text-[#0b0b0b] dark:text-white"
+                className="text-[14px] leading-5 font-bold text-white"
                 style={{ fontFamily: typography.fonts.poppins }}
               >
                 Product
               </h3>
               {productLinks.map((item) => (
-                <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-[#475569] dark:text-white/70 transition-colors duration-200 hover:text-black dark:hover:text-white">
+                <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-white/70 transition-colors duration-200 hover:text-white">
                   {item.label}
                 </Link>
               ))}
@@ -82,14 +83,14 @@ export default function Footer() {
 
             <nav className="flex w-full flex-col gap-[25px]">
               <h3
-                className="text-[14px] leading-5 font-bold text-[#0b0b0b] dark:text-white"
+                className="text-[14px] leading-5 font-bold text-white"
                 style={{ fontFamily: typography.fonts.poppins }}
               >
                 Platform
               </h3>
               <div className="flex flex-col gap-[15px]">
                 {platformLinks.map((item) => (
-                  <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-[#475569] dark:text-white/70 transition-colors duration-200 hover:text-black dark:hover:text-white">
+                  <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-white/70 transition-colors duration-200 hover:text-white">
                     {item.label}
                   </Link>
                 ))}
@@ -98,13 +99,13 @@ export default function Footer() {
 
             <nav className="flex w-full flex-col items-start gap-[15px]">
               <h3
-                className="text-[14px] leading-5 font-bold text-[#0b0b0b] dark:text-white"
+                className="text-[14px] leading-5 font-bold text-white"
                 style={{ fontFamily: typography.fonts.poppins }}
               >
                 Company
               </h3>
               {companyLinks.map((item) => (
-                <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-[#475569] dark:text-white/70 transition-colors duration-200 hover:text-black dark:hover:text-white">
+                <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-white/70 transition-colors duration-200 hover:text-white">
                   {item.label}
                 </Link>
               ))}
@@ -112,13 +113,13 @@ export default function Footer() {
 
             <nav className="flex w-full flex-col gap-[15px]">
               <h3
-                className="text-[14px] leading-5 font-bold text-[#0b0b0b] dark:text-white"
+                className="text-[14px] leading-5 font-bold text-white"
                 style={{ fontFamily: typography.fonts.poppins }}
               >
                 Resources
               </h3>
               {resourceLinks.map((item) => (
-                <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-[#475569] dark:text-white/70 transition-colors duration-200 hover:text-black dark:hover:text-white">
+                <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-white/70 transition-colors duration-200 hover:text-white">
                   {item.label}
                 </Link>
               ))}
@@ -126,8 +127,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex h-auto w-full border-t border-black/5 dark:border-white/10 px-6 py-8 md:h-[82px] md:items-center md:px-[84px] md:py-0">
-          <p className="text-[11px] font-medium uppercase tracking-[0.11em] text-[#475569] dark:text-white">
+        <div className="flex h-auto w-full border-t border-white/10 px-6 py-8 md:h-[82px] md:items-center md:px-[84px] md:py-0">
+          <p className="text-[11px] font-medium uppercase tracking-[0.11em] text-white">
             © 2026 Shekel Marketplace. All rights reserved.
           </p>
         </div>

@@ -42,7 +42,7 @@ export default function DashboardTrending() {
   return (
     <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 mt-12 pb-24" style={{ fontFamily: typography.fonts.inter }}>
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-[20px] md:text-[24px] font-bold text-[#0b0b0b] tracking-tight">
+        <h2 className="text-[20px] md:text-[24px] font-bold text-[#0b0b0b] dark:text-white tracking-tight">
           Trending Agents
         </h2>
         <button className="text-[14px] font-medium text-[#2864E4] hover:underline">
@@ -58,7 +58,7 @@ export default function DashboardTrending() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="bg-white rounded-[24px] overflow-hidden border border-[rgba(0,0,0,0.06)] shadow-sm hover:shadow-lg transition-all group flex flex-col h-full"
+            className="bg-white dark:bg-[#0d111b] rounded-[24px] overflow-hidden border border-[rgba(0,0,0,0.06)] dark:border-white/10 shadow-sm hover:shadow-lg dark:hover:border-white/20 transition-all group flex flex-col h-full"
           >
             {/* Top Image Banner */}
             <div className="relative w-full h-[160px] bg-[#1a1a2e]">
@@ -84,12 +84,12 @@ export default function DashboardTrending() {
             <div className="p-6 flex flex-col flex-grow relative">
               
               {/* Floating Icon */}
-              <div className="absolute -top-6 right-6 w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center border border-gray-100 text-[#2864E4]">
+              <div className="absolute -top-6 right-6 w-12 h-12 rounded-2xl bg-white dark:bg-[#1a1f2d] shadow-md flex items-center justify-center border border-gray-100 dark:border-white/10 text-[#2864E4]">
                 <agent.icon size={20} />
               </div>
 
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-[18px] font-bold text-[#0b0b0b]" style={{ fontFamily: typography.fonts.poppins }}>
+                <h3 className="text-[18px] font-bold text-[#0b0b0b] dark:text-white" style={{ fontFamily: typography.fonts.poppins }}>
                   {agent.title}
                 </h3>
               </div>
@@ -100,14 +100,14 @@ export default function DashboardTrending() {
                     <Star key={idx} size={12} fill="currentColor" />
                   ))}
                 </div>
-                <span className="text-[12px] font-medium text-[#64748B]">({agent.reviews})</span>
+                <span className="text-[12px] font-medium text-[#64748B] dark:text-[#94A3B8]">({agent.reviews})</span>
               </div>
 
-              <p className="text-[14px] text-[#475569] leading-[1.6] mb-8 flex-grow">
+              <p className="text-[14px] text-[#475569] dark:text-[#94A3B8] leading-[1.6] mb-8 flex-grow">
                 {agent.desc}
               </p>
 
-              <button className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0F111A] text-white rounded-[12px] font-semibold text-[14px] hover:bg-[#1f2233] transition-colors mt-auto">
+              <button className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0F111A] dark:bg-white/10 text-white rounded-[12px] font-semibold text-[14px] hover:bg-[#1f2233] dark:hover:bg-white/20 transition-colors mt-auto">
                 <Play size={16} fill="currentColor" />
                 Run Agent
               </button>

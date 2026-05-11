@@ -43,12 +43,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <Header />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {/* Header always stays dark – scoped via always-dark wrapper */}
+          <div className="always-dark">
+            <Header />
+          </div>
           <main className="flex-grow">
             {children}
           </main>
-          <Footer />
+          {/* Footer always stays dark – scoped via always-dark wrapper */}
+          <div className="always-dark">
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
