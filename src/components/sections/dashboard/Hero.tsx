@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function DashboardHero() {
   return (
-    <div className="relative w-full overflow-x-clip">
+    <div className="relative w-full">
       {/* Left Ellipse */}
       <div 
         className="absolute pointer-events-none z-[-1] rounded-full"
@@ -34,14 +34,14 @@ export default function DashboardHero() {
         }}
       />
 
-      <div className="pt-24 pb-12 px-6 md:px-12 max-w-[1280px] mx-auto w-full" style={{ fontFamily: typography.fonts.inter }}>
+      <div className="pt-24 pb-12  max-w-full mx-auto w-full" style={{ fontFamily: typography.fonts.inter }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           <h1 
-            className="text-[32px] md:text-[40px] font-bold text-[#0b0b0b] mb-2 tracking-tight flex items-center gap-3" 
+            className="text-[32px] md:text-[40px] font-medium text-[#0b0b0b] mb-2 text-left " 
             style={{ fontFamily: typography.fonts.poppins }}
           >
             Welcome back <span className="text-[36px]">👋</span>

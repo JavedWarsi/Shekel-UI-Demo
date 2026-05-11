@@ -6,6 +6,7 @@ import { colors, typography, radiuses } from "@/tokens/design-tokens";
 import { Reveal } from "@/components/shared/motion/Reveal";
 import { RevealStagger, RevealItem } from "@/components/shared/motion/RevealStagger";
 import { motion, useReducedMotion } from "framer-motion";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CANVAS_W = 1285;
 const CANVAS_H = 818;
@@ -13,12 +14,6 @@ const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
 const BLUE_GRADIENT =
   "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(236, 242, 255, 1) 100%)";
-const SECTION_BG = "#FFFFFF";
-const TITLE_COLOR = "#000000";
-const BODY_COLOR = "rgba(0, 0, 0, 0.6)";
-const LABEL_COLOR = "rgba(0, 0, 0, 0.4)";
-const CARD_BORDER = "rgba(255, 255, 255, 0.1)";
-const CARD_SHADOW = "0px 4px 20px 0px rgba(0, 0, 0, 0.03)";
 
 type EnterpriseCard = {
   title: string;
@@ -72,11 +67,12 @@ export default function Enterprise() {
 }
 
 function EnterpriseDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#05070C]"
       style={{
-        backgroundColor: SECTION_BG,
         borderRadius: radiuses.card,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -96,7 +92,7 @@ function EnterpriseDesktop() {
           style={{
             width: 1285,
             height: 818,
-            opacity: 0.1,
+            opacity: isDark ? 0.05 : 0.1,
             background:
               "linear-gradient(146deg, rgba(47,128,237,1) 0%, rgba(86,204,242,1) 100%)",
           }}
@@ -111,24 +107,24 @@ function EnterpriseDesktop() {
             fill
             sizes="2401px"
             unoptimized
+            className={isDark ? "opacity-20" : ""}
           />
         </div>
 
-        <div className="absolute" style={{ left: -214, top: 702, width: 384, height: 240, borderRadius: radiuses.full, background: BLUE_GRADIENT, filter: "blur(150px)", opacity: 1 }} />
-        <div className="absolute" style={{ left: 1115, top: 702, width: 384, height: 240, borderRadius: radiuses.full, background: BLUE_GRADIENT, filter: "blur(150px)", opacity: 1 }} />
+        <div className="absolute" style={{ left: -214, top: 702, width: 384, height: 240, borderRadius: radiuses.full, background: BLUE_GRADIENT, filter: "blur(150px)", opacity: isDark ? 0.4 : 1 }} />
+        <div className="absolute" style={{ left: 1115, top: 702, width: 384, height: 240, borderRadius: radiuses.full, background: BLUE_GRADIENT, filter: "blur(150px)", opacity: isDark ? 0.4 : 1 }} />
 
         <div className="absolute flex w-[1280px] flex-col gap-16 px-12" style={{ left: 0, top: 96 }}>
           <div className="flex items-end justify-between">
             <div className="flex flex-col gap-3">
               <Reveal>
                 <h2
-                  className="m-0"
+                  className="m-0 text-[#000000] dark:text-white transition-colors duration-300"
                   style={{
                     fontFamily: typography.fonts.poppins,
                     fontWeight: 500,
                     fontSize: 36,
                     lineHeight: "40px",
-                    color: TITLE_COLOR,
                   }}
                 >
                   Built for scale and security
@@ -136,14 +132,13 @@ function EnterpriseDesktop() {
               </Reveal>
               <Reveal delay={0.1}>
                 <p
-                  className="m-0"
+                  className="m-0 text-[#000000] dark:text-white/60 transition-colors duration-300"
                   style={{
                     fontFamily: typography.fonts.inter,
                     fontWeight: 600,
                     fontSize: 12,
                     lineHeight: "16px",
                     letterSpacing: "0.2em",
-                    color: TITLE_COLOR,
                   }}
                 >
                   Enterprise AI Agents
@@ -154,12 +149,12 @@ function EnterpriseDesktop() {
             <Reveal delay={0.2}>
               <Link href="/marketplace" className="group inline-flex items-center gap-2 border-0 bg-transparent p-0 transition-[opacity,filter] duration-200 ease-out hover:opacity-100 hover:[filter:drop-shadow(0_4px_10px_rgba(40,100,228,0.34))]">
                 <span
+                  className="text-[#000000] dark:text-white transition-colors duration-300"
                   style={{
                     fontFamily: typography.fonts.inter,
                     fontWeight: 600,
                     fontSize: 16,
                     lineHeight: "24px",
-                    color: TITLE_COLOR,
                   }}
                 >
                   SEE ALL
@@ -169,7 +164,7 @@ function EnterpriseDesktop() {
                   alt="" 
                   width={8} 
                   height={12} 
-                  className="transition-transform duration-200 ease-out group-hover:translate-x-1"
+                  className={`transition-transform duration-200 ease-out group-hover:translate-x-1 ${isDark ? 'brightness-200' : ''}`}
                   unoptimized 
                 />
               </Link>
@@ -179,7 +174,7 @@ function EnterpriseDesktop() {
           <RevealStagger className="relative min-h-[241px]" stagger={0.15}>
             {CARDS.map((card, idx) => (
               <RevealItem key={card.title} className="absolute" style={{ left: idx * 405.33, top: 0 }}>
-                <EnterpriseCard card={card} />
+                <EnterpriseCardView card={card} />
               </RevealItem>
             ))}
           </RevealStagger>
@@ -212,14 +207,16 @@ function EnterpriseDesktop() {
   );
 }
 
-function EnterpriseCard({ card }: { card: EnterpriseCard }) {
+function EnterpriseCardView({ card }: { card: EnterpriseCard }) {
   const prefersReducedMotion = useReducedMotion();
+  const { isDark } = useThemeTokens();
+  
   return (
     <motion.article
-      className="relative w-[375px] rounded-[32px] border bg-white px-8 pt-8"
+      className="relative w-[375px] rounded-[32px] border bg-white dark:bg-slate-900 px-8 pt-8 transition-colors duration-300"
       style={{
-        borderColor: CARD_BORDER,
-        boxShadow: CARD_SHADOW,
+        borderColor: isDark ? 'rgba(255,255,255,0.05)' : "rgba(255, 255, 255, 0.1)",
+        boxShadow: isDark ? 'none' : "0px 4px 20px 0px rgba(0, 0, 0, 0.03)",
         paddingBottom: card.paddingBottom ?? 32,
       }}
       whileHover={
@@ -227,7 +224,7 @@ function EnterpriseCard({ card }: { card: EnterpriseCard }) {
           ? undefined
           : {
               y: -6,
-              boxShadow: "0px 20px 34px -20px rgba(53, 72, 109, 0.42)",
+              boxShadow: isDark ? "0px 20px 34px -20px rgba(0, 0, 0, 0.6)" : "0px 20px 34px -20px rgba(53, 72, 109, 0.42)",
             }
       }
       transition={{ duration: 0.22, ease: "easeOut" }}
@@ -237,26 +234,24 @@ function EnterpriseCard({ card }: { card: EnterpriseCard }) {
       </div>
 
       <h3
-        className="m-0 pt-4"
+        className="m-0 pt-4 text-[#000000] dark:text-white transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 600,
           fontSize: 20,
           lineHeight: "28px",
-          color: TITLE_COLOR,
         }}
       >
         {card.title}
       </h3>
 
       <p
-        className="m-0 pt-2 whitespace-pre-line"
+        className="m-0 pt-2 whitespace-pre-line text-[rgba(0,0,0,0.6)] dark:text-gray-400 transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 400,
           fontSize: 14,
           lineHeight: "20px",
-          color: BODY_COLOR,
         }}
       >
         {card.body}
@@ -269,7 +264,7 @@ function EnterpriseCard({ card }: { card: EnterpriseCard }) {
 
       <Link href="/agent-detail">
         <button
-          className="w-full border-0"
+          className="w-full border-0 transition-opacity hover:opacity-90 active:scale-95 transition-transform"
           style={{
             background: BLUE_GRADIENT,
             padding: "16px 0",
@@ -297,25 +292,25 @@ function MetaRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between">
       <span
+        className="text-[rgba(0,0,0,0.4)] dark:text-gray-500 transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 700,
           fontSize: 12,
           lineHeight: "16px",
           textTransform: "uppercase",
-          color: LABEL_COLOR,
         }}
       >
         {label}
       </span>
       <span
+        className="text-[#000000] dark:text-white transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 700,
           fontSize: 12,
           lineHeight: "16px",
           textTransform: "uppercase",
-          color: TITLE_COLOR,
         }}
       >
         {value}
@@ -325,29 +320,29 @@ function MetaRow({ label, value }: { label: string; value: string }) {
 }
 
 function EnterpriseMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
-    <section className="block bg-white px-6 py-14 md:hidden">
+    <section className="block bg-white dark:bg-[#05070C] px-6 py-14 md:hidden transition-colors duration-300">
       <h2
-        className="m-0"
+        className="m-0 text-[#000000] dark:text-white transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.poppins,
           fontWeight: 500,
           fontSize: "clamp(30px, 8vw, 40px)",
           lineHeight: "1.1",
-          color: TITLE_COLOR,
         }}
       >
         Built for scale and security
       </h2>
       <p
-        className="m-0 pt-2"
+        className="m-0 pt-2 text-[#000000] dark:text-white/60 transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 600,
           fontSize: 12,
           lineHeight: "16px",
           letterSpacing: "0.2em",
-          color: TITLE_COLOR,
         }}
       >
         Enterprise AI Agents
@@ -355,15 +350,15 @@ function EnterpriseMobile() {
 
       <div className="mt-6 grid grid-cols-1 gap-4">
         {CARDS.map((card) => (
-          <div key={`m-${card.title}`} className="rounded-3xl border bg-white p-5" style={{ borderColor: CARD_BORDER, boxShadow: CARD_SHADOW }}>
-            <h3 className="m-0 text-xl font-semibold text-black">{card.title}</h3>
-            <p className="mt-2 whitespace-pre-line text-sm leading-5 text-[rgba(0,0,0,0.6)]">{card.body}</p>
+          <div key={`m-${card.title}`} className="rounded-3xl border bg-white dark:bg-slate-900 p-5 transition-colors duration-300" style={{ borderColor: isDark ? 'rgba(255,255,255,0.05)' : "rgba(255, 255, 255, 0.1)", boxShadow: isDark ? 'none' : "0px 4px 20px 0px rgba(0, 0, 0, 0.03)" }}>
+            <h3 className="m-0 text-xl font-semibold text-black dark:text-white">{card.title}</h3>
+            <p className="mt-2 whitespace-pre-line text-sm leading-5 text-[rgba(0,0,0,0.6)] dark:text-gray-400">{card.body}</p>
             <div className="mt-4 flex flex-col gap-2">
               <MetaRow label={card.metaLeftLabel} value={card.metaLeftValue} />
               <MetaRow label={card.metaRightLabel} value={card.metaRightValue} />
             </div>
             <Link href="/agent-detail">
-              <button className="mt-4 w-full border-0 py-3 text-white" style={{ background: BLUE_GRADIENT, borderRadius: radiuses.cardSm }}>
+              <button className="mt-4 w-full border-0 py-3 text-white transition-opacity hover:opacity-90" style={{ background: BLUE_GRADIENT, borderRadius: radiuses.cardSm }}>
                 RUN AGENT
               </button>
             </Link>
@@ -373,17 +368,17 @@ function EnterpriseMobile() {
       <div className="mt-8 flex justify-center">
         <Link href="/marketplace" className="inline-flex items-center gap-2 border-0 bg-transparent p-0">
           <span
+            className="text-[#2864E4] dark:text-blue-400 transition-colors duration-300"
             style={{
               fontFamily: typography.fonts.inter,
               fontWeight: 600,
               fontSize: 15,
               lineHeight: "22px",
-              color: colors.brand.blueStart,
             }}
           >
             EXPLORE MORE AGENTS
           </span>
-          <Image src="/section-5-marketplace/explore-more-arrow.svg" alt="" width={8} height={12} unoptimized />
+          <Image src="/section-5-marketplace/explore-more-arrow.svg" alt="" width={8} height={12} className={isDark ? 'brightness-200' : ''} unoptimized />
         </Link>
       </div>
     </section>

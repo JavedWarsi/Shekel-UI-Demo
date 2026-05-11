@@ -59,9 +59,8 @@ export default function Hero() {
 function HeroDesktop() {
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-black"
       style={{
-        backgroundColor: colors.black,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -78,7 +77,7 @@ function HeroDesktop() {
         <HeroBlurEllipses />
 
         <motion.h1
-          className="absolute m-0"
+          className="absolute m-0 text-black dark:text-white transition-colors duration-300"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
@@ -91,7 +90,6 @@ function HeroDesktop() {
             fontWeight: 400,
             fontSize: 40,
             lineHeight: "60px",
-            color: colors.white,
           }}
         >
           Discover AI agents that{" "}
@@ -106,7 +104,6 @@ function HeroDesktop() {
             work for you
           </span>
         </motion.h1>
-
         <DesktopCards />
         <PartnerMarquee 
           className="absolute z-10" 
@@ -441,24 +438,19 @@ function HeroMobile() {
 
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: colors.black }}
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-white dark:bg-black"
     >
-      <div className="absolute inset-x-0 -top-16 h-56" style={{ background: BLUE_GRADIENT, filter: "blur(120px)", opacity: 0.45 }} />
+      <div className="absolute inset-x-0 -top-16 h-56" style={{ background: BLUE_GRADIENT, filter: "blur(120px)", opacity: 0.15 }} />
 
       <div className="relative mx-auto flex max-w-[430px] flex-col gap-6 px-6 pb-10 pt-16">
         <Reveal>
           <h2
-            className="m-0 text-center"
+            className="m-0 text-center text-black dark:text-white"
             style={{
               fontFamily: typography.fonts.poppins,
               fontWeight: 400,
               fontSize: "clamp(28px, 7vw, 40px)",
               lineHeight: "1.25",
-              background: HERO_HEADING_GRADIENT,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
             }}
           >
             Discover AI agents that{" "}
@@ -474,7 +466,6 @@ function HeroMobile() {
             </span>
           </h2>
         </Reveal>
-
         <Reveal delay={0.15}>
           <div
             className="relative overflow-hidden"

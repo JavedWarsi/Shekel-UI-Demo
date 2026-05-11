@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { typography } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 import { 
   Shield, 
   Share2, 
@@ -58,14 +59,16 @@ const TRENDING_AGENTS = [
 ];
 
 export default function PrivacyPolicyPage() {
+  const { isDark } = useThemeTokens();
+  
   return (
-    <div className="min-h-screen bg-white dark:bg-transparent transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       {/* Global SVG Gradient for Icons */}
       <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none', opacity: 0 }}>
         <defs>
           <linearGradient id="icon-blue-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="100%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor={isDark ? "#1E3A8A" : "#FFFFFF"} />
           </linearGradient>
         </defs>
       </svg>
@@ -82,8 +85,8 @@ export default function PrivacyPolicyPage() {
             >
               Privacy Policy
             </h1>
-            <p className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle mb-8" style={{ fontFamily: typography.fonts.inter }}>
-              Your data is a digital extension of your identity. At Ethereal, we treat your information with the same curation and precision as the assets in our marketplace.
+            <p className="text-[16px] font-normal text-black dark:text-gray-300 leading-[28px] tracking-[0px] align-middle mb-8" style={{ fontFamily: typography.fonts.inter }}>
+              Your data is a digital extension of your identity. At Shekel, we treat your information with the same curation and precision as the assets in our marketplace.
             </p>
             
             <div className="flex items-center gap-3">
@@ -101,8 +104,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="1." 
               title="Information We Collect" 
-              // style={{fontFamily:'Plus Jakarta Sans'}}
-              icon={<Image src="/section-13/fingIcon.svg" alt="Fingerprint" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/fingIcon.svg" alt="Fingerprint" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
               <p>We gather information that you provide directly to us when creating an account, curating collections, or transacting within the marketplace. This includes your name, digital wallet addresses, and communication preferences.</p>
               
@@ -124,7 +126,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="2." 
               title="How We Use Your Information" 
-              icon={<Image src="/section-13/growpp.svg" alt="Growth" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/growpp.svg" alt="Growth" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
               <p>Our primary goal is to provide a seamless, high-fidelity experience. We use your data to facilitate smart contract interactions, personalize your exhibition feed, and ensure the integrity of high-value marketplace exchanges.</p>
             </PolicySection>
@@ -135,7 +137,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="3." 
               title="Data Sharing" 
-              icon={<Image src="/section-13/ds.png" alt="Data Sharing" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/ds.png" alt="Data Sharing" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
               <p>We do not sell your personal data. Sharing only occurs with service providers necessary for platform operation (e.g., node providers or identity verifiers) or when mandated by legal frameworks to prevent fraudulent activity.</p>
             </PolicySection>
@@ -146,7 +148,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="4." 
               title="Cookies & Tracking" 
-              icon={<Image src="/section-13/coockies.png" alt="Cookies" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/coockies.png" alt="Cookies" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
               <p>We utilize performance-optimized cookies to remember your display preferences and session state. These are ephemeral tools designed to enhance UI responsiveness, not to profile your behavior across the broader web.</p>
             </PolicySection>
@@ -157,7 +159,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="5." 
               title="Data Security" 
-              icon={<Image src="/section-13/sec.png" alt="Security" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/sec.png" alt="Security" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
               <p>Security is embedded in our architecture. We employ AES-256 encryption at rest and TLS 1.3 for data in transit. Our infrastructure is audited quarterly to maintain the "Neon Curator" standard of digital safety.</p>
             </PolicySection>
@@ -168,7 +170,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="6." 
               title="User Rights" 
-              icon={<Image src="/section-13/hum.png" alt="User Rights" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/hum.png" alt="User Rights" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
               <p>Depending on your jurisdiction (GDPR, CCPA), you have the right to access, rectify, or request the deletion of your data. You may also object to processing or request a portable copy of your marketplace history.</p>
               
@@ -176,7 +178,7 @@ export default function PrivacyPolicyPage() {
                 <h4 className="font-bold mb-1.5 uppercase text-[10px] tracking-widest" style={{ color: '#8AB4F8', fontFamily: typography.fonts.inter }}>
                   EXERCISING YOUR RIGHTS
                 </h4>
-                <p className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: typography.fonts.inter }}>
+                <p className="text-[16px] font-normal text-black dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: typography.fonts.inter }}>
                   To submit a Data Subject Request, please use the button in your Profile Settings or contact our Data Privacy Officer via the support channel below.
                 </p>
               </div>
@@ -188,7 +190,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="7." 
               title="Third-Party Services" 
-              icon={<Image src="/section-13/netw.png" alt="Network" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/netw.png" alt="Network" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
               <p>Our platform integrates with external protocols and wallet providers. These third-party entities have their own privacy policies. We recommend reviewing the terms of any wallet or oracle you connect to the Ethereal ecosystem.</p>
             </PolicySection>
@@ -199,35 +201,35 @@ export default function PrivacyPolicyPage() {
             <PolicySection 
               number="8." 
               title="Changes to Policy" 
-              icon={<Image src="/section-13/change.png" alt="Changes" width={28} height={28} className="object-contain" />}
+              icon={<Image src="/section-13/change.png" alt="Changes" width={28} height={28} className={`object-contain ${isDark ? 'brightness-200' : ''}`} />}
             >
-              <p>We evolve alongside the digital landscape. Any material changes to this policy will be communicated via the Ethereal Dashboard and updated on this page with a revised 'Last Updated' timestamp.</p>
+              <p>We evolve alongside the digital landscape. Any material changes to this policy will be communicated via the Shekel Dashboard and updated on this page with a revised 'Last Updated' timestamp.</p>
             </PolicySection>
 
             <hr className="border-[#F3F4F6] dark:border-white/10" />
 
             {/* Section 9 / Support Box */}
-            <div className="relative mt-10  dark:from-blue-900/10 dark:to-blue-900/5 border border-[#EBF1FF] dark:border-white/10 rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 overflow-hidden">
+            <div className="relative mt-10 bg-white dark:bg-white/5 border border-[#EBF1FF] dark:border-white/10 rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 overflow-hidden">
               {/* Subtle Glow Effect */}
               <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0">
-                <Image src="/section-13/Subtle Glow.svg" alt="" width={241} height={241} className="opacity-80" aria-hidden="true" />
+                <Image src="/section-13/Subtle Glow.svg" alt="" width={241} height={241} className={`opacity-80 ${isDark ? 'brightness-50' : ''}`} aria-hidden="true" unoptimized />
               </div>
 
               <div className="flex-1 max-w-[400px] relative z-10">
                 <h2 className="text-[18px] md:text-[20px] font-bold text-black dark:text-white mb-2" style={{ fontFamily: typography.fonts.inter }}>
                   9. Have questions about your data?
                 </h2>
-                <p className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: typography.fonts.inter }}>
+                <p className="text-[16px] font-normal text-black dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" style={{ fontFamily: typography.fonts.inter }}>
                   Our privacy team is available to clarify how we handle your digital footprint and assist with any data portability requests.
                 </p>
               </div>
               <div className="flex flex-col items-center gap-3 shrink-0 relative z-10">
                 <button 
-                  className="px-6 py-2.5 rounded-[8px] text-[13px] font-bold text-white flex items-center gap-2 btn-primary-gradient w-full md:w-auto justify-center shadow-sm"
+                  className="px-6 py-2.5 rounded-[8px] text-[13px] font-bold text-white flex items-center gap-2 bg-[#2864E4] hover:bg-blue-600 w-full md:w-auto justify-center shadow-sm"
                 >
                   <Mail size={16} strokeWidth={1.5} /> Contact Support
                 </button>
-                <Link href="#" className="text-[#000000] text-[14px] font-light dark:text-gray-300 hover:text-[#000000] transition-colors">
+                <Link href="#" className="text-black text-[14px] font-light dark:text-gray-300 hover:text-blue-500 transition-colors no-underline">
                   View Help Center
                 </Link>
               </div>
@@ -238,17 +240,11 @@ export default function PrivacyPolicyPage() {
 
         {/* --- RIGHT: Sidebar --- */}
         <aside className="w-full lg:w-[340px] shrink-0 pt-4 lg:pt-0">
-          {/* <div className="border border-[#D4D4D4]  md:p-0 w-full" style={{width:'400px'}}>
-            <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8 ml-5" style={{fontFamily:'Poppins',}}>
-              <span className="text-[#111827] dark:text-white">Trending </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#2473f2ff] to-[#FFFFFF]">AI</span><br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
-            </h2>
-          </div> */}
+
           <div className="sticky top-24">
             <h2 className="text-[32px] md:text-[36px] leading-[1.1] font-semibold tracking-tight mb-8 ml-5" style={{fontFamily:'Poppins',}}>
-              <span className="text-[#111827] dark:text-white">Trending </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#2473f2ff] to-[#FFFFFF]">AI</span><br />
+              <span className="text-black dark:text-white">Trending </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">AI</span><br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]">Agents</span>
             </h2>
             
@@ -262,19 +258,18 @@ export default function PrivacyPolicyPage() {
                         <AgentIcon 
                           size={24} 
                           strokeWidth={2.4} 
-                          // stroke="url(#icon-blue-gradient)" 
                           stroke="#2864E4"
                           strokeLinecap="square" 
                           strokeLinejoin="miter"
                         />
                       </div>
-                      <div className="flex items-center text-[13px] font-bold text-[#111827] dark:text-white">
-                        <Star size={16} fill="url(#icon-blue-gradient)" stroke="url(#icon-blue-gradient)" className="mr-1.5" />
+                      <div className="flex items-center text-[13px] font-bold text-black dark:text-white">
+                        <Star size={16} fill="#2864E4" stroke="#2864E4" className="mr-1.5" />
                         {agent.rating}
                       </div>
                     </div>
                     
-                    <h3 className="text-[20px] font-bold text-[#111827] dark:text-white mb-3 uppercase tracking-tight">
+                    <h3 className="text-[20px] font-bold text-black dark:text-white mb-3 uppercase tracking-tight">
                       {agent.name}
                     </h3>
                     
@@ -286,12 +281,12 @@ export default function PrivacyPolicyPage() {
                       <div className="text-[10px] font-bold text-[#96B3FF] uppercase tracking-widest">
                         {agent.runs}
                       </div>
-                      <div className="text-[14px] font-light text-[#111827] dark:text-white uppercase">
+                      <div className="text-[14px] font-light text-black dark:text-white uppercase">
                         {agent.price}
                       </div>
                     </div>
                     
-                    <Link href="/agent-detail" className="block w-full">
+                    <Link href="/agent-detail" className="block w-full no-underline">
                       <button 
                         className="w-full h-12 rounded-[8px] text-[12px] font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-blue-500/10 transition-all hover:scale-[1.02] active:scale-[0.98]"
                         style={{ background: 'linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%)' }}
@@ -327,7 +322,7 @@ function PolicySection({ number, title, icon, children }: { number: string; titl
           {number} {title}
         </h2>
         <div 
-          className="text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" 
+          className="text-[16px] font-normal text-black dark:text-gray-300 leading-[28px] tracking-[0px] align-middle" 
           style={{ fontFamily: typography.fonts.inter }}
         >
           {children}

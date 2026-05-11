@@ -1,24 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { colors, typography } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CtaSection.tsx  —  "Ready to scale with AI?"
 // Figma frame: 506:4925  "Frame 2147225687"
 // Canvas: 1280 × 552 px   Page-y: 2730   bg: #000000
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (Figma 506:4925, section-absolute px):
-//   bg            (x=-385, y=-397)  1841×1252
-//   Ellipses      (-549,-566) (-536,523) (1147,-531) 696×696
-//   Design A      (x=264, y=184) 663.5×665.5  rot 43.72°
-//   Design B      (x=898.67, y=165) 463.8×474.5  rot 35.54°  blur
-//   Design C      (x=-92, y=105) 360.4×421.1  rot -3.97°  blur
-//   Heading       calc(50% - 372px) top 115  (744 wide, translateY -50%)
-//   Body          (50% x), top 192
-//   Buttons       calc(50% + 8.24px) top 291
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CANVAS_W = 1280;
@@ -85,11 +74,13 @@ export default function CtaSection() {
 // ─── Desktop ─────────────────────────────────────────────────────────────────
 
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block rounded-[24px]"
+      className="relative hidden w-full overflow-hidden md:block rounded-[24px] transition-colors duration-300"
       style={{
-        backgroundColor: colors.white,
+        backgroundColor: isDark ? 'black' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -253,10 +244,12 @@ function SectionDesktop() {
 // ─── Mobile ──────────────────────────────────────────────────────────────────
 
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden rounded-[24px] py-16"
-      style={{ backgroundColor: colors.white }}
+      className="relative block w-full overflow-hidden md:hidden rounded-[24px] py-16 transition-colors duration-300"
+      style={{ backgroundColor: isDark ? 'black' : colors.white }}
     >
        <div
           className="absolute"
@@ -293,7 +286,7 @@ function SectionHeading({
 }) {
   return (
     <h2
-      className="m-0 text-[#161616] text-center"
+      className="m-0 text-[#161616] dark:text-white text-center transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.inter,
         fontWeight: 400,
@@ -317,7 +310,7 @@ function SectionBody({
 }) {
   return (
     <p
-      className="m-0 text-[#94a3b8] text-center whitespace-normal md:whitespace-pre-wrap"
+      className="m-0 text-[#94a3b8] dark:text-white/60 text-center transition-colors duration-300 whitespace-normal md:whitespace-pre-wrap"
       style={{
         fontFamily: typography.fonts.inter,
         fontWeight: 400,
@@ -333,7 +326,7 @@ function SectionBody({
 function PrimaryButton({ text, isMobile = false }: { text: string, isMobile?: boolean }) {
   return (
     <div
-      className={`flex items-center justify-center cursor-pointer min-w-[200px] ${isMobile ? "w-full" : ""}`}
+      className={`flex items-center justify-center cursor-pointer min-w-[200px] hover:opacity-90 transition-opacity ${isMobile ? "w-full" : ""}`}
       style={{
         background: BORDER_GRADIENT,
         borderRadius: "10px",
@@ -358,11 +351,13 @@ function PrimaryButton({ text, isMobile = false }: { text: string, isMobile?: bo
 }
 
 function SecondaryButton({ text, isMobile = false }: { text: string, isMobile?: boolean }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div
-      className={`flex items-center justify-center cursor-pointer min-w-[200px] bg-white ${isMobile ? "w-full" : ""}`}
+      className={`flex items-center justify-center cursor-pointer min-w-[200px] bg-white dark:bg-white/5 transition-colors ${isMobile ? "w-full" : ""}`}
       style={{
-        border: `1px solid ${colors.brand.blueStart}`,
+        border: `1px solid ${isDark ? '#3B82F6' : colors.brand.blueStart}`,
         borderRadius: "10px",
         padding: "21px 41px",
       }}

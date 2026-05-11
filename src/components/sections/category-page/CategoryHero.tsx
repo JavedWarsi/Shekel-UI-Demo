@@ -42,15 +42,15 @@ const TUNNEL_RECTS: {
 function HeroBody({ className }: { className?: string }) {
   return (
     <p
-      className={className}
+      className={`${className} text-slate-600 dark:text-white transition-colors duration-300`}
       style={{
         margin: 0,
-        width: 436,
+        width: "100%",
+        maxWidth: 436,
         fontFamily: typography.fonts.inter,
         fontWeight: 400,
         fontSize: 18,
         lineHeight: "29.25px",
-        color: colors.white,
       }}
     >
       Discover AI agents designed to automate marketing workflows and improve performance. From
@@ -62,12 +62,11 @@ function HeroBody({ className }: { className?: string }) {
 function HeroChip() {
   return (
     <div
-      className="flex items-center"
+      className="flex items-center transition-colors duration-300 bg-[#f8fafc] dark:bg-[#0d0d0d] border border-black/5 dark:border-white/5"
       style={{
         gap: 7.99,
         padding: "12px 24px",
         borderRadius: radiuses.pill,
-        backgroundColor: "#0d0d0d",
         boxShadow: "0px 1px 1px rgba(0,0,0,0.05)",
       }}
     >
@@ -80,16 +79,16 @@ function HeroChip() {
           alt=""
           width={20}
           height={20}
-          className="h-full w-full object-contain"
+          className="h-full w-full object-contain dark:invert-0 invert transition-all duration-300"
         />
       </div>
       <span
+        className="text-black dark:text-white transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 600,
           fontSize: 16,
           lineHeight: "24px",
-          color: colors.white,
         }}
       >
         120+ agents available
@@ -101,9 +100,8 @@ function HeroChip() {
 function CategoryHeroDesktop() {
   return (
     <section
-      className="relative z-30 hidden w-full md:block"
+      className="relative z-30 hidden w-full md:block transition-colors duration-300 bg-white dark:bg-black"
       style={{
-        backgroundColor: colors.black,
         borderBottomLeftRadius: BTM_ROUND,
         borderBottomRightRadius: BTM_ROUND,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
@@ -121,7 +119,7 @@ function CategoryHeroDesktop() {
       >
         {/* Top glow strip */}
         <div
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{ left: -19, top: -49, width: 1343, height: 211 }}
         >
           <div className="absolute inset-[-4.74]">
@@ -135,7 +133,7 @@ function CategoryHeroDesktop() {
           </div>
         </div>
         <div
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{ left: -98, top: -139, width: 163, height: 163 }}
         >
           <div className="absolute inset-[-1.25]">
@@ -148,7 +146,7 @@ function CategoryHeroDesktop() {
           </div>
         </div>
         <div
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{ left: 1252, top: -82, width: 163, height: 163 }}
         >
           <div className="absolute inset-[-1.32]">
@@ -176,6 +174,20 @@ function CategoryHeroDesktop() {
           }}
         >
           <span
+            className="transition-colors duration-300 dark:hidden"
+            style={{
+              display: "block",
+              background:
+                "linear-gradient(207.59deg, #000 55.6%, rgba(0,0,0,0) 110.73%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Marketing
+          </span>
+          <span
+            className="hidden dark:block transition-colors duration-300"
             style={{
               display: "block",
               background:
@@ -214,7 +226,7 @@ function CategoryHeroDesktop() {
         {TUNNEL_RECTS.map((r, i) => (
           <div
             key={i}
-            className="absolute mix-blend-difference"
+            className="absolute dark:mix-blend-difference mix-blend-multiply transition-all duration-300"
             style={{
               left: r.l,
               top: r.t,
@@ -227,7 +239,7 @@ function CategoryHeroDesktop() {
           />
         ))}
         <div
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{
             left: 502.57,
             top: -99.27,
@@ -275,15 +287,14 @@ function CategoryHeroDesktop() {
 function CategoryHeroMobile() {
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-white dark:bg-black"
       style={{
-        backgroundColor: colors.black,
         borderBottomLeftRadius: BTM_ROUND,
         borderBottomRightRadius: BTM_ROUND,
       }}
     >
       <div className="flex flex-col gap-8 px-6 py-14">
-        <div className="relative h-[200px] w-full overflow-hidden rounded-lg">
+        <div className="relative h-[200px] w-full overflow-hidden rounded-lg opacity-40 dark:opacity-100 transition-opacity duration-300">
           <Image
             src="/section-1-category-page/hero-glow-right.svg"
             alt=""
@@ -301,6 +312,20 @@ function CategoryHeroMobile() {
           }}
         >
           <span
+            className="dark:hidden transition-colors duration-300"
+            style={{
+              display: "block",
+              background:
+                "linear-gradient(207.59deg, #000 55.6%, rgba(0,0,0,0) 110.73%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Marketing
+          </span>
+          <span
+            className="hidden dark:block transition-colors duration-300"
             style={{
               display: "block",
               background:

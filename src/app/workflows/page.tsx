@@ -11,7 +11,7 @@ import ImpactWorkflows from "@/components/sections/workflows/ImpactWorkflows";
 
 export default function WorkflowsPage() {
   return (
-    <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
+    <div className="min-h-screen overflow-x-clip transition-colors duration-300">
       <Hero />
       <HowItWorks />
       <DragConnectRun />

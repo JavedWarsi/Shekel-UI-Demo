@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { typography, radiuses } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CARDS = [
   { icon: "/section-2-about/card-icon-1.svg", title: "Data Analyst", body: "Synthesizes market trends in real-time." },
@@ -9,16 +12,18 @@ const CARDS = [
 ];
 
 export default function WhatIsShekel() {
+  const { isDark } = useThemeTokens();
+  
   return (
-    <section className="bg-white px-6 py-20 md:px-16">
+    <section className="bg-white dark:bg-[#05070C] px-6 py-20 md:px-16 transition-colors duration-300">
       <div className="mx-auto grid max-w-[1232px] gap-10 md:grid-cols-2 md:gap-20">
         <div>
-          <h2 style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: "clamp(34px, 5vw, 48px)", lineHeight: "1.25", color: "#000" }}>
+          <h2 className="text-black dark:text-white" style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: "clamp(34px, 5vw, 48px)", lineHeight: "1.25" }}>
             Autonomous operations,
             <br />
             curated by you.
           </h2>
-          <p className="mt-6" style={{ marginBottom: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 18, lineHeight: "29.25px", color: "#000" }}>
+          <p className="mt-6 text-black dark:text-gray-300" style={{ marginBottom: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 18, lineHeight: "29.25px" }}>
             Shekel is more than a marketplace. It is the infrastructure for the next generation of labor.
             We provide a modular system where specialized AI agents don&apos;t just complete tasks, they integrate
             into precision-engineered workflows that run your business.
@@ -26,12 +31,12 @@ export default function WhatIsShekel() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {CARDS.map((card) => (
-            <article key={card.title} className="border p-6" style={{ borderRadius: radiuses.pill, borderColor: "rgba(65,71,83,0.15)", background: "linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0.4))", backdropFilter: "blur(6px)" }}>
-              <div className="mb-4 inline-flex rounded-lg p-3" style={{ backgroundColor: "rgba(171,199,255,0.2)" }}>
-                <Image src={card.icon} alt="" width={20} height={20} />
+            <article key={card.title} className="border p-6" style={{ borderRadius: radiuses.pill, borderColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(65,71,83,0.15)", background: isDark ? "rgba(255,255,255,0.03)" : "linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0.4))", backdropFilter: "blur(6px)" }}>
+              <div className="mb-4 inline-flex rounded-lg p-3" style={{ backgroundColor: isDark ? "rgba(59,130,246,0.1)" : "rgba(171,199,255,0.2)" }}>
+                <Image src={card.icon} alt="" width={20} height={20} className={isDark ? "brightness-200" : ""} />
               </div>
-              <h3 style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 24, lineHeight: "32px", color: "#000" }}>{card.title}</h3>
-              <p className="mt-2" style={{ marginBottom: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "20px", color: "#000" }}>{card.body}</p>
+              <h3 className="text-black dark:text-white" style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 24, lineHeight: "32px" }}>{card.title}</h3>
+              <p className="mt-2 text-black dark:text-gray-400" style={{ marginBottom: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "20px" }}>{card.body}</p>
             </article>
           ))}
         </div>

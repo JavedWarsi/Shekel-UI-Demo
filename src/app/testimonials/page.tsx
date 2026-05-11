@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-[#05070C] transition-colors duration-300">
       <TestimonialsHero />
       <TestimonialsGrid />
       <TestimonialsStats />

@@ -1,36 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// ContactMethods.tsx  —  "Contact Methods"
-// Figma frame: 508-7475  "Frame 2147225669"
-// Canvas: 1280 × 466 px   Page-y: 783   bg: #FFFFFF
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Ellipse 43664    (x=-688, y=146)    696×696   blue gradient blur
-//   Ellipse 43665    (x=1270, y=148)    696×696   blue gradient blur
-//   Ellipse 43664    (x=-187, y=978)    1647×163  blue gradient blur
-//   Ellipse 43666    (x=-187, y=-162)   1647×163  blue gradient blur
-//   Container        (x=34, y=116)      1216×auto flex row, 3 cards
-//     Card 1         (x=0, y=0)         384×auto  WhatsApp
-//     Card 2         (x=416, y=0)       384×auto  Email
-//     Card 3         (x=832, y=0)       384×auto  Social Media
-// ─────────────────────────────────────────────────────────────────────────────
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CANVAS_W = 1280;
 const CANVAS_H = 466;
 const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
 const GRADIENT_BLUE = "linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%)";
-const CARD_BG = "rgba(255, 255, 255, 0.03)";
-const CARD_BORDER = "rgba(0, 0, 0, 0.08)";
-const HEADING_COLOR = "#000000";
-const BODY_COLOR = "#A1A1AA";
-const LINK_COLOR = "#2F80ED";
 
 const CARDS = [
   {
@@ -65,14 +43,14 @@ export default function ContactMethods() {
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300"
       style={{
-        backgroundColor: colors.white,
+        backgroundColor: isDark ? 'black' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -88,7 +66,7 @@ function SectionDesktop() {
       >
         {/* Glow Ellipses */}
         <div
-          className="absolute"
+          className="absolute transition-opacity duration-300"
           style={{
             left: -688,
             top: 146,
@@ -96,11 +74,11 @@ function SectionDesktop() {
             height: 696,
             background: GRADIENT_BLUE,
             filter: "blur(200px)",
-            opacity: 0.5,
+            opacity: isDark ? 0.3 : 0.1,
           }}
         />
         <div
-          className="absolute"
+          className="absolute transition-opacity duration-300"
           style={{
             left: 1270,
             top: 148,
@@ -108,31 +86,7 @@ function SectionDesktop() {
             height: 696,
             background: GRADIENT_BLUE,
             filter: "blur(200px)",
-            opacity: 0.5,
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            left: -187,
-            top: 978,
-            width: 1647,
-            height: 163,
-            background: GRADIENT_BLUE,
-            filter: "blur(200px)",
-            opacity: 0.5,
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            left: -187,
-            top: -162,
-            width: 1647,
-            height: 163,
-            background: GRADIENT_BLUE,
-            filter: "blur(200px)",
-            opacity: 0.5,
+            opacity: isDark ? 0.3 : 0.1,
           }}
         />
 
@@ -157,19 +111,20 @@ function SectionDesktop() {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
-
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: colors.white }}
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300"
+      style={{ backgroundColor: isDark ? 'black' : colors.white }}
     >
       <div
-        className="absolute left-0 top-0 w-full h-full opacity-30"
+        className="absolute left-0 top-0 w-full h-full opacity-30 transition-opacity duration-300"
         style={{
           background: GRADIENT_BLUE,
           filter: "blur(100px)",
+          opacity: isDark ? 0.2 : 0.1
         }}
       />
       <div className="relative z-10 flex flex-col gap-6 px-6 py-16 sm:px-8">
@@ -180,8 +135,6 @@ function SectionMobile() {
     </section>
   );
 }
-
-// ─── Shared Sub-Components ───────────────────────────────────────────────────
 
 function ContactCard({
   title,
@@ -196,12 +149,14 @@ function ContactCard({
   iconBg: string;
   iconSrc: string;
 }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div
-      className="flex flex-col items-start border"
+      className="flex flex-col items-start border transition-colors duration-300 hover:border-blue-500/50 cursor-pointer"
       style={{
-        backgroundColor: CARD_BG,
-        borderColor: CARD_BORDER,
+        backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.03)',
+        borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)',
         borderRadius: radiuses.card,
         padding: 32,
         gap: 24,
@@ -209,11 +164,11 @@ function ContactCard({
       }}
     >
       <div
-        className="flex items-center justify-center"
+        className="flex items-center justify-center transition-colors duration-300"
         style={{
           width: 48,
           height: 48,
-          backgroundColor: iconBg,
+          backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : iconBg,
           borderRadius: radiuses.icon,
         }}
       >
@@ -222,30 +177,29 @@ function ContactCard({
           alt={`${title} icon`}
           width={24}
           height={24}
+          className={isDark ? 'brightness-200' : ''}
         />
       </div>
 
       <div className="flex flex-col gap-2">
         <h3
-          className="m-0"
+          className="m-0 text-black dark:text-white transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 500,
             fontSize: 20,
             lineHeight: "28px",
-            color: HEADING_COLOR,
           }}
         >
           {title}
         </h3>
         <p
-          className="m-0"
+          className="m-0 text-black/60 dark:text-white/60 transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.inter,
             fontWeight: 400,
             fontSize: 16,
             lineHeight: "24px",
-            color: BODY_COLOR,
           }}
         >
           {body}
@@ -254,12 +208,11 @@ function ContactCard({
 
       <div className="mt-auto flex items-center gap-2 pt-4">
         <span
+          className="text-blue-500 dark:text-blue-400 font-semibold"
           style={{
             fontFamily: typography.fonts.inter,
-            fontWeight: 600,
             fontSize: 16,
             lineHeight: "24px",
-            color: LINK_COLOR,
           }}
         >
           {linkText}
@@ -269,6 +222,7 @@ function ContactCard({
           alt="Arrow"
           width={16}
           height={16}
+          className={isDark ? 'brightness-200' : ''}
         />
       </div>
     </div>

@@ -125,15 +125,13 @@ function SectionHeading({
 }) {
   return (
     <h1
+      className="m-0 text-black dark:text-white transition-colors duration-300"
       style={{
-        margin: 0,
         fontFamily: typography.fonts.inter,
         fontWeight: 600,
         fontSize,
         lineHeight,
-        /* style_ERYLUA letterSpacing −2.81% → em relative to font size */
         letterSpacing: "-0.0281em",
-        color: colors.white,
       }}
     >
       <span
@@ -169,20 +167,18 @@ function SectionSubheading({
 }) {
   return (
     <p
+      className="m-0 text-slate-600 dark:text-white transition-colors duration-300"
       style={{
-        margin: 0,
         fontFamily: typography.fonts.inter,
         fontWeight: 400,
         fontSize,
         lineHeight,
-        color: colors.white,
       }}
     >
       Connect multiple AI agents, automate tasks, and execute workflows visually in seconds. Architect your intelligence with Shekel.
     </p>
   );
 }
-
 function StartBuildingButton({ width }: { width?: string | number }) {
   return (
     <button
@@ -644,9 +640,8 @@ function SectionDesktop({
 
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#0B1120]"
       style={{
-        backgroundColor: "#0B1120",
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -662,7 +657,7 @@ function SectionDesktop({
       >
         {/* Background Grid */}
         <div
-          className="absolute"
+          className="absolute opacity-10 dark:opacity-100 transition-opacity duration-300"
           style={{
             left: -145,
             top: -163,
@@ -675,19 +670,19 @@ function SectionDesktop({
 
         {/* Ellipses */}
         <div
-          className="absolute"
+          className="absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{ left: -19, top: -49, width: 1343, height: 211 }}
         >
           <Image src="/section-1-workflows/ellipse-1.png" alt="" fill className="object-cover" priority />
         </div>
         <div
-          className="absolute"
+          className="absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{ left: -98, top: -139, width: 163, height: 163 }}
         >
           <Image src="/section-1-workflows/ellipse-2.png" alt="" fill className="object-cover" priority />
         </div>
         <div
-          className="absolute"
+          className="absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{ left: 1252, top: -82, width: 163, height: 163 }}
         >
           <Image src="/section-1-workflows/ellipse-3.png" alt="" fill className="object-cover" priority />
@@ -696,23 +691,24 @@ function SectionDesktop({
         {/* Main Content */}
         <Reveal
           delay={0.1}
-          className="absolute flex items-center justify-center"
+          className="absolute flex items-center justify-center transition-colors duration-300"
           style={{
             left: 35,
             top: 109,
             width: 617,
             gap: 10,
             padding: 10,
-            background: "rgba(0, 0, 0, 0.69)",
+            background: "rgba(0, 0, 0, 0.05)", // Changed from 0.69 to 0.05 for light mode
             backdropFilter: "blur(150.6px)",
             border: "1px solid rgba(255, 255, 255, 0.2)",
             borderRadius: HEADING_GLASS_R,
             zIndex: 10,
           }}
         >
-          <SectionHeading fontSize={64} lineHeight="72px" />
+           <div className="dark:bg-black/40 p-4 rounded-[18px]">
+             <SectionHeading fontSize={64} lineHeight="72px" />
+           </div>
         </Reveal>
-
         <Reveal
           delay={0.3}
           className="absolute"
@@ -829,18 +825,18 @@ function SectionMobile({
 
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: "#0B1120" }}
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-white dark:bg-[#0B1120]"
     >
       {/* Background elements */}
-      <div className="absolute inset-0 opacity-50">
+      <div className="absolute inset-0 opacity-10 dark:opacity-50 transition-opacity duration-300">
         <Image src="/section-1-workflows/bg-grid.png" alt="" fill className="object-cover" priority />
       </div>
       <div className="relative flex flex-col gap-10 px-6 py-20 z-10">
         <Reveal delay={0.1}>
           <div
+            className="transition-colors duration-300"
             style={{
-              background: "rgba(0, 0, 0, 0.69)",
+              background: "rgba(0, 0, 0, 0.05)",
               backdropFilter: "blur(150.6px)",
               border: "1px solid rgba(255, 255, 255, 0.2)",
               borderRadius: radiuses.cardSm,
@@ -848,7 +844,9 @@ function SectionMobile({
               display: "inline-block",
             }}
           >
-            <SectionHeading fontSize="clamp(32px, 8vw, 48px)" lineHeight="1.1" />
+             <div className="dark:bg-black/40 p-2 rounded-[8px]">
+               <SectionHeading fontSize="clamp(32px, 8vw, 48px)" lineHeight="1.1" />
+             </div>
           </div>
         </Reveal>
 
@@ -904,7 +902,7 @@ function SectionMobile({
         </Reveal>
 
         {/* Logos Marquee - Mobile */}
-        <div className="relative mt-8 h-[80px] w-full overflow-hidden rounded-xl border border-white/20 bg-black">
+        <div className="relative mt-8 h-[80px] w-full overflow-hidden rounded-xl border border-black/10 dark:border-white/20 bg-white/50 dark:bg-black transition-colors duration-300">
           <motion.div
             className="absolute left-0 top-1/2 flex w-max -translate-y-1/2 items-center"
             style={{
@@ -934,15 +932,15 @@ function SectionMobile({
                       alt={p.alt}
                       fill
                       sizes={`${Math.round(p.w * 0.82)}px`}
-                      className="object-contain"
+                      className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300"
                     />
                   </div>
                 ))}
               </div>
             ))}
           </motion.div>
-          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-8 bg-gradient-to-r from-black to-transparent" />
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-8 bg-gradient-to-l from-black to-transparent" />
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-8 bg-gradient-to-r from-white dark:from-black to-transparent transition-all duration-300" />
+          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-8 bg-gradient-to-l from-white dark:from-black to-transparent transition-all duration-300" />
         </div>
 
       </div>

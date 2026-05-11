@@ -2,19 +2,22 @@
 
 import React from 'react';
 import { typography } from '@/tokens/design-tokens';
+import { useThemeTokens } from '@/hooks/useThemeTokens';
 
 const TermsIntro = () => {
+  const { isDark } = useThemeTokens();
+  
   return (
-    <section className="mb-12">
+    <section className="mb-12 transition-colors duration-300">
       <h2 
-        className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#FFFFFF]"
-        
+        className="text-[24px] font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-[#3B82F6] to-[#ECF2FF]"
+        style={{ fontFamily: 'Plus Jakarta Sans' }}
       >
         1. Introduction
       </h2>
       
       <div 
-        className="space-y-8 text-[16px] font-normal text-[#000000] dark:text-gray-300 leading-[28px] tracking-[0px] align-middle"
+        className="space-y-8 text-[16px] font-normal text-black dark:text-gray-300 leading-[28px] tracking-[0px] align-middle"
         style={{ fontFamily: "Inter" }}
       >
         <p>

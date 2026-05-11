@@ -1,19 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PricingGrid.tsx  —  "Section - Pricing Grid"
 // Figma frame: 506:4756  "Section - Pricing Grid"
 // Canvas: 1232 × 476 px   Page-y: 674   bg: transparent
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1232px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Starter Plan   (x=0, y=32)   389.33×452
-//   Pro Plan       (x=842.67, y=36)   389.33×444
-//   Pay-as-you-go Plan (Highlighted) (x=421.33, y=29.5) 401.01×456.98 (Scaled)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CANVAS_W = 1232;
@@ -56,9 +50,9 @@ export default function PricingGrid() {
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
       className="relative hidden w-full md:block"
@@ -83,14 +77,14 @@ function SectionDesktop() {
             transformOrigin: "top left",
           }}
         >
-          {/* Starter Plan — Figma x=0, y=12 */}
+          {/* Starter Plan */}
           <div
-            className="absolute flex flex-col bg-white w-[389.33px] rounded-[12px]"
+            className="absolute flex flex-col bg-white dark:bg-slate-900 w-[389.33px] rounded-[12px] transition-all duration-300"
             style={{
               left: 0,
               top: 32,
               padding: 33,
-              border: `1px solid ${CARD_BORDER}`,
+              border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
               boxShadow: CARD_SHADOW,
             }}
           >
@@ -106,18 +100,18 @@ function SectionDesktop() {
                 <SecondaryButton text="Start Free" />
           </div>
 
-          {/* Pay-as-you-go Plan — Figma x=421.33, y=9.5 */}
+          {/* Pay-as-you-go Plan */}
           <div
             className="absolute flex h-[456.981px] items-center justify-center w-[401.01px]"
             style={{ left: 421.33, top: 29.5 }}
           >
               <div className="flex-none" style={{ transform: "scale(1.03)" }}>
                 <div
-                  className="bg-white relative overflow-hidden flex flex-col w-[389.33px]"
+                  className="bg-white dark:bg-slate-900 relative overflow-hidden flex flex-col w-[389.33px] transition-all duration-300"
                   style={{
                     padding: 34,
                     borderRadius: radiuses.cardSm,
-                    border: `2px solid rgba(0,90,182,0.2)`,
+                    border: `2px solid ${isDark ? 'rgba(59,130,246,0.3)' : 'rgba(0,90,182,0.2)'}`,
                     boxShadow: HIGHLIGHT_SHADOW,
                   }}
                 >
@@ -142,7 +136,7 @@ function SectionDesktop() {
                                   color: colors.white
                               }}
                            >
-                               MOST POPULAR
+                                MOST POPULAR
                            </span>
                         </div>
                     </div>
@@ -163,14 +157,14 @@ function SectionDesktop() {
               </div>
           </div>
 
-          {/* Pro Plan — Figma x=842.67, y=16 */}
+          {/* Pro Plan */}
           <div
-            className="absolute flex flex-col bg-white w-[389.33px] rounded-[12px]"
+            className="absolute flex flex-col bg-white dark:bg-slate-900 w-[389.33px] rounded-[12px] transition-all duration-300"
             style={{
               left: 842.67,
               top: 36,
               padding: 33,
-              border: `1px solid ${CARD_BORDER}`,
+              border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
               boxShadow: CARD_SHADOW,
             }}
           >
@@ -191,23 +185,21 @@ function SectionDesktop() {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
-
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
       className="relative block w-full overflow-hidden md:hidden pb-16"
       style={{ backgroundColor: "transparent" }}
     >
       <div className="flex flex-col gap-6 px-6 sm:px-8">
-        
-         {/* Pay-as-you-go Plan (Highlighted) - Displayed First on Mobile */}
          <div
-            className="bg-white relative overflow-hidden flex flex-col w-full"
+            className="bg-white dark:bg-slate-900 relative overflow-hidden flex flex-col w-full transition-all duration-300"
             style={{
                 padding: 34,
                 borderRadius: radiuses.cardSm,
-                border: `2px solid rgba(0,90,182,0.2)`,
+                border: `2px solid ${isDark ? 'rgba(59,130,246,0.3)' : 'rgba(0,90,182,0.2)'}`,
                 boxShadow: HIGHLIGHT_SHADOW,
             }}
         >
@@ -249,13 +241,12 @@ function SectionMobile() {
             <PrimaryButton text="Run Agent" />
         </div>
 
-        {/* Starter Plan */}
         <div
-          className="flex flex-col bg-white w-full"
+          className="flex flex-col bg-white dark:bg-slate-900 w-full transition-all duration-300"
           style={{
             padding: 33,
             borderRadius: radiuses.cardSm,
-            border: `1px solid ${CARD_BORDER}`,
+            border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
             boxShadow: CARD_SHADOW,
           }}
         >
@@ -271,13 +262,12 @@ function SectionMobile() {
             <SecondaryButton text="Start Free" />
         </div>
 
-        {/* Pro Plan */}
         <div
-          className="flex flex-col bg-white w-full"
+          className="flex flex-col bg-white dark:bg-slate-900 w-full transition-all duration-300"
           style={{
             padding: 33,
             borderRadius: radiuses.cardSm,
-            border: `1px solid ${CARD_BORDER}`,
+            border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
             boxShadow: CARD_SHADOW,
           }}
         >
@@ -292,13 +282,10 @@ function SectionMobile() {
             </div>
             <SecondaryButton text="Go Pro" />
         </div>
-
       </div>
     </section>
   );
 }
-
-// ─── Shared Components ───────────────────────────────────────────────────────
 
 function PlanHeader({
   title,
@@ -315,29 +302,30 @@ function PlanHeader({
   isHighlighted?: boolean;
   isPayg?: boolean;
 }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div className="flex flex-col" style={{ paddingBottom: isPayg ? 31.068 : 32 }}>
       <div className="flex flex-col gap-[8px]">
         <h3
-          className="m-0"
+          className="m-0 transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 700,
             fontSize: 20,
             lineHeight: "28px",
-            color: isHighlighted ? BLUE_TEXT : colors.text.dark,
+            color: isHighlighted ? (isDark ? '#60A5FA' : BLUE_TEXT) : (isDark ? '#FFFFFF' : '#0B0B0B'),
           }}
         >
           {title}
         </h3>
         <p
-          className="m-0"
+          className="m-0 text-[#475569] dark:text-white/60 transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.inter,
             fontWeight: 400,
             fontSize: 14,
             lineHeight: "20px",
-            color: TEXT_MUTED,
           }}
         >
           {description}
@@ -346,24 +334,23 @@ function PlanHeader({
 
       <div className="flex items-baseline" style={{ paddingTop: isPayg ? 31.068 : 32 }}>
         <span
+          className="text-[#0B0B0B] dark:text-white transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 700,
             fontSize: 36,
             lineHeight: "40px",
-            color: colors.text.dark,
           }}
         >
           {price}
         </span>
         <span
-          className="ml-1"
+          className="ml-1 text-[#475569] dark:text-white/60 transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.inter,
             fontWeight: 400,
             fontSize: 16,
             lineHeight: "24px",
-            color: TEXT_MUTED,
           }}
         >
           {period}
@@ -374,6 +361,8 @@ function PlanHeader({
 }
 
 function FeatureList({ features }: { features: string[] }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <ul className="m-0 p-0 flex flex-col gap-[16px] list-none">
       {features.map((feature, idx) => (
@@ -383,16 +372,16 @@ function FeatureList({ features }: { features: string[] }) {
               src="/section-2-pricing/check-icon.svg"
               alt=""
               fill
-              className="object-contain"
+              className={`object-contain ${isDark ? 'brightness-200' : ''}`}
             />
           </div>
           <span
+            className="text-[#475569] dark:text-white/80 transition-colors duration-300"
             style={{
               fontFamily: typography.fonts.inter,
               fontWeight: 400,
               fontSize: 14,
               lineHeight: "20px",
-              color: colors.text.dark,
             }}
           >
             {feature}
@@ -404,23 +393,26 @@ function FeatureList({ features }: { features: string[] }) {
 }
 
 function SecondaryButton({ text }: { text: string }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div
-      className="flex items-center justify-center cursor-pointer"
+      className="flex items-center justify-center cursor-pointer group hover:bg-[#005ab6] transition-colors duration-200"
       style={{
-        border: `1px solid ${BLUE_TEXT}`,
+        border: `1px solid ${isDark ? '#3B82F6' : BLUE_TEXT}`,
         borderRadius: radiuses.cardSm,
         padding: "13px 25px",
         width: "100%"
       }}
     >
       <span
+        className="group-hover:text-white transition-colors duration-200"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 600,
           fontSize: 16,
           lineHeight: "24px",
-          color: BLUE_TEXT,
+          color: isDark ? '#3B82F6' : BLUE_TEXT,
           height: 24,
         }}
       >
@@ -433,7 +425,7 @@ function SecondaryButton({ text }: { text: string }) {
 function PrimaryButton({ text }: { text: string }) {
   return (
     <div
-      className="flex items-center justify-center cursor-pointer relative"
+      className="flex items-center justify-center cursor-pointer relative hover:opacity-90 transition-opacity duration-200"
       style={{
         background: BLUE_GRADIENT,
         borderRadius: radiuses.cardSm,
@@ -441,16 +433,6 @@ function PrimaryButton({ text }: { text: string }) {
         width: "100%"
       }}
     >
-      <div
-        className="absolute top-0 left-0 w-full h-full"
-        style={{
-            borderRadius: radiuses.cardSm,
-            boxShadow: "0px 10px 15px -3px rgba(59,130,246,0.2), 0px 4px 6px -4px rgba(59,130,246,0.2)",
-            inset: "0px -9.64px -1.44px 0px",
-            background: "transparent",
-            pointerEvents: "none"
-        }}
-      />
       <span
         className="relative z-10"
         style={{

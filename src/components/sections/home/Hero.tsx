@@ -88,9 +88,8 @@ function HeroDesktop() {
   const shouldAnimate = mounted && !prefersReducedMotion;
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#02040A]"
       style={{
-        backgroundColor: "#02040A",
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -107,7 +106,7 @@ function HeroDesktop() {
             {/* Blurred blue ellipses */}
             <div
               aria-hidden
-              className="pointer-events-none absolute rounded-full"
+              className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
               style={{
                 left: -19,
                 top: -49,
@@ -119,7 +118,7 @@ function HeroDesktop() {
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute rounded-full"
+              className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
               style={{
                 left: -98,
                 top: -139,
@@ -131,7 +130,7 @@ function HeroDesktop() {
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute rounded-full"
+              className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
               style={{
                 left: 1252,
                 top: -82,
@@ -144,15 +143,15 @@ function HeroDesktop() {
             {/* Circuit-lines SVG background (Group 9210) */}
             <div
               aria-hidden
-              className="pointer-events-none absolute"
-              style={{ left: 412, top: 20, width: 1566.67, height: 1025.34, opacity: 0.9 }}
+              className="pointer-events-none absolute opacity-20 dark:opacity-90 transition-opacity duration-300"
+              style={{ left: 412, top: 20, width: 1566.67, height: 1025.34 }}
             >
               <Image
                 src="/images/hero/circuit-lines.svg"
                 alt=""
                 fill
                 sizes="1567px"
-                className="object-contain object-left-top"
+                className="object-contain object-left-top dark:invert-0 invert transition-all duration-300"
                 priority
               />
             </div>
@@ -187,7 +186,7 @@ function HeroDesktop() {
         {/* Soft purple atmospheric glow — rendered AFTER panels so it sits on top */}
         <div
           aria-hidden
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{
             left: 700,
             top: 90,
@@ -198,60 +197,44 @@ function HeroDesktop() {
             filter: "blur(28px)",
           }}
         />
-        {/* Fade the line system at outer edges so corners feel diluted */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute"
-          style={{
-            inset: 0,
-            background:
-              "linear-gradient(90deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.08) 17%, rgba(0,0,0,0) 34%, rgba(0,0,0,0) 74%, rgba(0,0,0,0.16) 90%, rgba(0,0,0,0.38) 100%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute"
-          style={{
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.1) 16%, rgba(0,0,0,0) 34%, rgba(0,0,0,0) 100%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute"
-          style={{
-            left: -8,
-            top: -16,
-            width: 280,
-            height: 230,
-            background:
-              "radial-gradient(ellipse at 18% 14%, rgba(184, 204, 255, 0.24) 0%, rgba(144, 171, 255, 0.12) 38%, rgba(84, 116, 208, 0.04) 70%, rgba(0,0,0,0) 100%)",
-            filter: "blur(12px)",
-          }}
-        />
 
-        {/* Smooth black→purple blend inside circuit-line area */}
+        {/* Smooth background blend inside circuit-line area */}
         <div
           aria-hidden
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute transition-all duration-300 opacity-40 dark:opacity-100"
           style={{
             left: 180,
             top: 20,
             width: 1100,
             height: 706,
             background:
-              "linear-gradient(120deg, rgba(0,0,0,0.52) 0%, rgba(28, 18, 58, 0.42) 26%, rgba(86, 48, 156, 0.34) 52%, rgba(126, 72, 214, 0.30) 76%, rgba(160, 98, 242, 0.28) 100%)",
+              "linear-gradient(120deg, var(--hero-blend-1) 0%, var(--hero-blend-2) 26%, var(--hero-blend-3) 52%, var(--hero-blend-4) 76%, var(--hero-blend-5) 100%)",
             maskImage:
               "linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.72) 34%, rgba(0,0,0,1) 56%, rgba(0,0,0,1) 100%)",
             WebkitMaskImage:
               "linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.72) 34%, rgba(0,0,0,1) 56%, rgba(0,0,0,1) 100%)",
           }}
         />
+        <style jsx>{`
+          div { 
+            --hero-blend-1: rgba(255,255,255,0.5); 
+            --hero-blend-2: rgba(240,240,255,0.4); 
+            --hero-blend-3: rgba(230,220,255,0.3); 
+            --hero-blend-4: rgba(220,210,255,0.2); 
+            --hero-blend-5: rgba(210,200,255,0.2); 
+          }
+          :global(.dark) div { 
+            --hero-blend-1: rgba(0,0,0,0.52); 
+            --hero-blend-2: rgba(28, 18, 58, 0.42); 
+            --hero-blend-3: rgba(86, 48, 156, 0.34); 
+            --hero-blend-4: rgba(126, 72, 214, 0.30); 
+            --hero-blend-5: rgba(160, 98, 242, 0.28); 
+          }
+        `}</style>
 
         <div
           aria-hidden
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{
             left: 640,
             top: 150,
@@ -262,10 +245,10 @@ function HeroDesktop() {
             filter: "blur(12px)",
           }}
         />
-        {/* Local white bloom behind mascot body/legs (matches reference hotspot) */}
+        {/* Local white bloom behind mascot body/legs */}
         <div
           aria-hidden
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
           style={{
             left: 760,
             top: 310,
@@ -276,21 +259,6 @@ function HeroDesktop() {
             filter: "blur(14px)",
           }}
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute"
-          style={{
-            left: 720,
-            top: 240,
-            width: 620,
-            height: 460,
-            background:
-              "radial-gradient(ellipse at 64% 58%, rgba(255,255,255,0.62) 0%, rgba(246,233,255,0.34) 40%, rgba(196,136,255,0.14) 68%, rgba(196,136,255,0) 100%)",
-            filter: "blur(22px)",
-          }}
-        />
-
-        {/* Removed extra right rectangle to avoid visible block behind mascot */}
 
         {/* Robot character — floating + subtle 3D tilt */}
         <Float
@@ -312,7 +280,7 @@ function HeroDesktop() {
             alt="AI robot hero illustration"
             fill
             sizes="645px"
-            className="object-contain animate-float-x"
+            className="object-contain animate-float-x dark:opacity-100 opacity-80 transition-opacity duration-300"
             priority
           />
         </Float>
@@ -320,7 +288,7 @@ function HeroDesktop() {
 
         {/* Heading line 1: "The Marketplace for" */}
         <motion.h1
-          className="absolute m-0"
+          className="absolute m-0 text-black dark:text-white transition-colors duration-300"
           initial={mounted ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
@@ -333,8 +301,7 @@ function HeroDesktop() {
             fontSize: 64,
             lineHeight: "72px",
             letterSpacing: "-0.0562em",
-            color: "#ffffff",
-            textShadow: "0 4px 28px rgba(0, 0, 0, 0.42)",
+            textShadow: "0 4px 28px rgba(0, 0, 0, 0.1)",
           }}
         >
           The Marketplace for
@@ -343,6 +310,29 @@ function HeroDesktop() {
         {/* Heading line 2: "AI Agents" */}
         <motion.div
           className="absolute"
+          initial={mounted ? { opacity: 0, y: 24 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
+          style={{
+            left: 33,
+            top: 201,
+            width: 628,
+            fontFamily: typography.fonts.poppins,
+            fontWeight: 500,
+            fontSize: 88,
+            lineHeight: "1.14em",
+            paddingBottom: 14,
+            background: "linear-gradient(180deg, #1672DF 0%, #1E40AF 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            textShadow: "0 6px 30px rgba(22, 114, 223, 0.2)",
+          }}
+        >
+           <span className="dark:hidden">AI Agents</span>
+        </motion.div>
+        <motion.div
+          className="absolute hidden dark:block"
           initial={mounted ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
@@ -367,7 +357,7 @@ function HeroDesktop() {
 
         {/* Subtext */}
         <motion.p
-          className="absolute m-0"
+          className="absolute m-0 text-slate-600 dark:text-[#a7aab9] transition-colors duration-300"
           initial={mounted ? { opacity: 0, y: 16 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
@@ -379,7 +369,6 @@ function HeroDesktop() {
             fontWeight: 400,
             fontSize: 20,
             lineHeight: "32.5px",
-            color: colors.text.badgeUpcoming,
           }}
         >
           Discover, deploy, and monetize high-performance decentralized
@@ -419,13 +408,12 @@ function HeroMobile() {
 
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: "#02040A" }}
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-white dark:bg-[#02040A]"
     >
       {/* Restored ambient gradient and circuit detail for mobile */}
       <div
         aria-hidden
-        className="pointer-events-none absolute"
+        className="pointer-events-none absolute opacity-20 dark:opacity-55 transition-opacity duration-300"
         style={{
           left: "50%",
           top: -80,
@@ -434,13 +422,12 @@ function HeroMobile() {
           transform: "translateX(-50%)",
           background: BLUE_GRADIENT,
           filter: "blur(120px)",
-          opacity: 0.55,
         }}
       />
       {/* Purple glow anchored behind mascot */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[290px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="pointer-events-none absolute left-1/2 top-[290px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 dark:opacity-100 transition-opacity duration-300"
         style={{
           width: 420,
           height: 320,
@@ -449,31 +436,20 @@ function HeroMobile() {
           filter: "blur(18px)",
         }}
       />
-      {/* Desktop-style circuit backdrop behind mascot (mobile adaptation, no bg image) */}
+      {/* Desktop-style circuit backdrop behind mascot */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[226px] -translate-x-1/2 -translate-y-1/2"
-        style={{ width: 520, height: 420, opacity: 0.68 }}
+        className="pointer-events-none absolute left-1/2 top-[226px] -translate-x-1/2 -translate-y-1/2 opacity-20 dark:opacity-68 transition-opacity duration-300"
+        style={{ width: 520, height: 420 }}
       >
         <Image
           src="/images/hero/circuit-lines.svg"
           alt=""
           fill
           sizes="520px"
-          className="object-contain object-center"
+          className="object-contain object-center dark:invert-0 invert transition-all duration-300"
         />
       </div>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[226px] -translate-x-1/2 -translate-y-1/2"
-        style={{
-          width: 420,
-          height: 300,
-          background:
-            "radial-gradient(ellipse at 55% 55%, rgba(255,255,255,0.88) 0%, rgba(239,214,255,0.48) 34%, rgba(171,106,248,0.22) 62%, rgba(171,106,248,0) 100%)",
-          filter: "blur(14px)",
-        }}
-      />
 
       <div className="relative flex flex-col items-center gap-8 px-6 pt-20 pb-10 text-center">
         {/* Robot — compact, centered, floating */}
@@ -487,21 +463,20 @@ function HeroMobile() {
             alt="AI robot hero illustration"
             fill
             sizes="(max-width: 640px) 260px, 320px"
-            className="object-contain"
+            className="object-contain dark:opacity-100 opacity-80 transition-opacity duration-300"
             priority
           />
         </Float>
 
         {/* Heading line 1 */}
         <h1
-          className="m-0"
+          className="m-0 text-black dark:text-white transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 500,
             fontSize: "clamp(32px, 9vw, 48px)",
             lineHeight: 1.05,
             letterSpacing: "-0.0562em",
-            color: "#ffffff",
           }}
         >
           The Marketplace for
@@ -509,6 +484,23 @@ function HeroMobile() {
 
         {/* Heading line 2 */}
         <div
+          className="transition-colors duration-300"
+          style={{
+            fontFamily: typography.fonts.poppins,
+            fontWeight: 500,
+            fontSize: "clamp(44px, 13vw, 72px)",
+            lineHeight: "1.1em",
+            paddingBottom: 6,
+            background: "linear-gradient(180deg, #1672DF 0%, #1E40AF 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+           <span className="dark:hidden">AI Agents</span>
+        </div>
+        <div
+          className="transition-colors duration-300 hidden dark:block"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 500,
@@ -526,13 +518,12 @@ function HeroMobile() {
 
         {/* Subtext */}
         <p
-          className="m-0 max-w-[480px]"
+          className="m-0 max-w-[480px] text-slate-600 dark:text-[#a7aab9] transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.inter,
             fontWeight: 400,
             fontSize: 16,
             lineHeight: "26px",
-            color: colors.text.badgeUpcoming,
           }}
         >
           Discover, deploy, and monetize high-performance decentralized
@@ -551,14 +542,11 @@ function HeroMobile() {
         </div>
       </div>
 
-      {/* Logo strip — auto-scrolling marquee (no manual horizontal scroll) */}
+      {/* Logo strip — auto-scrolling marquee */}
       <div
-        className="relative overflow-hidden"
+        className="relative overflow-hidden transition-colors duration-300 bg-white dark:bg-black border-y border-black/10 dark:border-white/20"
         style={{
           height: 72,
-          backgroundColor: colors.black,
-          borderTop: `1px solid ${BORDER_SOFT}`,
-          borderBottom: `1px solid ${BORDER_SOFT}`,
         }}
       >
         <motion.div
@@ -595,7 +583,7 @@ function HeroMobile() {
                     alt={p.name}
                     fill
                     sizes={`${Math.round(p.w * 0.75)}px`}
-                    className="object-contain"
+                    className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300"
                   />
                 </Float>
               ))}

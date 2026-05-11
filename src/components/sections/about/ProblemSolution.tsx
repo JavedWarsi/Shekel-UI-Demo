@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { typography, radiuses } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 export default function ProblemSolution() {
   return (
-    <section className="bg-white px-6 py-20 md:px-16">
+    <section className="bg-white dark:bg-[#05070C] px-6 py-20 md:px-16 transition-colors duration-300">
       <div className="mx-auto grid max-w-[1216px] gap-10 md:grid-cols-2 md:gap-32">
         <Panel
           title="AI tools are disconnected"
@@ -23,17 +26,23 @@ export default function ProblemSolution() {
 }
 
 function Panel({ title, body, muted, icons }: { title: string; body: string; muted: boolean; icons: string[] }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div>
-      <h2 style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: 36, lineHeight: "40px", color: "#0B0B0B" }}>{title}</h2>
-      <p className="mt-6" style={{ marginBottom: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 18, lineHeight: "28px", color: "rgba(25,28,30,0.6)" }}>{body}</p>
-      <div className="mt-8 flex items-center gap-6 border p-6" style={{ borderRadius: radiuses.pill, borderColor: muted ? "rgba(193,198,213,0.4)" : "rgba(0,90,182,0.2)", background: muted ? "#F2F4F7" : "rgba(0,90,182,0.05)" }}>
+      <h2 className="text-[#0B0B0B] dark:text-white" style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: 36, lineHeight: "40px" }}>{title}</h2>
+      <p className="mt-6 text-[rgba(25,28,30,0.6)] dark:text-gray-400" style={{ marginBottom: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 18, lineHeight: "28px" }}>{body}</p>
+      <div className="mt-8 flex items-center gap-6 border p-6 transition-colors" style={{ 
+        borderRadius: radiuses.pill, 
+        borderColor: isDark ? "rgba(255,255,255,0.1)" : (muted ? "rgba(193,198,213,0.4)" : "rgba(0,90,182,0.2)"), 
+        background: isDark ? "rgba(255,255,255,0.02)" : (muted ? "#F2F4F7" : "rgba(0,90,182,0.05)") 
+      }}>
         {icons.map((icon, idx) => (
           <div key={icon} className="flex items-center gap-6">
-            <div className="rounded-xl bg-white p-5 shadow-sm">
-              <Image src={icon} alt="" width={20} height={20} />
+            <div className="rounded-xl bg-white dark:bg-slate-800 p-5 shadow-sm transition-colors">
+              <Image src={icon} alt="" width={20} height={20} className={isDark ? "brightness-200" : ""} />
             </div>
-            {idx < icons.length - 1 && <div className="hidden h-[2px] w-16 border-t border-dashed border-slate-300 md:block" />}
+            {idx < icons.length - 1 && <div className={`hidden h-[2px] w-16 border-t border-dashed ${isDark ? 'border-slate-700' : 'border-slate-300'} md:block`} />}
           </div>
         ))}
       </div>

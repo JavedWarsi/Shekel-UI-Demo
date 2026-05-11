@@ -65,7 +65,7 @@ const POSTS = [
 
 export default function BlogGrid() {
   return (
-    <section className="w-full py-16 md:py-24 bg-white" style={{ fontFamily: typography.fonts.inter }}>
+    <section className="w-full py-16 md:py-24 bg-white dark:bg-[#05070C]" style={{ fontFamily: typography.fonts.inter }}>
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {POSTS.map((post, idx) => (
@@ -85,13 +85,13 @@ export default function BlogGrid() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-[12px] font-bold text-[#2864e4] rounded-full uppercase tracking-wider">
+                  <span className="px-3 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm text-[12px] font-bold text-[#2864e4] rounded-full uppercase tracking-wider">
                     {post.category}
                   </span>
                 </div>
               </Link>
               
-              <div className="flex items-center gap-4 text-[13px] text-[#475569] mb-4">
+              <div className="flex items-center gap-4 text-[13px] text-[#475569] dark:text-slate-400 mb-4">
                 <div className="flex items-center gap-1">
                   <Calendar size={14} />
                   {post.date}
@@ -102,17 +102,17 @@ export default function BlogGrid() {
                 </div>
               </div>
 
-              <h2 className="text-[22px] md:text-[24px] font-bold text-[#0b0b0b] mb-4 leading-tight group-hover:text-[#2864e4] transition-colors" style={{ fontFamily: typography.fonts.poppins }}>
+              <h2 className="text-[22px] md:text-[24px] font-bold text-[#0b0b0b] dark:text-white mb-4 leading-tight group-hover:text-[#2864e4] transition-colors" style={{ fontFamily: typography.fonts.poppins }}>
                 <Link href={`/blog/${post.slug}`}>{post.title}</Link>
               </h2>
               
-              <p className="text-[15px] leading-[1.6] text-[#414753] mb-6 line-clamp-3">
+              <p className="text-[15px] leading-[1.6] text-[#414753] dark:text-slate-300 mb-6 line-clamp-3">
                 {post.excerpt}
               </p>
 
               <Link 
                 href={`/blog/${post.slug}`} 
-                className="mt-auto inline-flex items-center gap-2 text-[14px] font-bold text-[#1a1c1c] group/link transition-colors hover:text-[#2864e4]"
+                className="mt-auto inline-flex items-center gap-2 text-[14px] font-bold text-[#1a1c1c] dark:text-slate-200 group/link transition-colors hover:text-[#2864e4]"
               >
                 Read Article <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
               </Link>
@@ -120,6 +120,5 @@ export default function BlogGrid() {
           ))}
         </div>
       </div>
-    </section>
-  );
+    </section>  );
 }

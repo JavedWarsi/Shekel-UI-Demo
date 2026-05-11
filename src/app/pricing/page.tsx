@@ -6,24 +6,23 @@ import CtaSection from "@/components/sections/pricing/CtaSection";
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
+    <div className="min-h-screen overflow-x-clip transition-colors duration-300">
       <Hero />
-      <div className="w-full bg-[#f9f9f9] py-[64px]">
+      <div className="w-full bg-[#f9f9f9] dark:bg-slate-900/50 py-[64px]">
         <div className="w-full px-3 md:px-4">
           <PricingGrid />
         </div>
       </div>
-      <div className="bg-[#f9f9f9] w-full pt-[64px] pb-[64px]">
+      <div className="bg-[#f9f9f9] dark:bg-slate-900/50 w-full pt-[64px] pb-[64px]">
         <TrustedTeams />
       </div>
-      <div className="w-full bg-white">
+      <div className="w-full bg-white dark:bg-[#05070C]">
         <FaqSection />
       </div>
-      <div className="w-full bg-white pb-16 pt-16">
+      <div className="w-full bg-white dark:bg-[#05070C] pb-16 pt-16">
         <div className="w-full">
           <CtaSection />
         </div>
       </div>
-    </div>
-  );
+    </div>  );
 }

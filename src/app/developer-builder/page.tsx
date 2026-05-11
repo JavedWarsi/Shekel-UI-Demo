@@ -8,7 +8,7 @@ import CtaSection from "@/components/sections/developer-builder/CtaSection";
 
 export default function DeveloperBuilder() {
   return (
-    <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
+    <div className="min-h-screen overflow-x-clip transition-colors duration-300">
       <Hero />
       <ModularAgents />
       <HowItWorks />

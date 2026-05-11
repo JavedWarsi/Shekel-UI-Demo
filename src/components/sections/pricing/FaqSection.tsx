@@ -2,21 +2,14 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { colors, typography, radiuses } from "@/tokens/design-tokens";
+import { colors, typography } from "@/tokens/design-tokens";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // FaqSection.tsx  —  "Common questions"
 // Figma frame: 507:4995  "FAQ Section"
 // Canvas: 1280 × 738 px   Page-y: 1909   bg: transparent
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Container Left (x=24, y=96)   584×546  [Heading, Body, Button]
-//   Container Right(x=672, y=96)   584×546  [Accordion Items 1-5]
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CANVAS_W = 1280;
@@ -60,9 +53,8 @@ export default function FaqSection() {
 function SectionDesktop() {
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#05070C]"
       style={{
-        backgroundColor: colors.white, // Adjusting based on standard white bg typical for such sections if undefined in get_design_context root
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -113,8 +105,7 @@ function SectionDesktop() {
 function SectionMobile() {
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden py-16"
-      style={{ backgroundColor: colors.white }}
+      className="relative block w-full overflow-hidden md:hidden py-16 transition-colors duration-300 bg-white dark:bg-[#05070C]"
     >
       <div className="flex flex-col px-6 sm:px-8 gap-12">
         <div className="flex flex-col gap-6">
@@ -142,13 +133,12 @@ function SectionHeading({
 }) {
   return (
     <h2
-      className="m-0"
+      className="m-0 text-[#0B0B0B] dark:text-white transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.poppins,
         fontWeight: 700,
         fontSize,
         lineHeight,
-        color: colors.text.dark,
         maxWidth: 364.94
       }}
     >
@@ -166,13 +156,12 @@ function SectionBody({
 }) {
   return (
     <p
-      className="m-0"
+      className="m-0 text-[#475569] dark:text-white/60 transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.inter,
         fontWeight: 400,
         fontSize,
         lineHeight,
-        color: colors.text.body,
         maxWidth: 582.14
       }}
     >
@@ -182,9 +171,11 @@ function SectionBody({
 }
 
 function SupportButton({ isMobile }: { isMobile?: boolean }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div
-      className={`flex items-center gap-[12px] bg-[#eceef1] cursor-pointer ${isMobile ? "self-start" : ""}`}
+      className={`flex items-center gap-[12px] bg-[#eceef1] dark:bg-white/5 cursor-pointer hover:bg-[#e2e4e7] dark:hover:bg-white/10 transition-colors ${isMobile ? "self-start" : ""}`}
       style={{
         padding: "16px 24px",
         borderRadius: "16px",
@@ -196,16 +187,16 @@ function SupportButton({ isMobile }: { isMobile?: boolean }) {
           src="/section-4-pricing/chat-icon.svg"
           alt=""
           fill
-          className="object-contain"
+          className={`object-contain ${isDark ? 'brightness-200' : ''}`}
         />
       </div>
       <span
+        className="text-[#0B0B0B] dark:text-white"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 600,
           fontSize: 16,
           lineHeight: "24px",
-          color: colors.text.dark,
         }}
       >
         Contact Support
@@ -215,7 +206,7 @@ function SupportButton({ isMobile }: { isMobile?: boolean }) {
           src="/section-4-pricing/arrow-icon.svg"
           alt=""
           fill
-          className="object-contain"
+          className={`object-contain ${isDark ? 'brightness-200' : ''}`}
         />
       </div>
     </div>
@@ -225,6 +216,7 @@ function SupportButton({ isMobile }: { isMobile?: boolean }) {
 function DesktopAccordion({ items, isMobile = false }: { items: {question: string, answer: string}[], isMobile?: boolean }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
   const prefersReducedMotion = useReducedMotion();
+  const { isDark } = useThemeTokens();
 
   return (
     <>
@@ -233,7 +225,7 @@ function DesktopAccordion({ items, isMobile = false }: { items: {question: strin
         return (
           <div
             key={idx}
-            className="flex flex-col bg-white overflow-hidden"
+            className="flex flex-col bg-white dark:bg-white/5 overflow-hidden transition-colors duration-300"
             style={{
               borderRadius: "16px",
               boxShadow: "0px 1px 2px 0px rgba(0,0,0,0.05)",
@@ -246,12 +238,12 @@ function DesktopAccordion({ items, isMobile = false }: { items: {question: strin
               style={{ padding: "24px" }}
             >
               <span
+                className="text-[#0B0B0B] dark:text-white"
                 style={{
                   fontFamily: typography.fonts.inter,
                   fontWeight: 600,
                   fontSize: 18,
                   lineHeight: "28px",
-                  color: colors.text.dark,
                 }}
               >
                 {item.question}
@@ -269,7 +261,7 @@ function DesktopAccordion({ items, isMobile = false }: { items: {question: strin
                   src="/section-4-pricing/chevron-down.svg"
                   alt=""
                   fill
-                  className="object-contain"
+                  className={`object-contain ${isDark ? 'brightness-200' : ''}`}
                 />
               </div>
             </div>
@@ -287,13 +279,12 @@ function DesktopAccordion({ items, isMobile = false }: { items: {question: strin
                     }}
                   >
                     <p
-                      className="m-0"
+                      className="m-0 text-[#475569] dark:text-white/70"
                       style={{
                         fontFamily: typography.fonts.inter,
                         fontWeight: 400,
                         fontSize: 16,
                         lineHeight: "26px",
-                        color: colors.text.body,
                       }}
                     >
                       {item.answer}

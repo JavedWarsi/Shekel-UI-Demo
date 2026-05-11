@@ -71,7 +71,7 @@ const RESULTS = [
 
 export default function SearchResultGrid() {
   return (
-    <section className="relative w-full py-20 bg-white" style={{ fontFamily: typography.fonts.inter }}>
+    <section className="relative w-full py-20 bg-white dark:bg-[#05070C] transition-colors duration-300" style={{ fontFamily: typography.fonts.inter }}>
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {RESULTS.map((item, i) => (
@@ -81,7 +81,7 @@ export default function SearchResultGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`relative bg-white border border-[#F1F3F6] p-10 rounded-[32px] flex flex-col h-full group hover:shadow-xl hover:shadow-gray-100 transition-all duration-500 overflow-hidden ${item.hasGlow ? 'bg-gradient-to-br from-white to-[#EBF2FF]' : ''}`}
+              className={`relative bg-white dark:bg-[#0F172A] border border-[#F1F3F6] dark:border-white/5 p-10 rounded-[32px] flex flex-col h-full group hover:shadow-xl hover:shadow-gray-100 dark:hover:shadow-none transition-all duration-500 overflow-hidden ${item.hasGlow ? 'bg-gradient-to-br from-white to-[#EBF2FF] dark:from-[#0F172A] dark:to-[#1e293b]' : ''}`}
             >
               {/* Decorative Glow for Category Card */}
               {item.hasGlow && (
@@ -90,11 +90,11 @@ export default function SearchResultGrid() {
 
               <div className="flex items-start justify-between mb-10 relative z-10">
                 {item.badge ? (
-                  <span className="text-[12px] font-bold text-[#2864e4] bg-[#EBF2FF] px-4 py-1.5 rounded-full tracking-wider uppercase">
+                  <span className="text-[12px] font-bold text-[#2864e4] bg-[#EBF2FF] dark:bg-[#2864e4]/20 px-4 py-1.5 rounded-full tracking-wider uppercase">
                     {item.badge}
                   </span>
                 ) : (
-                  <div className="w-14 h-14 bg-[#F5F8FF] rounded-2xl flex items-center justify-center border border-[#EBF2FF]">
+                  <div className="w-14 h-14 bg-[#F5F8FF] dark:bg-white/5 rounded-2xl flex items-center justify-center border border-[#EBF2FF] dark:border-white/10">
                     {item.icon}
                   </div>
                 )}
@@ -105,10 +105,10 @@ export default function SearchResultGrid() {
                 )}
               </div>
               
-              <h4 className="text-[24px] font-bold text-[#0F172A] mb-4 relative z-10">
+              <h4 className="text-[24px] font-bold text-[#0F172A] dark:text-white mb-4 relative z-10">
                 {item.title}
               </h4>
-              <p className="text-[15px] text-[#64748B] leading-relaxed mb-10 flex-1 relative z-10">
+              <p className="text-[15px] text-[#64748B] dark:text-slate-400 leading-relaxed mb-10 flex-1 relative z-10">
                 {item.desc}
               </p>
               
@@ -116,11 +116,11 @@ export default function SearchResultGrid() {
                 <div className="flex items-center justify-between mb-10 relative z-10">
                   <div className="flex items-center gap-2">
                     <Star size={18} className="fill-[#FFB800] text-[#FFB800]" />
-                    <span className="text-[15px] font-bold text-[#0F172A]">{item.rating}</span>
+                    <span className="text-[15px] font-bold text-[#0F172A] dark:text-white">{item.rating}</span>
                     <span className="text-[15px] text-[#94A3B8]">({item.reviews})</span>
                   </div>
-                  <div className="bg-[#F8FAFC] px-4 py-1.5 rounded-xl border border-gray-50">
-                    <span className="text-[13px] font-bold text-[#475569]">{item.runs}</span>
+                  <div className="bg-[#F8FAFC] dark:bg-white/5 px-4 py-1.5 rounded-xl border border-gray-50 dark:border-white/5">
+                    <span className="text-[13px] font-bold text-[#475569] dark:text-slate-400">{item.runs}</span>
                   </div>
                 </div>
               )}
@@ -129,29 +129,31 @@ export default function SearchResultGrid() {
                 <div className="flex items-center gap-3 mb-10 relative z-10">
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map(n => (
-                      <div key={n} className="w-7 h-7 rounded-full border-2 border-white bg-[#EBF2FF] overflow-hidden" />
+                      <div key={n} className="w-7 h-7 rounded-full border-2 border-white dark:border-slate-800 bg-[#EBF2FF] dark:bg-white/10 overflow-hidden" />
                     ))}
                   </div>
                   <span className="text-[15px] font-semibold text-[#2864e4]">{item.count}</span>
                 </div>
               )}
               
-              <div className="relative z-10">
+              <div className="relative z-10 mt-auto">
                 {item.buttonText ? (
-                  <button 
-                    className={`w-full py-4.5 px-6 rounded-[20px] text-[16px] font-bold transition-all flex items-center justify-center gap-2 ${
-                      item.buttonVariant === "primary" 
-                        ? "bg-[#2864e4] text-white hover:bg-[#1E50C0] shadow-lg shadow-blue-500/20" 
-                        : item.buttonVariant === "gradient"
-                        ? "bg-gradient-to-r from-[#7CA5F4] to-[#5C8AE7] text-white hover:opacity-90 shadow-lg shadow-blue-400/20"
-                        : "bg-[#F1F3F6] text-[#475569] hover:bg-[#E5E7EB]"
-                    }`}
-                  >
-                    {item.buttonText}
-                    {item.buttonVariant === "primary" && <ArrowRight size={18} />}
-                  </button>
+                  <Link href={item.type === "agent" ? "/agent-detail" : "/workflows"} className="block">
+                    <button 
+                      className={`w-full py-4.5 px-6 rounded-[20px] text-[16px] font-bold transition-all flex items-center justify-center gap-2 ${
+                        item.buttonVariant === "primary" 
+                          ? "bg-[#2864e4] text-white hover:bg-[#1E50C0] shadow-lg shadow-blue-500/20" 
+                          : item.buttonVariant === "gradient"
+                          ? "bg-gradient-to-r from-[#7CA5F4] to-[#5C8AE7] text-white hover:opacity-90 shadow-lg shadow-blue-400/20"
+                          : "bg-[#F1F3F6] dark:bg-white/5 text-[#475569] dark:text-white hover:bg-[#E5E7EB] dark:hover:bg-white/10"
+                      }`}
+                    >
+                      {item.buttonText}
+                      {item.buttonVariant === "primary" && <ArrowRight size={18} />}
+                    </button>
+                  </Link>
                 ) : (
-                  <Link href="#" className="inline-flex items-center gap-2 text-[16px] font-bold text-[#2864e4] hover:gap-3 transition-all">
+                  <Link href="/category-page" className="inline-flex items-center gap-2 text-[16px] font-bold text-[#2864e4] hover:gap-3 transition-all">
                     {item.linkText}
                     <ArrowRight size={18} />
                   </Link>

@@ -12,7 +12,7 @@ import CtaMarketplace from "@/components/sections/marketplace/CtaMarketplace";
 
 export default function MarketplacePage() {
   return (
-    <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
+    <div className="min-h-screen overflow-x-clip transition-colors duration-300">
       <main className="pt-[75px]">
         <Hero />
         <TrendingAgents />

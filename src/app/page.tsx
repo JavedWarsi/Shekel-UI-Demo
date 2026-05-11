@@ -12,7 +12,7 @@ import CtaWaitlist from "@/components/sections/home/CtaWaitlist";
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
+    <div className="min-h-screen overflow-x-clip text-black dark:text-white selection:bg-blue-500/30 transition-colors duration-300 bg-white dark:bg-black">
       {/* 1. Hero – dark bg */}
       <Hero />
       {/* 2. Concept – white bg with grid decoration (Figma y=787, frame 500:22431) */}

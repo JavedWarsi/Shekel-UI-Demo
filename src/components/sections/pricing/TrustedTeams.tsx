@@ -1,14 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { colors, typography } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TrustedTeams.tsx  —  "Trusted by creators and teams worldwide."
 // Figma frame: 506:4849  "Frame 2147225678"
 // Canvas: 1280 × 673 px
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CANVAS_W = 1280;
@@ -16,10 +15,12 @@ const CANVAS_H = 673;
 const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
 export default function TrustedTeams() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div className="w-full">
       <div
-        className="relative overflow-hidden bg-white md:rounded-[56px]"
+        className="relative overflow-hidden bg-white dark:bg-[#05070C] md:rounded-[56px] transition-colors duration-300"
       >
         <SectionDesktop />
         <SectionMobile />
@@ -31,11 +32,13 @@ export default function TrustedTeams() {
 // ─── Desktop ─────────────────────────────────────────────────────────────────
 
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300"
       style={{
-        backgroundColor: colors.white,
+        backgroundColor: isDark ? 'transparent' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -59,7 +62,7 @@ function SectionDesktop() {
             src="/section-3-pricing/bg-texture.png"
             alt=""
             fill
-            className="object-cover"
+            className={`object-cover ${isDark ? 'opacity-10 brightness-50' : ''}`}
             sizes="2400px"
             priority
           />
@@ -187,10 +190,12 @@ function Logo({
   h: number;
   src: string;
 }) {
+  const { isDark } = useThemeTokens();
+  
   return (
     <div
-      className="absolute"
-      style={{ left, top, width: w, height: h, zIndex: 2 }}
+      className="absolute transition-all duration-300"
+      style={{ left, top, width: w, height: h, zIndex: 2, filter: isDark ? 'brightness(0) invert(1) opacity(0.7)' : 'none' }}
     >
       <Image src={src} alt="" fill className="object-contain" sizes={`${w}px`} />
     </div>
@@ -200,14 +205,16 @@ function Logo({
 // ─── Mobile ──────────────────────────────────────────────────────────────────
 
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: colors.white }}
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300"
+      style={{ backgroundColor: isDark ? 'transparent' : colors.white }}
     >
       <div
         className="absolute"
-        style={{ left: "-50%", top: 0, width: "200%", height: "100%", opacity: 0.5 }}
+        style={{ left: "-50%", top: 0, width: "200%", height: "100%", opacity: isDark ? 0.1 : 0.5 }}
       >
         <Image
           src="/section-3-pricing/bg-texture.png"
@@ -221,73 +228,32 @@ function SectionMobile() {
         <SectionBody fontSize="16px" lineHeight="24px" />
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
-          <div style={{ position: "relative", width: 150, height: 40 }}>
-            <Image
-              src="/section-3-pricing/logo-1.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ position: "relative", width: 150, height: 46 }}>
-            <Image
-              src="/section-3-pricing/image 65.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ position: "relative", width: 100, height: 60 }}>
-            <Image
-              src="/section-3-pricing/logo-2.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ position: "relative", width: 100, height: 100 }}>
-            <Image
-              src="/section-3-pricing/logo-3.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ position: "relative", width: 170, height: 32 }}>
-            <Image
-              src="/section-3-pricing/image 69.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ position: "relative", width: 70, height: 75 }}>
-            <Image
-              src="/section-3-pricing/logo-4.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ position: "relative", width: 90, height: 72 }}>
-            <Image
-              src="/section-3-pricing/image 71.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ position: "relative", width: 160, height: 40 }}>
-            <Image
-              src="/section-3-pricing/logo-5.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
-          </div>
+          <MobileLogo w={150} h={40} src="/section-3-pricing/logo-1.png" />
+          <MobileLogo w={150} h={46} src="/section-3-pricing/image 65.png" />
+          <MobileLogo w={100} h={60} src="/section-3-pricing/logo-2.png" />
+          <MobileLogo w={100} h={100} src="/section-3-pricing/logo-3.png" />
+          <MobileLogo w={170} h={32} src="/section-3-pricing/image 69.png" />
+          <MobileLogo w={70} h={75} src="/section-3-pricing/logo-4.png" />
+          <MobileLogo w={90} h={72} src="/section-3-pricing/image 71.png" />
+          <MobileLogo w={160} h={40} src="/section-3-pricing/logo-5.png" />
         </div>
       </div>
     </section>
+  );
+}
+
+function MobileLogo({ w, h, src }: { w: number, h: number, src: string }) {
+  const { isDark } = useThemeTokens();
+  
+  return (
+    <div style={{ position: "relative", width: w, height: h, filter: isDark ? 'brightness(0) invert(1) opacity(0.7)' : 'none' }}>
+      <Image
+        src={src}
+        alt=""
+        fill
+        className="object-contain"
+      />
+    </div>
   );
 }
 
@@ -304,7 +270,7 @@ function SectionHeading({
 }) {
   return (
     <h2
-      className="m-0 text-center text-black"
+      className="m-0 text-center text-black dark:text-white transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.poppins,
         fontWeight: 500,
@@ -327,7 +293,7 @@ function SectionBody({
 }) {
   return (
     <p
-      className="m-0 text-center text-black"
+      className="m-0 text-center text-black dark:text-white/60 transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.inter,
         fontWeight: 400,

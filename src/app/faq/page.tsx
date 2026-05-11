@@ -5,7 +5,7 @@ import CtaFaq from "@/components/sections/faq/CtaFaq";
 
 export default function FaqPage() {
   return (
-    <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
+    <div className="min-h-screen overflow-x-clip transition-colors duration-300">
       <main className="pt-[75px]">
         <FaqHero />
         <SearchFilter />

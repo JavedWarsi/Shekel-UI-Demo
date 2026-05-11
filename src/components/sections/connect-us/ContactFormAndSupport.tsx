@@ -1,36 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// ContactFormAndSupport.tsx  —  "Contact Form & Support Info"
-// Figma frame: 508-7598  "Section 3 & 4: Contact Form & Support Info"
-// Canvas: 1280 × 800 px   Page-y: 1312   bg: transparent
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Container        (x=32, y=80)       1216×640
-//     Form (Left)    (x=0, y=0)         682.66×640
-//     Support (Right)(x=746.67, y=0)    469.33×auto
-// ─────────────────────────────────────────────────────────────────────────────
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CANVAS_W = 1280;
 const CANVAS_H = 800;
 const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
-const BORDER_SOFT = "rgba(193, 198, 213, 0.15)";
-const INPUT_BG = "#F2F4F7";
-const HEADING_DARK = "#191C1E";
-const TEXT_LABEL = "#414753";
-const TEXT_PLACEHOLDER = "#727785";
 const BUTTON_GRADIENT = `linear-gradient(180deg, ${colors.brand.blueStart} 0%, ${colors.brand.blueEnd} 100%)`;
-const FAQ_BG = "rgba(22, 114, 223, 0.1)";
-const FAQ_BORDER = "#005AB6";
-const ICON_BG = "#ECEEF1";
 
 export default function ContactFormAndSupport() {
   return (
@@ -41,14 +20,14 @@ export default function ContactFormAndSupport() {
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300"
       style={{
-        backgroundColor: colors.white,
+        backgroundColor: isDark ? 'black' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -74,25 +53,25 @@ function SectionDesktop() {
         >
           {/* Left Form */}
           <div
-            className="flex flex-col border shadow-sm"
+            className="flex flex-col border transition-colors duration-300"
             style={{
               width: 682.66,
               height: "100%",
-              backgroundColor: colors.white,
-              borderColor: BORDER_SOFT,
+              backgroundColor: isDark ? 'rgba(255, 255, 255, 0.03)' : colors.white,
+              borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : "rgba(193, 198, 213, 0.15)",
               borderRadius: radiuses.cardLg,
               padding: 48,
               gap: 32,
+              boxShadow: isDark ? 'none' : '0 4px 20px rgba(0,0,0,0.02)'
             }}
           >
             <h2
-              className="m-0"
+              className="m-0 text-black dark:text-white transition-colors duration-300"
               style={{
                 fontFamily: typography.fonts.jakarta,
                 fontWeight: 700,
                 fontSize: 30,
                 lineHeight: "36px",
-                color: HEADING_DARK,
               }}
             >
               Send a Message
@@ -101,80 +80,50 @@ function SectionDesktop() {
             <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
               <div className="flex gap-6">
                 <div className="flex flex-col flex-1 gap-2">
-                  <label
-                    style={{
-                      fontFamily: typography.fonts.inter,
-                      fontWeight: 600,
-                      fontSize: 14,
-                      lineHeight: "20px",
-                      color: TEXT_LABEL,
-                    }}
-                  >
-                    Name
-                  </label>
+                  <label className="text-[#414753] dark:text-white/60 font-semibold" style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "20px" }}>Name</label>
                   <input
                     type="text"
                     placeholder="John Doe"
-                    className="w-full border-none outline-none ring-0"
+                    className="w-full border-none outline-none ring-0 transition-colors duration-300"
                     style={{
-                      backgroundColor: INPUT_BG,
+                      backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
                       borderRadius: radiuses.inputIcon,
                       padding: "16px",
                       fontFamily: typography.fonts.inter,
                       fontSize: 16,
-                      color: HEADING_DARK,
+                      color: isDark ? 'white' : '#191C1E',
                     }}
                   />
                 </div>
                 <div className="flex flex-col flex-1 gap-2">
-                  <label
-                    style={{
-                      fontFamily: typography.fonts.inter,
-                      fontWeight: 600,
-                      fontSize: 14,
-                      lineHeight: "20px",
-                      color: TEXT_LABEL,
-                    }}
-                  >
-                    Email
-                  </label>
+                  <label className="text-[#414753] dark:text-white/60 font-semibold" style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "20px" }}>Email</label>
                   <input
                     type="email"
                     placeholder="john@example.com"
-                    className="w-full border-none outline-none ring-0"
+                    className="w-full border-none outline-none ring-0 transition-colors duration-300"
                     style={{
-                      backgroundColor: INPUT_BG,
+                      backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
                       borderRadius: radiuses.inputIcon,
                       padding: "16px",
                       fontFamily: typography.fonts.inter,
                       fontSize: 16,
-                      color: HEADING_DARK,
+                      color: isDark ? 'white' : '#191C1E',
                     }}
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: TEXT_LABEL,
-                  }}
-                >
-                  Subject
-                </label>
+                <label className="text-[#414753] dark:text-white/60 font-semibold" style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "20px" }}>Subject</label>
                 <select
-                  className="w-full border-none outline-none ring-0 appearance-none"
+                  className="w-full border-none outline-none ring-0 appearance-none transition-colors duration-300"
                   style={{
-                    backgroundColor: INPUT_BG,
+                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
                     borderRadius: radiuses.inputIcon,
                     padding: "16px",
                     fontFamily: typography.fonts.inter,
                     fontSize: 16,
-                    color: HEADING_DARK,
+                    color: isDark ? 'white' : '#191C1E',
                     backgroundImage: 'url("/section-3-connect-us/chevron.svg")',
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "right 16px center",
@@ -187,34 +136,24 @@ function SectionDesktop() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: TEXT_LABEL,
-                  }}
-                >
-                  Message
-                </label>
+                <label className="text-[#414753] dark:text-white/60 font-semibold" style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "20px" }}>Message</label>
                 <textarea
                   placeholder="How can we help you?"
-                  className="w-full border-none outline-none ring-0 resize-none"
+                  className="w-full border-none outline-none ring-0 resize-none transition-colors duration-300"
                   style={{
-                    backgroundColor: INPUT_BG,
+                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
                     borderRadius: radiuses.inputIcon,
                     padding: "16px",
                     height: 120,
                     fontFamily: typography.fonts.inter,
                     fontSize: 16,
-                    color: HEADING_DARK,
+                    color: isDark ? 'white' : '#191C1E',
                   }}
                 />
               </div>
 
               <button
-                className="w-full border-none cursor-pointer"
+                className="w-full border-none cursor-pointer transition-all hover:opacity-90 active:scale-95"
                 style={{
                   background: BUTTON_GRADIENT,
                   borderRadius: radiuses.inputIcon,
@@ -242,13 +181,12 @@ function SectionDesktop() {
           >
             <div className="flex flex-col gap-8">
               <h3
-                className="m-0"
+                className="m-0 text-black dark:text-white transition-colors duration-300"
                 style={{
                   fontFamily: typography.fonts.jakarta,
                   fontWeight: 700,
                   fontSize: 24,
                   lineHeight: "32px",
-                  color: HEADING_DARK,
                 }}
               >
                 Service Excellence
@@ -257,67 +195,27 @@ function SectionDesktop() {
               <div className="flex flex-col gap-6">
                 <div className="flex items-start gap-4">
                   <div
-                    className="flex items-center justify-center shrink-0"
-                    style={{ width: 48, height: 48, backgroundColor: ICON_BG, borderRadius: radiuses.icon }}
+                    className="flex items-center justify-center shrink-0 transition-colors duration-300"
+                    style={{ width: 48, height: 48, backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : "#ECEEF1", borderRadius: radiuses.icon }}
                   >
-                    <Image src="/section-3-connect-us/icon-response.svg" alt="Response" width={24} height={24} />
+                    <Image src="/section-3-connect-us/icon-response.svg" alt="Response" width={24} height={24} className={isDark ? 'brightness-200' : ''} />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span
-                      style={{
-                        fontFamily: typography.fonts.inter,
-                        fontWeight: 700,
-                        fontSize: 18,
-                        lineHeight: "28px",
-                        color: HEADING_DARK,
-                      }}
-                    >
-                      Response time
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: typography.fonts.inter,
-                        fontWeight: 400,
-                        fontSize: 16,
-                        lineHeight: "24px",
-                        color: TEXT_LABEL,
-                      }}
-                    >
-                      We usually reply within 24 hours.
-                    </span>
+                    <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 700, fontSize: 18, lineHeight: "28px" }}>Response time</span>
+                    <span className="text-black/60 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "24px" }}>We usually reply within 24 hours.</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div
-                    className="flex items-center justify-center shrink-0"
-                    style={{ width: 48, height: 48, backgroundColor: ICON_BG, borderRadius: radiuses.icon }}
+                    className="flex items-center justify-center shrink-0 transition-colors duration-300"
+                    style={{ width: 48, height: 48, backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : "#ECEEF1", borderRadius: radiuses.icon }}
                   >
-                    <Image src="/section-3-connect-us/icon-clock.svg" alt="Availability" width={24} height={24} />
+                    <Image src="/section-3-connect-us/icon-clock.svg" alt="Availability" width={24} height={24} className={isDark ? 'brightness-200' : ''} />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span
-                      style={{
-                        fontFamily: typography.fonts.inter,
-                        fontWeight: 700,
-                        fontSize: 18,
-                        lineHeight: "28px",
-                        color: HEADING_DARK,
-                      }}
-                    >
-                      Availability
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: typography.fonts.inter,
-                        fontWeight: 400,
-                        fontSize: 16,
-                        lineHeight: "24px",
-                        color: TEXT_LABEL,
-                      }}
-                    >
-                      Mon-Fri: 9am - 6pm EST
-                    </span>
+                    <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 700, fontSize: 18, lineHeight: "28px" }}>Availability</span>
+                    <span className="text-black/60 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "24px" }}>Mon-Fri: 9am - 6pm EST</span>
                   </div>
                 </div>
               </div>
@@ -325,61 +223,37 @@ function SectionDesktop() {
 
             <div className="flex flex-col gap-4">
               <span
-                style={{
-                  fontFamily: typography.fonts.jakarta,
-                  fontWeight: 700,
-                  fontSize: 14,
-                  lineHeight: "20px",
-                  letterSpacing: "0.1em",
-                  color: TEXT_PLACEHOLDER,
-                  textTransform: "uppercase",
-                }}
+                className="text-black/40 dark:text-white/40 font-bold tracking-widest text-[14px] uppercase"
+                style={{ fontFamily: typography.fonts.jakarta, lineHeight: "20px" }}
               >
                 CONNECT WITH US
               </span>
               <div className="flex gap-4">
                 {[1, 2, 3].map((i) => (
-                  <Image key={i} src={`/section-3-connect-us/social-${i}.svg`} alt="Social" width={24} height={24} />
+                  <div key={i} className="hover:opacity-80 transition-opacity cursor-pointer">
+                    <Image src={`/section-3-connect-us/social-${i}.svg`} alt="Social" width={24} height={24} className={isDark ? 'brightness-200' : ''} />
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div
-              className="flex items-center justify-between"
-              style={{
-                backgroundColor: FAQ_BG,
-                borderLeft: `4px solid ${FAQ_BORDER}`,
-                borderRadius: "0 8px 8px 0",
-                padding: "24px 32px",
-                marginTop: "auto",
-              }}
-            >
-              <div className="flex flex-col gap-1">
-                <span
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 700,
-                    fontSize: 16,
-                    lineHeight: "24px",
-                    color: FAQ_BORDER,
-                  }}
-                >
-                  Looking for quick answers?
-                </span>
-                <span
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 400,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: TEXT_LABEL,
-                  }}
-                >
-                  Browse Faq
-                </span>
+            <Link href="/faq" className="no-underline mt-auto">
+              <div
+                className="flex items-center justify-between transition-all hover:opacity-90"
+                style={{
+                  backgroundColor: isDark ? 'rgba(59, 130, 246, 0.1)' : "rgba(22, 114, 223, 0.1)",
+                  borderLeft: `4px solid #2864E4`,
+                  borderRadius: "0 8px 8px 0",
+                  padding: "24px 32px",
+                }}
+              >
+                <div className="flex flex-col gap-1">
+                  <span className="text-blue-500 dark:text-blue-400 font-bold" style={{ fontFamily: typography.fonts.inter, fontSize: 16, lineHeight: "24px" }}>Looking for quick answers?</span>
+                  <span className="text-black/60 dark:text-white/60" style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "20px" }}>Browse Faq</span>
+                </div>
+                <Image src="/section-3-connect-us/arrow-right.svg" alt="Arrow" width={24} height={24} className="brightness-110" />
               </div>
-              <Image src="/section-3-connect-us/arrow-right.svg" alt="Arrow" width={24} height={24} />
-            </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -387,117 +261,66 @@ function SectionDesktop() {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
-
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: colors.white }}
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300"
+      style={{ backgroundColor: isDark ? 'black' : colors.white }}
     >
       <div className="flex flex-col gap-12 px-6 py-16 sm:px-8">
         
-        {/* Left Form */}
+        {/* Form */}
         <div
-          className="flex flex-col border shadow-sm"
+          className="flex flex-col border transition-colors duration-300"
           style={{
-            backgroundColor: colors.white,
-            borderColor: BORDER_SOFT,
+            backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : colors.white,
+            borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : "rgba(193, 198, 213, 0.15)",
             borderRadius: radiuses.cardLg,
-            padding: 32,
-            gap: 32,
+            padding: 24,
+            gap: 24,
+            boxShadow: isDark ? 'none' : '0 4px 20px rgba(0,0,0,0.02)'
           }}
         >
-          <h2
-            className="m-0"
-            style={{
-              fontFamily: typography.fonts.jakarta,
-              fontWeight: 700,
-              fontSize: 24,
-              lineHeight: "32px",
-              color: HEADING_DARK,
-            }}
-          >
-            Send a Message
-          </h2>
+          <h2 className="m-0 text-black dark:text-white font-bold text-2xl" style={{ fontFamily: typography.fonts.jakarta }}>Send a Message</h2>
 
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="flex flex-col gap-6 sm:flex-row">
-              <div className="flex flex-col flex-1 gap-2">
-                <label
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: TEXT_LABEL,
-                  }}
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  className="w-full border-none outline-none ring-0"
-                  style={{
-                    backgroundColor: INPUT_BG,
-                    borderRadius: radiuses.inputIcon,
-                    padding: "16px",
-                    fontFamily: typography.fonts.inter,
-                    fontSize: 16,
-                    color: HEADING_DARK,
-                  }}
-                />
-              </div>
-              <div className="flex flex-col flex-1 gap-2">
-                <label
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: TEXT_LABEL,
-                  }}
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  className="w-full border-none outline-none ring-0"
-                  style={{
-                    backgroundColor: INPUT_BG,
-                    borderRadius: radiuses.inputIcon,
-                    padding: "16px",
-                    fontFamily: typography.fonts.inter,
-                    fontSize: 16,
-                    color: HEADING_DARK,
-                  }}
-                />
-              </div>
+          <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+            <div className="flex flex-col gap-2">
+              <label className="text-[#414753] dark:text-white/60 font-semibold text-sm">Name</label>
+              <input
+                type="text"
+                placeholder="John Doe"
+                className="w-full border-none outline-none ring-0 p-4 transition-colors"
+                style={{
+                  backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
+                  borderRadius: radiuses.inputIcon,
+                  color: isDark ? 'white' : '#191C1E',
+                }}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-[#414753] dark:text-white/60 font-semibold text-sm">Email</label>
+              <input
+                type="email"
+                placeholder="john@example.com"
+                className="w-full border-none outline-none ring-0 p-4 transition-colors"
+                style={{
+                  backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
+                  borderRadius: radiuses.inputIcon,
+                  color: isDark ? 'white' : '#191C1E',
+                }}
+              />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label
-                style={{
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 600,
-                  fontSize: 14,
-                  lineHeight: "20px",
-                  color: TEXT_LABEL,
-                }}
-              >
-                Subject
-              </label>
+              <label className="text-[#414753] dark:text-white/60 font-semibold text-sm">Subject</label>
               <select
-                className="w-full border-none outline-none ring-0 appearance-none"
+                className="w-full border-none outline-none ring-0 appearance-none p-4 transition-colors"
                 style={{
-                  backgroundColor: INPUT_BG,
+                  backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
                   borderRadius: radiuses.inputIcon,
-                  padding: "16px",
-                  fontFamily: typography.fonts.inter,
-                  fontSize: 16,
-                  color: HEADING_DARK,
+                  color: isDark ? 'white' : '#191C1E',
                   backgroundImage: 'url("/section-3-connect-us/chevron.svg")',
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "right 16px center",
@@ -510,43 +333,24 @@ function SectionMobile() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label
-                style={{
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 600,
-                  fontSize: 14,
-                  lineHeight: "20px",
-                  color: TEXT_LABEL,
-                }}
-              >
-                Message
-              </label>
+              <label className="text-[#414753] dark:text-white/60 font-semibold text-sm">Message</label>
               <textarea
                 placeholder="How can we help you?"
-                className="w-full border-none outline-none ring-0 resize-none"
+                className="w-full border-none outline-none ring-0 resize-none p-4 transition-colors h-24"
                 style={{
-                  backgroundColor: INPUT_BG,
+                  backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : "#F2F4F7",
                   borderRadius: radiuses.inputIcon,
-                  padding: "16px",
-                  height: 120,
-                  fontFamily: typography.fonts.inter,
-                  fontSize: 16,
-                  color: HEADING_DARK,
+                  color: isDark ? 'white' : '#191C1E',
                 }}
               />
             </div>
 
             <button
-              className="w-full border-none cursor-pointer"
+              className="w-full border-none p-4 font-bold text-white transition-all hover:opacity-90 active:scale-95"
               style={{
                 background: BUTTON_GRADIENT,
                 borderRadius: radiuses.inputIcon,
-                padding: "16px",
                 fontFamily: typography.fonts.jakarta,
-                fontWeight: 700,
-                fontSize: 16,
-                color: colors.white,
-                marginTop: 8,
               }}
             >
               Send Message
@@ -554,147 +358,52 @@ function SectionMobile() {
           </form>
         </div>
 
-        {/* Right Support Info */}
-        <div className="flex flex-col gap-12">
-          <div className="flex flex-col gap-8">
-            <h3
-              className="m-0"
-              style={{
-                fontFamily: typography.fonts.jakarta,
-                fontWeight: 700,
-                fontSize: 24,
-                lineHeight: "32px",
-                color: HEADING_DARK,
-              }}
-            >
-              Service Excellence
-            </h3>
+        {/* Info */}
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-6">
+            <h3 className="m-0 text-black dark:text-white font-bold text-xl" style={{ fontFamily: typography.fonts.jakarta }}>Service Excellence</h3>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-5">
               <div className="flex items-start gap-4">
-                <div
-                  className="flex items-center justify-center shrink-0"
-                  style={{ width: 48, height: 48, backgroundColor: ICON_BG, borderRadius: radiuses.icon }}
-                >
-                  <Image src="/section-3-connect-us/icon-response.svg" alt="Response" width={24} height={24} />
+                <div className="flex items-center justify-center shrink-0 w-12 h-12 transition-colors" style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : "#ECEEF1", borderRadius: radiuses.icon }}>
+                  <Image src="/section-3-connect-us/icon-response.svg" alt="Response" width={24} height={24} className={isDark ? 'brightness-200' : ''} />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <span
-                    style={{
-                      fontFamily: typography.fonts.inter,
-                      fontWeight: 700,
-                      fontSize: 18,
-                      lineHeight: "28px",
-                      color: HEADING_DARK,
-                    }}
-                  >
-                    Response time
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: typography.fonts.inter,
-                      fontWeight: 400,
-                      fontSize: 16,
-                      lineHeight: "24px",
-                      color: TEXT_LABEL,
-                    }}
-                  >
-                    We usually reply within 24 hours.
-                  </span>
+                <div className="flex flex-col">
+                  <span className="text-black dark:text-white font-bold text-lg">Response time</span>
+                  <span className="text-black/60 dark:text-white/60 text-sm">We usually reply within 24 hours.</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div
-                  className="flex items-center justify-center shrink-0"
-                  style={{ width: 48, height: 48, backgroundColor: ICON_BG, borderRadius: radiuses.icon }}
-                >
-                  <Image src="/section-3-connect-us/icon-clock.svg" alt="Availability" width={24} height={24} />
+                <div className="flex items-center justify-center shrink-0 w-12 h-12 transition-colors" style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : "#ECEEF1", borderRadius: radiuses.icon }}>
+                  <Image src="/section-3-connect-us/icon-clock.svg" alt="Availability" width={24} height={24} className={isDark ? 'brightness-200' : ''} />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <span
-                    style={{
-                      fontFamily: typography.fonts.inter,
-                      fontWeight: 700,
-                      fontSize: 18,
-                      lineHeight: "28px",
-                      color: HEADING_DARK,
-                    }}
-                  >
-                    Availability
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: typography.fonts.inter,
-                      fontWeight: 400,
-                      fontSize: 16,
-                      lineHeight: "24px",
-                      color: TEXT_LABEL,
-                    }}
-                  >
-                    Mon-Fri: 9am - 6pm EST
-                  </span>
+                <div className="flex flex-col">
+                  <span className="text-black dark:text-white font-bold text-lg">Availability</span>
+                  <span className="text-black/60 dark:text-white/60 text-sm">Mon-Fri: 9am - 6pm EST</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-4">
-            <span
-              style={{
-                fontFamily: typography.fonts.jakarta,
-                fontWeight: 700,
-                fontSize: 14,
-                lineHeight: "20px",
-                letterSpacing: "0.1em",
-                color: TEXT_PLACEHOLDER,
-                textTransform: "uppercase",
-              }}
-            >
-              CONNECT WITH US
-            </span>
+            <span className="text-black/40 dark:text-white/40 font-bold tracking-widest text-xs uppercase">CONNECT WITH US</span>
             <div className="flex gap-4">
               {[1, 2, 3].map((i) => (
-                <Image key={i} src={`/section-3-connect-us/social-${i}.svg`} alt="Social" width={24} height={24} />
+                <Image key={i} src={`/section-3-connect-us/social-${i}.svg`} alt="Social" width={24} height={24} className={isDark ? 'brightness-200' : ''} />
               ))}
             </div>
           </div>
 
-          <div
-            className="flex items-center justify-between"
-            style={{
-              backgroundColor: FAQ_BG,
-              borderLeft: `4px solid ${FAQ_BORDER}`,
-              borderRadius: "0 8px 8px 0",
-              padding: "24px",
-            }}
-          >
-            <div className="flex flex-col gap-1">
-              <span
-                style={{
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 700,
-                  fontSize: 16,
-                  lineHeight: "24px",
-                  color: FAQ_BORDER,
-                }}
-              >
-                Looking for quick answers?
-              </span>
-              <span
-                style={{
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 400,
-                  fontSize: 14,
-                  lineHeight: "20px",
-                  color: TEXT_LABEL,
-                }}
-              >
-                Browse Faq
-              </span>
+          <Link href="/faq" className="no-underline">
+            <div className="flex items-center justify-between p-6 transition-all" style={{ backgroundColor: isDark ? 'rgba(59, 130, 246, 0.1)' : "rgba(22, 114, 223, 0.1)", borderLeft: `4px solid #2864E4`, borderRadius: "0 8px 8px 0" }}>
+              <div className="flex flex-col">
+                <span className="text-blue-500 dark:text-blue-400 font-bold text-base">Looking for quick answers?</span>
+                <span className="text-black/60 dark:text-white/60 text-sm">Browse Faq</span>
+              </div>
+              <Image src="/section-3-connect-us/arrow-right.svg" alt="Arrow" width={24} height={24} />
             </div>
-            <Image src="/section-3-connect-us/arrow-right.svg" alt="Arrow" width={24} height={24} />
-          </div>
+          </Link>
         </div>
 
       </div>

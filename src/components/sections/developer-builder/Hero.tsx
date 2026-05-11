@@ -52,6 +52,7 @@ export default function Hero() {
 function HeroHeading({ fontSize, lineHeight }: { fontSize: number | string; lineHeight: string }) {
   return (
     <h1
+      className="m-0 text-black dark:text-white transition-colors duration-300"
       style={{
         margin: 0,
         fontFamily: typography.fonts.poppins,
@@ -59,7 +60,6 @@ function HeroHeading({ fontSize, lineHeight }: { fontSize: number | string; line
         fontSize,
         lineHeight,
         letterSpacing: "-0.05em",
-        color: colors.white,
         textAlign: "center",
       }}
     >
@@ -81,13 +81,13 @@ function HeroHeading({ fontSize, lineHeight }: { fontSize: number | string; line
 function HeroDescription({ fontSize, lineHeight }: { fontSize: number | string; lineHeight: string }) {
   return (
     <p
+      className="m-0 text-[#475569] dark:text-white transition-colors duration-300"
       style={{
         margin: 0,
         fontFamily: typography.fonts.inter,
         fontWeight: 400,
         fontSize,
         lineHeight,
-        color: colors.white,
         textAlign: "center",
       }}
     >
@@ -95,41 +95,32 @@ function HeroDescription({ fontSize, lineHeight }: { fontSize: number | string; 
     </p>
   );
 }
-
 function HeroLogos({ isMobile = false }: { isMobile?: boolean }) {
   return (
     <div
-      className={`relative w-full overflow-hidden flex items-center border-y`}
+      className={`relative w-full overflow-hidden flex items-center border-y border-black/10 dark:border-white/20 transition-colors duration-300 bg-white dark:bg-black`}
       style={{
         height: isMobile ? "64px" : "89px",
-        borderColor: LOGO_STRIP_BORDER,
       }}
     >
       {/* Logos Track */}
       <div className="flex animate-marquee items-center gap-12 whitespace-nowrap min-w-max px-6">
-        <Image src="/section-1-developer-builder/icon-github.png" alt="GitHub" width={isMobile ? 73 : 103} height={isMobile ? 20 : 28} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-figma.png" alt="Figma" width={isMobile ? 95 : 134} height={isMobile ? 52 : 73} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-anthropic.svg" alt="Anthropic" width={isMobile ? 131 : 185} height={isMobile ? 87 : 123} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-slack.png" alt="Slack" width={isMobile ? 64 : 90} height={isMobile ? 18 : 26} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-notion.png" alt="Notion" width={isMobile ? 67 : 95} height={isMobile ? 13 : 19} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-discord.png" alt="Discord" width={isMobile ? 72 : 102} height={isMobile ? 51 : 72} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-linear.png" alt="Linear" width={isMobile ? 73 : 103} height={isMobile ? 30 : 42} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-jira.png" alt="Jira" width={isMobile ? 35 : 50} height={isMobile ? 35 : 50} className="object-contain" />
-        
-        {/* Duplicate for seamless loop */}
-        <Image src="/section-1-developer-builder/icon-github.png" alt="GitHub" width={isMobile ? 73 : 103} height={isMobile ? 20 : 28} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-figma.png" alt="Figma" width={isMobile ? 95 : 134} height={isMobile ? 52 : 73} className="object-contain" />
-        <Image src="/section-1-developer-builder/icon-anthropic.svg" alt="Anthropic" width={isMobile ? 131 : 185} height={isMobile ? 87 : 123} className="object-contain" />
+        <Image src="/section-1-developer-builder/icon-github.png" alt="GitHub" width={isMobile ? 73 : 103} height={isMobile ? 20 : 28} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
+        <Image src="/section-1-developer-builder/icon-figma.png" alt="Figma" width={isMobile ? 95 : 134} height={isMobile ? 52 : 73} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
+        <Image src="/section-1-developer-builder/icon-anthropic.svg" alt="Anthropic" width={isMobile ? 131 : 185} height={isMobile ? 87 : 123} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
+        <Image src="/section-1-developer-builder/icon-slack.png" alt="Slack" width={isMobile ? 64 : 90} height={isMobile ? 18 : 26} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
+        <Image src="/section-1-developer-builder/icon-notion.png" alt="Notion" width={isMobile ? 67 : 95} height={isMobile ? 13 : 19} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
+        <Image src="/section-1-developer-builder/icon-discord.png" alt="Discord" width={isMobile ? 72 : 102} height={isMobile ? 51 : 72} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
+        <Image src="/section-1-developer-builder/icon-linear.png" alt="Linear" width={isMobile ? 73 : 103} height={isMobile ? 30 : 42} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
+        <Image src="/section-1-developer-builder/icon-jira.png" alt="Jira" width={isMobile ? 35 : 50} height={isMobile ? 35 : 50} className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300" />
       </div>
 
       {/* Fades */}
       <div
-        className="absolute left-0 top-0 bottom-0 z-10 w-[34px]"
-        style={{ background: "linear-gradient(90deg, #000 0%, rgba(0,0,0,0) 100%)" }}
+        className="absolute left-0 top-0 bottom-0 z-10 w-[34px] bg-gradient-to-r from-white dark:from-black to-transparent transition-all duration-300"
       />
       <div
-        className="absolute right-0 top-0 bottom-0 z-10 w-[34px]"
-        style={{ background: "linear-gradient(270deg, #000 0%, rgba(0,0,0,0) 100%)" }}
+        className="absolute right-0 top-0 bottom-0 z-10 w-[34px] bg-gradient-to-l from-white dark:from-black to-transparent transition-all duration-300"
       />
     </div>
   );
@@ -140,9 +131,8 @@ function HeroLogos({ isMobile = false }: { isMobile?: boolean }) {
 function SectionDesktop() {
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-black"
       style={{
-        backgroundColor: colors.black,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -157,17 +147,17 @@ function SectionDesktop() {
         }}
       >
         {/* Glow Effects */}
-        <div className="absolute" style={{ left: -98, top: -139, width: 163, height: 163 }}>
+        <div className="absolute opacity-40 dark:opacity-100 transition-opacity duration-300" style={{ left: -98, top: -139, width: 163, height: 163 }}>
           <Image src="/section-1-developer-builder/hero-glow-2.svg" alt="" fill className="object-contain" priority />
         </div>
 
         {/* Central Graphic */}
-        <div className="absolute" style={{ left: 37, top: 177, width: 1160, height: 652 }}>
+        <div className="absolute opacity-10 dark:opacity-100 transition-opacity duration-300" style={{ left: 37, top: 177, width: 1160, height: 652 }}>
           <Image src="/section-1-developer-builder/bg-image.png" alt="Platform UI" fill className="object-contain" priority />
         </div>
 
         {/* Concentric Rings Effect (Group 9210) */}
-        <div className="absolute mix-blend-difference" style={{ left: 200, top: 349, width: 850, height: 556, pointerEvents: "none" }}>
+        <div className="absolute dark:mix-blend-difference mix-blend-multiply transition-all duration-300" style={{ left: 200, top: 349, width: 850, height: 556, pointerEvents: "none" }}>
           <div className="absolute rounded-[30px] border border-solid" style={{ borderColor: RING_COLOR, left: 446.8, top: 467.2, width: 357.2, height: 320.5, opacity: 1 }} />
           <div className="absolute rounded-[30px] border border-solid" style={{ borderColor: RING_COLOR, left: 430.4, top: 452.5, width: 390.0, height: 349.8, opacity: 0.9 }} />
           <div className="absolute rounded-[30px] border border-solid" style={{ borderColor: RING_COLOR, left: 414.4, top: 438.1, width: 422.1, height: 378.6, opacity: 0.8 }} />
@@ -198,7 +188,7 @@ function SectionDesktop() {
         </div>
 
         {/* Logo Strip (Frame 2147225678) */}
-        <div className="absolute z-10" style={{ left: -4, top: 629, width: 1291, height: 89, backgroundColor: colors.black }}>
+        <div className="absolute z-10" style={{ left: -4, top: 629, width: 1291, height: 89 }}>
           <HeroLogos />
         </div>
       </div>
@@ -211,8 +201,7 @@ function SectionDesktop() {
 function SectionMobile() {
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden pt-24"
-      style={{ backgroundColor: colors.black }}
+      className="relative block w-full overflow-hidden md:hidden pt-24 transition-colors duration-300 bg-white dark:bg-black"
     >
       <div className="flex flex-col items-center gap-6 px-6 relative z-10 text-center">
         <HeroHeading fontSize="clamp(36px, 10vw, 48px)" lineHeight="1.1" />
@@ -221,7 +210,7 @@ function SectionMobile() {
         </div>
       </div>
 
-      <div className="relative mt-12 w-full h-[400px]">
+      <div className="relative mt-12 w-full h-[400px] opacity-20 dark:opacity-100 transition-opacity duration-300">
         <Image src="/section-1-developer-builder/bg-image.png" alt="Platform UI" fill className="object-contain object-top" priority />
       </div>
 

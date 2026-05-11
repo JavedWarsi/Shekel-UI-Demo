@@ -51,13 +51,10 @@ export function PartnerMarquee({
 
   return (
     <div
-      className={`relative overflow-hidden ${className || ""}`}
+      className={`relative overflow-hidden transition-colors duration-300 bg-white dark:bg-black border-y border-black/10 dark:border-white/20 ${className || ""}`}
       style={{
         width: containerWidth,
         height: 89,
-        backgroundColor: colors.black,
-        borderTop: "1px solid rgba(255,255,255,0.2)",
-        borderBottom: "1px solid rgba(255,255,255,0.2)",
         ...style,
       }}
     >
@@ -100,7 +97,7 @@ export function PartnerMarquee({
                     alt={p.name}
                     fill
                     sizes={`${p.w}px`}
-                    className="object-contain"
+                    className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300"
                   />
                 </motion.div>
               </Float>
@@ -112,17 +109,11 @@ export function PartnerMarquee({
       {/* Fade overlays */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 z-10 h-full w-[40px]"
-        style={{
-          background: "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-        }}
+        className="pointer-events-none absolute left-0 top-0 z-10 h-full w-[40px] bg-gradient-to-r from-white dark:from-black to-transparent transition-all duration-300"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 z-10 h-full w-[40px]"
-        style={{
-          background: "linear-gradient(270deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-        }}
+        className="pointer-events-none absolute right-0 top-0 z-10 h-full w-[40px] bg-gradient-to-l from-white dark:from-black to-transparent transition-all duration-300"
       />
     </div>
   );

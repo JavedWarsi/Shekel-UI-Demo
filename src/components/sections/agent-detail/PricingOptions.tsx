@@ -1,46 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// PricingOptions.tsx  —  "Pricing options"
-// Figma frame: 503:3139  "Body"
-// Canvas: 1280 × 769 px   Page-y: TBD   bg: #FFFFFF
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Canvas             1280 × 769,   bg #FFFFFF, rounded 24px
-//   Background SVG     (-531, -188)  2400.92 × 1830 (bg-decoration.svg)
-//   Ellipse 43665      (-126, 638)   310 × 131   bg gradient, blur 203.4px
-//   Ellipse 43666      (1081, 655)   310 × 131   bg gradient, blur 203.4px
-//   Section Header     (48, 76)      1184 × 52   flex-col, center
-//     Heading          (376, -8)     432.92 × 60 Poppins 500 60/60 LS -2.5% #000000
-//   Pricing Grid       (24, 212)     1232 × 469  flex-row, gap 24
-//     Free Card        (0, 0)        389.33 × 448 bg #FFFFFF, border rgba(255,255,255,0.34) rounded 24px, p 32
-//       Heading 4      ... Plus Jakarta Sans 500 24/36 #000000 "Free"
-//       Subtext        ... Inter 400 14/21 #000000 "Explore the possibilities"
-//       Price          ... Inter 600 48/48 #000000 "$0" + Inter 400 16/16 "/mo"
-//       List           ... flex-col, gap 20
-//         Item 1       ... check-icon.svg + Inter 400 14/21 #000000 "3 runs per month"
-//         Item 2       ... "Basic text generation"
-//         Item 3       ... "1 social platform"
-//       Button         ... border gradient, rounded 12px, Inter 600 16/24 gradient text "Start Free"
-//     Pay-per-use Card (421.33, 0)   389.33 × 441 bg #FFFFFF, rounded 24px, shadow, p 32
-//       Badge          ... "Popular" bg gradient, rounded-full
-//       Heading 4      ... "Pay-per-use"
-//       Subtext        ... "Flexibility at its best"
-//       Price          ... "$5/task"
-//       List           ... "All Free features", "Premium visual AI", "Multi-platform scheduling", "API access"
-//       Button         ... bg gradient, shadow, "Get Started" #FFFFFF
-//     Pro Card         (842.67, 0)   389.33 × 448 bg #FFFFFF, border rgba(255,255,255,0.24) rounded 24px, p 32
-//       Heading 4      ... "Pro"
-//       Subtext        ... "Power for professionals"
-//       Price          ... "$19/mo"
-//       List           ... "Unlimited runs", "Priority processing", "Dedicated support"
-//       Button         ... border gradient, "Go Pro"
-// ─────────────────────────────────────────────────────────────────────────────
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CANVAS_W = 1280;
 const CANVAS_H = 769;
@@ -59,12 +21,12 @@ export default function PricingOptions() {
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block py-16"
+      className="relative hidden w-full overflow-hidden md:block py-16 transition-colors duration-300"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -83,32 +45,32 @@ function SectionDesktop() {
       >
         <div className="relative" style={{ width: 1280, height: 769 }}>
           <div
-            className="absolute overflow-hidden"
+            className="absolute overflow-hidden transition-colors duration-300"
             style={{
               left: 0,
               top: 0,
               width: CANVAS_W,
               height: CANVAS_H,
-              backgroundColor: colors.white,
+              backgroundColor: isDark ? '#05070C' : colors.white,
               borderRadius: radiuses.card,
             }}
           >
             {/* Background decoration */}
             <div className="absolute pointer-events-none" style={{ left: -531, top: -188, width: 2400.92, height: 1830 }}>
-              <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className="object-cover" />
+              <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className={`object-cover ${isDark ? 'opacity-20 brightness-50' : ''}`} unoptimized />
             </div>
             
             <div className="absolute pointer-events-none" style={{ left: -126, top: 638, width: 310, height: 131 }}>
-              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)" }} />
+              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)", opacity: isDark ? 0.3 : 1 }} />
             </div>
             <div className="absolute pointer-events-none" style={{ left: 1081, top: 655, width: 310, height: 131 }}>
-              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)" }} />
+              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)", opacity: isDark ? 0.3 : 1 }} />
             </div>
 
             {/* Section Header */}
             <div className="absolute flex flex-col items-center" style={{ left: 48, top: 76, width: 1184, height: 52 }}>
               <div className="absolute flex flex-col justify-center text-center" style={{ left: "50%", transform: "translateX(-50%)", top: -8 }}>
-                <h2 style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: 60, lineHeight: "60px", letterSpacing: "-1.5px", color: colors.black }}>
+                <h2 className="m-0 text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: 60, lineHeight: "60px", letterSpacing: "-1.5px" }}>
                   Pricing options
                 </h2>
               </div>
@@ -117,167 +79,36 @@ function SectionDesktop() {
             {/* Pricing Grid */}
             <div className="absolute flex flex-row" style={{ left: 24, top: 212, width: 1232, height: 469 }}>
               
-              {/* Free Card */}
-              <div className="absolute flex flex-col items-start" style={{ left: 0, top: 0, width: 389.33, height: 448, backgroundColor: colors.white, border: "1px solid rgba(255, 255, 255, 0.34)", borderRadius: 24, padding: 32, gap: 24 }}>
-                <div className="flex flex-col items-start w-full" style={{ gap: 8 }}>
-                  <span style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px", color: colors.black }}>Free</span>
-                  <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Explore the possibilities</span>
-                </div>
-                
-                <div className="relative w-full" style={{ height: 48 }}>
-                  <div className="absolute flex flex-col justify-center" style={{ left: 0, top: "50%", transform: "translateY(-50%)", height: 48 }}>
-                    <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px", color: colors.black }}>$0</span>
-                  </div>
-                  <div className="absolute flex flex-col justify-center" style={{ left: 62.89, top: "50%", transform: "translateY(-50%)", height: 16, marginTop: 11 }}>
-                    <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px", color: colors.black }}>/mo</span>
-                  </div>
-                </div>
+              <PricingCard 
+                title="Free" 
+                subtitle="Explore the possibilities" 
+                price="$0" 
+                period="/mo" 
+                features={["3 runs per month", "Basic text generation", "1 social platform"]} 
+                buttonText="Start Free"
+                x={0}
+              />
 
-                <div className="flex flex-col items-start w-full" style={{ gap: 20, paddingBottom: 48 }}>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 113.47 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>3 runs per month</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 139.42 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Basic text generation</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 106.98 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>1 social platform</span>
-                    </div>
-                  </div>
-                </div>
+              <PricingCard 
+                title="Pay-per-use" 
+                subtitle="Flexibility at its best" 
+                price="$5" 
+                period="/task" 
+                features={["All Free features", "Premium visual AI", "Multi-platform scheduling", "API access"]} 
+                buttonText="Get Started"
+                x={421.33}
+                highlighted
+              />
 
-                <div className="flex items-center justify-center w-full" style={{ height: 48, borderRadius: 12, border: "1px solid #2864E4", padding: "0 21px" }}>
-                  <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", background: GRADIENT_BG, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                    Start Free
-                  </span>
-                </div>
-              </div>
-
-              {/* Pay-per-use Card */}
-              <div className="absolute flex flex-col items-start" style={{ left: 421.33, top: 0, width: 389.33, height: 441, backgroundColor: colors.white, borderRadius: 24, padding: 32, gap: 24, boxShadow: CARD_SHADOW }}>
-                <div className="absolute flex flex-col items-center" style={{ left: "50%", transform: "translateX(-50%)", top: -16, padding: "6px 20px", background: GRADIENT_BG, borderRadius: 9999 }}>
-                  <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 12, lineHeight: "18px", textTransform: "uppercase", color: colors.white }}>Popular</span>
-                </div>
-
-                <div className="flex flex-col items-start w-full" style={{ gap: 8 }}>
-                  <span style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px", color: colors.black }}>Pay-per-use</span>
-                  <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Flexibility at its best</span>
-                </div>
-                
-                <div className="relative w-full" style={{ height: 48 }}>
-                  <div className="absolute flex flex-col justify-center" style={{ left: 0, top: "50%", transform: "translateY(-50%)", height: 48 }}>
-                    <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px", color: colors.black }}>$5</span>
-                  </div>
-                  <div className="absolute flex flex-col justify-center" style={{ left: 60.61, top: "50%", transform: "translateY(-50%)", height: 16, marginTop: 11 }}>
-                    <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px", color: colors.black }}>/task</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-start w-full" style={{ gap: 20 }}>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 110.59 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>All Free features</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 120.98 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>Premium visual AI</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 175.56 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>Multi-platform scheduling</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 74.64 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>API access</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-center w-full hover:opacity-90 cursor-pointer" style={{ height: 48, borderRadius: 12, background: GRADIENT_BG, boxShadow: BUTTON_SHADOW }}>
-                  <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", color: colors.white }}>
-                    Get Started
-                  </span>
-                </div>
-              </div>
-
-              {/* Pro Card */}
-              <div className="absolute flex flex-col items-start" style={{ left: 842.67, top: 0, width: 389.33, height: 448, backgroundColor: colors.white, border: "1px solid rgba(255, 255, 255, 0.24)", borderRadius: 24, padding: 32, gap: 24 }}>
-                <div className="flex flex-col items-start w-full" style={{ gap: 8 }}>
-                  <span style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px", color: colors.black }}>Pro</span>
-                  <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Power for professionals</span>
-                </div>
-                
-                <div className="relative w-full" style={{ height: 48 }}>
-                  <div className="absolute flex flex-col justify-center" style={{ left: 0, top: "50%", transform: "translateY(-50%)", height: 48 }}>
-                    <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px", color: colors.black }}>$19</span>
-                  </div>
-                  <div className="absolute flex flex-col justify-center" style={{ left: 82.22, top: "50%", transform: "translateY(-50%)", height: 16, marginTop: 11 }}>
-                    <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px", color: colors.black }}>/mo</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-start w-full" style={{ gap: 20, paddingBottom: 48 }}>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 95.45 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Unlimited runs</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 124.8 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Priority processing</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center w-full" style={{ gap: 12 }}>
-                    <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-                      <Image src="/section-6-agent-detail/check-icon.svg" alt="" fill className="object-contain" />
-                    </div>
-                    <div className="flex flex-col justify-center" style={{ width: 122.63 }}>
-                      <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Dedicated support</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-center w-full" style={{ height: 48, borderRadius: 12, border: "1px solid #2864E4", padding: "0 21px" }}>
-                  <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", background: GRADIENT_BG, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                    Go Pro
-                  </span>
-                </div>
-              </div>
+              <PricingCard 
+                title="Pro" 
+                subtitle="Power for professionals" 
+                price="$19" 
+                period="/mo" 
+                features={["Unlimited runs", "Priority processing", "Dedicated support"]} 
+                buttonText="Go Pro"
+                x={842.67}
+              />
 
             </div>
           </div>
@@ -287,134 +118,116 @@ function SectionDesktop() {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
+function PricingCard({ title, subtitle, price, period, features, buttonText, x, highlighted }: { title: string, subtitle: string, price: string, period: string, features: string[], buttonText: string, x: number, highlighted?: boolean }) {
+  const { isDark } = useThemeTokens();
+  
+  return (
+    <div className="absolute flex flex-col items-start transition-colors duration-300" style={{ left: x, top: 0, width: 389.33, height: highlighted ? 441 : 448, backgroundColor: isDark ? '#0F172A' : colors.white, border: highlighted ? 'none' : '1px solid rgba(255, 255, 255, 0.34)', borderRadius: 24, padding: 32, gap: 24, boxShadow: highlighted ? CARD_SHADOW : 'none' }}>
+      {highlighted && (
+        <div className="absolute flex flex-col items-center" style={{ left: "50%", transform: "translateX(-50%)", top: -16, padding: "6px 20px", background: GRADIENT_BG, borderRadius: 9999 }}>
+          <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 12, lineHeight: "18px", textTransform: "uppercase", color: colors.white }}>Popular</span>
+        </div>
+      )}
+
+      <div className="flex flex-col items-start w-full" style={{ gap: 8 }}>
+        <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px" }}>{title}</span>
+        <span className="text-black/60 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px" }}>{subtitle}</span>
+      </div>
+      
+      <div className="relative w-full" style={{ height: 48 }}>
+        <div className="absolute flex flex-col justify-center" style={{ left: 0, top: "50%", transform: "translateY(-50%)", height: 48 }}>
+          <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px" }}>{price}</span>
+        </div>
+        <div className="absolute flex flex-col justify-center" style={{ left: price.length > 2 ? 82.22 : 60.61, top: "50%", transform: "translateY(-50%)", height: 16, marginTop: 11 }}>
+          <span className="text-black/40 dark:text-white/40 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px" }}>{period}</span>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-start w-full" style={{ gap: 20, paddingBottom: highlighted ? 0 : 48 }}>
+        {features.map((f, i) => (
+          <div key={i} className="flex items-center w-full" style={{ gap: 12 }}>
+            <div className="relative" style={{ width: 12.23, height: 9.02 }}>
+              <Image src={highlighted ? "/section-6-agent-detail/check-icon-blue.svg" : "/section-6-agent-detail/check-icon.svg"} alt="" fill className={`object-contain ${!highlighted && isDark ? 'brightness-200' : ''}`} />
+            </div>
+            <div className="flex flex-col justify-center">
+              <span className={`text-black dark:text-white transition-colors duration-300 ${highlighted ? 'font-semibold' : 'font-normal'}`} style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "21px" }}>{f}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex items-center justify-center w-full hover:opacity-90 active:scale-95 transition-all cursor-pointer" style={{ height: 48, borderRadius: 12, background: highlighted ? GRADIENT_BG : 'transparent', border: highlighted ? 'none' : '1px solid #2864E4', padding: "0 21px", boxShadow: highlighted ? BUTTON_SHADOW : 'none' }}>
+        <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", background: highlighted ? 'none' : GRADIENT_BG, WebkitBackgroundClip: highlighted ? 'none' : 'text', WebkitTextFillColor: highlighted ? 'none' : 'transparent', backgroundClip: highlighted ? 'none' : 'text', color: highlighted ? colors.white : 'transparent' }}>
+          {buttonText}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: colors.white, borderRadius: radiuses.card, marginTop: 32, marginBottom: 32 }}
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300"
+      style={{ backgroundColor: isDark ? 'black' : colors.white, borderRadius: radiuses.card, marginTop: 32, marginBottom: 32 }}
     >
       <div className="relative flex flex-col gap-12 px-6 py-16">
         {/* Background decoration */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl">
-          <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className="object-cover opacity-50" />
+          <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className={`object-cover ${isDark ? 'opacity-20 brightness-50' : 'opacity-50'}`} unoptimized />
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          <h2 style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: "clamp(32px, 8vw, 40px)", lineHeight: "1.2", letterSpacing: "-1px", color: colors.black }}>
+          <h2 className="m-0 text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: "clamp(32px, 8vw, 40px)", lineHeight: "1.2", letterSpacing: "-1px" }}>
             Pricing options
           </h2>
         </div>
 
         <div className="relative z-10 flex flex-col gap-8 w-full">
-          
-          {/* Free Card Mobile */}
-          <div className="flex flex-col items-start w-full bg-white border border-[rgba(255,255,255,0.34)] rounded-3xl p-8 gap-6 shadow-sm">
-            <div className="flex flex-col items-start w-full gap-2">
-              <span style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px", color: colors.black }}>Free</span>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Explore the possibilities</span>
-            </div>
-            
-            <div className="flex items-baseline w-full h-12 gap-1">
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px", color: colors.black }}>$0</span>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px", color: colors.black }}>/mo</span>
-            </div>
-
-            <div className="flex flex-col items-start w-full gap-4 pb-6">
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>3 runs per month</span>
-              </div>
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Basic text generation</span>
-              </div>
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>1 social platform</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center w-full hover:opacity-90 cursor-pointer" style={{ height: 48, borderRadius: 12, border: "1px solid #2864E4", padding: "0 21px" }}>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", background: GRADIENT_BG, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Start Free</span>
-            </div>
-          </div>
-
-          {/* Pay-per-use Card Mobile */}
-          <div className="flex flex-col items-start w-full relative bg-white rounded-3xl p-8 gap-6" style={{ boxShadow: CARD_SHADOW }}>
-            <div className="absolute flex flex-col items-center" style={{ left: "50%", transform: "translateX(-50%)", top: -16, padding: "6px 20px", background: GRADIENT_BG, borderRadius: 9999 }}>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 12, lineHeight: "18px", textTransform: "uppercase", color: colors.white }}>Popular</span>
-            </div>
-
-            <div className="flex flex-col items-start w-full gap-2">
-              <span style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px", color: colors.black }}>Pay-per-use</span>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Flexibility at its best</span>
-            </div>
-            
-            <div className="flex items-baseline w-full h-12 gap-1">
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px", color: colors.black }}>$5</span>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px", color: colors.black }}>/task</span>
-            </div>
-
-            <div className="flex flex-col items-start w-full gap-4">
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>All Free features</span>
-              </div>
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>Premium visual AI</span>
-              </div>
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>Multi-platform scheduling</span>
-              </div>
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon-blue.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: colors.black }}>API access</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center w-full hover:opacity-90 cursor-pointer" style={{ height: 48, borderRadius: 12, background: GRADIENT_BG, boxShadow: BUTTON_SHADOW }}>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", color: colors.white }}>Get Started</span>
-            </div>
-          </div>
-
-          {/* Pro Card Mobile */}
-          <div className="flex flex-col items-start w-full bg-white border border-[rgba(255,255,255,0.24)] rounded-3xl p-8 gap-6 shadow-sm">
-            <div className="flex flex-col items-start w-full gap-2">
-              <span style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px", color: colors.black }}>Pro</span>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Power for professionals</span>
-            </div>
-            
-            <div className="flex items-baseline w-full h-12 gap-1">
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px", color: colors.black }}>$19</span>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px", color: colors.black }}>/mo</span>
-            </div>
-
-            <div className="flex flex-col items-start w-full gap-4 pb-6">
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Unlimited runs</span>
-              </div>
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Priority processing</span>
-              </div>
-              <div className="flex items-center w-full gap-3">
-                <Image src="/section-6-agent-detail/check-icon.svg" alt="" width={12.23} height={9.02} />
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px", color: colors.black }}>Dedicated support</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center w-full hover:opacity-90 cursor-pointer" style={{ height: 48, borderRadius: 12, border: "1px solid #2864E4", padding: "0 21px" }}>
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", background: GRADIENT_BG, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Go Pro</span>
-            </div>
-          </div>
-
+          <MobilePricingCard title="Free" subtitle="Explore the possibilities" price="$0" period="/mo" features={["3 runs per month", "Basic text generation", "1 social platform"]} buttonText="Start Free" />
+          <MobilePricingCard title="Pay-per-use" subtitle="Flexibility at its best" price="$5" period="/task" features={["All Free features", "Premium visual AI", "Multi-platform scheduling", "API access"]} buttonText="Get Started" highlighted />
+          <MobilePricingCard title="Pro" subtitle="Power for professionals" price="$19" period="/mo" features={["Unlimited runs", "Priority processing", "Dedicated support"]} buttonText="Go Pro" />
         </div>
       </div>
     </section>
+  );
+}
+
+function MobilePricingCard({ title, subtitle, price, period, features, buttonText, highlighted }: { title: string, subtitle: string, price: string, period: string, features: string[], buttonText: string, highlighted?: boolean }) {
+  const { isDark } = useThemeTokens();
+  
+  return (
+    <div className="flex flex-col items-start w-full relative transition-colors duration-300 bg-white dark:bg-slate-900 border border-[rgba(255,255,255,0.1)] rounded-3xl p-8 gap-6 shadow-sm" style={{ boxShadow: highlighted ? CARD_SHADOW : 'none' }}>
+      {highlighted && (
+        <div className="absolute flex flex-col items-center" style={{ left: "50%", transform: "translateX(-50%)", top: -16, padding: "6px 20px", background: GRADIENT_BG, borderRadius: 9999 }}>
+          <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 12, lineHeight: "18px", textTransform: "uppercase", color: colors.white }}>Popular</span>
+        </div>
+      )}
+
+      <div className="flex flex-col items-start w-full gap-2">
+        <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.jakarta, fontWeight: 500, fontSize: 24, lineHeight: "36px" }}>{title}</span>
+        <span className="text-black/60 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "21px" }}>{subtitle}</span>
+      </div>
+      
+      <div className="flex items-baseline w-full h-12 gap-1">
+        <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 48, lineHeight: "48px" }}>{price}</span>
+        <span className="text-black/40 dark:text-white/40 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "16px" }}>{period}</span>
+      </div>
+
+      <div className="flex flex-col items-start w-full gap-4 pb-6">
+        {features.map((f, i) => (
+          <div key={i} className="flex items-center w-full gap-3">
+            <Image src={highlighted ? "/section-6-agent-detail/check-icon-blue.svg" : "/section-6-agent-detail/check-icon.svg"} alt="" width={12.23} height={9.02} className={!highlighted && isDark ? 'brightness-200' : ''} />
+            <span className={`text-black dark:text-white transition-colors duration-300 ${highlighted ? 'font-semibold' : 'font-normal'}`} style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "21px" }}>{f}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex items-center justify-center w-full hover:opacity-90 active:scale-95 transition-all cursor-pointer" style={{ height: 48, borderRadius: 12, background: highlighted ? GRADIENT_BG : 'transparent', border: highlighted ? 'none' : '1px solid #2864E4', padding: "0 21px" }}>
+        <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 16, lineHeight: "24px", textAlign: "center", background: highlighted ? 'none' : GRADIENT_BG, WebkitBackgroundClip: highlighted ? 'none' : 'text', WebkitTextFillColor: highlighted ? 'none' : 'transparent', backgroundClip: highlighted ? 'none' : 'text', color: highlighted ? colors.white : 'transparent' }}>{buttonText}</span>
+      </div>
+    </div>
   );
 }

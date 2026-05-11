@@ -38,7 +38,7 @@ const CASE_STUDIES = [
 
 export default function CaseStudiesList() {
   return (
-    <section className="w-full py-16 md:py-24" style={{ fontFamily: typography.fonts.inter }}>
+    <section className="w-full py-16 md:py-24 dark:bg-[#05070C]" style={{ fontFamily: typography.fonts.inter }}>
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
         <div className="flex flex-col gap-12 md:gap-20">
           {CASE_STUDIES.map((study, idx) => (
@@ -51,7 +51,7 @@ export default function CaseStudiesList() {
               className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-10 md:gap-16 items-center`}
             >
               <div className="w-full md:w-1/2">
-                <Link href={`/case-studies/${study.slug}`} className="block relative aspect-[4/3] overflow-hidden group" style={{ borderRadius: radiuses.cardLg }}>
+                <Link href={`/case-studies/${study.slug}`} className="block relative aspect-[4/3] overflow-hidden group border dark:border-slate-800" style={{ borderRadius: radiuses.cardLg }}>
                   <Image 
                     src={study.image} 
                     alt={study.title}
@@ -64,17 +64,17 @@ export default function CaseStudiesList() {
               
               <div className="w-full md:w-1/2">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-lg bg-white border border-[rgba(0,0,0,0.06)] shadow-sm flex items-center justify-center font-bold text-[#1a1c1c] text-[12px]">
+                  <div className="w-10 h-10 rounded-lg bg-white dark:bg-slate-900 border border-[rgba(0,0,0,0.06)] dark:border-slate-800 shadow-sm flex items-center justify-center font-bold text-[#1a1c1c] dark:text-white text-[12px]">
                     {study.company.charAt(0)}
                   </div>
-                  <span className="text-[14px] font-bold text-[#475569] uppercase tracking-wider">{study.company}</span>
+                  <span className="text-[14px] font-bold text-[#475569] dark:text-slate-400 uppercase tracking-wider">{study.company}</span>
                 </div>
                 
-                <h2 className="text-[28px] md:text-[36px] font-bold text-[#0b0b0b] mb-6 leading-tight" style={{ fontFamily: typography.fonts.poppins }}>
+                <h2 className="text-[28px] md:text-[36px] font-bold text-[#0b0b0b] dark:text-white mb-6 leading-tight" style={{ fontFamily: typography.fonts.poppins }}>
                   {study.title}
                 </h2>
                 
-                <p className="text-[16px] md:text-[18px] leading-[1.7] text-[#414753] mb-8">
+                <p className="text-[16px] md:text-[18px] leading-[1.7] text-[#414753] dark:text-slate-300 mb-8">
                   {study.description}
                 </p>
                 
@@ -82,14 +82,14 @@ export default function CaseStudiesList() {
                   {study.metrics.map((metric, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <CheckCircle2 size={18} style={{ color: study.color }} />
-                      <span className="text-[14px] font-semibold text-[#1a1c1c]">{metric}</span>
+                      <span className="text-[14px] font-semibold text-[#1a1c1c] dark:text-slate-200">{metric}</span>
                     </div>
                   ))}
                 </div>
                 
                 <Link 
                   href={`/case-studies/${study.slug}`}
-                  className="inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl bg-[#111827] text-white text-[15px] font-bold transition-all hover:bg-[#1f2937] hover:translate-y-[-2px] active:translate-y-0"
+                  className="inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl bg-[#111827] dark:bg-slate-800 text-white text-[15px] font-bold transition-all hover:bg-[#1f2937] dark:hover:bg-slate-700 hover:translate-y-[-2px] active:translate-y-0"
                 >
                   View Case Study <ArrowRight size={18} />
                 </Link>
@@ -98,6 +98,5 @@ export default function CaseStudiesList() {
           ))}
         </div>
       </div>
-    </section>
-  );
+    </section>  );
 }

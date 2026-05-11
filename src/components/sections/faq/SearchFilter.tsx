@@ -2,28 +2,23 @@
 
 import Image from "next/image";
 import { colors, typography } from "@/tokens/design-tokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SearchFilter.tsx — FAQ Search & Filter Section
-// Figma frame: 508:7801 "Search & Filter Section"
-// ─────────────────────────────────────────────────────────────────────────────
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CANVAS_W = 1280;
-const CANVAS_H = 150; // Approximated height based on content
+const CANVAS_H = 150; 
 const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
 const FILTERS = ["All", "Getting Started", "AI Agents", "Workflows", "Account"];
 
 export default function SearchFilter() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <>
-      {/* ═══════════════════════════════════════════════════════════════════
-          TABLET & DESKTOP (≥ 768px) — scaled Figma canvas, edge-to-edge
-          ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative hidden w-full overflow-hidden md:block mt-18"
+        className="relative hidden w-full overflow-hidden md:block mt-18 transition-colors duration-300"
         style={{
-          backgroundColor: colors.white,
+          backgroundColor: isDark ? 'black' : colors.white,
           aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
           containerType: "inline-size",
         }}
@@ -46,16 +41,14 @@ export default function SearchFilter() {
               <input
                 type="text"
                 placeholder="Search questions..."
-                className="w-full h-full rounded-[16px] border border-[#E5E7EB] bg-white outline-none"
+                className="w-full h-full rounded-[16px] border border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-slate-900 text-black dark:text-white outline-none transition-colors duration-300"
                 style={{
                   padding: "21px 24px 21px 56px",
-                  boxShadow: "0px 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                  boxShadow: isDark ? "none" : "0px 4px 20px -2px rgba(0, 0, 0, 0.05)",
                   fontFamily: typography.fonts.inter,
                   fontWeight: 500,
                   fontSize: "16px",
                   lineHeight: "22px",
-                  color: "rgba(0, 0, 0, 0.6)",
-                  opacity: 1,
                 }}
               />
 
@@ -74,6 +67,7 @@ export default function SearchFilter() {
                   alt="Search"
                   width={18}
                   height={18}
+                  className={isDark ? 'brightness-200' : ''}
                 />
               </div>
             </div>
@@ -83,12 +77,12 @@ export default function SearchFilter() {
               {FILTERS.map((filter, index) => (
                 <button
                   key={filter}
-                  className="rounded-full"
+                  className="rounded-full transition-colors duration-300"
                   style={{
                     padding: "8px 24px",
-                    backgroundColor: index === 0 ? "#2F80ED" : "#F8FAFC",
-                    border: index === 0 ? "none" : "1px solid rgba(229, 231, 235, 0.3)",
-                    color: index === 0 ? "#FFFFFF" : "rgba(0, 0, 0, 0.6)",
+                    backgroundColor: index === 0 ? "#2F80ED" : (isDark ? 'rgba(255,255,255,0.05)' : "#F8FAFC"),
+                    border: index === 0 ? "none" : (isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(229, 231, 235, 0.3)"),
+                    color: index === 0 ? "#FFFFFF" : (isDark ? "rgba(255, 255, 255, 0.6)" : "rgba(0, 0, 0, 0.6)"),
                     fontFamily: 'Inter',
                     fontWeight: 600,
                     fontSize: 14,
@@ -104,12 +98,9 @@ export default function SearchFilter() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          PHONE (< 768px) — stacked, readable reflow
-          ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative block w-full overflow-hidden px-6 py-8 md:hidden"
-        style={{ backgroundColor: colors.white }}
+        className="relative block w-full overflow-hidden px-6 py-8 md:hidden transition-colors duration-300"
+        style={{ backgroundColor: isDark ? 'black' : colors.white }}
       >
         <div className="mx-auto flex w-full max-w-md flex-col gap-6">
           {/* Search Input */}
@@ -117,14 +108,13 @@ export default function SearchFilter() {
             <input
               type="text"
               placeholder="Search questions..."
-              className="w-full rounded-2xl border border-[#E5E7EB] bg-white outline-none"
+              className="w-full rounded-2xl border border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-slate-900 text-black dark:text-white outline-none transition-colors duration-300"
               style={{
                 padding: "16px 20px 16px 48px",
-                boxShadow: "0px 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                boxShadow: isDark ? "none" : "0px 4px 20px -2px rgba(0, 0, 0, 0.05)",
                 fontFamily: typography.fonts.inter,
                 fontWeight: 500,
                 fontSize: 16,
-                color: "rgba(0, 0, 0, 0.6)",
               }}
             />
             <div
@@ -136,6 +126,7 @@ export default function SearchFilter() {
                 alt="Search"
                 width={18}
                 height={18}
+                className={isDark ? 'brightness-200' : ''}
               />
             </div>
           </div>
@@ -145,12 +136,12 @@ export default function SearchFilter() {
             {FILTERS.map((filter, index) => (
               <button
                 key={filter}
-                className="rounded-full"
+                className="rounded-full transition-colors duration-300"
                 style={{
                   padding: "6px 16px",
-                  backgroundColor: index === 0 ? "#2F80ED" : "#F8FAFC",
-                  border: index === 0 ? "none" : "1px solid rgba(229, 231, 235, 0.3)",
-                  color: index === 0 ? "#FFFFFF" : "rgba(0, 0, 0, 0.6)",
+                  backgroundColor: index === 0 ? "#2F80ED" : (isDark ? 'rgba(255,255,255,0.05)' : "#F8FAFC"),
+                  border: index === 0 ? "none" : (isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(229, 231, 235, 0.3)"),
+                  color: index === 0 ? "#FFFFFF" : (isDark ? "rgba(255, 255, 255, 0.6)" : "rgba(0, 0, 0, 0.6)"),
                   fontFamily: typography.fonts.inter,
                   fontWeight: 600,
                   fontSize: 14,

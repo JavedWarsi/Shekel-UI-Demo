@@ -9,10 +9,9 @@ import Cta from "@/components/sections/about/Cta";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
+    <div className="min-h-screen overflow-x-clip transition-colors duration-300">
       <main className="pt-[75px]">
-        <Hero />
-        <WhatIsShekel />
+        <Hero />        <WhatIsShekel />
         <ProblemSolution />
         <Differentiation />
         <WhatYouCanDo />

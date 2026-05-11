@@ -1,35 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// TryThisAgent.tsx  —  "Try This Agent"
-// Figma frame: 503:2928  "Frame 2147225683"
-// Canvas: 1280 × 712 px   Page-y: ...   bg: #FFFFFF (border-radius 36px)
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Canvas             1280 × 712,   bg #FFFFFF, rounded 36
-//   Grid SVG           (x=-682, y=-153)  2400 × 1830
-//   Glow Ellipse 1     (x=299, y=288)    259 × 259
-//   Glow Ellipse 2     (x=-570, y=-492)  696 × 696
-//   Glow Ellipse 3     (x=1137, y=-494)  696 × 696
-//   Content Box        (x=34, y=142)     1232 × 368
-//     Heading          (x=435, y=-31)    363 × 32
-//     Left Panel       (x=0, y=64)       600 × 434 (Input Prompt)
-//     Right Panel      (x=632, y=40)     600 × 304 (Terminal)
-// ─────────────────────────────────────────────────────────────────────────────
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CANVAS_W = 1280;
 const CANVAS_H = 712;
 const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
 const GRADIENT_BLUE = "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(236, 242, 255, 1) 100%)";
-const TEXT_DARK = "#000000";
 const TERMINAL_BG = "#020617";
-const TERMINAL_GRADIENT = "linear-gradient(0deg, rgba(2, 6, 23, 1) 0%, rgba(2, 6, 23, 0) 50%, rgba(2, 6, 23, 0) 100%)";
 
 export default function TryThisAgent() {
   return (
@@ -40,12 +20,12 @@ export default function TryThisAgent() {
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block py-16"
+      className="relative hidden w-full overflow-hidden md:block py-16 transition-colors duration-300"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -63,32 +43,33 @@ function SectionDesktop() {
         }}
       >
         <div
-          className="relative"
+          className="relative transition-colors duration-300"
           style={{
             width: CANVAS_W,
             height: CANVAS_H,
-            backgroundColor: colors.white,
+            backgroundColor: isDark ? 'black' : colors.white,
             borderRadius: 36,
             overflow: "hidden"
           }}
         >
           {/* Grid Background */}
-          <Image 
-            src="/section-6-agent-detail/bg-grid.svg" 
-            alt="Grid" 
-            width={2400.92} 
-            height={1830} 
-            className="absolute pointer-events-none"
-            style={{ left: -272, top: -183, width: 2400.92, height: 1830 }}
-          />
+          <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ left: -272, top: -183, width: 2400.92, height: 1830 }}>
+            <Image 
+              src="/section-6-agent-detail/bg-grid.svg" 
+              alt="Grid" 
+              fill
+              className={`object-cover ${isDark ? 'opacity-20 brightness-50' : ''}`}
+              unoptimized
+            />
+          </div>
 
           {/* Main Content Area */}
           <div className="absolute" style={{ left: "calc(50% + 10px)", top: 142, width: 1232, height: 368, transform: "translateX(-50%)" }}>
             
             {/* Heading */}
-            <div className="absolute" style={{ left: "calc(50% + 0.5px)", top: -31, width: 363, height: 32, transform: "translateX(-50%)" }}>
+            <div className="absolute" style={{ left: "calc(50% + 0.5px)", top: -31, width: 450, height: 32, transform: "translateX(-50%)" }}>
               <div className="absolute flex flex-col justify-center text-center w-full" style={{ top: 16, transform: "translateY(-50%)" }}>
-                <h2 style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: 48, lineHeight: "32px", color: TEXT_DARK }}>
+                <h2 className="m-0 text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: 48, lineHeight: "32px" }}>
                   Try This{" "}
                   <span style={{ 
                     background: GRADIENT_BLUE, 
@@ -111,16 +92,16 @@ function SectionDesktop() {
                   </span>
                 </div>
                 <div className="flex flex-col items-start w-full relative" style={{ height: 322 }}>
-                  <div className="flex w-full overflow-hidden relative" style={{ height: 322, padding: 24, backgroundColor: colors.white, borderRadius: 16, boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)" }}>
+                  <div className="flex w-full overflow-hidden relative transition-colors duration-300" style={{ height: 322, padding: 24, backgroundColor: isDark ? '#1E293B' : colors.white, borderRadius: 16, boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)" }}>
                     <div className="flex flex-col items-start flex-1 min-w-px relative">
-                      <p style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "rgba(0, 0, 0, 0.5)", whiteSpace: "pre-wrap" }}>
+                      <p className="m-0 text-black/50 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "24px", whiteSpace: "pre-wrap" }}>
                         Generate 5 Instagram posts for a fitness brand specializing in{"\n"}home workout equipment. Tone: Energetic and motivating.
                       </p>
                     </div>
                   </div>
                   
                   {/* Run Button */}
-                  <div className="absolute flex items-center hover:opacity-90 cursor-pointer" style={{ bottom: 16, right: 16, padding: "8px 24px", gap: 8, background: GRADIENT_BLUE, borderRadius: 9999 }}>
+                  <div className="absolute flex items-center hover:opacity-90 active:scale-95 transition-all cursor-pointer" style={{ bottom: 16, right: 16, padding: "8px 24px", gap: 8, background: GRADIENT_BLUE, borderRadius: 9999 }}>
                     <div className="absolute inset-0" style={{ backgroundColor: "rgba(255,255,255,0)", borderRadius: 9999, boxShadow: "0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1)" }} />
                     <div className="relative" style={{ width: 6.42, height: 8.17 }}>
                       <Image src="/section-2-agent-detail/run-icon.svg" alt="" fill className="object-contain" />
@@ -133,7 +114,7 @@ function SectionDesktop() {
               </div>
 
               {/* Right Panel: Terminal */}
-              <div className="absolute flex flex-col items-start overflow-hidden" style={{ left: 632, right: 0, top: 40, height: 304, padding: 32, backgroundColor: TERMINAL_BG, borderRadius: 24, gap: 16 }}>
+              <div className="absolute flex flex-col items-start overflow-hidden transition-colors duration-300" style={{ left: 632, right: 0, top: 40, height: 304, padding: 32, backgroundColor: isDark ? '#0F172A' : TERMINAL_BG, borderRadius: 24, gap: 16, border: isDark ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
                 {/* Traffic lights */}
                 <div className="flex items-start w-full relative" style={{ gap: 8 }}>
                   <div style={{ width: 12, height: 12, backgroundColor: "rgba(239, 68, 68, 0.5)", borderRadius: 9999 }} />
@@ -179,21 +160,22 @@ function SectionDesktop() {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
-
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden py-16 px-6"
-      style={{ backgroundColor: colors.white, borderRadius: 36 }}
+      className="relative block w-full overflow-hidden md:hidden py-16 px-6 transition-colors duration-300"
+      style={{ backgroundColor: isDark ? 'black' : colors.white, borderRadius: 36 }}
     >
       {/* Grid Background */}
-      <div className="absolute inset-0 w-[200%] h-[150%] -left-1/2 -top-1/4 opacity-40">
+      <div className="absolute inset-0 w-[200%] h-[150%] -left-1/2 -top-1/4 opacity-20 dark:opacity-40 pointer-events-none">
         <Image 
           src="/section-6-agent-detail/bg-grid.svg" 
           alt="Grid" 
           fill
-          className="object-cover pointer-events-none"
+          className={`object-cover ${isDark ? 'brightness-50' : ''}`}
+          unoptimized
         />
       </div>
 
@@ -201,7 +183,7 @@ function SectionMobile() {
         
         {/* Heading */}
         <div className="flex flex-col items-center">
-          <h2 style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: "clamp(32px, 8vw, 40px)", lineHeight: 1.2, color: TEXT_DARK, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <h2 className="m-0 text-black dark:text-white transition-colors duration-300 text-center flex flex-col items-center" style={{ fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: "clamp(32px, 8vw, 40px)", lineHeight: 1.2 }}>
             <span>Try This</span>
             <span style={{ 
               background: GRADIENT_BLUE, 
@@ -220,14 +202,14 @@ function SectionMobile() {
               Input Prompt
             </span>
             <div className="flex flex-col items-start w-full relative">
-              <div className="flex w-full relative" style={{ minHeight: 200, padding: 24, backgroundColor: colors.white, borderRadius: 16, boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)" }}>
-                <p style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "rgba(0, 0, 0, 0.5)", whiteSpace: "pre-wrap" }}>
+              <div className="flex w-full relative transition-colors duration-300" style={{ minHeight: 200, padding: 24, backgroundColor: isDark ? '#1E293B' : colors.white, borderRadius: 16, boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)" }}>
+                <p className="m-0 text-black/50 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "24px", whiteSpace: "pre-wrap" }}>
                   Generate 5 Instagram posts for a fitness brand specializing in home workout equipment. Tone: Energetic and motivating.
                 </p>
               </div>
               
               {/* Run Button */}
-              <div className="absolute flex items-center hover:opacity-90 cursor-pointer" style={{ bottom: -20, right: 16, padding: "8px 24px", gap: 8, background: GRADIENT_BLUE, borderRadius: 9999, boxShadow: "0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1)" }}>
+              <div className="absolute flex items-center hover:opacity-90 active:scale-95 transition-all cursor-pointer" style={{ bottom: -20, right: 16, padding: "8px 24px", gap: 8, background: GRADIENT_BLUE, borderRadius: 9999, boxShadow: "0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1)" }}>
                 <div className="relative" style={{ width: 6.42, height: 8.17 }}>
                   <Image src="/section-2-agent-detail/run-icon.svg" alt="" fill className="object-contain" />
                 </div>
@@ -239,7 +221,7 @@ function SectionMobile() {
           </div>
 
           {/* Right Panel: Terminal */}
-          <div className="flex flex-col items-start w-full relative overflow-hidden" style={{ padding: 24, backgroundColor: TERMINAL_BG, borderRadius: 24, gap: 16 }}>
+          <div className="flex flex-col items-start w-full relative overflow-hidden transition-colors duration-300" style={{ padding: 24, backgroundColor: isDark ? '#0F172A' : TERMINAL_BG, borderRadius: 24, gap: 16, border: isDark ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
             {/* Traffic lights */}
             <div className="flex items-start w-full relative" style={{ gap: 8 }}>
               <div style={{ width: 10, height: 10, backgroundColor: "rgba(239, 68, 68, 0.5)", borderRadius: 9999 }} />

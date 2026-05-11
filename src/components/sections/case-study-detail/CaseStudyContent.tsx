@@ -13,7 +13,7 @@ interface CaseStudyContentProps {
 
 export default function CaseStudyContent({ study }: CaseStudyContentProps) {
   return (
-    <section className="w-full py-24 bg-white" style={{ fontFamily: typography.fonts.inter }}>
+    <section className="w-full py-24 bg-white dark:bg-[#05070C]" style={{ fontFamily: typography.fonts.inter }}>
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           
@@ -23,20 +23,20 @@ export default function CaseStudyContent({ study }: CaseStudyContentProps) {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="prose prose-lg max-w-none text-[#414753] leading-[1.8]"
+              className="prose prose-lg max-w-none text-[#414753] dark:text-slate-300 leading-[1.8]"
             >
-              <h2 className="text-[32px] font-bold text-[#0b0b0b] mb-8" style={{ fontFamily: typography.fonts.poppins }}>The Challenge</h2>
+              <h2 className="text-[32px] font-bold text-[#0b0b0b] dark:text-white mb-8" style={{ fontFamily: typography.fonts.poppins }}>The Challenge</h2>
               <p className="mb-8">
                 {study.company} faced a significant bottleneck in their operational workflows. With manual processes accounting for over 70% of their task execution time, scaling their global operations had become increasingly expensive and error-prone. They needed a solution that could handle complex decision-making at scale without compromising on quality or security.
               </p>
               
-              <h2 className="text-[32px] font-bold text-[#0b0b0b] mb-8" style={{ fontFamily: typography.fonts.poppins }}>The Solution</h2>
+              <h2 className="text-[32px] font-bold text-[#0b0b0b] dark:text-white mb-8" style={{ fontFamily: typography.fonts.poppins }}>The Solution</h2>
               <p className="mb-8">
                 By leveraging Shekel's autonomous agent marketplace, {study.company} deployed a custom network of specialized AI agents. These agents were chained together to form end-to-end autonomous workflows, handling everything from initial data ingestion to final execution and verification.
               </p>
               
-              <div className="bg-[#f7f9fc] p-10 my-12 border border-[rgba(0,0,0,0.04)]" style={{ borderRadius: radiuses.card }}>
-                <h3 className="text-[24px] font-bold text-[#0b0b0b] mb-6" style={{ fontFamily: typography.fonts.poppins }}>Implementation Strategy</h3>
+              <div className="bg-[#f7f9fc] dark:bg-slate-900/50 p-10 my-12 border border-[rgba(0,0,0,0.04)] dark:border-slate-800" style={{ borderRadius: radiuses.card }}>
+                <h3 className="text-[24px] font-bold text-[#0b0b0b] dark:text-white mb-6" style={{ fontFamily: typography.fonts.poppins }}>Implementation Strategy</h3>
                 <ul className="space-y-4 m-0 p-0 list-none">
                   {[
                     "Phase 1: Identification of high-impact manual bottlenecks.",
@@ -44,7 +44,7 @@ export default function CaseStudyContent({ study }: CaseStudyContentProps) {
                     "Phase 3: Integration of agent chaining for complex workflows.",
                     "Phase 4: Real-time optimization using execution performance data."
                   ].map((step, i) => (
-                    <li key={i} className="flex gap-3 text-[16px] font-medium text-[#1a1c1c]">
+                    <li key={i} className="flex gap-3 text-[16px] font-medium text-[#1a1c1c] dark:text-slate-200">
                       <CheckCircle2 size={20} style={{ color: study.color }} className="flex-shrink-0" />
                       {step}
                     </li>
@@ -52,7 +52,7 @@ export default function CaseStudyContent({ study }: CaseStudyContentProps) {
                 </ul>
               </div>
 
-              <h2 className="text-[32px] font-bold text-[#0b0b0b] mb-8" style={{ fontFamily: typography.fonts.poppins }}>The Result</h2>
+              <h2 className="text-[32px] font-bold text-[#0b0b0b] dark:text-white mb-8" style={{ fontFamily: typography.fonts.poppins }}>The Result</h2>
               <p>
                 The impact was immediate and measurable. Within the first quarter of deployment, {study.company} saw a dramatic reduction in operational costs and a significant increase in output quality. The autonomous network now handles 95% of the previously manual tasks, allowing their human team to focus on high-level strategy and innovation.
               </p>
@@ -66,10 +66,10 @@ export default function CaseStudyContent({ study }: CaseStudyContentProps) {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-white border border-[rgba(0,0,0,0.08)] p-8 shadow-sm"
+                className="bg-white dark:bg-slate-900 border border-[rgba(0,0,0,0.08)] dark:border-slate-800 p-8 shadow-sm"
                 style={{ borderRadius: radiuses.card }}
               >
-                <h4 className="text-[18px] font-bold text-[#0b0b0b] mb-8" style={{ fontFamily: typography.fonts.poppins }}>Key Outcomes</h4>
+                <h4 className="text-[18px] font-bold text-[#0b0b0b] dark:text-white mb-8" style={{ fontFamily: typography.fonts.poppins }}>Key Outcomes</h4>
                 <div className="space-y-8">
                   {[
                     { label: "Efficiency Boost", value: "85%", icon: Zap, color: "#2864e4" },
@@ -81,15 +81,15 @@ export default function CaseStudyContent({ study }: CaseStudyContentProps) {
                         <stat.icon size={24} style={{ color: stat.color }} />
                       </div>
                       <div>
-                        <div className="text-[24px] font-bold text-[#1a1c1c]" style={{ fontFamily: typography.fonts.jakarta }}>{stat.value}</div>
-                        <div className="text-[14px] font-medium text-[#475569]">{stat.label}</div>
+                        <div className="text-[24px] font-bold text-[#1a1c1c] dark:text-white" style={{ fontFamily: typography.fonts.jakarta }}>{stat.value}</div>
+                        <div className="text-[14px] font-medium text-[#475569] dark:text-slate-400">{stat.label}</div>
                       </div>
                     </div>
                   ))}
                 </div>
               </motion.div>
 
-              <div className="bg-[#1a1c1c] p-8 text-white relative overflow-hidden" style={{ borderRadius: radiuses.card }}>
+              <div className="bg-[#1a1c1c] dark:bg-slate-950 p-8 text-white relative overflow-hidden border dark:border-slate-800" style={{ borderRadius: radiuses.card }}>
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
                 <h4 className="text-[20px] font-bold mb-4 relative z-10" style={{ fontFamily: typography.fonts.poppins }}>Ready to scale?</h4>
                 <p className="text-white/70 text-[14px] mb-8 relative z-10 leading-relaxed">
@@ -104,6 +104,5 @@ export default function CaseStudyContent({ study }: CaseStudyContentProps) {
 
         </div>
       </div>
-    </section>
-  );
+    </section>  );
 }

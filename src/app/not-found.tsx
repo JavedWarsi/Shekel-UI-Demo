@@ -6,13 +6,13 @@ import { motion } from "framer-motion";
 
 export default function NotFound() {
   return (
-    <main className="relative w-full min-h-screen bg-white flex flex-col items-start justify-start overflow-hidden pt-[165px]">
+    <main className="relative w-full min-h-screen bg-white dark:bg-[#05070C] flex flex-col items-start justify-start overflow-hidden pt-[165px] transition-colors duration-300">
       {/* Background Gradients */}
-      <div className="absolute top-0 right-0 w-[52vw] h-[52vw] bg-blue-50/40 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-0 right-0 w-[52vw] h-[52vw] bg-blue-50/40 dark:bg-blue-900/10 rounded-full blur-[120px] pointer-events-none z-0" />
       
-      {/* Bottom Right Glow (Ellipse 43666) */}
+      {/* Bottom Right Glow */}
       <div 
-        className="absolute rounded-full blur-[100px] pointer-events-none opacity-40 z-0"
+        className="absolute rounded-full blur-[100px] pointer-events-none opacity-40 dark:opacity-20 z-0"
         style={{
           width: '904px',
           height: '904px',
@@ -30,7 +30,7 @@ export default function NotFound() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-[#000000] mb-10"
+              className="text-[#000000] dark:text-white mb-10"
               style={{ 
                 fontFamily: 'var(--font-poppins)',
                 fontWeight: 500,
@@ -61,7 +61,7 @@ export default function NotFound() {
               </Link>
               <Link
                 href="/explore-agent"
-                className="h-[52px] px-8 rounded-sm text-[16px] font-semibold text-white bg-[#101828] flex items-center justify-center transition-all hover:bg-[#1d2939] active:scale-[0.98]"
+                className="h-[52px] px-8 rounded-sm text-[16px] font-semibold text-white bg-[#101828] dark:bg-slate-800 flex items-center justify-center transition-all hover:bg-[#1d2939] dark:hover:bg-slate-700 active:scale-[0.98]"
                 style={{ 
                   fontFamily: 'var(--font-plus-jakarta)'
                 }}
@@ -94,7 +94,7 @@ export default function NotFound() {
                   src="/404.png"
                   alt="404 Illustration"
                   fill
-                  className="object-contain scale-140"
+                  className="object-contain scale-140 dark:invert-[0.05]"
                   priority
                 />
               </motion.div>

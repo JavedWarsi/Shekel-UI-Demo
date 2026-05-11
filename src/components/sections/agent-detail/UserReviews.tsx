@@ -1,23 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// UserReviews.tsx  —  "Section - User Reviews"
-// Figma frame: 503:3232  "Section - User Reviews"
-// Canvas: 1232 × 181 px   Page-y: TBD   bg: Transparent
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled canvas with max-width and centered container
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-// ─────────────────────────────────────────────────────────────────────────────
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 const CANVAS_W = 1280;
 const CANVAS_H = 181;
 
-const RATING_TEXT = "#191C1E";
 const LABEL_COLOR = "#727785";
-const QUOTE_TEXT = "#414753";
-const CARD_SHADOW = "0px 1px 2px 0px rgba(0, 0, 0, 0.05)";
 
 export default function UserReviews() {
   return (
@@ -28,14 +18,14 @@ export default function UserReviews() {
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
 function SectionDesktop() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block py-16"
+      className="relative hidden w-full overflow-hidden md:block py-16 transition-colors duration-300"
       style={{
-        backgroundColor: colors.white,
+        backgroundColor: isDark ? 'black' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -56,7 +46,7 @@ function SectionDesktop() {
           {/* Rating Column */}
           <div className="flex flex-col items-center flex-shrink-0 relative" style={{ width: 186.06, gap: 13 }}>
             <div className="flex flex-col items-center w-full relative">
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 96, lineHeight: "96px", textAlign: "center", color: RATING_TEXT }}>
+              <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 96, lineHeight: "96px", textAlign: "center" }}>
                 4.8
               </span>
             </div>
@@ -83,44 +73,14 @@ function SectionDesktop() {
 
           {/* Reviews Grid */}
           <div className="flex-1 grid grid-cols-2 relative" style={{ gap: 40, height: 181 }}>
-            
-            {/* Review 1 */}
-            <div className="flex flex-col items-start relative self-start" style={{ backgroundColor: colors.white, borderRadius: 16, padding: 32, gap: 24, boxShadow: CARD_SHADOW }}>
-              <div className="absolute" style={{ left: -4, top: -8, width: 34, height: 24 }}>
-                <Image src="/section-7-agent-detail/quote-icon.svg" alt="" fill className="object-contain" />
-              </div>
-              <div className="flex flex-col relative w-full" style={{ width: 386.08, height: 72 }}>
-                <p style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontStyle: "italic", fontSize: 16, lineHeight: "24px", color: QUOTE_TEXT }}>
-                  "SocialCraft completely changed how I manage my
-                  <br />agency. It does 80% of the heavy lifting for my
-                  <br />social team."
-                </p>
-              </div>
-              <div className="flex flex-col items-start w-full relative">
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: QUOTE_TEXT }}>
-                  — Sarah J., Founder
-                </span>
-              </div>
-            </div>
-
-            {/* Review 2 */}
-            <div className="flex flex-col items-start relative self-start" style={{ backgroundColor: colors.white, borderRadius: 16, padding: "32px 32px 56px", gap: 24, boxShadow: CARD_SHADOW }}>
-              <div className="absolute" style={{ left: -4, top: -8, width: 34, height: 24 }}>
-                <Image src="/section-7-agent-detail/quote-icon.svg" alt="" fill className="object-contain" />
-              </div>
-              <div className="flex flex-col relative w-full" style={{ width: 397.27, height: 48 }}>
-                <p style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontStyle: "italic", fontSize: 16, lineHeight: "24px", color: QUOTE_TEXT }}>
-                  "The tone optimization is scary good. I've tried other
-                  <br />tools, but this actually sounds like me."
-                </p>
-              </div>
-              <div className="flex flex-col items-start w-full relative">
-                <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: QUOTE_TEXT }}>
-                  — Marcus Chen, Content Creator
-                </span>
-              </div>
-            </div>
-
+            <ReviewCard 
+              text={`"SocialCraft completely changed how I manage my\nagency. It does 80% of the heavy lifting for my\nsocial team."`}
+              author="— Sarah J., Founder"
+            />
+            <ReviewCard 
+              text={`"The tone optimization is scary good. I've tried other\ntools, but this actually sounds like me."`}
+              author="— Marcus Chen, Content Creator"
+            />
           </div>
 
         </div>
@@ -129,20 +89,44 @@ function SectionDesktop() {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
+function ReviewCard({ text, author }: { text: string, author: string }) {
+  const { isDark } = useThemeTokens();
+  
+  return (
+    <div className="flex flex-col items-start relative self-start transition-colors duration-300 bg-white dark:bg-slate-900 border border-transparent dark:border-white/5" style={{ borderRadius: 16, padding: 32, gap: 24, boxShadow: isDark ? "none" : "0px 1px 2px 0px rgba(0, 0, 0, 0.05)" }}>
+      <div className="absolute" style={{ left: -4, top: -8, width: 34, height: 24 }}>
+        <Image src="/section-7-agent-detail/quote-icon.svg" alt="" fill className={`object-contain ${isDark ? 'brightness-200' : ''}`} />
+      </div>
+      <div className="flex flex-col relative w-full" style={{ width: 386.08, height: 72 }}>
+        <p className="m-0 text-[#414753] dark:text-gray-400 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontStyle: "italic", fontSize: 16, lineHeight: "24px" }}>
+          {text.split('\n').map((line, i) => (
+            <span key={i}>{line}{i === 0 && <br/>}</span>
+          ))}
+        </p>
+      </div>
+      <div className="flex flex-col items-start w-full relative">
+        <span className="text-[#414753] dark:text-gray-300 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px" }}>
+          {author}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 function SectionMobile() {
+  const { isDark } = useThemeTokens();
+  
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden py-16 px-6"
-      style={{ backgroundColor: colors.white }}
+      className="relative block w-full overflow-hidden md:hidden py-16 px-6 transition-colors duration-300"
+      style={{ backgroundColor: isDark ? 'black' : colors.white }}
     >
       <div className="flex flex-col items-center gap-12 w-full">
         
         {/* Rating Column Mobile */}
         <div className="flex flex-col items-center relative w-full" style={{ gap: 13 }}>
           <div className="flex flex-col items-center w-full relative">
-            <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 64, lineHeight: "64px", textAlign: "center", color: RATING_TEXT }}>
+            <span className="text-black dark:text-white transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 64, lineHeight: "64px", textAlign: "center" }}>
               4.8
             </span>
           </div>
@@ -169,44 +153,39 @@ function SectionMobile() {
 
         {/* Reviews Grid Mobile */}
         <div className="flex flex-col relative w-full" style={{ gap: 24 }}>
-          
-          {/* Review 1 */}
-          <div className="flex flex-col items-start relative w-full" style={{ backgroundColor: colors.white, borderRadius: 16, padding: 24, gap: 16, boxShadow: CARD_SHADOW }}>
-            <div className="absolute" style={{ left: -4, top: -8, width: 34, height: 24 }}>
-              <Image src="/section-7-agent-detail/quote-icon.svg" alt="" fill className="object-contain" />
-            </div>
-            <div className="flex flex-col relative w-full mt-2">
-              <p style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontStyle: "italic", fontSize: 15, lineHeight: "24px", color: QUOTE_TEXT }}>
-                "SocialCraft completely changed how I manage my agency. It does 80% of the heavy lifting for my social team."
-              </p>
-            </div>
-            <div className="flex flex-col items-start w-full relative">
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: QUOTE_TEXT }}>
-                — Sarah J., Founder
-              </span>
-            </div>
-          </div>
-
-          {/* Review 2 */}
-          <div className="flex flex-col items-start relative w-full" style={{ backgroundColor: colors.white, borderRadius: 16, padding: 24, gap: 16, boxShadow: CARD_SHADOW }}>
-            <div className="absolute" style={{ left: -4, top: -8, width: 34, height: 24 }}>
-              <Image src="/section-7-agent-detail/quote-icon.svg" alt="" fill className="object-contain" />
-            </div>
-            <div className="flex flex-col relative w-full mt-2">
-              <p style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontStyle: "italic", fontSize: 15, lineHeight: "24px", color: QUOTE_TEXT }}>
-                "The tone optimization is scary good. I've tried other tools, but this actually sounds like me."
-              </p>
-            </div>
-            <div className="flex flex-col items-start w-full relative">
-              <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px", color: QUOTE_TEXT }}>
-                — Marcus Chen, Content Creator
-              </span>
-            </div>
-          </div>
-
+          <MobileReviewCard 
+            text={`"SocialCraft completely changed how I manage my agency. It does 80% of the heavy lifting for my social team."`}
+            author="— Sarah J., Founder"
+          />
+          <MobileReviewCard 
+            text={`"The tone optimization is scary good. I've tried other tools, but this actually sounds like me."`}
+            author="— Marcus Chen, Content Creator"
+          />
         </div>
 
       </div>
     </section>
+  );
+}
+
+function MobileReviewCard({ text, author }: { text: string, author: string }) {
+  const { isDark } = useThemeTokens();
+  
+  return (
+    <div className="flex flex-col items-start relative w-full transition-colors duration-300 bg-white dark:bg-slate-900 border border-[rgba(255,255,255,0.1)] rounded-3xl p-6 gap-4 shadow-sm" style={{ boxShadow: isDark ? "none" : "0px 1px 2px 0px rgba(0, 0, 0, 0.05)" }}>
+      <div className="absolute" style={{ left: -4, top: -8, width: 34, height: 24 }}>
+        <Image src="/section-7-agent-detail/quote-icon.svg" alt="" fill className={`object-contain ${isDark ? 'brightness-200' : ''}`} />
+      </div>
+      <div className="flex flex-col relative w-full mt-2">
+        <p className="m-0 text-[#414753] dark:text-gray-400 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontStyle: "italic", fontSize: 15, lineHeight: "24px" }}>
+          {text}
+        </p>
+      </div>
+      <div className="flex flex-col items-start w-full relative">
+        <span className="text-[#414753] dark:text-gray-300 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 14, lineHeight: "21px" }}>
+          {author}
+        </span>
+      </div>
+    </div>
   );
 }
