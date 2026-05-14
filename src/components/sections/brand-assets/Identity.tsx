@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function BrandAssetsIdentity() {
   return (
-    <section className="relative w-full py-28 bg-white overflow-hidden" style={{ fontFamily: typography.fonts.inter }}>
+    <section className="relative w-full py-28 bg-white dark:bg-slate-950 overflow-hidden" style={{ fontFamily: typography.fonts.inter }}>
       {/* Very faint bottom border to match the slight divider in the design */}
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#2F80ED]/10 to-transparent" />
       
@@ -45,7 +45,7 @@ export default function BrandAssetsIdentity() {
             className="max-w-[500px]"
           >
             <h2 
-              className="text-[48px] md:text-[42px] font-medium text-[#000000] mb-8 tracking-tight" 
+              className="text-[48px] md:text-[42px] font-medium  mb-8 tracking-tight" 
               style={{ fontFamily: typography.fonts.poppins }}
             >
               Brand Identity
@@ -56,7 +56,7 @@ export default function BrandAssetsIdentity() {
                 Shekel was born from the intersection of ancient commerce logic and future autonomous technology. The name itself reflects a foundational unit of value, updated for the era of AI-driven marketplaces.
               </p>
               <p>
-                Our visual language is defined by <strong className="font-semibold text-[#1A202C]">Structural Clarity</strong> and <strong className="font-semibold text-[#1A202C]">Fluid Transition</strong>, balancing the rigid precision of code with the organic movement of global trade.
+                Our visual language is defined by <strong className="font-semibold text-[#1A202C] dark:text-blue-400">Structural Clarity</strong> and <strong className="font-semibold text-[#1A202C] dark:text-blue-400">Fluid Transition</strong>, balancing the rigid precision of code with the organic movement of global trade.
               </p>
             </div>
           </motion.div>

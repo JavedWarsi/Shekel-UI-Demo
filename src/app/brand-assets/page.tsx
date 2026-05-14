@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function BrandAssetsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <main className="pt-[75px]">
         <BrandAssetsHero />
         <BrandAssetsIdentity />

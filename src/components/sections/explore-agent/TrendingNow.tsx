@@ -1,33 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { colors, typography, radiuses } from "@/tokens/design-tokens";
+import { colors, typography } from "@/tokens/design-tokens";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TrendingNow.tsx  —  "Trending Now"
-// Figma frame: 506:3697  "Body"
-// Canvas: 1280 × 769 px   Page-y: ...   bg: #FFFFFF
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Background SVG (-543, 18) 2400.92×1830
-//   Heading Area (0, 70) 1280 wide row, flex-end alignment
-//     Heading 2 "Trending Now"
-//     Text "The fastest growing agents this week"
-//     Arrows SVG
-//   Cards Area (12, 238) 1280 wide row, gap 24
-//     Card 1 (MarketPulse Pro)
-//     Card 2 (CopyArchitect)
-//     Card 3 (DevFlow Automator)
+// TrendingNow.tsx
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CANVAS_W = 1280;
 const CANVAS_H = 769;
 const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
-const BUTTON_GRADIENT = "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(236, 242, 255, 1) 100%)";
+const BUTTON_GRADIENT =
+  "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(236, 242, 255, 1) 100%)";
+
 const CARD_BORDER = "rgba(248, 250, 252, 0.1)";
 const CARD_SHADOW = "0px 8px 10px -6px rgba(15, 23, 42, 0.05), 0px 20px 25px -5px rgba(15, 23, 42, 0.05)";
 const BADGE_BG = "#B7EAFF";
@@ -42,7 +29,9 @@ export default function TrendingNow() {
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Desktop
+// ─────────────────────────────────────────────────────────────────────────────
 
 function SectionDesktop() {
   return (
@@ -67,17 +56,17 @@ function SectionDesktop() {
           transformOrigin: "top center",
         }}
       >
-        {/* Background SVG */}
+        {/* Background */}
         <Image
           src="/section-3-explore-agent/main-bg.svg"
           alt=""
           width={2400.92}
           height={1830}
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none opacity-70"
           style={{ left: -543, top: 18 }}
         />
 
-        {/* Decorative Ellipses */}
+        {/* Blur Effects */}
         <div
           className="absolute"
           style={{
@@ -89,6 +78,7 @@ function SectionDesktop() {
             filter: "blur(203.4px)",
           }}
         />
+
         <div
           className="absolute"
           style={{
@@ -101,24 +91,40 @@ function SectionDesktop() {
           }}
         />
 
-        {/* Header Area */}
+        {/* Header */}
         <div
           className="absolute flex flex-row justify-between items-end"
-          style={{ left: 0, top: 70, width: 1280, padding: "0 32px" }}
+          style={{
+            left: 0,
+            top: 70,
+            width: 1280,
+            padding: "0 32px",
+          }}
         >
           <div className="flex flex-col gap-[29px]">
             <SectionHeading fontSize={48} lineHeight="36px" />
             <SectionBody fontSize={16} lineHeight="24px" />
           </div>
-          <Image src="/section-3-explore-agent/arrows.svg" alt="navigation arrows" width={80} height={40} />
+
+          <Image
+            src="/section-3-explore-agent/arrows.svg"
+            alt="navigation arrows"
+            width={80}
+            height={40}
+          />
         </div>
 
-        {/* Cards Area */}
+        {/* Cards */}
         <div
           className="absolute flex flex-row items-stretch"
-          style={{ left: 12, top: 238, width: 1280, gap: 24, padding: "0 32px 32px 0" }}
+          style={{
+            left: 12,
+            top: 238,
+            width: 1280,
+            gap: 24,
+            padding: "0 32px 32px 0",
+          }}
         >
-          {/* Card 1 */}
           <TrendingCard
             title="MarketPulse Pro"
             desc="Real-time financial sentiment analysis and\nautomated trading signals generator."
@@ -129,7 +135,6 @@ function SectionDesktop() {
             buttonStyle="gradient"
           />
 
-          {/* Card 2 */}
           <TrendingCard
             title="CopyArchitect"
             desc="Autonomous brand voice engine that drafts\nhigh-conversion ad copy across 12…"
@@ -139,7 +144,6 @@ function SectionDesktop() {
             buttonStyle="solid"
           />
 
-          {/* Card 3 */}
           <TrendingCard
             title="DevFlow Automator"
             desc="Connects to GitHub to automatically review\nPRs and suggest security optimizations."
@@ -154,15 +158,20 @@ function SectionDesktop() {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Mobile
+// ─────────────────────────────────────────────────────────────────────────────
 
 function SectionMobile() {
   return (
     <section
       className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: colors.white, borderRadius: 24, marginTop: 24 }}
+      style={{
+        backgroundColor: colors.white,
+        borderRadius: 24,
+        marginTop: 24,
+      }}
     >
-      {/* Background SVG */}
       <div className="absolute inset-0 z-0 opacity-50 overflow-hidden">
         <Image
           src="/section-3-explore-agent/main-bg.svg"
@@ -191,6 +200,7 @@ function SectionMobile() {
             buttonStyle="gradient"
             mobile
           />
+
           <TrendingCard
             title="CopyArchitect"
             desc="Autonomous brand voice engine that drafts high-conversion ad copy across 12…"
@@ -200,6 +210,7 @@ function SectionMobile() {
             buttonStyle="solid"
             mobile
           />
+          
           <TrendingCard
             title="DevFlow Automator"
             desc="Connects to GitHub to automatically review PRs and suggest security optimizations."
@@ -215,7 +226,9 @@ function SectionMobile() {
   );
 }
 
-// ─── Shared Sub-Components ───────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Shared Components
+// ─────────────────────────────────────────────────────────────────────────────
 
 function SectionHeading({ fontSize, lineHeight }: { fontSize: number | string; lineHeight: string }) {
   return (
@@ -273,7 +286,9 @@ function TrendingCard({
 }) {
   return (
     <div
-      className={`flex flex-col gap-3 ${mobile ? "w-full" : "flex-1"}`}
+      className={`flex flex-col gap-3 ${
+        mobile ? "w-full" : "flex-1"
+      } transition-all duration-300`}
       style={{
         background: colors.white,
         border: `1px solid ${CARD_BORDER}`,
@@ -282,16 +297,17 @@ function TrendingCard({
         boxShadow: CARD_SHADOW,
       }}
     >
-      {/* Image / Header area */}
-      {isFeatured ? (
-        <div className="flex flex-row justify-between items-start w-full relative">
-          <Image
-            src={imageSrc}
-            alt=""
-            width={64}
-            height={64}
-            style={{ borderRadius: 16 }}
-          />
+      {/* Header */}
+      <div className="flex flex-row justify-between items-start w-full relative">
+        <Image
+          src={imageSrc}
+          alt=""
+          width={64}
+          height={64}
+          style={{ borderRadius: 16 }}
+        />
+
+        {isFeatured && (
           <div
             className="flex flex-row items-center gap-1"
             style={{
@@ -300,7 +316,13 @@ function TrendingCard({
               padding: "4px 12px",
             }}
           >
-            <Image src="/section-3-explore-agent/trending-icon.svg" alt="" width={9} height={12} />
+            <Image
+              src="/section-3-explore-agent/trending-icon.svg"
+              alt=""
+              width={9}
+              height={12}
+            />
+
             <span
               style={{
                 fontFamily: typography.fonts.inter,
@@ -313,18 +335,8 @@ function TrendingCard({
               TRENDING
             </span>
           </div>
-        </div>
-      ) : (
-        <div className="flex flex-row justify-between items-start w-full relative">
-          <Image
-            src={imageSrc}
-            alt=""
-            width={64}
-            height={64}
-            style={{ borderRadius: 16 }}
-          />
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Title */}
       <h3
@@ -349,16 +361,22 @@ function TrendingCard({
           fontSize: 16,
           lineHeight: "24px",
           color: colors.black,
-          flex: 1, // pushes footer down
+          flex: 1,
         }}
       >
-        {desc.replace(/\\n/g, '\n')}
+        {desc.replace(/\\n/g, "\n")}
       </p>
 
-      {/* Stats Row */}
+      {/* Stats */}
       <div className="flex flex-row items-center gap-6 py-3">
         <div className="flex flex-row items-center gap-1">
-          <Image src="/section-3-explore-agent/star-icon.svg" alt="rating" width={15} height={14} />
+          <Image
+            src="/section-3-explore-agent/star-icon.svg"
+            alt="rating"
+            width={15}
+            height={14}
+          />
+
           <span
             style={{
               fontFamily: typography.fonts.inter,
@@ -371,8 +389,15 @@ function TrendingCard({
             {rating}
           </span>
         </div>
+
         <div className="flex flex-row items-center gap-1">
-          <Image src="/section-3-explore-agent/run-icon.svg" alt="runs" width={16} height={16} />
+          <Image
+            src="/section-3-explore-agent/run-icon.svg"
+            alt="runs"
+            width={16}
+            height={16}
+          />
+
           <span
             style={{
               fontFamily: typography.fonts.inter,
@@ -390,9 +415,12 @@ function TrendingCard({
       {/* Button */}
       <Link href="/marketplace" className="w-full">
         <button
-          className="w-full flex items-center justify-center"
+          className="w-full flex items-center justify-center transition-all duration-300 hover:scale-[1.02]"
           style={{
-            background: buttonStyle === "gradient" ? BUTTON_GRADIENT : "#2864E4",
+            background:
+              buttonStyle === "gradient"
+                ? BUTTON_GRADIENT
+                : "#2864E4",
             borderRadius: 12,
             padding: "16px 0",
           }}

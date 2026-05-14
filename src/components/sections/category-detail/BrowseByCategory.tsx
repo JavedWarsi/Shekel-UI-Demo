@@ -1,384 +1,256 @@
+"use client";
+
 import Image from "next/image";
-import { colors, typography, radiuses } from "@/tokens/design-tokens";
+import { typography, radiuses } from "@/tokens/design-tokens";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// BrowseByCategory.tsx  —  "Browse by category"
-// Figma frame: 500:13233  "Section 2: Category Grid"
-// Canvas: 1280 × 832 px   bg: #F7F9FC
-//
-// Responsive strategy:
-//   ≥ 768 px  →  Scaled cqw canvas  (100cqw / 1280px)
-//   < 768 px  →  Stacked reflow, fluid clamp() font sizes
-//
-// LAYOUT MAP  (all coords are section-absolute Figma px):
-//   Canvas             1280 × 832
-//   Heading            (32, 100)  w:1216     Poppins 600 36/40
-//   Body               (32, 156)  w:576      Inter 400 18/28
-//   Cards Container    (32, 248)  1216×484   grid, gap:32px (calculated)
-//   Card (each)        384x226 (calculated) bg white, border radius 12px, pad 40px
-//     Icon Bg          56×56      bg #D7E3FF, border radius 12px
-//     Title            Inter 700 24/32
-//     Desc             Inter 400 16/26
-//     Count            Inter 600 14/20, color #005AB6
-//     Link             Inter 600 14/20, color #005AB6
-// ─────────────────────────────────────────────────────────────────────────────
-
-const CANVAS_W = 1280;
-const CANVAS_H = 832;
-const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
-
-const BG_COLOR = "#F7F9FC";
-const TEXT_HEADING = "#1C1B1B";
-const TEXT_BODY = "#414753";
-const CARD_BG = "#FFFFFF";
-const ICON_BG = "#D7E3FF";
-const LINK_COLOR = "#005AB6";
+// ─────────────────────────────────────────────────────────
+// Browse By Category — Dark Mode via Tailwind class
+// No ThemeProvider Required
+// Fixed Icon Sizing & Alignment
+// ─────────────────────────────────────────────────────────
 
 const CATEGORIES = [
   {
     title: "Marketing",
     desc: "Automate social media, email campaigns, and SEO strategy with specialized agents.",
-    count: "120+",
+    count: "120+ agents",
     icon: "/section-2-category-detail/icon-marketing.svg",
-    x: 32,
-    y: 248,
   },
   {
     title: "Content",
     desc: "Draft articles, generate creative scripts, and refine copy across all digital channels.",
-    count: "85+",
+    count: "85+ agents",
     icon: "/section-2-category-detail/icon-content.svg",
-    x: 448,
-    y: 248,
   },
   {
     title: "Design",
     desc: "Create UI prototypes, brand assets, and custom illustrations using generative vision agents.",
-    count: "60+",
+    count: "60+ agents",
     icon: "/section-2-category-detail/icon-design.svg",
-    x: 864,
-    y: 248,
   },
   {
     title: "Development",
     desc: "Debug code, write boilerplate scripts, and automate documentation for tech stacks.",
-    count: "200+",
+    count: "200+ agents",
     icon: "/section-2-category-detail/icon-development.svg",
-    x: 32,
-    y: 506,
   },
   {
     title: "Automation",
     desc: "Bridge workflows between different apps and schedule complex task sequences.",
-    count: "150+",
+    count: "150+ agents",
     icon: "/section-2-category-detail/icon-automation.svg",
-    x: 448,
-    y: 506,
   },
   {
     title: "Data Processing",
     desc: "Analyze spreadsheets, scrape web data, and generate insights from raw datasets.",
-    count: "95+",
+    count: "95+ agents",
     icon: "/section-2-category-detail/icon-data-processing.svg",
-    x: 864,
-    y: 506,
   },
 ];
 
 export default function BrowseByCategory() {
   return (
-    <>
-      <SectionDesktop />
-      <SectionMobile />
-    </>
-  );
-}
-
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
-function SectionDesktop() {
-  return (
-    <section
-      className="relative hidden w-full overflow-hidden md:block"
-      style={{
-        backgroundColor: BG_COLOR,
-        aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
-        containerType: "inline-size",
-      }}
-    >
-      <div
-        className="absolute left-0 top-0"
-        style={{
-          width: CANVAS_W,
-          height: CANVAS_H,
-          transform: `scale(${SCALE})`,
-          transformOrigin: "top left",
-        }}
-      >
-        {/* Header Section */}
-        <div className="absolute" style={{ left: 32, top: 100, width: 1216 }}>
-          <SectionHeading fontSize={36} lineHeight="40px" />
-        </div>
-        <div className="absolute" style={{ left: 32, top: 156, width: 576 }}>
-          <SectionBody fontSize={18} lineHeight="28px" />
-        </div>
-
-        {/* Cards Grid */}
-        {CATEGORIES.map((cat, i) => (
-          <div
-            key={i}
-            className="absolute flex flex-col items-start"
+    <section className="w-full overflow-hidden bg-[#F6F8FC] transition-colors duration-300 dark:bg-[#020817]">
+      <div className="mx-auto max-w-[1280px] px-6 py-[72px] md:px-8 md:py-[96px]">
+        {/* Header */}
+        <div className="max-w-[620px]">
+          <h2
             style={{
-              left: cat.x,
-              top: cat.y,
-              width: 384,
-              backgroundColor: CARD_BG,
-              borderRadius: radiuses.cardSm,
-              padding: 40,
-              gap: 12,
+              fontFamily: typography.fonts.poppins,
             }}
+            className="
+              text-[42px]
+              font-semibold
+              leading-[48px]
+              tracking-[-0.02em]
+              text-[#1C1B1F]
+              transition-colors duration-300
+              dark:text-[#F8FAFC]
+            "
           >
-            {/* Top row: Icon */}
-            <div
-              className="flex items-center justify-center shrink-0"
-              style={{
-                width: 56,
-                height: 56,
-                backgroundColor: ICON_BG,
-                borderRadius: radiuses.icon,
-              }}
-            >
-              <Image src={cat.icon} alt="" width={24} height={24} className="object-contain" />
-            </div>
+            Browse by category
+          </h2>
 
-            {/* Title */}
-            <div style={{ paddingTop: 20 }}>
-              <h3
-                style={{
-                  margin: 0,
-                  fontFamily: typography.fonts.jakarta,
-                  fontWeight: 700,
-                  fontSize: 24,
-                  lineHeight: "32px",
-                  color: TEXT_HEADING,
-                }}
-              >
-                {cat.title}
-              </h3>
-            </div>
-
-            {/* Description */}
-            <p
-              style={{
-                margin: 0,
-                fontFamily: typography.fonts.inter,
-                fontWeight: 400,
-                fontSize: 16,
-                lineHeight: "26px",
-                color: TEXT_BODY,
-                minHeight: 52, // Allow wrapping
-              }}
-            >
-              {cat.desc}
-            </p>
-
-            {/* Footer: Count & Link */}
-            <div
-              className="flex w-full items-center justify-between"
-              style={{ paddingTop: 11.5 }}
-            >
-              <div className="flex flex-col">
-                <span
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: LINK_COLOR,
-                  }}
-                >
-                  {cat.count}
-                </span>
-              </div>
-              <div className="flex items-center gap-[4px] cursor-pointer group">
-                <span
-                  style={{
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: LINK_COLOR,
-                  }}
-                  className="group-hover:underline"
-                >
-                  View Category
-                </span>
-                <Image
-                  src="/section-2-category-detail/icon-arrow-right.svg"
-                  alt=""
-                  width={14}
-                  height={14}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// ─── Mobile ──────────────────────────────────────────────────────────────────
-
-function SectionMobile() {
-  return (
-    <section
-      className="relative block w-full overflow-hidden md:hidden"
-      style={{ backgroundColor: BG_COLOR }}
-    >
-      <div className="flex flex-col gap-8 px-6 py-16">
-        <div className="flex flex-col gap-4">
-          <SectionHeading fontSize="clamp(28px, 8vw, 36px)" lineHeight="1.2" />
-          <SectionBody fontSize="16px" lineHeight="1.6" />
+          <p
+            style={{
+              fontFamily: typography.fonts.inter,
+            }}
+            className="
+              mt-4
+              text-[18px]
+              font-normal
+              leading-[30px]
+              text-[#5B6472]
+              transition-colors duration-300
+              dark:text-[#94A3B8]
+            "
+          >
+            Find AI agents based on your needs and use cases.
+          </p>
         </div>
 
-        <div className="flex flex-col gap-6">
-          {CATEGORIES.map((cat, i) => (
+        {/* Grid */}
+        <div className="mt-[56px] grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {CATEGORIES.map((item, index) => (
             <div
-              key={i}
-              className="flex flex-col"
+              key={index}
+              className="
+                group
+                relative
+                flex
+                min-h-[248px]
+                flex-col
+                justify-between
+                overflow-hidden
+                rounded-[20px]
+                border
+                border-[rgba(15,23,42,0.04)]
+                bg-white
+                p-[28px]
+                shadow-[0px_1px_2px_rgba(16,24,40,0.04)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                dark:border-[rgba(255,255,255,0.06)]
+                dark:bg-[#0F172A]
+                dark:shadow-[0px_4px_20px_rgba(0,0,0,0.35)]
+              "
               style={{
-                backgroundColor: CARD_BG,
                 borderRadius: radiuses.cardSm,
-                padding: "32px 24px",
-                gap: "12px",
               }}
             >
-              <div
-                className="flex items-center justify-center shrink-0"
-                style={{
-                  width: 48,
-                  height: 48,
-                  backgroundColor: ICON_BG,
-                  borderRadius: radiuses.icon,
-                }}
-              >
-                <Image src={cat.icon} alt="" width={20} height={20} className="object-contain" />
-              </div>
+              {/* Top */}
+              <div>
+                {/* Icon */}
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-center
+                    rounded-[14px]
+                    bg-[#DCE7FF]
+                    transition-colors
+                    duration-300
+                    dark:bg-[rgba(37,99,235,0.15)]
+                    shrink-0
+                  "
+                  style={{
+                    width: 56,
+                    height: 56,
+                    minWidth: 56,
+                    minHeight: 56,
+                  }}
+                >
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={55}
+                    height={55}
+                    className="
+                      object-contain
+                      transition-all
+                      duration-300
+                      
+                    
+                    "
+                  />
+                </div>
 
-              <div className="pt-2">
+                {/* Title */}
                 <h3
                   style={{
-                    margin: 0,
                     fontFamily: typography.fonts.jakarta,
-                    fontWeight: 700,
-                    fontSize: 22,
-                    lineHeight: "1.3",
-                    color: TEXT_HEADING,
                   }}
+                  className="
+                    mt-8
+                    text-[24px]
+                    font-bold
+                    leading-[32px]
+                    text-[#1C1B1F]
+                    transition-colors
+                    duration-300
+                    dark:text-[#F8FAFC]
+                  "
                 >
-                  {cat.title}
+                  {item.title}
                 </h3>
+
+                {/* Description */}
+                <p
+                  style={{
+                    fontFamily: typography.fonts.inter,
+                  }}
+                  className="
+                    mt-3
+                    max-w-[310px]
+                    text-[16px]
+                    font-normal
+                    leading-[28px]
+                    text-[#5B6472]
+                    transition-colors
+                    duration-300
+                    dark:text-[#94A3B8]
+                  "
+                >
+                  {item.desc}
+                </p>
               </div>
 
-              <p
-                style={{
-                  margin: 0,
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 400,
-                  fontSize: 15,
-                  lineHeight: "1.6",
-                  color: TEXT_BODY,
-                }}
-              >
-                {cat.desc}
-              </p>
-
-              <div className="mt-2 flex items-center justify-between pt-2">
+              {/* Footer */}
+              <div className="mt-8 flex items-center justify-between">
                 <span
                   style={{
                     fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "20px",
-                    color: LINK_COLOR,
                   }}
+                  className="
+                    text-[14px]
+                    font-semibold
+                    leading-[20px]
+                    text-[#0057B8]
+                    transition-colors
+                    duration-300
+                    dark:text-[#60A5FA]
+                  "
                 >
-                  {cat.count} agents
+                  {item.count}
                 </span>
-                <div className="flex items-center gap-1 cursor-pointer">
+
+                <button className="flex items-center gap-1">
                   <span
                     style={{
                       fontFamily: typography.fonts.inter,
-                      fontWeight: 600,
-                      fontSize: 14,
-                      lineHeight: "20px",
-                      color: LINK_COLOR,
                     }}
+                    className="
+                      text-[14px]
+                      font-semibold
+                      leading-[20px]
+                      text-[#0057B8]
+                      transition-colors
+                      duration-300
+                      dark:text-[#60A5FA]
+                    "
                   >
                     View Category
                   </span>
+
                   <Image
                     src="/section-2-category-detail/icon-arrow-right.svg"
                     alt=""
                     width={14}
                     height={14}
+                    className="
+                      transition-all
+                      duration-300
+                      group-hover:translate-x-1
+                     
+                    "
                   />
-                </div>
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-// ─── Shared Components ───────────────────────────────────────────────────────
-
-function SectionHeading({
-  fontSize,
-  lineHeight,
-}: {
-  fontSize: number | string;
-  lineHeight: string;
-}) {
-  return (
-    <h2
-      style={{
-        margin: 0,
-        fontFamily: typography.fonts.poppins,
-        fontWeight: 600,
-        fontSize,
-        lineHeight,
-        color: TEXT_HEADING,
-      }}
-    >
-      Browse by category
-    </h2>
-  );
-}
-
-function SectionBody({
-  fontSize,
-  lineHeight,
-}: {
-  fontSize: number | string;
-  lineHeight: string;
-}) {
-  return (
-    <p
-      style={{
-        margin: 0,
-        fontFamily: typography.fonts.inter,
-        fontWeight: 400,
-        fontSize,
-        lineHeight,
-        color: TEXT_BODY,
-      }}
-    >
-      Find AI agents based on your needs and use cases.
-    </p>
   );
 }

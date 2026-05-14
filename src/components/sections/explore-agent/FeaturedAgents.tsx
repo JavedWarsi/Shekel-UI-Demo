@@ -60,7 +60,7 @@ function SectionDesktop() {
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
         marginTop: 48,
-        background: "#F2F4F7",
+        // background: "#F2F4F7",
       }}
     >
       <div

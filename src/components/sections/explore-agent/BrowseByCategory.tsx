@@ -39,9 +39,8 @@ function SectionDesktop() {
 
   return (
     <section
-      className={`relative hidden w-full overflow-hidden md:block transition-colors duration-300 ${
-        isDark ? "bg-black" : "bg-white"
-      }`}
+      className={`relative hidden w-full overflow-hidden md:block transition-colors duration-300
+         ${ isDark ? "bg-black" : "bg-white"}`}
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",

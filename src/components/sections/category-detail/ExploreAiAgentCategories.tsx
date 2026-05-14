@@ -97,7 +97,7 @@ function SectionDesktop() {
           }}
         />
         <div
-          className="absolute"
+          className="absolute z-[20]"
           style={{
             left: 1252,
             top: -82,
@@ -115,17 +115,17 @@ function SectionDesktop() {
           alt=""
           width={599}
           height={599}
-          className="absolute object-cover"
+          className="absolute object-cover animate-float"
           style={{ left: 607, top: 96 }}
         />
 
         {/* Graphic Group */}
-        <div className="absolute" style={{ left: 536, top: 34, width: 850.85, height: 556.86 }}>
+        <div className="absolute z-[-1]" style={{ left: 576, top: 0, width: 650.85, height: 656.86 }}>
           <Image
             src="/section-1-category-detail/hero-vector.svg"
             alt=""
             fill
-            className="object-contain"
+            className="object-contain scale-150"
           />
         </div>
 
@@ -260,7 +260,7 @@ function SectionHeading({
       style={{
         margin: 0,
         fontFamily: typography.fonts.jakarta,
-        fontWeight: 700,
+        fontWeight: 600,
         fontSize,
         lineHeight,
         letterSpacing: "-0.025em",

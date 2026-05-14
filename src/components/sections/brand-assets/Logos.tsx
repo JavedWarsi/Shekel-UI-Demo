@@ -45,20 +45,23 @@ const LOGOS = [
 
 export default function BrandAssetsLogos() {
   return (
-    <section className="relative w-full py-28 overflow-hidden" style={{ fontFamily: typography.fonts.inter, backgroundImage: "url(/section-16-how-to-build-agents/bg.png)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}>
+    <section className="relative w-full py-28 overflow-hidden" >
       {/* Mesh Gradient Background */}
       {/* <div className="absolute inset-0 bg-[#FAFAFA]" />
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#EBF8FF] blur-[100px] opacity-70" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#FFF5F5] blur-[100px] opacity-70" />
       <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] rounded-full bg-[#FAF5FF] blur-[100px] opacity-60" /> */}
+      <div className="">
+        <Image src="/section-16-how-to-build-agents/bg.png" style={{ fontFamily: typography.fonts.inter, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} alt="Background" width={1920} height={1080} className="absolute top-0 left-0 w-full h-full object-cover dark:opacity-30" />
 
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12 relative z-10">
+      </div>
+      <div className="mx-auto max-w-[1280px] px-6 md:px-12 relative z-10 ">
         <div className="mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[40px] md:text-[48px] font-medium text-[#000000] mb-4 tracking-tight" 
+            className="text-[40px] md:text-[48px] font-medium  mb-4 tracking-tight" 
             style={{ fontFamily: typography.fonts.poppins }}
           >
             Official Logos
@@ -68,7 +71,7 @@ export default function BrandAssetsLogos() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[18px] text-[#4A5568]"
+            className="text-[18px] dark:text-white/60"
           >
             Consistent application is key to our visual recognition.
           </motion.p>
@@ -82,7 +85,15 @@ export default function BrandAssetsLogos() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-[24px] p-4 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex flex-col h-full"
+              className="bg-white rounded-[24px] p-4 dark:bg-[#0F172A]
+                border
+                border-[#E2E8F0]
+                dark:border-white/10
+                shadow-[0_20px_50px_rgba(0,0,0,0.08)]
+                dark:shadow-[0_20px_50px_rgba(0,0,0,0.45)]
+                hover:-translate-y-1
+               
+              pb-6 flex flex-col h-full"
             >
               {/* Top Image Area */}
               <div 
@@ -94,19 +105,19 @@ export default function BrandAssetsLogos() {
 
               {/* Bottom Info Area */}
               <div className="px-2 flex flex-col flex-grow">
-                <h3 className="text-[18px] font-bold text-[#1A202C] mb-1" style={{ fontFamily: typography.fonts.poppins }}>
+                <h3 className="text-[18px] font-bold text-[#1A202C] mb-1 dark:text-white" style={{ fontFamily: typography.fonts.poppins }}>
                   {logo.title}
                 </h3>
-                <p className="text-[14px] text-[#718096] mb-6 flex-grow">
+                <p className="text-[14px] text-[#718096] mb-6 flex-grow dark:text-white/60">
                   {logo.desc}
                 </p>
 
                 {/* Buttons */}
                 <div className="grid grid-cols-2 gap-3 mt-auto">
-                  <button className="py-2.5 rounded-lg border border-gray-200 text-[12px] font-bold text-[#1A202C] hover:bg-gray-50 transition-colors">
+                  <button className="py-2.5 rounded-lg border border-gray-200/10 text-[12px] dark:text-white/60 font-bold text-[#1A202C] hover:bg-slate-50/20 hover:text-gray-500 transition-colors">
                     PNG
                   </button>
-                  <button className="py-2.5 rounded-lg border border-gray-200 text-[12px] font-bold text-[#1A202C] hover:bg-gray-50 transition-colors">
+                  <button className="py-2.5 rounded-lg border border-gray-200/10 text-[12px] dark:text-white/60 font-bold text-[#1A202C] hover:bg-slate-50/20 hover:text-gray-500 transition-colors">
                     SVG
                   </button>
                 </div>
@@ -115,6 +126,7 @@ export default function BrandAssetsLogos() {
           ))}
         </div>
       </div>
+      {/* </div> */}
     </section>
   );
 }

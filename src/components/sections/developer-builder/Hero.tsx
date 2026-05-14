@@ -202,7 +202,7 @@ function SectionDesktop() {
 function SectionMobile() {
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden pt-24 transition-colors duration-300 bg-white dark:bg-black"
+      className="relative block w-full overflow-hidden md:hidden pt-24 transition-colors duration-300 bg-black"
     >
       <div className="flex flex-col items-center gap-6 px-6 relative z-10 text-center">
         <HeroHeading fontSize="clamp(36px, 10vw, 48px)" lineHeight="1.1" />
@@ -211,8 +211,8 @@ function SectionMobile() {
         </div>
       </div>
 
-      <div className="relative mt-12 w-full h-[400px] opacity-20 dark:opacity-100 transition-opacity duration-300">
-        <Image src="/section-1-developer-builder/bg-image.png" alt="Platform UI" fill className="object-contain object-top" priority />
+      <div className="relative mt-12 w-full h-[400px]  dark:opacity-100 transition-opacity duration-300">
+        <Image src="/section-1-developer-builder/bg-image.png" alt="Platform UI" fill className="object-contain object-top animate-float" priority />
       </div>
 
       <div className="mt-8 mb-12">
