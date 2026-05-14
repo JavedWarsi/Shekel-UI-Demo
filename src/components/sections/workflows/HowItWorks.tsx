@@ -66,9 +66,9 @@ function SectionLabel() {
 function SectionDesktop() {
   return (
     <section
-      className="relative hidden w-full md:block"
+      className="relative hidden w-full md:block dark:bg-[#030712]"
       style={{
-        backgroundColor: colors.background.section,
+        // backgroundColor: colors.background.section,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -84,7 +84,7 @@ function SectionDesktop() {
         }}
       >
         <div
-          className="absolute flex items-start"
+          className="absolute flex items-start py-10"
           style={{
             left: (CANVAS_W - INNER_ROW_W) / 2,
             top: 0,
@@ -95,23 +95,23 @@ function SectionDesktop() {
           {STEPS.map((step) => (
             <article
               key={step.title}
-              className="flex flex-col"
+              className="flex flex-col dark:bg-slate-800"
               style={{
                 boxSizing: "border-box",
                 width: CARD_W,
                 borderRadius: radiuses.cardLg,
                 padding: 40,
-                backgroundColor: colors.white,
+                // backgroundColor: colors.white,
                 boxShadow: CARD_SHADOW,
                 gap: INNER_GAP,
               }}
             >
-              <div className="relative shrink-0" style={{ width: 56, height: 56 }}>
+              <div className="relative shrink-0 " style={{ width: 56, height: 56 }}>
                 <Image
                   src={step.iconSrc}
                   alt=""
                   fill
-                  className="object-contain"
+                  className="object-contain dark:slate-500 "
                   sizes="56px"
                 />
               </div>
@@ -123,7 +123,7 @@ function SectionDesktop() {
                     fontWeight: 700,
                     fontSize: 20,
                     lineHeight: "28px",
-                    color: CARD_TITLE,
+                    // color: CARD_TITLE,
                     textAlign: "left",
                   }}
                 >
@@ -131,13 +131,14 @@ function SectionDesktop() {
                 </h3>
               </div>
               <p
-                className="m-0"
+                className="m-0 dark:text-gray-300"
                 style={{
                   fontFamily: typography.fonts.inter,
                   fontWeight: 400,
                   fontSize: 14,
                   lineHeight: "22.75px",
-                  color: CARD_BODY,
+                  // color: CARD_BODY,
+
                   textAlign: "left",
                   whiteSpace: "pre-wrap",
                 }}

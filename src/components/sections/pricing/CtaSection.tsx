@@ -75,12 +75,11 @@ export default function CtaSection() {
 
 function SectionDesktop() {
   const { isDark } = useThemeTokens();
-  
+
   return (
     <section
       className="relative hidden w-full overflow-hidden md:block rounded-[24px] transition-colors duration-300"
       style={{
-        backgroundColor: isDark ? 'black' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -102,13 +101,13 @@ function SectionDesktop() {
             src="/section-5-pricing/bg.png"
             alt=""
             fill
-            className="object-cover"
+            className="object-cover dark:invert"
             sizes="1900px"
           />
         </div>
 
         {/* Ellipses — Figma 506:4925 */}
-        <CtaEllipse
+        {/* <CtaEllipse
           left={-549}
           top={-566}
           flip
@@ -122,26 +121,50 @@ function SectionDesktop() {
           left={1147}
           top={-531}
           useEllipse2
-        />
+        /> */}
 
         {/* Design decors (below copy in stack order, z-1) */}
         <div
           aria-hidden
-          className="absolute z-[1] flex items-center justify-center"
-          style={{ left: 264, top: 184, width: 663.501, height: 665.527, transform: "rotate(43.72deg)" }}
+          className="absolute top-0 left-[-500px] z-[1] mt-60 animate-rocketFly pointer-events-none"
+          style={{
+            width: "2000px",
+            height: "800px",
+          }}
         >
-          <div className="relative overflow-hidden" style={{ width: 438, height: 502 }}>
+          <div
+            className="absolute flex items-center justify-center"
+            style={{
+              transform: "rotate(43.72deg)",
+              width: 438,
+              height: 502,
+            }}
+          >
             <div
-              className="absolute"
-              style={{ left: "-46.42%", top: 0, width: "203.78%", height: "100%" }}
+              className="relative overflow-hidden"
+              style={{
+                width: 438,
+                height: 502,
+              }}
             >
-              <Image
-                src="/section-5-pricing/design-1.png"
-                alt=""
-                fill
-                className="object-cover"
-                sizes="800px"
-              />
+              <div
+                className="absolute"
+                style={{
+                  left: "-46.42%",
+                  top: 0,
+                  width: "203.78%",
+                  height: "100%",
+                }}
+              >
+                <Image
+                  src="/section-5-pricing/design-1.png"
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="800px"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -158,7 +181,7 @@ function SectionDesktop() {
             filter: "blur(6.2px)",
           }}
         >
-          <div className="relative overflow-hidden" style={{ width: 313.382, height: 359.22 }}>
+          <div className="relative overflow-hidden animate-rocketFly" style={{ width: 313.382, height: 359.22 }}>
             <div
               className="absolute"
               style={{ left: "-46.42%", top: 0, width: "203.78%", height: "100%" }}
@@ -195,7 +218,7 @@ function SectionDesktop() {
                 src="/section-5-pricing/design-2.png"
                 alt=""
                 fill
-                className="object-cover"
+                className="object-cover animate-float"
                 sizes="500px"
               />
             </div>
@@ -245,30 +268,30 @@ function SectionDesktop() {
 
 function SectionMobile() {
   const { isDark } = useThemeTokens();
-  
+
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden rounded-[24px] py-16 transition-colors duration-300"
-      style={{ backgroundColor: isDark ? 'black' : colors.white }}
+      className="relative block w-full overflow-hidden md:hidden dark:bg-[#05070C] bg-white rounded-[24px] py-16 transition-colors duration-300"
+    // style={{ backgroundColor: isDark ? 'black' : colors.white }}
     >
-       <div
-          className="absolute"
-          style={{ left: "-50%", top: 0, width: "200%", height: "100%", opacity: 0.5 }}
-        >
-          <Image
-            src="/section-5-pricing/bg.png"
-            alt=""
-            fill
-            className="object-cover"
-          />
-        </div>
+      <div
+        className="absolute"
+        style={{ left: "-50%", top: 0, width: "200%", height: "100%", opacity: 0.5 }}
+      >
+        <Image
+          src="/section-5-pricing/bg.png"
+          alt=""
+          fill
+          className="object-cover"
+        />
+      </div>
       <div className="relative z-10 flex flex-col gap-8 px-6 sm:px-8 items-center text-center">
         <SectionHeading fontSize="clamp(32px, 8vw, 48px)" lineHeight="1.1" />
         <SectionBody fontSize="16px" lineHeight="24px" />
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4 w-full">
-            <PrimaryButton text="Explore Agents" isMobile={true} />
-            <SecondaryButton text="Start Building" isMobile={true} />
+          <PrimaryButton text="Explore Agents" isMobile={true} />
+          <SecondaryButton text="Start Building" isMobile={true} />
         </div>
       </div>
     </section>
@@ -310,7 +333,7 @@ function SectionBody({
 }) {
   return (
     <p
-      className="m-0 text-[#94a3b8] dark:text-white/60 text-center transition-colors duration-300 whitespace-normal md:whitespace-pre-wrap"
+      className="m-0 text-[#94a3b8] text-center transition-colors duration-300 whitespace-normal md:whitespace-pre-wrap"
       style={{
         fontFamily: typography.fonts.inter,
         fontWeight: 400,
@@ -352,7 +375,7 @@ function PrimaryButton({ text, isMobile = false }: { text: string, isMobile?: bo
 
 function SecondaryButton({ text, isMobile = false }: { text: string, isMobile?: boolean }) {
   const { isDark } = useThemeTokens();
-  
+
   return (
     <div
       className={`flex items-center justify-center cursor-pointer min-w-[200px] bg-white dark:bg-white/5 transition-colors ${isMobile ? "w-full" : ""}`}

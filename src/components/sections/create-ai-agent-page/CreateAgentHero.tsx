@@ -90,32 +90,32 @@ function Desktop() {
           className="absolute left-[147px] top-[-117px] mix-blend-screen object-cover"
         />
         <Float
-          motion3d
-          amplitude={10}
-          rotate={1.5}
-          duration={7}
-          className="pointer-events-none absolute left-[322px] top-[6px] z-10"
-          style={{ width: 640, height: 634, perspective: "1000px" }}
-        >
-          <div className="relative h-full w-full">
-            <Image
-              src="/images/hero/robot.webp"
-              alt="AI agent illustration"
-              fill
-              sizes="640px"
-              className="object-contain"
-              priority
-            />
-          </div>
-        </Float>
+  motion3d
+  amplitude={10}
+  rotate={1.5}
+  duration={7}
+  className="pointer-events-none absolute left-[322px] top-[6px] z-10 animate-floatX"
+  style={{ width: 640, height: 634, perspective: "1000px" }}
+>
+  <div className="relative h-full w-full animate-smoothZoomIn">
+    <Image
+      src="/images/hero/robot.webp"
+      alt="AI agent illustration"
+      fill
+      sizes="640px"
+      className="object-contain"
+      priority
+    />
+  </div>
+</Float>
 
         <p style={{ position: "absolute", left: 838, top: 482, margin: 0, width: 387, color: colors.white, fontSize: 18, lineHeight: "28px", fontFamily: typography.fonts.inter, zIndex: 30 }}>
           Define the identity, logic, and pricing of your autonomous agent.
         </p>
 
         <PartnerMarquee 
-          className="absolute z-20"
-          containerWidth={1291}
+          className="absolute z-20 bg-[#000000] marqueeOn"
+          // containerWidth={1291}
           style={{ left: -4, top: 627 }}
           partners={PARTNER_LOGOS.map(p => ({ ...p, name: p.alt }))}
         />

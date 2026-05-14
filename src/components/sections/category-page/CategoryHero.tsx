@@ -6,23 +6,14 @@ import { colors, typography, radiuses } from "@/tokens/design-tokens";
 // CategoryHero — "Marketing AI Agents" hero
 // Figma: 506:4108  Frame 2147225665
 // Canvas: 1280 × 626
-//
-// LAYOUT: ellipses top, heading left, body+chip, right tunnel rects + center glow (absolute coords in px)
 
 const CANVAS_W = 1280;
 const CANVAS_H = 626;
 const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
-const BTM_ROUND = 36; // Figma bl/br — not in radiuses (single section)
+const BTM_ROUND = 36; 
 
 const PURPLE = "#b557fa";
-const TUNNEL_RECTS: {
-  l: number;
-  t: number;
-  w: number;
-  h: number;
-  o: number;
-  r: number;
-}[] = [
+const TUNNEL_RECTS = [
   { l: 771.8, t: 153.19, w: 357.24, h: 320.48, o: 1, r: 30 },
   { l: 755.44, t: 138.51, w: 389.97, h: 349.83, o: 0.9, r: 30 },
   { l: 739.38, t: 124.11, w: 422.08, h: 378.64, o: 0.8, r: 30 },
@@ -42,7 +33,7 @@ const TUNNEL_RECTS: {
 function HeroBody({ className }: { className?: string }) {
   return (
     <p
-      className={`${className} text-slate-600 dark:text-white transition-colors duration-300`}
+      className={`${className} text-slate-600 dark:text-slate-300 transition-colors duration-300`}
       style={{
         margin: 0,
         width: "100%",
@@ -62,7 +53,7 @@ function HeroBody({ className }: { className?: string }) {
 function HeroChip() {
   return (
     <div
-      className="flex items-center transition-colors duration-300 bg-[#f8fafc] dark:bg-[#0d0d0d] border border-black/5 dark:border-white/5"
+      className="flex items-center transition-colors duration-300 bg-zinc-900/50 border border-black/5 border-white/10 backdrop-blur-sm"
       style={{
         gap: 7.99,
         padding: "12px 24px",
@@ -83,7 +74,7 @@ function HeroChip() {
         />
       </div>
       <span
-        className="text-black dark:text-white transition-colors duration-300"
+        className="text-slate-900 text-white transition-colors duration-300"
         style={{
           fontFamily: typography.fonts.inter,
           fontWeight: 600,
@@ -100,7 +91,7 @@ function HeroChip() {
 function CategoryHeroDesktop() {
   return (
     <section
-      className="relative z-30 hidden w-full md:block transition-colors duration-300 bg-white dark:bg-black"
+      className="relative z-30 hidden w-full md:block transition-colors duration-300 bg-black"
       style={{
         borderBottomLeftRadius: BTM_ROUND,
         borderBottomRightRadius: BTM_ROUND,
@@ -132,33 +123,7 @@ function CategoryHeroDesktop() {
             />
           </div>
         </div>
-        <div
-          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
-          style={{ left: -98, top: -139, width: 163, height: 163 }}
-        >
-          <div className="absolute inset-[-1.25]">
-            <Image
-              src="/section-1-category-page/hero-ellipse-left.svg"
-              alt=""
-              width={163}
-              height={163}
-            />
-          </div>
-        </div>
-        <div
-          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
-          style={{ left: 1252, top: -82, width: 163, height: 163 }}
-        >
-          <div className="absolute inset-[-1.32]">
-            <Image
-              src="/section-1-category-page/hero-ellipse-right.svg"
-              alt=""
-              width={163}
-              height={163}
-            />
-          </div>
-        </div>
-
+        
         {/* Heading */}
         <div
           className="absolute m-0"
@@ -173,28 +138,14 @@ function CategoryHeroDesktop() {
             paddingBottom: 18,
           }}
         >
-          {/* <span
-            className="transition-colors duration-300 dark:hidden"
-            style={{
-              display: "block",
-              background:
-                "linear-gradient(207.59deg, #000 55.6%, rgba(0,0,0,0) 110.73%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            Marketing
-          </span> */}
           <span
-            className="hidden dark:block transition-colors duration-300"
+            className="transition-colors duration-300 text-black dark:text-white"
             style={{
               display: "block",
-              background:
-                "linear-gradient(207.59deg, rgb(255,255,255) 55.6%, rgba(255,255,255,0) 110.73%)",
+              background: "inherit",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
-              color: "transparent",
+              color: "inherit",
             }}
           >
             Marketing
@@ -226,7 +177,7 @@ function CategoryHeroDesktop() {
         {TUNNEL_RECTS.map((r, i) => (
           <div
             key={i}
-            className="absolute dark:mix-blend-difference mix-blend-multiply transition-all duration-300"
+            className="absolute dark:mix-blend-screen mix-blend-multiply transition-all duration-300"
             style={{
               left: r.l,
               top: r.t,
@@ -238,31 +189,11 @@ function CategoryHeroDesktop() {
             }}
           />
         ))}
-        <div
-          className="pointer-events-none absolute opacity-40 dark:opacity-100 transition-opacity duration-300"
-          style={{
-            left: 502.57,
-            top: -99.27,
-            width: 903.32,
-            height: 825.48,
-            mixBlendMode: "normal",
-            zIndex: 30,
-          }}
-        >
-          <div className="absolute inset-[-0.62]">
-            <Image
-              src="/section-1-category-page/hero-glow-right.svg"
-              alt=""
-              width={800}
-              height={700}
-              className="h-full w-full object-contain"
-            />
-          </div>
-        </div>
+        
         <div
           className="pointer-events-none absolute"
           style={{
-            left: 804.23,
+            left: 904.23,
             top: 363.47,
             width: 997.7,
             height: 1231.7,
@@ -271,10 +202,10 @@ function CategoryHeroDesktop() {
           }}
         >
           <Image
-            src="/section-11/cta-robot.webp"
+            src="/section-2-faq/faqbot.png"
             alt=""
             fill
-            className="object-contain"
+            className="object-contain animate-float"
             sizes="438px"
             priority
           />
@@ -294,16 +225,18 @@ function CategoryHeroMobile() {
       }}
     >
       <div className="flex flex-col gap-8 px-6 py-14">
-        <div className="relative h-[200px] w-full overflow-hidden rounded-lg opacity-40 dark:opacity-100 transition-opacity duration-300">
-          <Image
-            src="/section-1-category-page/hero-glow-right.svg"
+        <div className="relative h-[240px] w-full overflow-hidden rounded-lg">
+           <Image
+            src="/section-11/cta-robot.webp"
             alt=""
             fill
             className="object-contain"
             sizes="100vw"
+            priority
           />
         </div>
         <div
+          className="text-black dark:text-white transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 500,
@@ -311,35 +244,10 @@ function CategoryHeroMobile() {
             fontSize: "clamp(40px, 10vw, 56px)",
           }}
         >
+          <span className="block">Marketing</span>
           <span
-            className="dark:hidden transition-colors duration-300"
+            className="block"
             style={{
-              display: "block",
-              background:
-                "linear-gradient(207.59deg, #000 55.6%, rgba(0,0,0,0) 110.73%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            Marketing
-          </span>
-          <span
-            className="hidden dark:block transition-colors duration-300"
-            style={{
-              display: "block",
-              background:
-                "linear-gradient(207.59deg, rgb(255,255,255) 55.6%, rgba(255,255,255,0) 110.73%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            Marketing
-          </span>
-          <span
-            style={{
-              display: "block",
               background: `linear-gradient(180deg, ${colors.brand.blueStart} 0%, ${colors.brand.blueEnd} 100%)`,
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
@@ -366,3 +274,4 @@ export default function CategoryHero() {
     </>
   );
 }
+

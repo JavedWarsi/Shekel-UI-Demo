@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { colors, typography } from "@/tokens/design-tokens";
+import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CtaFaq.tsx — FAQ CTA Section
@@ -11,15 +12,16 @@ const CANVAS_W = 1216;
 const CANVAS_H = 552;
 
 export default function CtaFaq() {
+  const { isDark } = useThemeTokens();
   return (
     <>
       {/* ═══════════════════════════════════════════════════════════════════
           TABLET & DESKTOP (≥ 768px)
           ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative hidden w-full overflow-hidden md:block"
+        className="relative hidden w-full overflow-hidden md:block dark:bg-slate-950"
         style={{
-          backgroundColor: colors.white,
+          // backgroundColor: colors.white,
           paddingTop: 32,
           paddingBottom: 96,
           paddingLeft: 0,
@@ -35,7 +37,7 @@ export default function CtaFaq() {
           }}
         >
           <div
-            className="absolute left-0 top-0 w-full"
+            className="absolute left-0 top-0 w-full dark:bg-black/40"
             style={{
               height: CANVAS_H,
               transform: `scale(calc(100cqw / ${CANVAS_W}))`,
@@ -49,7 +51,7 @@ export default function CtaFaq() {
                 alt=""
                 width={CANVAS_W}
                 height={CANVAS_H}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover dark:opacity-30 dark:brightness-50"
                 unoptimized
               />
             </div>

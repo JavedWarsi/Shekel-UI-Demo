@@ -41,7 +41,7 @@ const SIDEBAR_BG_1 = "#f8fafc";
 const DIVIDER_BLUE = "#005ab6";
 const ICON_API_BG = "rgba(22,114,223,0.2)";
 const ICON_LOGIC_BG = "rgba(99,215,254,0.2)";
-const WINDOW_SHADOW = "0px 30px 60px -12px rgba(25,28,30,0.08)";
+const WINDOW_SHADOW = "0px 30px 60px -12px rgba(25,28,30,0.20)";
 const CARD_SHADOW = "0px 30px 60px -12px rgba(25,28,30,0.08)";
 const EDITOR_BG_GRADIENT = "linear-gradient(90deg, rgba(128, 128, 128, 0.07) 4.1667%, rgba(128, 128, 128, 0) 4.1667%), linear-gradient(180deg, rgba(128, 128, 128, 0.07) 4.1667%, rgba(128, 128, 128, 0) 4.1667%)";
 
@@ -62,7 +62,7 @@ function SectionHeading({
           fontSize,
           lineHeight,
           letterSpacing: "-0.9px",
-          color: colors.text.dark,
+          // color: colors.text.dark,
         }}
       >
         The architect's canvas
@@ -86,9 +86,9 @@ function SectionHeading({
 function EditorPreview() {
   return (
     <div
-      className="relative flex flex-col w-full h-full bg-white border border-solid"
+      className="relative flex flex-col w-full h-full bg-white border border-gray-300 dark:invert"
       style={{
-        borderColor: colors.border.footer, // close to #f1f5f9
+        // borderColor: colors.border.footer, // close to #f1f5f9
         borderRadius: "40px",
         boxShadow: WINDOW_SHADOW,
         padding: "33px",
@@ -258,7 +258,7 @@ function SectionDesktop() {
     <section
       className="relative hidden w-full overflow-hidden md:block"
       style={{
-        backgroundColor: colors.background.sectionAlt, // #f7f9fc
+        // backgroundColor: colors.background.sectionAlt, // #f7f9fc
         borderTop: `1px solid ${colors.border.footer}`,
         borderBottom: `1px solid ${colors.border.footer}`,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,

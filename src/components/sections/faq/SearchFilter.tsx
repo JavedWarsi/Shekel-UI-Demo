@@ -18,7 +18,7 @@ export default function SearchFilter() {
       <section
         className="relative hidden w-full overflow-hidden md:block mt-18 transition-colors duration-300"
         style={{
-          backgroundColor: isDark ? 'black' : colors.white,
+          backgroundColor: colors.white,
           aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
           containerType: "inline-size",
         }}
@@ -44,7 +44,7 @@ export default function SearchFilter() {
                 className="w-full h-full rounded-[16px] border border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-slate-900 text-black dark:text-white outline-none transition-colors duration-300"
                 style={{
                   padding: "21px 24px 21px 56px",
-                  boxShadow: isDark ? "none" : "0px 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                  boxShadow: "var(--shadow-search)",
                   fontFamily: typography.fonts.inter,
                   fontWeight: 500,
                   fontSize: "16px",
@@ -67,7 +67,7 @@ export default function SearchFilter() {
                   alt="Search"
                   width={18}
                   height={18}
-                  className={isDark ? 'brightness-200' : ''}
+                  className="dark:brightness-200"
                 />
               </div>
             </div>
@@ -80,9 +80,9 @@ export default function SearchFilter() {
                   className="rounded-full transition-colors duration-300"
                   style={{
                     padding: "8px 24px",
-                    backgroundColor: index === 0 ? "#2F80ED" : (isDark ? 'rgba(255,255,255,0.05)' : "#F8FAFC"),
-                    border: index === 0 ? "none" : (isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(229, 231, 235, 0.3)"),
-                    color: index === 0 ? "#FFFFFF" : (isDark ? "rgba(255, 255, 255, 0.6)" : "rgba(0, 0, 0, 0.6)"),
+                    backgroundColor: index === 0 ? "#2F80ED" : "var(--theme-filter-bg)",
+                    border: index === 0 ? "none" : "1px solid var(--theme-filter-border)",
+                    color: index === 0 ? "#FFFFFF" : "var(--theme-filter-text)",
                     fontFamily: 'Inter',
                     fontWeight: 600,
                     fontSize: 14,
@@ -100,7 +100,7 @@ export default function SearchFilter() {
 
       <section
         className="relative block w-full overflow-hidden px-6 py-8 md:hidden transition-colors duration-300"
-        style={{ backgroundColor: isDark ? 'black' : colors.white }}
+        style={{ backgroundColor: colors.white }}
       >
         <div className="mx-auto flex w-full max-w-md flex-col gap-6">
           {/* Search Input */}
@@ -126,7 +126,7 @@ export default function SearchFilter() {
                 alt="Search"
                 width={18}
                 height={18}
-                className={isDark ? 'brightness-200' : ''}
+                className="dark:brightness-200"
               />
             </div>
           </div>
@@ -139,9 +139,9 @@ export default function SearchFilter() {
                 className="rounded-full transition-colors duration-300"
                 style={{
                   padding: "6px 16px",
-                  backgroundColor: index === 0 ? "#2F80ED" : (isDark ? 'rgba(255,255,255,0.05)' : "#F8FAFC"),
-                  border: index === 0 ? "none" : (isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(229, 231, 235, 0.3)"),
-                  color: index === 0 ? "#FFFFFF" : (isDark ? "rgba(255, 255, 255, 0.6)" : "rgba(0, 0, 0, 0.6)"),
+                  backgroundColor: index === 0 ? "#2F80ED" : "var(--theme-filter-bg)",
+                  border: index === 0 ? "none" : "1px solid var(--theme-filter-border)",
+                  color: index === 0 ? "#FFFFFF" : "var(--theme-filter-text)",
                   fontFamily: typography.fonts.inter,
                   fontWeight: 600,
                   fontSize: 14,

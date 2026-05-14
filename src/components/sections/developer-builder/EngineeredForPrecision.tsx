@@ -58,7 +58,7 @@ export default function EngineeredForPrecision() {
       <section
         className="relative hidden w-full overflow-hidden md:block"
         style={{
-          backgroundColor: colors.black,
+          // backgroundColor: colors.black,
           aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
           containerType: "inline-size",
           borderRadius: 24,
@@ -89,7 +89,7 @@ export default function EngineeredForPrecision() {
                 alt=""
                 width={1841}
                 height={1252}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover dark:opacity-30"
                 unoptimized
               />
             </div>

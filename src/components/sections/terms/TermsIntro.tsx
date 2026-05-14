@@ -1,12 +1,8 @@
 "use client";
 
 import React from 'react';
-import { typography } from '@/tokens/design-tokens';
-import { useThemeTokens } from '@/hooks/useThemeTokens';
 
 const TermsIntro = () => {
-  const { isDark } = useThemeTokens();
-  
   return (
     <section className="mb-12 transition-colors duration-300">
       <h2 

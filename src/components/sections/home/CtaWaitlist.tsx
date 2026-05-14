@@ -34,7 +34,7 @@ function CtaDesktop() {
   const [isHeadingHovered, setIsHeadingHovered] = useState(false);
   return (
     <section
-      className="hidden w-full md:block"
+      className="hidden w-full md:block bg-black"
       style={{ backgroundColor: isDark ? colors.black : colors.white }}
     >
       <div className="pb-16">
@@ -247,6 +247,7 @@ function CtaDesktop() {
                 alt=""
                 width={914}
                 height={652}
+                className="animate-float relative"
                 style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />
             </Float>

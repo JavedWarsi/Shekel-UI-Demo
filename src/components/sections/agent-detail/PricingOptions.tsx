@@ -26,7 +26,7 @@ function SectionDesktop() {
   
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block py-16 transition-colors duration-300"
+      className="relative hidden w-full overflow-hidden md:block dark:bg-slate-900 py-12 transition-colors duration-300"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -43,7 +43,7 @@ function SectionDesktop() {
           justifyContent: "center",
         }}
       >
-        <div className="relative" style={{ width: 1280, height: 769 }}>
+        <div className="relative dark:bg-slate-900" style={{ width: 1280, height: 769 }}>
           <div
             className="absolute overflow-hidden transition-colors duration-300"
             style={{
@@ -51,20 +51,20 @@ function SectionDesktop() {
               top: 0,
               width: CANVAS_W,
               height: CANVAS_H,
-              backgroundColor: isDark ? '#05070C' : colors.white,
+              // backgroundColor: colors.white,
               borderRadius: radiuses.card,
             }}
           >
             {/* Background decoration */}
             <div className="absolute pointer-events-none" style={{ left: -531, top: -188, width: 2400.92, height: 1830 }}>
-              <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className={`object-cover ${isDark ? 'opacity-20 brightness-50' : ''}`} unoptimized />
+              <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className="object-cover dark:opacity-20 dark:brightness-50" unoptimized />
             </div>
             
             <div className="absolute pointer-events-none" style={{ left: -126, top: 638, width: 310, height: 131 }}>
-              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)", opacity: isDark ? 0.3 : 1 }} />
+              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)", opacity: "var(--opacity-glow)" }} />
             </div>
             <div className="absolute pointer-events-none" style={{ left: 1081, top: 655, width: 310, height: 131 }}>
-              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)", opacity: isDark ? 0.3 : 1 }} />
+              <div className="absolute w-[310px] h-[131px]" style={{ background: GRADIENT_BG, filter: "blur(203.4px)", opacity: "var(--opacity-glow)" }} />
             </div>
 
             {/* Section Header */}
@@ -119,10 +119,9 @@ function SectionDesktop() {
 }
 
 function PricingCard({ title, subtitle, price, period, features, buttonText, x, highlighted }: { title: string, subtitle: string, price: string, period: string, features: string[], buttonText: string, x: number, highlighted?: boolean }) {
-  const { isDark } = useThemeTokens();
   
   return (
-    <div className="absolute flex flex-col items-start transition-colors duration-300" style={{ left: x, top: 0, width: 389.33, height: highlighted ? 441 : 448, backgroundColor: isDark ? '#0F172A' : colors.white, border: highlighted ? 'none' : '1px solid rgba(255, 255, 255, 0.34)', borderRadius: 24, padding: 32, gap: 24, boxShadow: highlighted ? CARD_SHADOW : 'none' }}>
+    <div className="absolute flex flex-col items-start transition-colors duration-300" style={{ left: x, top: 0, width: 389.33, height: highlighted ? 441 : 448, backgroundColor: highlighted ? 'var(--theme-card-bg-highlight)' : 'var(--theme-card-bg)', border: highlighted ? 'none' : '1px solid rgba(255, 255, 255, 0.34)', borderRadius: 24, padding: 32, gap: 24, boxShadow: highlighted ? CARD_SHADOW : 'none' }}>
       {highlighted && (
         <div className="absolute flex flex-col items-center" style={{ left: "50%", transform: "translateX(-50%)", top: -16, padding: "6px 20px", background: GRADIENT_BG, borderRadius: 9999 }}>
           <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 12, lineHeight: "18px", textTransform: "uppercase", color: colors.white }}>Popular</span>
@@ -147,7 +146,7 @@ function PricingCard({ title, subtitle, price, period, features, buttonText, x, 
         {features.map((f, i) => (
           <div key={i} className="flex items-center w-full" style={{ gap: 12 }}>
             <div className="relative" style={{ width: 12.23, height: 9.02 }}>
-              <Image src={highlighted ? "/section-6-agent-detail/check-icon-blue.svg" : "/section-6-agent-detail/check-icon.svg"} alt="" fill className={`object-contain ${!highlighted && isDark ? 'brightness-200' : ''}`} />
+              <Image src={highlighted ? "/section-6-agent-detail/check-icon-blue.svg" : "/section-6-agent-detail/check-icon.svg"} alt="" fill className="object-contain dark:brightness-200" />
             </div>
             <div className="flex flex-col justify-center">
               <span className={`text-black dark:text-white transition-colors duration-300 ${highlighted ? 'font-semibold' : 'font-normal'}`} style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "21px" }}>{f}</span>
@@ -171,12 +170,12 @@ function SectionMobile() {
   return (
     <section
       className="relative block w-full overflow-hidden md:hidden transition-colors duration-300"
-      style={{ backgroundColor: isDark ? 'black' : colors.white, borderRadius: radiuses.card, marginTop: 32, marginBottom: 32 }}
+      style={{ backgroundColor: colors.white, borderRadius: radiuses.card, marginTop: 32, marginBottom: 32 }}
     >
       <div className="relative flex flex-col gap-12 px-6 py-16">
         {/* Background decoration */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl">
-          <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className={`object-cover ${isDark ? 'opacity-20 brightness-50' : 'opacity-50'}`} unoptimized />
+          <Image src="/section-6-agent-detail/bg-decoration.svg" alt="" fill className="object-cover dark:opacity-20 dark:brightness-50 opacity-50" unoptimized />
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center">
@@ -199,7 +198,7 @@ function MobilePricingCard({ title, subtitle, price, period, features, buttonTex
   const { isDark } = useThemeTokens();
   
   return (
-    <div className="flex flex-col items-start w-full relative transition-colors duration-300 bg-white dark:bg-slate-900 border border-[rgba(255,255,255,0.1)] rounded-3xl p-8 gap-6 shadow-sm" style={{ boxShadow: highlighted ? CARD_SHADOW : 'none' }}>
+    <div className="flex flex-col items-start w-full relative transition-colors duration-300 bg-white dark:bg-slate-900 border border-[rgba(255,255,255,0.1)] rounded-3xl p-8 gap-6 shadow-sm" style={{ backgroundColor: highlighted ? 'var(--theme-card-bg-highlight)' : 'var(--theme-card-bg)', boxShadow: highlighted ? CARD_SHADOW : 'none' }}>
       {highlighted && (
         <div className="absolute flex flex-col items-center" style={{ left: "50%", transform: "translateX(-50%)", top: -16, padding: "6px 20px", background: GRADIENT_BG, borderRadius: 9999 }}>
           <span style={{ fontFamily: typography.fonts.inter, fontWeight: 600, fontSize: 12, lineHeight: "18px", textTransform: "uppercase", color: colors.white }}>Popular</span>
@@ -219,7 +218,7 @@ function MobilePricingCard({ title, subtitle, price, period, features, buttonTex
       <div className="flex flex-col items-start w-full gap-4 pb-6">
         {features.map((f, i) => (
           <div key={i} className="flex items-center w-full gap-3">
-            <Image src={highlighted ? "/section-6-agent-detail/check-icon-blue.svg" : "/section-6-agent-detail/check-icon.svg"} alt="" width={12.23} height={9.02} className={!highlighted && isDark ? 'brightness-200' : ''} />
+            <Image src={highlighted ? "/section-6-agent-detail/check-icon-blue.svg" : "/section-6-agent-detail/check-icon.svg"} alt="" width={12.23} height={9.02} className="dark:brightness-200" />
             <span className={`text-black dark:text-white transition-colors duration-300 ${highlighted ? 'font-semibold' : 'font-normal'}`} style={{ fontFamily: typography.fonts.inter, fontSize: 14, lineHeight: "21px" }}>{f}</span>
           </div>
         ))}

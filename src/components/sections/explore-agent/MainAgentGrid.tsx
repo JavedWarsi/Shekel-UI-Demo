@@ -37,7 +37,7 @@ const TEXT_DARK = "#191C1E";
 const TEXT_MUTED = "#414753";
 const CARD_BG = "#FFFFFF";
 const CARD_BORDER = "#F8FAFC";
-const CARD_SHADOW = "0px 1px 1px 0px rgba(0, 0, 0, 0.05)";
+const CARD_SHADOW = "0px 5px 5px 0px rgba(0, 0, 0, 0.1)";
 const ICON_BG = "#ECEEF1";
 const BTN_DETAILS_BG = "#F2F4F7";
 const TEXT_BLUE_GRADIENT = "linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%)";
@@ -110,6 +110,7 @@ const AGENTS = [
 ];
 
 export default function MainAgentGrid() {
+  
   return (
     <>
       <SectionDesktop />
@@ -121,6 +122,7 @@ export default function MainAgentGrid() {
 // ─── Desktop ─────────────────────────────────────────────────────────────────
 
 function SectionDesktop() {
+  
   return (
     <section
       className="relative hidden w-full overflow-hidden md:block"

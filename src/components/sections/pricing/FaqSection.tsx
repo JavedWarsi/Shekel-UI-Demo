@@ -2,19 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { colors, typography } from "@/tokens/design-tokens";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { useThemeTokens } from "@/hooks/useThemeTokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// FaqSection.tsx  —  "Common questions"
-// Figma frame: 507:4995  "FAQ Section"
-// Canvas: 1280 × 738 px   Page-y: 1909   bg: transparent
-// ─────────────────────────────────────────────────────────────────────────────
-
-const CANVAS_W = 1280;
-const CANVAS_H = 738;
-const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
+import { typography } from "@/tokens/design-tokens";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FAQ_ITEMS = [
   {
@@ -40,262 +29,66 @@ const FAQ_ITEMS = [
 ];
 
 export default function FaqSection() {
-  return (
-    <>
-      <SectionDesktop />
-      <SectionMobile />
-    </>
-  );
-}
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
-
-function SectionDesktop() {
   return (
-    <section
-      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#05070C]"
-      style={{
-        aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
-        containerType: "inline-size",
-      }}
-    >
-      <div
-        className="absolute left-0 top-0 flex justify-center w-full"
-        style={{
-          height: CANVAS_H,
-        }}
-      >
-        <div
-          className="relative"
-          style={{
-            width: CANVAS_W,
-            height: CANVAS_H,
-            transform: `scale(${SCALE})`,
-            transformOrigin: "top center",
-          }}
-        >
-          {/* Left Column */}
-          <div
-            className="absolute flex flex-col"
-            style={{ left: 24, top: 96, width: 584, gap: 32 }}
-          >
-            <div className="flex flex-col gap-[16px]">
-              <SectionHeading fontSize={36} lineHeight="40px" />
-              <SectionBody fontSize={18} lineHeight="28px" />
-            </div>
-            
-            <SupportButton />
+    <section className="w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 transition-colors duration-300 bg-white dark:bg-[#05070C] relative overflow-hidden">
+      <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        
+        <div className="flex flex-col gap-8 max-w-xl">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: typography.fonts.poppins }}>
+              Common questions
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg">
+              Everything you need to know about our billing and platform features.
+            </p>
           </div>
 
-          {/* Right Column (Accordion) */}
-          <div
-            className="absolute flex flex-col gap-[16px]"
-            style={{ left: 672, top: 96, width: 584 }}
-          >
-             <DesktopAccordion items={FAQ_ITEMS} />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Mobile ──────────────────────────────────────────────────────────────────
-
-function SectionMobile() {
-  return (
-    <section
-      className="relative block w-full overflow-hidden md:hidden py-16 transition-colors duration-300 bg-white dark:bg-[#05070C]"
-    >
-      <div className="flex flex-col px-6 sm:px-8 gap-12">
-        <div className="flex flex-col gap-6">
-          <SectionHeading fontSize="clamp(28px, 6vw, 36px)" lineHeight="1.2" />
-          <SectionBody fontSize="clamp(16px, 4vw, 18px)" lineHeight="1.5" />
-          <SupportButton isMobile={true} />
+          <button className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white font-bold w-fit hover:bg-slate-200 dark:hover:bg-white/10 transition-all">
+            <Image src="/section-4-pricing/chat-icon.svg" alt="" width={20} height={16} className="dark:brightness-200" />
+            Contact Support
+            <Image src="/section-4-pricing/arrow-icon.svg" alt="" width={16} height={16} className="dark:brightness-200" />
+          </button>
         </div>
 
         <div className="flex flex-col gap-4">
-            <DesktopAccordion items={FAQ_ITEMS} isMobile={true} />
+          {FAQ_ITEMS.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-white/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer"
+              onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+            >
+              <div className="flex items-center justify-between p-6">
+                <span className="text-lg font-bold text-slate-900 dark:text-white">
+                  {item.question}
+                </span>
+                <motion.div
+                  animate={{ rotate: openIndex === idx ? 180 : 0 }}
+                  className="shrink-0"
+                >
+                  <Image src="/section-4-pricing/chevron-down.svg" alt="" width={12} height={8} className="dark:brightness-200" />
+                </motion.div>
+              </div>
+              <AnimatePresence initial={false}>
+                {openIndex === idx && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {item.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
-  );
-}
-
-// ─── Shared Components ───────────────────────────────────────────────────────
-
-function SectionHeading({
-  fontSize,
-  lineHeight,
-}: {
-  fontSize: number | string;
-  lineHeight: string;
-}) {
-  return (
-    <h2
-      className="m-0 text-[#0B0B0B] dark:text-white transition-colors duration-300"
-      style={{
-        fontFamily: typography.fonts.poppins,
-        fontWeight: 700,
-        fontSize,
-        lineHeight,
-        maxWidth: 364.94
-      }}
-    >
-      Common questions
-    </h2>
-  );
-}
-
-function SectionBody({
-  fontSize,
-  lineHeight,
-}: {
-  fontSize: number | string;
-  lineHeight: string;
-}) {
-  return (
-    <p
-      className="m-0 text-[#475569] dark:text-white/60 transition-colors duration-300"
-      style={{
-        fontFamily: typography.fonts.inter,
-        fontWeight: 400,
-        fontSize,
-        lineHeight,
-        maxWidth: 582.14
-      }}
-    >
-      Everything you need to know about our billing and platform features.
-    </p>
-  );
-}
-
-function SupportButton({ isMobile }: { isMobile?: boolean }) {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <div
-      className={`flex items-center gap-[12px] bg-[#eceef1] dark:bg-white/5 cursor-pointer hover:bg-[#e2e4e7] dark:hover:bg-white/10 transition-colors ${isMobile ? "self-start" : ""}`}
-      style={{
-        padding: "16px 24px",
-        borderRadius: "16px",
-        width: "fit-content"
-      }}
-    >
-      <div style={{ position: "relative", width: 20, height: 16 }}>
-        <Image
-          src="/section-4-pricing/chat-icon.svg"
-          alt=""
-          fill
-          className={`object-contain ${isDark ? 'brightness-200' : ''}`}
-        />
-      </div>
-      <span
-        className="text-[#0B0B0B] dark:text-white"
-        style={{
-          fontFamily: typography.fonts.inter,
-          fontWeight: 600,
-          fontSize: 16,
-          lineHeight: "24px",
-        }}
-      >
-        Contact Support
-      </span>
-      <div style={{ position: "relative", width: 16, height: 16 }}>
-        <Image
-          src="/section-4-pricing/arrow-icon.svg"
-          alt=""
-          fill
-          className={`object-contain ${isDark ? 'brightness-200' : ''}`}
-        />
-      </div>
-    </div>
-  );
-}
-
-function DesktopAccordion({ items, isMobile = false }: { items: {question: string, answer: string}[], isMobile?: boolean }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
-  const prefersReducedMotion = useReducedMotion();
-  const { isDark } = useThemeTokens();
-
-  return (
-    <>
-      {items.map((item, idx) => {
-        const isOpen = openIndex === idx;
-        return (
-          <div
-            key={idx}
-            className="flex flex-col bg-white dark:bg-white/5 overflow-hidden transition-colors duration-300"
-            style={{
-              borderRadius: "16px",
-              boxShadow: "0px 1px 2px 0px rgba(0,0,0,0.05)",
-              cursor: "pointer",
-            }}
-            onClick={() => setOpenIndex(isOpen ? null : idx)}
-          >
-            <div
-              className="flex items-center justify-between"
-              style={{ padding: "24px" }}
-            >
-              <span
-                className="text-[#0B0B0B] dark:text-white"
-                style={{
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 600,
-                  fontSize: 18,
-                  lineHeight: "28px",
-                }}
-              >
-                {item.question}
-              </span>
-              <div
-                style={{
-                  position: "relative",
-                  width: 12,
-                  height: 7.4,
-                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                  transition: "transform 0.2s ease",
-                }}
-              >
-                <Image
-                  src="/section-4-pricing/chevron-down.svg"
-                  alt=""
-                  fill
-                  className={`object-contain ${isDark ? 'brightness-200' : ''}`}
-                />
-              </div>
-            </div>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                  animate={prefersReducedMotion ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-                  exit={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div
-                    style={{
-                      padding: "0 24px 24px 24px",
-                    }}
-                  >
-                    <p
-                      className="m-0 text-[#475569] dark:text-white/70"
-                      style={{
-                        fontFamily: typography.fonts.inter,
-                        fontWeight: 400,
-                        fontSize: 16,
-                        lineHeight: "26px",
-                      }}
-                    >
-                      {item.answer}
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-    </>
   );
 }

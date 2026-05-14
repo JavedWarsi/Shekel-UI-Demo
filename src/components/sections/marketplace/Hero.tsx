@@ -59,7 +59,7 @@ export default function Hero() {
 function HeroDesktop() {
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-black"
+      className="dark relative hidden w-full overflow-hidden md:block bg-black"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -107,7 +107,7 @@ function HeroDesktop() {
         <DesktopCards />
         <PartnerMarquee 
           className="absolute z-10" 
-          containerWidth={1291}
+          // containerWidth={1291}
           style={{ left: -4, top: 627 }}
           partners={[
             { src: "/section-1-marketplace/logo-openai.png", name: "OpenAI", w: 103, h: 28 },

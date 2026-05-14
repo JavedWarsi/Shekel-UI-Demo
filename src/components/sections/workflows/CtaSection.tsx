@@ -59,8 +59,8 @@ function SecondaryButton() {
         width: 217.66,
         height: 62,
         borderRadius: "10px",
-        border: "1px solid transparent",
-        borderImage: "linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%) 1",
+        // border: BUTTON_GRADIENT,
+        // borderImage: "linear-gradient(180deg, #2864E4 0%, #ECF2FF 100%) 1",
         padding: "20px 40px",
       }}
     >
@@ -86,12 +86,14 @@ function SecondaryButton() {
 
 function SectionDesktop() {
   return (
-    <section className="relative hidden w-full overflow-hidden py-16 md:block" style={{ backgroundColor: colors.background.section }}>
+    <section className="relative hidden w-full overflow-hidden py-16 md:block" 
+    // style={{ backgroundColor: colors.background.section }}
+    >
       <div
         className="relative mx-auto overflow-hidden"
         style={{
-          width: CANVAS_W,
-          height: CANVAS_H,
+          // width: CANVAS_W,
+          // height: CANVAS_H,
           maxWidth: "100%",
           aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
           containerType: "inline-size",
@@ -110,7 +112,7 @@ function SectionDesktop() {
             className="absolute overflow-hidden"
             style={{ left: 0, top: 9, width: 1280, height: 552, backgroundColor: colors.black, borderRadius: radiuses.card }}
           >
-            <div className="absolute" style={{ left: -385, top: -397, width: 1841, height: 1252 }}>
+            <div className="absolute dark:opacity-30" style={{ left: -385, top: -397, width: 1841, height: 1252 }}>
               <Image src="/section-9-workflows/bg.png" alt="" fill className="object-cover" unoptimized />
             </div>
 
@@ -121,7 +123,7 @@ function SectionDesktop() {
               />
             </div>
 
-            <div className="absolute" style={{ left: 555, top: 1, width: 850.85, height: 556.86 }}>
+            <div className="absolute" style={{ left: 455, top: -140, width: 1150.85, height: 856.86 }}>
               <Image src="/section-9-workflows/hero-rings.svg" alt="" width={851} height={557} className="h-full w-full" />
             </div>
 
@@ -138,7 +140,7 @@ function SectionDesktop() {
                 lineHeight: "72px",
                 letterSpacing: "-0.05em",
                 textTransform: "capitalize",
-                color: colors.black,
+                // color: colors.black,
               }}
             >
               {HEADING}
@@ -175,7 +177,7 @@ function SectionDesktop() {
           </div>
 
           <div className="absolute" style={{ left: 802, top: 0, width: 473, height: 629 }}>
-            <Image src="/section-9-workflows/side-image.png" alt="" fill className="object-cover" unoptimized />
+            <Image src="/section-9-workflows/side-image.png" alt="" fill className="object-cover animate-float" unoptimized />
           </div>
         </div>
       </div>

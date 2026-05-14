@@ -32,7 +32,7 @@ function SectionDesktop() {
   
   return (
     <section
-      className="relative hidden w-full overflow-x-hidden overflow-y-visible md:block rounded-bl-[37px] rounded-br-[37px] bg-[#f8fafc] dark:bg-[#05070C] transition-colors duration-300"
+      className="relative hidden w-full   md:block rounded-bl-[37px] mt-15 rounded-br-[37px] bg-[#05070C] transition-colors duration-300"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -77,7 +77,7 @@ function SectionDesktop() {
         />
         <div
           aria-hidden
-          className="absolute rounded-full opacity-20 dark:opacity-40"
+          className="absolute rounded-full opacity-40"
           style={{
             left: -98,
             top: -139,
@@ -93,24 +93,25 @@ function SectionDesktop() {
         {/* Rocket background shape */}
         <div
           aria-hidden
-          className="absolute opacity-80 dark:opacity-40"
+          className="absolute opacity-100 animate-diagonalRocketFly -mt-35"
           style={{
             left: -360,
             top: -48,
-            width: 760,
-            height: 820,
+            width: 860,
+            height: 920,
             filter: "blur(8.7px)",
             pointerEvents: "none",
             zIndex: 2,
           }}
         >
-          <div className="absolute" style={{ left: 0, top: 0, width: "100%", height: "100%" }}>
+          <div className="absolute" style={{ left: 0, top: 0, width: "100%", height: "100%"  }}>
             <Image
               src="/section-1-pricing/bg-image.png"
               alt=""
               fill
-              className={`object-contain ${isDark ? 'invert-0' : 'invert opacity-20'}`}
-              sizes="1300px"
+              // className={`object-contain ${isDark ? 'invert-0' : 'invert opacity-20'} `}
+              className="object-contain"
+              // sizes="1300px"
               priority
             />
           </div>
@@ -121,9 +122,9 @@ function SectionDesktop() {
           aria-hidden
           className="absolute"
           style={{
-            left: 8,
+            left: 20,
             top: 10,
-            width: 470,
+            width: 600,
             height: 500,
             pointerEvents: "none",
             zIndex: 20,
@@ -133,8 +134,8 @@ function SectionDesktop() {
             src="/section-1-pricing/laptop-mascot.png"
             alt=""
             fill
-            className="object-contain"
-            sizes="500px"
+            className="object-contain animate-float mt-20"
+            sizes="700px"
             priority
           />
         </div>
@@ -199,7 +200,7 @@ function SectionHeading({
 }) {
   return (
     <h1
-      className="m-0 text-center text-[#111827] dark:text-white transition-colors duration-300"
+      className="m-0 text-center text-white transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.poppins,
         fontWeight: 500,
@@ -232,7 +233,7 @@ function SectionBody({
 }) {
   return (
     <p
-      className="m-0 text-center whitespace-pre-wrap text-[#475569] dark:text-white/80 transition-colors duration-300"
+      className="m-0 text-center whitespace-pre-wrap text-white/80 transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.inter,
         fontWeight: 400,

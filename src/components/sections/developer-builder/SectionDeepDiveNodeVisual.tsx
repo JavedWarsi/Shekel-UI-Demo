@@ -46,7 +46,7 @@ export default function SectionDeepDiveNodeVisual() {
       <section
         className="relative hidden w-full overflow-hidden md:block"
         style={{
-          backgroundColor: colors.white,
+          // backgroundColor: colors.white,
           aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
           containerType: "inline-size",
         }}
@@ -78,7 +78,7 @@ export default function SectionDeepDiveNodeVisual() {
                 fontSize: 48,
                 lineHeight: "58px",
                 letterSpacing: "-0.9px",
-                color: TEXT_DARK,
+                // color: TEXT_DARK,
               }}
             >
               Design workflows visually
@@ -115,6 +115,7 @@ export default function SectionDeepDiveNodeVisual() {
                     lineHeight: "24px",
                     color: TEXT_DARK,
                   }}
+                  className="dark:invert"
                 >
                   Infinite canvas with snap-to-grid logic
                 </span>
@@ -131,6 +132,7 @@ export default function SectionDeepDiveNodeVisual() {
                     lineHeight: "24px",
                     color: TEXT_DARK,
                   }}
+                  className="dark:invert"
                 >
                   Real-time variable injection and testing
                 </span>
@@ -147,6 +149,7 @@ export default function SectionDeepDiveNodeVisual() {
                     lineHeight: "24px",
                     color: TEXT_DARK,
                   }}
+                  className="dark:invert"
                 >
                   One-click cloud publishing
                 </span>
@@ -156,13 +159,13 @@ export default function SectionDeepDiveNodeVisual() {
 
           {/* Right Column (Visual Node Graph) */}
           <div
-            className="absolute overflow-hidden"
+            className="absolute overflow-hidden dark:invert"
             style={{
               left: 640,
               top: 96,
               width: 616,
               height: 512,
-              backgroundColor: BG_LIGHT,
+              // backgroundColor: BG_LIGHT,
               borderRadius: 48,
               boxShadow: SHADOW_NODE,
             }}

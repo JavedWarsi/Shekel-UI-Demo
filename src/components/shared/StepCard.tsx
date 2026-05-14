@@ -1,19 +1,12 @@
-// StepCard.tsx
-// Reusable component for the "How It Works" section.
-// Design tokens sourced from Figma node 500:22358.
-// Number bubble: w-20 h-20, rounded-full, bg-white + drop shadow.
-// Number text: Inter SemiBold 30px, gradient #2864e4 → #ecf2ff.
-// Title: Poppins Medium 24px, #1a1c1c.
-// Body: Inter Regular 16px, lh 24px, #414753.
+"use client";
 
 import { colors, typography } from "@/tokens/design-tokens";
-import { useThemeTokens } from "@/hooks/useThemeTokens";
 import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 
 type StepCardProps = {
-  number: string;      // e.g. "01"
+  number: string;
   title: string;
   description: string;
   href?: string;
@@ -22,92 +15,73 @@ type StepCardProps = {
 export default function StepCard({ number, title, description, href }: StepCardProps) {
   const prefersReducedMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
-  const { isDark } = useThemeTokens();
 
-  const content = (
+  const cardContent = (
     <motion.div
-      className="flex flex-col items-center gap-3 text-center"
+      className="flex flex-col items-center gap-6 text-center group"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={
         prefersReducedMotion
           ? undefined
           : {
-              y: -6,
-              scale: 1.01,
+              y: -8,
+              transition: { duration: 0.3 }
             }
       }
-      transition={{ duration: 0.22, ease: "easeOut" }}
     >
-      {/* Number Bubble — 80×80px, rounded-full, white bg, Figma shadow */}
-      <motion.div
-        className="flex items-center justify-center w-20 h-20 rounded-full"
-        style={{
-          backgroundColor: isDark ? "#201c1c" : isHovered ? colors.white : "transparent",
-          boxShadow: isDark
-            ? "0px 12px 16px rgba(0,0,0,0.04), 0px 4px 4px rgba(0,0,0,0.02)"
-            : isHovered
-              ? "0px 12px 32px 0px rgba(0,0,0,0.04), 0px 4px 8px 0px rgba(0,0,0,0.02)"
-              : "none",
-        }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
+      {/* Number Bubble */}
+      <div
+        className="flex items-center justify-center w-24 h-24 rounded-full transition-all duration-300 bg-white dark:bg-zinc-900 border border-slate-100 dark:border-white/5 shadow-xl group-hover:shadow-blue-500/10 group-hover:border-blue-500/20"
       >
-        {/* Gradient number text: Inter SemiBold 30px */}
         <span
-          className={`select-none ${isHovered ? "bg-clip-text text-transparent" : ""}`}
+          className="font-bold text-4xl transition-colors duration-300 bg-clip-text text-transparent"
           style={{
             fontFamily: typography.fonts.inter,
-            fontWeight: 600,
-            fontSize: 30,
-            lineHeight: "36px",
-            color: isHovered ? "transparent" : colors.brand.blueStart,
-            backgroundImage: isHovered
-              ? "linear-gradient(to bottom, #2864e4, #ecf2ff)"
-              : "none",
+            backgroundImage: `linear-gradient(to bottom, ${colors.brand.blueStart}, ${colors.brand.blueEnd})`,
           }}
         >
           {number}
         </span>
-      </motion.div>
+      </div>
 
-      {/* Title — Poppins Medium 24px, #1a1c1c, pt-5 inferred from y=92 - y=80 = 12 + 20pt gap  */}
-      <div className="pt-5">
+      {/* Text Content */}
+      <div className="flex flex-col gap-3">
         <h3
-          className="whitespace-nowrap"
+          className="text-slate-900 dark:text-white transition-colors duration-300"
           style={{
             margin: 0,
             fontFamily: typography.fonts.poppins,
             fontWeight: 500,
             fontSize: 24,
             lineHeight: "28px",
-            color: isDark ? colors.white : colors.text.dark,
           }}
         >
           {title}
         </h3>
+        <p
+          className="text-slate-600 dark:text-slate-400 transition-colors duration-300 max-w-[280px]"
+          style={{
+            margin: 0,
+            fontFamily: typography.fonts.inter,
+            fontWeight: 400,
+            fontSize: 16,
+            lineHeight: "24px",
+          }}
+        >
+          {description}
+        </p>
       </div>
-
-      {/* Body — Inter Regular 16px, lh 24px, #414753 */}
-      <p
-        style={{
-          margin: 0,
-          maxWidth: 320,
-          whiteSpace: "pre-line",
-          fontFamily: typography.fonts.inter,
-          fontWeight: 400,
-          fontSize: 16,
-          lineHeight: "24px",
-          color: isDark ? colors.white : colors.text.body,
-        }}
-      >
-        {description}
-      </p>
     </motion.div>
   );
 
   if (href) {
-    return <Link href={href}>{content}</Link>;
+    return (
+      <Link href={href} className="block no-underline">
+        {cardContent}
+      </Link>
+    );
   }
 
-  return content;
+  return cardContent;
 }

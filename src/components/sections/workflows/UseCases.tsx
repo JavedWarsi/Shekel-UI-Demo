@@ -74,7 +74,7 @@ function SectionDesktop() {
     <section
       className="relative hidden w-full overflow-hidden md:block"
       style={{
-        backgroundColor: colors.white,
+        // backgroundColor: colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -108,11 +108,11 @@ function SectionDesktop() {
           <Image src="/section-6-workflows/ellipse-bottom-left.png" alt="" width={696} height={696} className="h-full w-full" />
         </div>
 
-        <div className="absolute" style={{ left: 32, top: 128, width: 1216, height: 212 }}>
+        <div className="absolute " style={{ left: 32, top: 128, width: 1216, height: 212 }}>
           {USE_CASES.map((item) => (
             <div
               key={item.title}
-              className="absolute flex flex-col items-center"
+              className="absolute flex flex-col items-center "
               style={{ left: item.x, top: 0, width: CARD_W, height: 212, gap: 16, paddingBottom: item.padBottom }}
             >
               <div
@@ -139,7 +139,7 @@ function SectionDesktop() {
                   fontWeight: 700,
                   fontSize: 20,
                   lineHeight: "28px",
-                  color: colors.black,
+                  // color: colors.black,
                   textAlign: "center",
                 }}
               >
@@ -154,7 +154,7 @@ function SectionDesktop() {
                   fontWeight: 400,
                   fontSize: 14,
                   lineHeight: "20px",
-                  color: colors.black,
+                  // color: colors.black,
                   textAlign: "center",
                   whiteSpace: "pre-line",
                 }}

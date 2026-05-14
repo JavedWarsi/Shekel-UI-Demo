@@ -24,9 +24,9 @@ const CAPABILITIES = [
 
 export default function AddCapabilities() {
   return (
-    <section className="w-full py-24 bg-[#F8FAFC]">
+    <section className="w-full py-24 dark:bg-[#020617]">
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
-        <h2 className="text-[40px] font-bold text-[#0F172A] mb-16" style={{ fontFamily: typography.fonts.inter }}>
+        <h2 className="text-[40px] font-bold text-[#0F172A] mb-16 dark:text-white" style={{ fontFamily: typography.fonts.inter }}>
           Add Capabilities
         </h2>
 
@@ -40,12 +40,12 @@ export default function AddCapabilities() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-[24px] p-8 border border-[#E2E8F0] shadow-sm flex flex-col items-start"
+                className="bg-white dark:bg-slate-900 rounded-[24px] p-8 border border-[#E2E8F0] shadow-sm flex flex-col items-start"
               >
                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-[#2864E4] mb-8">
                   <Icon size={24} />
                 </div>
-                <h3 className="text-[20px] font-bold text-[#0F172A] mb-4">
+                <h3 className="text-[20px] font-bold text-[#0F172A] mb-4 dark:text-white">
                   {cap.title}
                 </h3>
                 <p className="text-[14px] text-[#64748B] leading-relaxed">

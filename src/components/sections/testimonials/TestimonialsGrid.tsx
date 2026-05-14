@@ -213,21 +213,26 @@ export function TestimonialsGrid() {
   ];
 
   return (
-    <section className="w-full bg-[#f2f4f8] py-10 md:py-14" style={{ fontFamily: typography.fonts.inter }}>
+    <section
+      className="w-full bg-[#f2f4f8] py-10 md:py-14 dark:bg-[#05070C] transition-colors duration-300"
+      style={{ fontFamily: typography.fonts.inter }}
+    >
       <div className="mx-auto max-w-[1100px] px-4 md:px-6">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5">
+          
+          {/* Main Testimonial */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col justify-between border border-[#e7ebf2] bg-white p-6 shadow-[0_10px_35px_rgba(10,20,40,0.04)] md:col-span-8 md:p-7"
+            className="flex flex-col justify-between border border-[#e7ebf2] dark:border-white/10 bg-white dark:bg-[#0B111C] p-6 shadow-[0_10px_35px_rgba(10,20,40,0.04)] md:col-span-8 md:p-7 transition-colors duration-300"
             style={{ borderRadius: "16px" }}
           >
             <div className="mb-10 md:mb-12">
-              <Quote size={34} className="mb-4 text-[#e4e9f2]" />
+              <Quote size={34} className="mb-4 text-[#e4e9f2] dark:text-white/10" />
 
               <p
-                className="text-[#1a1c1c] font-light"
+                className="text-[#1a1c1c] dark:text-white font-light"
                 style={{
                   fontFamily: "Plus Jakarta Sans",
                   fontWeight: 300,
@@ -238,43 +243,69 @@ export function TestimonialsGrid() {
                   verticalAlign: "middle",
                 }}
               >
-                "Shekel has fundamentally changed how our engineering team interacts
-                with large language models. The workflow orchestration is seamless."
+                "Shekel has fundamentally changed how our engineering team
+                interacts with large language models. The workflow orchestration
+                is seamless."
               </p>
             </div>
+
             <div className="flex items-center gap-3">
-              <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gray-100">
-                <Image src="/section-15-testimonials/avtarlt.jpg" alt="Mark Wayne" fill className="object-cover" />
+              <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gray-100 dark:border-white/10">
+                <Image
+                  src="/section-15-testimonials/avtarlt.jpg"
+                  alt="Mark Wayne"
+                  fill
+                  className="object-cover"
+                />
               </div>
+
               <div>
-                <h4 className="text-[14px] font-semibold text-[#1a1c1c]">Mark Wayne</h4>
-                <p className="text-[12px] text-[#5f6878]">CTO @ BuildStack</p>
+                <h4 className="text-[14px] font-semibold text-[#1a1c1c] dark:text-white">
+                  Mark Wayne
+                </h4>
+                <p className="text-[12px] text-[#5f6878] dark:text-white/60">
+                  CTO @ BuildStack
+                </p>
               </div>
             </div>
           </motion.div>
 
+          {/* Side Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="flex flex-col justify-between border border-[#e7ebf2] bg-white p-5 shadow-[0_8px_28px_rgba(10,20,40,0.05)] md:col-span-4"
+            className="flex flex-col justify-between border border-[#e7ebf2] dark:border-white/10 bg-white dark:bg-[#0B111C] p-5 shadow-[0_8px_28px_rgba(10,20,40,0.05)] md:col-span-4 transition-colors duration-300"
             style={{ borderRadius: "14px" }}
           >
-            <p className="mb-8 text-[13px] leading-[1.65] text-[#525c6d]">
-              "The integration took minutes, not days. It's the cleanest AI infrastructure we've ever used."
+            <p className="mb-8 text-[13px] leading-[1.65] text-[#525c6d] dark:text-white/70">
+              "The integration took minutes, not days. It's the cleanest AI
+              infrastructure we've ever used."
             </p>
+
             <div className="flex items-center gap-3">
-              <div className="relative h-8 w-8 overflow-hidden rounded-full border border-gray-100">
-                <Image src="/section-15-testimonials/avtarrt.jpg" alt="Sarah Chen" fill className="object-cover" />
+              <div className="relative h-8 w-8 overflow-hidden rounded-full border border-gray-100 dark:border-white/10">
+                <Image
+                  src="/section-15-testimonials/avtarrt.jpg"
+                  alt="Sarah Chen"
+                  fill
+                  className="object-cover"
+                />
               </div>
+
               <div>
-                <h4 className="text-[13px] font-semibold text-[#1a1c1c]">Sarah Chen</h4>
-                <p className="text-[11px] text-[#5f6878]">Lead Data Scientist</p>
+                <h4 className="text-[13px] font-semibold text-[#1a1c1c] dark:text-white">
+                  Sarah Chen
+                </h4>
+                <p className="text-[11px] text-[#5f6878] dark:text-white/60">
+                  Lead Data Scientist
+                </p>
               </div>
             </div>
           </motion.div>
 
+          {/* Stats Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -282,34 +313,53 @@ export function TestimonialsGrid() {
             className="flex flex-col justify-end bg-gradient-to-b from-[#2864E4] to-[#ECF2FF] p-5 text-white md:col-span-4"
             style={{ borderRadius: "14px" }}
           >
-            <div className="mb-1 text-[32px] font-semibold md:text-[40px]">98%</div>
+            <div className="mb-1 text-[32px] font-semibold md:text-[40px]">
+              98%
+            </div>
+
             <p className="text-[12px] leading-[1.5] text-white/85 md:text-[13px]">
               Customer satisfaction across 500+ enterprises using Shekel.
             </p>
           </motion.div>
 
+          {/* Large Horizontal Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="flex flex-col items-center gap-6 border border-[#e7ebf2] bg-white p-5 shadow-[0_8px_28px_rgba(10,20,40,0.05)] md:col-span-8 md:flex-row md:items-start md:gap-8 md:p-6"
+            className="flex flex-col items-center gap-6 border border-[#e7ebf2] dark:border-white/10 bg-white dark:bg-[#0B111C] p-5 shadow-[0_8px_28px_rgba(10,20,40,0.05)] md:col-span-8 md:flex-row md:items-start md:gap-8 md:p-6 transition-colors duration-300"
             style={{ borderRadius: "14px" }}
           >
-            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border-4 border-[#eff3f9] shadow-inner">
-              <Image src="/section-15-testimonials/avtarrm.jpg" alt="Marcus J. Thorne" fill className="object-cover" />
+            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border-4 border-[#eff3f9] dark:border-white/10 shadow-inner">
+              <Image
+                src="/section-15-testimonials/avtarrm.jpg"
+                alt="Marcus J. Thorne"
+                fill
+                className="object-cover"
+              />
             </div>
+
             <div>
-              <p className="mb-4 text-[13px] font-medium leading-[1.6] text-[#2c3441] md:text-[15px]">
-                "Intuitive, fast, and powerful. Shekel is exactly what the AI developer community needed to bridge the gap between research and production."
+              <p className="mb-4 text-[13px] font-medium leading-[1.6] text-[#2c3441] dark:text-white/75 md:text-[15px]">
+                "Intuitive, fast, and powerful. Shekel is exactly what the AI
+                developer community needed to bridge the gap between research and
+                production."
               </p>
+
               <div>
-                <h4 className="text-[13px] font-semibold text-[#1a1c1c] md:text-[14px]">Marcus J. Thorne</h4>
-                <p className="text-[11px] text-[#5f6878] md:text-[12px]">AI Research Lead @ LabX</p>
+                <h4 className="text-[13px] font-semibold text-[#1a1c1c] dark:text-white md:text-[14px]">
+                  Marcus J. Thorne
+                </h4>
+
+                <p className="text-[11px] text-[#5f6878] dark:text-white/60 md:text-[12px]">
+                  AI Research Lead @ LabX
+                </p>
               </div>
             </div>
           </motion.div>
 
+          {/* Mini Cards */}
           {miniCards.map((item, i) => (
             <motion.div
               key={i}
@@ -317,27 +367,45 @@ export function TestimonialsGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="border border-[#e7ebf2] bg-white p-5 shadow-[0_8px_28px_rgba(10,20,40,0.05)] md:col-span-4"
+              className="border border-[#e7ebf2] dark:border-white/10 bg-white dark:bg-[#0B111C] p-5 shadow-[0_8px_28px_rgba(10,20,40,0.05)] md:col-span-4 transition-colors duration-300"
               style={{ borderRadius: "14px" }}
             >
               <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, j) => <Star key={j} size={12} className="fill-current text-[#ff9f1c]" />)}
+                {[...Array(5)].map((_, j) => (
+                  <Star
+                    key={j}
+                    size={12}
+                    className="fill-current text-[#ff9f1c]"
+                  />
+                ))}
               </div>
-              <p className="mb-7 text-[12px] leading-[1.6] text-[#4e596a]">
+
+              <p className="mb-7 text-[12px] leading-[1.6] text-[#4e596a] dark:text-white/70">
                 "{item.content}"
               </p>
+
               <div className="flex items-center gap-3">
-                <div className="relative h-8 w-8 overflow-hidden rounded-full border border-gray-100">
-                  <Image src="/section-15-testimonials/avtarlb.jpg" alt="User" fill className="object-cover" />
+                <div className="relative h-8 w-8 overflow-hidden rounded-full border border-gray-100 dark:border-white/10">
+                  <Image
+                    src="/section-15-testimonials/avtarlb.jpg"
+                    alt="User"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
+
                 <div>
-                  <h4 className="text-[12px] font-semibold text-[#1a1c1c]">{item.name}</h4>
-                  <p className="text-[11px] text-[#475569]">{item.role}</p>
+                  <h4 className="text-[12px] font-semibold text-[#1a1c1c] dark:text-white">
+                    {item.name}
+                  </h4>
+
+                  <p className="text-[11px] text-[#475569] dark:text-white/60">
+                    {item.role}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
-
         </div>
       </div>
     </section>
@@ -346,10 +414,13 @@ export function TestimonialsGrid() {
 
 export function TestimonialsStats() {
   return (
-    <section className="w-full overflow-hidden bg-white py-12 md:py-16" style={{ fontFamily: typography.fonts.inter }}>
+    <section
+      className="w-full overflow-hidden bg-white dark:bg-[#05070C] py-12 md:py-16 transition-colors duration-300"
+      style={{ fontFamily: typography.fonts.inter }}
+    >
       <div className="mx-auto max-w-[1100px] px-4 md:px-6">
         <h2
-          className="pb-15 text-[32px] md:text-[48px] text-[#0b0b0b]"
+          className="pb-15 text-[32px] md:text-[48px] text-[#0b0b0b] dark:text-white"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 500,
@@ -362,117 +433,55 @@ export function TestimonialsStats() {
         </h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-stretch">
-          <div className="rounded-[16px] border border-[#edf1f7] bg-[#fafcff] px-8 py-10 shadow-[0_0_40px_rgba(59,116,236,0.04)]">
-
+          
+          {/* Stats Box */}
+          <div className="rounded-[16px] border border-[#edf1f7] dark:border-white/10 bg-[#fafcff] dark:bg-[#0B111C] px-8 py-10 shadow-[0_0_40px_rgba(59,116,236,0.04)] transition-colors duration-300">
             <div className="flex flex-col items-center justify-center space-y-14">
 
-              {/* Item 1 */}
-              <div className="text-center">
-                <h2
-                  className="
-          text-[44px]
-          font-[700]
-          leading-none
-          tracking-[-0.04em]
-          bg-gradient-to-b
-          from-[#a8c5ff]
-          via-[#5f8fff]
-          to-[#2f67ea]
-          bg-clip-text
-          text-transparent
-          drop-shadow-[0_4px_12px_rgba(59,116,236,0.18)]
-        "
-                >
-                  10,000+
-                </h2>
+              {[
+                { value: "10,000+", label: "Workflows Created" },
+                { value: "5,000+", label: "Active Users" },
+                { value: "4.8", label: "Average Rating" },
+              ].map((item, i) => (
+                <div key={i} className="text-center">
+                  <h2
+                    className="
+                      text-[44px]
+                      font-[700]
+                      leading-none
+                      tracking-[-0.04em]
+                      bg-gradient-to-b
+                      from-[#a8c5ff]
+                      via-[#5f8fff]
+                      to-[#2f67ea]
+                      bg-clip-text
+                      text-transparent
+                      drop-shadow-[0_4px_12px_rgba(59,116,236,0.18)]
+                    "
+                  >
+                    {item.value}
+                  </h2>
 
-                <p
-                  className="
-          mt-2
-          text-[10px]
-          font-[700]
-          uppercase
-          tracking-[0.24em]
-          text-[#7b8597]
-        "
-                >
-                  Workflows Created
-                </p>
-              </div>
-
-              {/* Item 2 */}
-              <div className="text-center">
-                <h2
-                  className="
-          text-[44px]
-          font-[700]
-          leading-none
-          tracking-[-0.04em]
-          bg-gradient-to-b
-          from-[#a8c5ff]
-          via-[#5f8fff]
-          to-[#2f67ea]
-          bg-clip-text
-          text-transparent
-          drop-shadow-[0_4px_12px_rgba(59,116,236,0.18)]
-        "
-                >
-                  5,000+
-                </h2>
-
-                <p
-                  className="
-          mt-2
-          text-[10px]
-          font-[700]
-          uppercase
-          tracking-[0.24em]
-          text-[#7b8597]
-        "
-                >
-                  Active Users
-                </p>
-              </div>
-
-              {/* Item 3 */}
-              <div className="text-center">
-                <h2
-                  className="
-          text-[44px]
-          font-[700]
-          leading-none
-          tracking-[-0.04em]
-          bg-gradient-to-b
-          from-[#a8c5ff]
-          via-[#5f8fff]
-          to-[#2f67ea]
-          bg-clip-text
-          text-transparent
-          drop-shadow-[0_4px_12px_rgba(59,116,236,0.18)]
-        "
-                >
-                  4.8
-                </h2>
-
-                <p
-                  className="
-          mt-2
-          text-[10px]
-          font-[700]
-          uppercase
-          tracking-[0.24em]
-          text-[#7b8597]
-        "
-                >
-                  Average Rating
-                </p>
-              </div>
-
+                  <p
+                    className="
+                      mt-2
+                      text-[10px]
+                      font-[700]
+                      uppercase
+                      tracking-[0.24em]
+                      text-[#7b8597]
+                      dark:text-white/50
+                    "
+                  >
+                    {item.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
+          {/* Globe Image */}
           <div className="relative aspect-[1.15/1] overflow-hidden rounded-[16px] bg-[#0b0f18] shadow-[0_18px_50px_rgba(12,26,60,0.35)]">
-
             <Image
               src="/section-15-testimonials/testimoGlob.png"
               alt="Globe"
@@ -483,7 +492,7 @@ export function TestimonialsStats() {
               style={{ objectPosition: "top" }}
             />
 
-            <div className="absolute right-4 top-4 rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[10px] text-white/80">
+            <div className="absolute right-4 top-4 rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[10px] text-white/80 backdrop-blur-sm">
               Global AI Network
             </div>
           </div>
@@ -492,16 +501,3 @@ export function TestimonialsStats() {
     </section>
   );
 }
-
-
-    
-
-
-// export default function CreateAgentCta() {
-//   return (
-//     <>
-//       <Desktop />
-//       <Mobile />
-//     </>
-//   );
-// }

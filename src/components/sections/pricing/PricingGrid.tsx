@@ -1,451 +1,120 @@
 "use client";
 
 import Image from "next/image";
-import { colors, typography, radiuses } from "@/tokens/design-tokens";
-import { useThemeTokens } from "@/hooks/useThemeTokens";
+import { colors, typography } from "@/tokens/design-tokens";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// PricingGrid.tsx  —  "Section - Pricing Grid"
-// Figma frame: 506:4756  "Section - Pricing Grid"
-// Canvas: 1232 × 476 px   Page-y: 674   bg: transparent
-// ─────────────────────────────────────────────────────────────────────────────
-
-const CANVAS_W = 1232;
-const CANVAS_H = 476;
-const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
-
-const CARD_BORDER = "#e2e8f0";
-const BLUE_TEXT = "#005ab6";
-const TEXT_MUTED = "#414753";
-const CARD_SHADOW = "0px 1px 1px 0px rgba(0,0,0,0.05)";
-const HIGHLIGHT_SHADOW = "0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)";
 const BLUE_GRADIENT = `linear-gradient(to bottom, ${colors.brand.blueStart}, ${colors.brand.blueEnd})`;
 
-const STARTER_FEATURES = [
-  "5 Free agent runs / mo",
-  "Access to basic marketplace",
-  "Community support"
-];
-
-const PRO_FEATURES = [
-  "50 AI credits included",
-  "Team collaboration tools",
-  "Custom agent training",
-  "Dedicated support agent"
-];
-
-const PAYG_FEATURES = [
-  "Unlimited marketplace access",
-  "Priority queue processing",
-  "Pay only for what you run",
-  "API webhooks enabled"
+const PLANS = [
+  {
+    title: "Starter",
+    description: "Ideal for individuals testing the waters.",
+    price: "$0",
+    period: "/forever",
+    features: [
+      "5 Free agent runs / mo",
+      "Access to basic marketplace",
+      "Community support"
+    ],
+    buttonText: "Start Free",
+    highlighted: false,
+  },
+  {
+    title: "Pay-as-you-go",
+    description: "For power users who need high flexibility.",
+    price: "$2 - $10",
+    period: "/task",
+    features: [
+      "Unlimited marketplace access",
+      "Priority queue processing",
+      "Pay only for what you run",
+      "API webhooks enabled"
+    ],
+    buttonText: "Run Agent",
+    highlighted: true,
+    popular: true,
+  },
+  {
+    title: "Pro",
+    description: "Complete solution for growing teams.",
+    price: "$19",
+    period: "/month",
+    features: [
+      "50 AI credits included",
+      "Team collaboration tools",
+      "Custom agent training",
+      "Dedicated support agent"
+    ],
+    buttonText: "Go Pro",
+    highlighted: false,
+  }
 ];
 
 export default function PricingGrid() {
   return (
-    <>
-      <SectionDesktop />
-      <SectionMobile />
-    </>
-  );
-}
-
-function SectionDesktop() {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <section
-      className="relative hidden w-full md:block"
-      style={{
-        backgroundColor: "transparent",
-        aspectRatio: `${CANVAS_W} / ${CANVAS_H + 40}`,
-        containerType: "inline-size",
-      }}
-    >
-      <div
-        className="absolute left-0 top-0 w-full"
-        style={{
-          height: CANVAS_H + 40,
-        }}
-      >
-        <div
-          className="absolute"
-          style={{
-            width: CANVAS_W,
-            height: CANVAS_H + 40,
-            transform: `scale(${SCALE})`,
-            transformOrigin: "top left",
-          }}
-        >
-          {/* Starter Plan */}
+    <section className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        {PLANS.map((plan) => (
           <div
-            className="absolute flex flex-col bg-white dark:bg-slate-900 w-[389.33px] rounded-[12px] transition-all duration-300"
-            style={{
-              left: 0,
-              top: 32,
-              padding: 33,
-              border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
-              boxShadow: CARD_SHADOW,
-            }}
+            key={plan.title}
+            className={`relative flex flex-col p-8 md:p-10 rounded-[32px] transition-all duration-500 bg-white dark:bg-zinc-900 border-2 ${
+              plan.highlighted 
+                ? "border-blue-500 shadow-2xl shadow-blue-500/10 scale-105 z-10" 
+                : "border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/50 dark:shadow-none"
+            }`}
           >
-               <PlanHeader
-                  title="Starter"
-                  description="Ideal for individuals testing the waters."
-                  price="$0"
-                  period="/forever"
-                />
-                <div style={{ flex: 1, marginTop: 32, marginBottom: 44 }}>
-                  <FeatureList features={STARTER_FEATURES} />
-                </div>
-                <SecondaryButton text="Start Free" />
-          </div>
-
-          {/* Pay-as-you-go Plan */}
-          <div
-            className="absolute flex h-[456.981px] items-center justify-center w-[401.01px]"
-            style={{ left: 421.33, top: 29.5 }}
-          >
-              <div className="flex-none" style={{ transform: "scale(1.03)" }}>
-                <div
-                  className="bg-white dark:bg-slate-900 relative overflow-hidden flex flex-col w-[389.33px] transition-all duration-300"
-                  style={{
-                    padding: 34,
-                    borderRadius: radiuses.cardSm,
-                    border: `2px solid ${isDark ? 'rgba(59,130,246,0.3)' : 'rgba(0,90,182,0.2)'}`,
-                    boxShadow: HIGHLIGHT_SHADOW,
-                  }}
-                >
-                   {/* "MOST POPULAR" Badge Ribbon */}
-                    <div
-                        className="absolute flex items-center justify-center"
-                        style={{
-                            right: -25.63,
-                            top: -29.57,
-                            width: 133.555,
-                            height: 133.555,
-                        }}
-                    >
-                        <div style={{ transform: "rotate(45deg)", background: BLUE_GRADIENT, padding: "4px 40px" }}>
-                           <span
-                              style={{
-                                  fontFamily: typography.fonts.inter,
-                                  fontWeight: 600,
-                                  fontSize: 10,
-                                  lineHeight: "15px",
-                                  letterSpacing: "0.5px",
-                                  color: colors.white
-                              }}
-                           >
-                                MOST POPULAR
-                           </span>
-                        </div>
-                    </div>
-
-                    <PlanHeader
-                        title="Pay-as-you-go"
-                        description="For power users who need high flexibility."
-                        price="$2 - $10"
-                        period="/task"
-                        isHighlighted={true}
-                        isPayg={true}
-                    />
-                    <div style={{ flex: 1, marginTop: 31.068, marginBottom: 38.835 }}>
-                        <FeatureList features={PAYG_FEATURES} />
-                    </div>
-                    <PrimaryButton text="Run Agent" />
+            {plan.popular && (
+              <div className="absolute top-0 right-0 overflow-hidden w-32 h-32 pointer-events-none">
+                <div className="absolute top-6 right-[-32px] rotate-45 bg-blue-600 text-white text-[10px] font-bold py-1 px-12 tracking-widest uppercase">
+                  POPULAR
                 </div>
               </div>
-          </div>
+            )}
 
-          {/* Pro Plan */}
-          <div
-            className="absolute flex flex-col bg-white dark:bg-slate-900 w-[389.33px] rounded-[12px] transition-all duration-300"
-            style={{
-              left: 842.67,
-              top: 36,
-              padding: 33,
-              border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
-              boxShadow: CARD_SHADOW,
-            }}
-          >
-                <PlanHeader
-                  title="Pro"
-                  description="Complete solution for growing teams."
-                  price="$19"
-                  period="/month"
-                />
-                <div style={{ flex: 1, marginTop: 32, marginBottom: 0 }}>
-                  <FeatureList features={PRO_FEATURES} />
-                </div>
-                <SecondaryButton text="Go Pro" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+            <div className="flex flex-col gap-2 mb-8">
+              <h3 className={`text-2xl font-bold ${plan.highlighted ? "text-blue-600 dark:text-blue-400" : "text-slate-900 dark:text-white"}`}>
+                {plan.title}
+              </h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">
+                {plan.description}
+              </p>
+            </div>
 
-function SectionMobile() {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <section
-      className="relative block w-full overflow-hidden md:hidden pb-16"
-      style={{ backgroundColor: "transparent" }}
-    >
-      <div className="flex flex-col gap-6 px-6 sm:px-8">
-         <div
-            className="bg-white dark:bg-slate-900 relative overflow-hidden flex flex-col w-full transition-all duration-300"
-            style={{
-                padding: 34,
-                borderRadius: radiuses.cardSm,
-                border: `2px solid ${isDark ? 'rgba(59,130,246,0.3)' : 'rgba(0,90,182,0.2)'}`,
-                boxShadow: HIGHLIGHT_SHADOW,
-            }}
-        >
-             <div
-                className="absolute flex items-center justify-center"
-                style={{
-                    right: -25,
-                    top: -25,
-                    width: 133,
-                    height: 133,
-                }}
+            <div className="flex items-baseline gap-1 mb-8">
+              <span className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
+                {plan.price}
+              </span>
+              <span className="text-slate-500 dark:text-slate-400 font-medium">
+                {plan.period}
+              </span>
+            </div>
+
+            <ul className="flex flex-col gap-4 mb-10 flex-1">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex items-center gap-3">
+                  <div className="w-5 h-5 shrink-0 bg-blue-500/10 rounded-full flex items-center justify-center">
+                    <Image src="/section-2-pricing/check-icon.svg" alt="" width={10} height={10} className="brightness-0 saturate-100 invert-[32%] sepia-[95%] saturate-[1900%] hue-rotate-[213deg] brightness-[95%] contrast-[94%]" />
+                  </div>
+                  <span className="text-slate-600 dark:text-slate-300 text-sm md:text-base font-medium">
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              className={`w-full py-4 rounded-2xl font-bold transition-all active:scale-[0.98] ${
+                plan.highlighted 
+                  ? "text-white shadow-lg shadow-blue-500/25" 
+                  : "bg-slate-50 dark:bg-white/5 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10"
+              }`}
+              style={plan.highlighted ? { background: BLUE_GRADIENT } : {}}
             >
-                <div style={{ transform: "rotate(45deg)", background: BLUE_GRADIENT, padding: "4px 40px" }}>
-                    <span
-                        style={{
-                            fontFamily: typography.fonts.inter,
-                            fontWeight: 600,
-                            fontSize: 10,
-                            lineHeight: "15px",
-                            letterSpacing: "0.5px",
-                            color: colors.white
-                        }}
-                    >
-                        MOST POPULAR
-                    </span>
-                </div>
-            </div>
-
-            <PlanHeader
-                title="Pay-as-you-go"
-                description="For power users who need high flexibility."
-                price="$2 - $10"
-                period="/task"
-                isHighlighted={true}
-            />
-            <div style={{ marginTop: 32, marginBottom: 32 }}>
-                <FeatureList features={PAYG_FEATURES} />
-            </div>
-            <PrimaryButton text="Run Agent" />
-        </div>
-
-        <div
-          className="flex flex-col bg-white dark:bg-slate-900 w-full transition-all duration-300"
-          style={{
-            padding: 33,
-            borderRadius: radiuses.cardSm,
-            border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
-            boxShadow: CARD_SHADOW,
-          }}
-        >
-            <PlanHeader
-              title="Starter"
-              description="Ideal for individuals testing the waters."
-              price="$0"
-              period="/forever"
-            />
-            <div style={{ marginTop: 32, marginBottom: 32 }}>
-              <FeatureList features={STARTER_FEATURES} />
-            </div>
-            <SecondaryButton text="Start Free" />
-        </div>
-
-        <div
-          className="flex flex-col bg-white dark:bg-slate-900 w-full transition-all duration-300"
-          style={{
-            padding: 33,
-            borderRadius: radiuses.cardSm,
-            border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : CARD_BORDER}`,
-            boxShadow: CARD_SHADOW,
-          }}
-        >
-            <PlanHeader
-              title="Pro"
-              description="Complete solution for growing teams."
-              price="$19"
-              period="/month"
-            />
-            <div style={{ marginTop: 32, marginBottom: 32 }}>
-              <FeatureList features={PRO_FEATURES} />
-            </div>
-            <SecondaryButton text="Go Pro" />
-        </div>
+              {plan.buttonText}
+            </button>
+          </div>
+        ))}
       </div>
     </section>
-  );
-}
-
-function PlanHeader({
-  title,
-  description,
-  price,
-  period,
-  isHighlighted = false,
-  isPayg = false,
-}: {
-  title: string;
-  description: string;
-  price: string;
-  period: string;
-  isHighlighted?: boolean;
-  isPayg?: boolean;
-}) {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <div className="flex flex-col" style={{ paddingBottom: isPayg ? 31.068 : 32 }}>
-      <div className="flex flex-col gap-[8px]">
-        <h3
-          className="m-0 transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.poppins,
-            fontWeight: 700,
-            fontSize: 20,
-            lineHeight: "28px",
-            color: isHighlighted ? (isDark ? '#60A5FA' : BLUE_TEXT) : (isDark ? '#FFFFFF' : '#0B0B0B'),
-          }}
-        >
-          {title}
-        </h3>
-        <p
-          className="m-0 text-[#475569] dark:text-white/60 transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.inter,
-            fontWeight: 400,
-            fontSize: 14,
-            lineHeight: "20px",
-          }}
-        >
-          {description}
-        </p>
-      </div>
-
-      <div className="flex items-baseline" style={{ paddingTop: isPayg ? 31.068 : 32 }}>
-        <span
-          className="text-[#0B0B0B] dark:text-white transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.poppins,
-            fontWeight: 700,
-            fontSize: 36,
-            lineHeight: "40px",
-          }}
-        >
-          {price}
-        </span>
-        <span
-          className="ml-1 text-[#475569] dark:text-white/60 transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.inter,
-            fontWeight: 400,
-            fontSize: 16,
-            lineHeight: "24px",
-          }}
-        >
-          {period}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function FeatureList({ features }: { features: string[] }) {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <ul className="m-0 p-0 flex flex-col gap-[16px] list-none">
-      {features.map((feature, idx) => (
-        <li key={idx} className="flex items-center gap-[12px]">
-          <div style={{ position: "relative", width: 15, height: 15 }}>
-            <Image
-              src="/section-2-pricing/check-icon.svg"
-              alt=""
-              fill
-              className={`object-contain ${isDark ? 'brightness-200' : ''}`}
-            />
-          </div>
-          <span
-            className="text-[#475569] dark:text-white/80 transition-colors duration-300"
-            style={{
-              fontFamily: typography.fonts.inter,
-              fontWeight: 400,
-              fontSize: 14,
-              lineHeight: "20px",
-            }}
-          >
-            {feature}
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function SecondaryButton({ text }: { text: string }) {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <div
-      className="flex items-center justify-center cursor-pointer group hover:bg-[#005ab6] transition-colors duration-200"
-      style={{
-        border: `1px solid ${isDark ? '#3B82F6' : BLUE_TEXT}`,
-        borderRadius: radiuses.cardSm,
-        padding: "13px 25px",
-        width: "100%"
-      }}
-    >
-      <span
-        className="group-hover:text-white transition-colors duration-200"
-        style={{
-          fontFamily: typography.fonts.inter,
-          fontWeight: 600,
-          fontSize: 16,
-          lineHeight: "24px",
-          color: isDark ? '#3B82F6' : BLUE_TEXT,
-          height: 24,
-        }}
-      >
-        {text}
-      </span>
-    </div>
-  );
-}
-
-function PrimaryButton({ text }: { text: string }) {
-  return (
-    <div
-      className="flex items-center justify-center cursor-pointer relative hover:opacity-90 transition-opacity duration-200"
-      style={{
-        background: BLUE_GRADIENT,
-        borderRadius: radiuses.cardSm,
-        padding: "12px 24px",
-        width: "100%"
-      }}
-    >
-      <span
-        className="relative z-10"
-        style={{
-          fontFamily: typography.fonts.inter,
-          fontWeight: 600,
-          fontSize: 16,
-          lineHeight: "24px",
-          color: colors.white,
-          height: 24,
-        }}
-      >
-        {text}
-      </span>
-    </div>
   );
 }

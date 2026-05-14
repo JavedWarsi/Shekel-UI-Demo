@@ -16,7 +16,7 @@ export default function CtaFaq() {
       <section
         className="relative hidden w-full overflow-hidden md:block transition-colors duration-300"
         style={{
-          backgroundColor: isDark ? 'black' : colors.white,
+          backgroundColor: colors.white,
           paddingTop: 32,
           paddingBottom: 96,
         }}
@@ -44,7 +44,7 @@ export default function CtaFaq() {
                 alt=""
                 width={CANVAS_W}
                 height={CANVAS_H}
-                className={`h-full w-full object-cover ${isDark ? 'opacity-30 brightness-50' : ''}`}
+                className="h-full w-full object-cover dark:opacity-30 dark:brightness-50"
                 unoptimized
               />
             </div>
@@ -130,14 +130,14 @@ export default function CtaFaq() {
                       padding: "19px 40px",
                       borderRadius: 10,
                       border: "1px solid rgba(100,140,220,0.5)",
-                      background: isDark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.15)",
+                      background: "var(--theme-secondary-bg)",
                       fontFamily: typography.fonts.inter,
                       fontWeight: 600,
                       fontSize: 13,
                       lineHeight: "20px",
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
-                      color: isDark ? "white" : "#2864E4",
+                      color: "var(--theme-secondary-text)",
                       cursor: "pointer",
                       backdropFilter: "blur(8px)",
                     }}
@@ -172,7 +172,7 @@ export default function CtaFaq() {
 
       <section
         className="relative block w-full overflow-hidden py-12 md:hidden transition-colors duration-300"
-        style={{ backgroundColor: isDark ? 'black' : colors.white }}
+        style={{ backgroundColor: colors.white }}
       >
         <div
           className="relative w-full flex flex-col items-center overflow-hidden px-8 py-14"
@@ -184,7 +184,7 @@ export default function CtaFaq() {
               src="/section-4-faq/bg.png"
               alt=""
               fill
-              className={`object-cover ${isDark ? 'opacity-30 brightness-50' : ''}`}
+              className="object-cover dark:opacity-30 dark:brightness-50"
             />
           </div>
 
@@ -234,13 +234,13 @@ export default function CtaFaq() {
                     padding: "15px 32px",
                     borderRadius: 10,
                     border: "1px solid rgba(100,140,220,0.5)",
-                    background: isDark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.15)",
+                    background: "var(--theme-secondary-bg)",
                     fontFamily: typography.fonts.inter,
                     fontWeight: 600,
                     fontSize: 13,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: isDark ? "white" : "#2864E4",
+                    color: "var(--theme-secondary-text)",
                     cursor: "pointer",
                     backdropFilter: "blur(8px)",
                   }}

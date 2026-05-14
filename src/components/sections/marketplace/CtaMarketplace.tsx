@@ -43,7 +43,7 @@ function CtaDesktop() {
           }}
         >
         <div className="absolute inset-0">
-          <Image src={ctaBg} alt="" fill sizes="1280px" className="object-cover object-center" />
+          <Image src={ctaBg} alt="" fill sizes="1280px" className="object-cover object-center animate-float" />
         </div>
 
         <div

@@ -3,6 +3,8 @@
 import { typography } from "@/tokens/design-tokens";
 import { motion } from "framer-motion";
 import { Search, Mail, Layout, Star } from "lucide-react";
+// import { useMobile } from "@/hooks/use-mobile";
+import { useTheme } from "next-themes";
 
 const AGENTS = [
   {
@@ -41,6 +43,8 @@ const AGENTS = [
 ];
 
 export default function CreatorActiveAgents() {
+  // const isMobile = useMobile();
+  const isDark = useTheme();
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -49,8 +53,8 @@ export default function CreatorActiveAgents() {
       className="bg-white rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[rgba(0,0,0,0.02)] overflow-hidden w-full"
       style={{ fontFamily: typography.fonts.inter }}
     >
-      <div className="p-8 md:px-10 md:py-8 flex justify-between items-center border-b border-[rgba(0,0,0,0.04)]">
-        <h2 className="text-[20px] font-bold text-[#0b0b0b] tracking-tight" style={{ fontFamily: typography.fonts.poppins }}>
+      <div className="p-8 dark:bg-[#0b0b0b]/50 md:px-10 md:py-8 flex justify-between items-center border-b border-[rgba(0,0,0,0.04)]">
+        <h2 className="text-[20px] dark:text-white font-semibold text-[#0b0b0b] tracking-tight" style={{ fontFamily: typography.fonts.poppins }}>
           Active Agents
         </h2>
         <button className="text-[12px] font-bold text-[#2864E4] hover:underline">
@@ -61,7 +65,7 @@ export default function CreatorActiveAgents() {
       <div className="w-full overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#F8FAFC]">
+            <tr className="bg-[#F8FAFC] dark:bg-slate-800">
               <th className="py-4 px-8 md:px-10 text-[10px] font-bold text-[#64748B] uppercase tracking-wider whitespace-nowrap">Agent Name</th>
               <th className="py-4 px-4 text-[10px] font-bold text-[#64748B] uppercase tracking-wider whitespace-nowrap">Category</th>
               <th className="py-4 px-4 text-[10px] font-bold text-[#64748B] uppercase tracking-wider whitespace-nowrap">Runs</th>
@@ -70,7 +74,7 @@ export default function CreatorActiveAgents() {
               <th className="py-4 px-8 md:px-10 text-[10px] font-bold text-[#64748B] uppercase tracking-wider whitespace-nowrap">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[rgba(0,0,0,0.04)]">
+          <tbody className="divide-y divide-[rgba(0,0,0,0.04)] dark:bg-slate-700/20">
             {AGENTS.map((agent, i) => (
               <tr key={i} className="hover:bg-gray-50 transition-colors group">
                 <td className="py-6 px-8 md:px-10">

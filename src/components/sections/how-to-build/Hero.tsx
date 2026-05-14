@@ -36,9 +36,9 @@ export default function HowToBuildHero() {
               </span>
             </div>
 
-            <h1 
-              className="text-[72px] leading-[72px] font-medium tracking-[-1.8px] mb-8 bg-clip-text text-transparent" 
-              style={{ 
+            <h1
+              className="text-[72px] leading-[72px] font-medium tracking-[-1.8px] mb-8 bg-clip-text text-transparent"
+              style={{
                 fontFamily: 'Poppins',
                 background: 'linear-gradient(238.38deg, #FFFFFF 55.63%, rgba(255, 255, 255, 0) 110.73%)',
                 WebkitBackgroundClip: 'text',
@@ -46,7 +46,7 @@ export default function HowToBuildHero() {
               }}
             >
               Build Intelligent<br />
-              Autonomous<br /> 
+              Autonomous<br />
               Agents.
             </h1>
 
@@ -62,14 +62,14 @@ export default function HowToBuildHero() {
             className="relative flex justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-[500px] aspect-square">
-              <Image 
-                src="/section-16-how-to-build-agents/herobookHB.png" 
-                alt="Build Intelligent Agents" 
-                fill 
-                className="object-cover"
+              <Image
+                src="/section-16-how-to-build-agents/herobookHB.png"
+                alt="Build Intelligent Agents"
+                fill
+                className="object-cover animate-float"
                 priority
-                // height={1100}
-                // width={1100}
+              // height={1100}
+              // width={1100}
               />
             </div>
           </motion.div>

@@ -52,9 +52,9 @@ export default function CoreWorkflowCanvas() {
 function SectionDesktop() {
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block  "
       style={{
-        backgroundColor: colors.white,
+        // backgroundColor: colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -78,7 +78,7 @@ function SectionDesktop() {
         </div>
 
         <div
-          className="absolute"
+          className="absolute dark:bg-slate-800"
           style={{
             left: 0,
             top: 144,
@@ -88,7 +88,7 @@ function SectionDesktop() {
             borderRadius: 40,
             boxShadow: WINDOW_SHADOW,
             overflow: "visible",
-            background: CANVAS_SURFACE,
+            // background: CANVAS_SURFACE,
           }}
         >
           {/* Input node — MCP: Workflow Nodes frame starts (122.39, 240.19); card width 192 */}
@@ -98,6 +98,7 @@ function SectionDesktop() {
               title="User Request"
               variant="emphasis"
               iconSrc="/section-4-workflows/input-bg.png"
+              // className="dark:bg-slate-800"
             />
           </div>
           {/* Line to next node — 507:5958: abs canvas ~314 × 278, 96×2 (nested y38 in 76-high WF group → 240+38) */}
@@ -106,7 +107,7 @@ function SectionDesktop() {
             style={{
               left: 314,
               top: 278,
-              width: 96,
+              width: 175,
               height: 2,
               background: GRADIENT_LINE,
             }}
@@ -421,13 +422,14 @@ function SectionMobile() {
 function SectionHeadingDesktop() {
   return (
     <h2
+    className="pt-10 dark:text-white"
       style={{
         margin: 0,
         fontFamily: typography.fonts.poppins,
         fontWeight: 500,
         fontSize: 48,
         lineHeight: "40px",
-        color: FIGMA_HEADING,
+        // color: FIGMA_HEADING,
       }}
     >
       Core Workflow{" "}

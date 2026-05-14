@@ -73,52 +73,67 @@ export default function SearchResultHero() {
       </section>
 
       {/* Light Filter Bar - Matches the horizontal filter section below */}
-      <section className="w-full bg-[#F3F5F8] border-b border-[#E2E8F0] py-5">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Tabs Container */}
-          <div className="flex items-center gap-8">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`relative py-2 text-[15px] font-semibold transition-all duration-300 ${activeTab === tab
-                  ? "text-[#2864e4]"
-                  : "text-[#64748B] hover:text-[#1E293B]"
-                  }`}
-              >
-                {tab === "All" && activeTab === "All" ? (
-                  <div className="flex items-center justify-center px-9 py-2.5 bg-gradient-to-b from-[#8EADEE] to-[#5C8AE7] text-white rounded-[20px] shadow-[0_4px_14px_rgba(40,100,228,0.25)]">
-                    {tab}
-                  </div>
-                ) : (
-                  <span className="px-4">{tab}</span>
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Filters Container - Right side dropdowns */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {/* Pricing Filter */}
-            <div className="flex items-center gap-2 bg-white border border-[#E2E8F0] px-5 py-2.5 rounded-[22px] shadow-sm cursor-pointer hover:border-[#2864e4]/30 hover:bg-gray-50/50 transition-all group">
-              <span className="text-[14px] text-[#475569] font-medium">Pricing: <span className="text-[#0F172A] font-bold">Paid</span></span>
-              <X size={14} className="text-[#94A3B8]" />
+      <section className="w-full bg-[#F3F5F8] dark:bg-[#05070C] border-b border-[#E2E8F0] dark:border-white/10 py-5 transition-colors duration-300">
+  <div className="mx-auto max-w-[1280px] px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+    
+    {/* Tabs Container */}
+    <div className="flex items-center gap-8 flex-wrap">
+      {tabs.map((tab) => (
+        <button
+          key={tab}
+          onClick={() => setActiveTab(tab)}
+          className={`relative py-2 text-[15px] font-semibold transition-all duration-300 ${
+            activeTab === tab
+              ? "text-[#2864e4]"
+              : "text-[#64748B] dark:text-white/60 hover:text-[#1E293B] dark:hover:text-white"
+          }`}
+        >
+          {tab === "All" && activeTab === "All" ? (
+            <div className="flex items-center justify-center px-9 py-2.5 bg-gradient-to-b from-[#8EADEE] to-[#5C8AE7] text-white rounded-[20px] shadow-[0_4px_14px_rgba(40,100,228,0.25)]">
+              {tab}
             </div>
+          ) : (
+            <span className="px-4">{tab}</span>
+          )}
+        </button>
+      ))}
+    </div>
 
-            {/* Rating Filter */}
-            <div className="flex items-center gap-2 bg-white border border-[#E2E8F0] px-5 py-2.5 rounded-[22px] shadow-sm cursor-pointer hover:border-[#2864e4]/30 hover:bg-gray-50/50 transition-all group">
-              <span className="text-[14px] text-[#475569] font-medium">Rating: <span className="text-[#0F172A] font-bold">4.5+</span></span>
-              <ChevronDown size={14} className="text-[#94A3B8]" />
-            </div>
+    {/* Filters Container */}
+    <div className="flex flex-wrap items-center justify-center gap-3">
+      
+      {/* Pricing Filter */}
+      <div className="flex items-center gap-2 bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-white/10 px-5 py-2.5 rounded-[22px] shadow-sm cursor-pointer hover:border-[#2864e4]/30 dark:hover:border-[#2864e4]/40 hover:bg-gray-50/50 dark:hover:bg-white/5 transition-all group">
+        <span className="text-[14px] text-[#475569] dark:text-white/70 font-medium">
+          Pricing:{" "}
+          <span className="text-[#0F172A] dark:text-white font-bold">
+            Paid
+          </span>
+        </span>
+        <X size={14} className="text-[#94A3B8] dark:text-white/40" />
+      </div>
 
-            {/* Category Filter */}
-            <div className="flex items-center gap-2 bg-white border border-[#E2E8F0] px-5 py-2.5 rounded-[22px] shadow-sm cursor-pointer hover:border-[#2864e4]/30 hover:bg-gray-50/50 transition-all group">
-              <span className="text-[14px] text-[#475569] font-medium">Category</span>
-              <ChevronDown size={14} className="text-[#94A3B8]" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Rating Filter */}
+      <div className="flex items-center gap-2 bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-white/10 px-5 py-2.5 rounded-[22px] shadow-sm cursor-pointer hover:border-[#2864e4]/30 dark:hover:border-[#2864e4]/40 hover:bg-gray-50/50 dark:hover:bg-white/5 transition-all group">
+        <span className="text-[14px] text-[#475569] dark:text-white/70 font-medium">
+          Rating:{" "}
+          <span className="text-[#0F172A] dark:text-white font-bold">
+            4.5+
+          </span>
+        </span>
+        <ChevronDown size={14} className="text-[#94A3B8] dark:text-white/40" />
+      </div>
+
+      {/* Category Filter */}
+      <div className="flex items-center gap-2 bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-white/10 px-5 py-2.5 rounded-[22px] shadow-sm cursor-pointer hover:border-[#2864e4]/30 dark:hover:border-[#2864e4]/40 hover:bg-gray-50/50 dark:hover:bg-white/5 transition-all group">
+        <span className="text-[14px] text-[#475569] dark:text-white/70 font-medium">
+          Category
+        </span>
+        <ChevronDown size={14} className="text-[#94A3B8] dark:text-white/40" />
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 }

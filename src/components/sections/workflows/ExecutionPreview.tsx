@@ -53,7 +53,7 @@ function SectionHeading({
         fontWeight: 500,
         fontSize,
         lineHeight,
-        color: HEADING_COLOR,
+        // color: HEADING_COLOR,
       }}
     >
       <span style={{ lineHeight: "inherit" }}>See results </span>

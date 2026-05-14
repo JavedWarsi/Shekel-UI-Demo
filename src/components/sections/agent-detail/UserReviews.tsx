@@ -23,15 +23,15 @@ function SectionDesktop() {
   
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block py-16 transition-colors duration-300"
+      className="relative hidden w-full h-[300px] dark:bg-slate-900 pt-20 overflow-hidden md:block transition-colors duration-300"
       style={{
-        backgroundColor: isDark ? 'black' : colors.white,
+        // backgroundColor: isDark ? 'black' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
     >
       <div
-        className="absolute left-0 top-0"
+        className="absolute left-0 top-5"
         style={{
           width: CANVAS_W,
           height: CANVAS_H,

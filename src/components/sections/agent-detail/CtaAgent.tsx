@@ -45,7 +45,7 @@ function SectionDesktop() {
         <div className="relative w-full h-full bg-transparent overflow-clip rounded-[24px]">
             {/* Background Texture */}
             <div className="absolute h-[1252px] left-[-385px] top-[-397px] w-[1841px]">
-              <Image alt="" className={`absolute inset-0 max-w-none object-cover pointer-events-none size-full ${isDark ? 'opacity-20 brightness-50' : ''}`} src="/section-9-agent-detail/bg-texture.webp" fill unoptimized />
+              <Image alt="" className={`absolute inset-0 max-w-none object-cover dark:invert pointer-events-none size-full ${isDark ? 'opacity-20 brightness-50' : ''}`} src="/section-9-agent-detail/bg-texture.webp" fill unoptimized />
             </div>
 
             {/* Heading */}
@@ -77,8 +77,8 @@ function SectionDesktop() {
           </div>
 
           {/* Mascot Image (placed outside overflow-clip to allow floating over bottom edge) */}
-          <div className="absolute pointer-events-none left-1/2 -translate-x-1/2 w-[550px] h-[550px] top-[140px] z-50">
-            <Image src="/section-9-agent-detail/image 37.webp" alt="Astronaut Mascot" fill className="object-contain object-top" unoptimized />
+          <div className="absolute ml-60  pointer-events-none left-1/2 -translate-x-1/2 w-[550px] h-[550px] top-[140px] z-50">
+            <Image src="/section-9-agent-detail/image 37.webp" alt="Astronaut Mascot" fill className="object-contain animate-[floatX_4s_ease-in-out_infinite] object-top" unoptimized />
           </div>
         </div>
     </section>
@@ -97,7 +97,7 @@ function SectionMobile() {
         }}
       >
         {/* Background Image */}
-        <div className={`absolute inset-0 w-full h-full ${isDark ? 'opacity-20 brightness-50' : 'opacity-60'}`}>
+        <div className={`absolute inset-0 w-full h-full ${isDark ? 'opacity-20 brightness-50' : 'opacity-60' } dark:bg-slate-900`}>
           <Image src="/section-9-agent-detail/bg-texture.webp" alt="" fill className="object-cover" unoptimized />
         </div>
 

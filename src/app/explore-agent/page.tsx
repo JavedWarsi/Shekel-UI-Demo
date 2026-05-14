@@ -9,7 +9,7 @@ import CtaSection from "@/components/sections/explore-agent/CtaSection";
 export default function ExploreAgentPage() {
   return (
     <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">
-      <main className="pt-[75px]">
+      <main className="pt-[75px] bg-white">
         <ExploreAiAgents />
         <FeaturedAgents />
         <TrendingNow />

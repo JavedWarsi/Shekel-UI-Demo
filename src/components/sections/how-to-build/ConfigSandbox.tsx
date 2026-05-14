@@ -9,7 +9,7 @@ export default function ConfigSandbox() {
     <section className="relative w-full py-32 overflow-hidden bg-[url(/section-4-faq/bg.png)]">
       {/* Background Gradient */}
       <div className="absolute inset-0 z-0 opacity-40">
-        <div className="absolute -left-[20%] top-[10%] w-[800px] h-[800px] bg-pink-100 rounded-full blur-[120px]" />
+        <div className="absolute -left-[20%] top-[10%] w-[800px] h-[800px] bg-pink-100 dark:bg-pink-700 rounded-full blur-[120px]" />
         <div className="absolute -right-[20%] bottom-[10%] w-[800px] h-[800px] bg-blue-100 rounded-full blur-[120px]" />
       </div>
 

@@ -24,15 +24,15 @@ function SectionDesktop() {
   
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block py-16 transition-colors duration-300"
+      className="relative hidden w-full overflow-hidden dark:bg-slate-900 md:block transition-colors duration-300"
       style={{
-        backgroundColor: isDark ? 'black' : colors.white,
+        // backgroundColor: isDark ? 'black' : colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
     >
       <div
-        className="absolute left-0 top-0"
+        className="absolute left-0 top-0 dark:bg-slate-900"
         style={{
           width: CANVAS_W,
           height: CANVAS_H,
@@ -89,8 +89,8 @@ function AgentCard({ icon, title, rating, isMetricMaster }: { icon: string, titl
           </div>
         </div>
       ) : (
-        <div className="relative shrink-0" style={{ width: 56, height: 56 }}>
-          <Image src={icon} alt="" fill className={`object-contain ${isDark ? 'brightness-125' : ''}`} />
+        <div className="relative shrink-0 dark:bg-slate-900" style={{ width: 56, height: 56 }}>
+          <Image src={icon} alt="" fill className={`object-contain ${isDark ? 'brightness-125' : ''}` } />
         </div>
       )}
       

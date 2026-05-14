@@ -46,15 +46,12 @@ export default function TrustReliability() {
 }
 
 function TrustDesktop() {
-  const { isDark } = useThemeTokens();
   
   return (
     <section
       className="relative hidden w-full overflow-hidden md:block transition-colors duration-300"
       style={{
-        background: isDark
-          ? "linear-gradient(180deg, #05070C 0%, #0F172A 100%)"
-          : "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(242,244,247,1) 100%)",
+        background: "var(--bg-trust-gradient)",
       }}
     >
       <div className="mx-auto max-w-[1280px] px-8" style={{ paddingTop: 122, paddingBottom: 118 }}>
@@ -102,7 +99,7 @@ function TrustDesktop() {
               style={{ borderRadius: radiuses.inputIcon }}
             >
               <div className="mb-8">
-                <Image src={card.icon} alt="" width={50} height={56} className={isDark ? "brightness-200" : ""} unoptimized />
+                <Image src={card.icon} alt="" width={50} height={56} className="dark:brightness-200" unoptimized />
               </div>
               <h3
                 className="m-0 pb-3 text-[#191C1E] dark:text-white transition-colors duration-300"

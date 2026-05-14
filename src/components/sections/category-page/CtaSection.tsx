@@ -54,7 +54,7 @@ function Heading({ fontSize, lineHeight }: { fontSize: string | number; lineHeig
       }}
         
     >
-      Start building Your  <br/> First AI Agent
+      Start Using AI Agents <br/> Today
     </h2>
   );
 }

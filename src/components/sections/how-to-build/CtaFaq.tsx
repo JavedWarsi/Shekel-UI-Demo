@@ -17,9 +17,8 @@ export default function CtaFaq() {
           TABLET & DESKTOP (≥ 768px)
           ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative hidden w-full overflow-hidden md:block"
+        className="relative hidden w-full overflow-hidden md:block dark:bg-slate-900"
         style={{
-          backgroundColor: colors.white,
           paddingTop: 32,
           paddingBottom: 96,
           paddingLeft: 0,
@@ -49,7 +48,7 @@ export default function CtaFaq() {
                 alt=""
                 width={CANVAS_W}
                 height={CANVAS_H}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover dark:opacity-40"
                 unoptimized
               />
             </div>
@@ -92,7 +91,7 @@ export default function CtaFaq() {
                   lineHeight: "1.0",
                   letterSpacing: "-0.03em",
                   textTransform: "capitalize",
-                  color: "#0B0B0B",
+                  // color: "#0B0B0B",
                   maxWidth: 460,
                 }}
               >

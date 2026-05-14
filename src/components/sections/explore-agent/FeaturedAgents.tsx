@@ -55,7 +55,7 @@ export default function FeaturedAgents() {
 function SectionDesktop() {
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block"
+      className="relative hidden w-full overflow-hidden md:block "
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -76,7 +76,7 @@ function SectionDesktop() {
       >
         {/* Sticky Navigation & Search */}
         <div
-          className="absolute flex flex-col gap-4"
+          className="absolute flex flex-col gap-4 "
           style={{
             left: 0,
             top: 0,
@@ -84,12 +84,12 @@ function SectionDesktop() {
             background: NAV_BG,
             borderRadius: 16,
             padding: 16,
-            boxShadow: "0px 20px 50px 0px rgba(0, 0, 0, 0.06)",
+            boxShadow: "0px 20px 50px 0px rgba(0, 0, 0, 0.09)",
             backdropFilter: "blur(12px)",
           }}
         >
           <div
-            className="flex flex-row items-center gap-2 pb-4"
+            className="flex flex-row items-center gap-2 pb-4 px-10"
             style={{ borderBottom: `1px solid ${NAV_BORDER}` }}
           >
             <div style={{ background: BUTTON_GRADIENT, borderRadius: 9999, padding: "8px 20px" }}>

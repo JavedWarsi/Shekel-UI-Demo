@@ -10,8 +10,8 @@ import CtaAgent from "@/components/sections/agent-detail/CtaAgent";
 
 export default function AgentDetailPage() {
   return (
-    <div className="min-h-screen overflow-x-clip text-black dark:text-white bg-white dark:bg-transparent transition-colors duration-300 selection:bg-blue-500/30">
-      <main className="pt-[75px] flex flex-col gap-12 md:gap-24 pb-24">
+    <div className="min-h-screen overflow-x-clip text-black dark:text-white bg-white dark:bg-slate-900 transition-colors duration-300 selection:bg-blue-500/30">
+      <main className="flex flex-col gap-12 md:gap-24 pb-24">
         <Hero />
         <TryThisAgent />
         <ProvenResults />

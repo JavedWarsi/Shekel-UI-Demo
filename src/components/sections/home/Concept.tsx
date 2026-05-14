@@ -1,52 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
-import { useThemeTokens } from "@/hooks/useThemeTokens";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Concept.tsx — "THE CONCEPT" section
-// Figma frame: 500:22431 "Frame 2147225698"  (1280 × 639, y=787 on page)
-//
-// Responsive strategy (same pattern applied in Hero.tsx):
-//   ≥ 768px   →  Scaled Figma canvas. A fixed 1280×639 canvas is uniformly
-//                scaled via CSS container queries (100cqw), so every child
-//                sits at its exact Figma pixel coordinate and the whole
-//                composition matches Figma edge-to-edge at every width.
-//   < 768px   →  Mobile-first stacked layout with readable, fluid font sizes.
-//                The Figma composition would be too small to read when
-//                uniformly scaled down to phone widths, so we reflow the
-//                content into a single column instead.
-// Both layouts render from the same data + use the same design tokens, so
-// there's no content duplication drift — only the wrapping geometry differs.
-//
-// LAYOUT MAP (scaled canvas — coords are section-absolute, in Figma px):
-//   Canvas             1280 × 639,   bg #FFFFFF
-//   Background SVG     (-321, -168)  2400 × 1830 (grid + blurred blue circle)
-//   ── LEFT column (starts at (24, 71.5), 648 wide, flex-col gap 24) ──
-//     Badge "THE CONCEPT"   pad 4×12, rounded-full,
-//                           bg rgba(186,158,255,0.1), border rgba(186,158,255,0.2)
-//                           Inter 700 12/16 letter-spacing 5%, #BA9EFF
-//     Heading               Poppins 500 48/68, #000000, max-width 752
-//                           text: "The App Store for\nAutonomousIntelligence"
-//     Body                  Inter 400 18/29.25, #000000
-//     List (pt 16, gap 16)  20×20 gradient check icon + Inter 400 16/24, #000000
-//   ── RIGHT column (starts at (672, 67), 560 wide, padding-top 117) ──
-//     Row (gap 21, two cards, bottom-aligned)
-//       Card 1 "Multi-Chain Sync" — 270 × 234
-//         wrapper adds top padding 48 so it bottom-aligns with Card 2
-//         shell: white bg, border rgba(68,72,84,0.1), rounded 16,
-//                pad 16, gap 16, shadow-xl
-//         image 236×160 (purple-gradient + network-graph icon)
-//         title Inter 600 16/24, #4D4C4C
-//       Card 2 "Secure Escrow"   — 270 × 282 (48px taller via extra bottom pad)
-// ─────────────────────────────────────────────────────────────────────────────
-
-const CANVAS_W = 1280;
-const CANVAS_H = 639;
-const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
 
 const LIST_ITEMS = [
   "Decentralized node hosting",
@@ -54,364 +10,124 @@ const LIST_ITEMS = [
   "Automated Revenue Splitting",
 ];
 
-const CARD_BORDER = "rgba(68,72,84,0.1)";
-const BADGE_BG = colors.gradient.purpleLight;
-const BADGE_BORDER = "rgba(186,158,255,0.2)";
-const BADGE_TEXT = colors.background.badgePurple;
-const CARD_TITLE = "#4D4C4C";
-const DARK_SECTION_BG = "#000000";
-const DARK_CARD_BG = "#151926";
-const DARK_CARD_BORDER = "rgba(68,72,84,0.1)";
-const DARK_BADGE_BG = "rgba(186,158,255,0.1)";
-const DARK_BADGE_TEXT = "#ba9eff";
-const DARK_HEADING_GRADIENT =
-  "linear-gradient(196.37deg, rgba(255,255,255,1) 55.625%, rgba(255,255,255,0) 110.73%)";
-
 export default function Concept() {
-  const { isDark } = useThemeTokens();
+  const blueGrad = `linear-gradient(180deg, ${colors.brand.blueStart} 0%, ${colors.brand.blueEnd} 100%)`;
 
   return (
-    <>
-      {/* ═══════════════════════════════════════════════════════════════════
-          TABLET & DESKTOP (≥ 768px) — scaled Figma canvas, edge-to-edge
-          ═══════════════════════════════════════════════════════════════════ */}
-      <section
-        className="relative hidden w-full overflow-hidden md:block"
-        style={{
-          backgroundColor: isDark ? DARK_SECTION_BG : colors.white,
-          aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
-          containerType: "inline-size",
-        }}
-      >
-        <div
-          className="absolute left-0 top-0"
-          style={{
-            width: CANVAS_W,
-            height: CANVAS_H,
-            transform: `scale(${SCALE})`,
-            transformOrigin: "top left",
-          }}
-        >
-          {/* Background decoration (500:22432) */}
+    <section className="w-full transition-colors duration-300 bg-white dark:bg-black py-16 md:py-24 relative overflow-hidden">
+      {/* Background Decoration */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <Image
+          src="/section-2/bg-decoration.svg"
+          alt=""
+          fill
+          className="object-cover opacity-60 dark:opacity-20"
+        />
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/10 dark:bg-blue-600/5 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        {/* Left Content */}
+        <div className="flex flex-col gap-8">
           <div
-            aria-hidden
-            className="pointer-events-none absolute"
-            style={{ left: -321, top: -168, width: 2400, height: 1830 }}
+            className="inline-flex w-fit bg-purple-500/10 dark:bg-purple-500/20 border border-purple-500/20 rounded-full px-4 py-1.5"
           >
-            <Image
-              src="/section-2/bg-decoration.svg"
-              alt=""
-              width={2400}
-              height={1830}
-              className="h-full w-full"
-            />
+            <span
+              className="font-bold text-xs tracking-widest text-[#BA9EFF]"
+              style={{ fontFamily: typography.fonts.inter }}
+            >
+              THE CONCEPT
+            </span>
           </div>
 
-          {/* LEFT column: text content */}
-          <div
-            className="absolute flex flex-col"
-            style={{ left: 24, top: 71.5, width: 648, gap: 24 }}
-          >
-            <ConceptBadge isDark={isDark} />
-            <ConceptHeading fontSize={48} lineHeight="68px" isDark={isDark} />
-            <ConceptBody fontSize={18} lineHeight="29.25px" isDark={isDark} />
-            <ConceptList fontSize={16} lineHeight="24px" isDark={isDark} />
-          </div>
-
-          {/* RIGHT column: staggered cards */}
-          <div
-            className="absolute"
-            style={{ left: 672, top: 67, width: 560, paddingTop: 117 }}
-          >
-            <div className="flex flex-row items-start" style={{ gap: 21 }}>
-              <div style={{ flex: "1 1 0", paddingTop: 48 }}>
-                <ConceptCard
-                  bgSrc="/section-2/card-multichain-bg.svg"
-                  bgAlt="Multi-Chain Sync illustration"
-                  title="Multi-Chain Sync"
-                  extraBottom={false}
-                  isDark={isDark}
-                />
-              </div>
-              <div style={{ flex: "1 1 0" }}>
-                <ConceptCard
-                  bgSrc="/section-2/card-escrow-bg.svg"
-                  bgAlt="Secure Escrow illustration"
-                  title="Secure Escrow"
-                  extraBottom
-                  isDark={isDark}
-                />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          PHONE (< 768px) — stacked, readable reflow
-          ═══════════════════════════════════════════════════════════════════ */}
-      <section
-        className="relative block w-full overflow-hidden md:hidden"
-        style={{ backgroundColor: isDark ? DARK_SECTION_BG : colors.white }}
-      >
-        {/* Same decorative background — covers the mobile section */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-90"
-        >
-          <Image
-            src="/section-2/bg-decoration.svg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-
-        <div className="relative flex flex-col gap-8 px-6 py-16 sm:px-8">
-          <ConceptBadge isDark={isDark} />
-          <ConceptHeading fontSize={32} lineHeight="1.15" isDark={isDark} />
-          <ConceptBody fontSize={16} lineHeight="26px" isDark={isDark} />
-          <ConceptList fontSize={15} lineHeight="22px" isDark={isDark} />
-
-          {/* Cards: side-by-side if room, stacked on very narrow */}
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <ConceptCard
-              bgSrc="/section-2/card-multichain-bg.svg"
-              bgAlt="Multi-Chain Sync illustration"
-              title="Multi-Chain Sync"
-              extraBottom={false}
-              isDark={isDark}
-            />
-            <ConceptCard
-              bgSrc="/section-2/card-escrow-bg.svg"
-              bgAlt="Secure Escrow illustration"
-              title="Secure Escrow"
-              extraBottom={false}
-              isDark={isDark}
-            />
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Shared sub-components — used by both desktop and mobile layouts so text
-// content and tokens never drift between the two.
-// ─────────────────────────────────────────────────────────────────────────────
-
-function ConceptBadge({ isDark }: { isDark: boolean }) {
-  return (
-    <div
-      className="inline-flex items-center self-start rounded-full border"
-      style={{
-        padding: "4px 12px",
-        backgroundColor: isDark ? DARK_BADGE_BG : BADGE_BG,
-        borderColor: BADGE_BORDER,
-      }}
-    >
-      <span
-        style={{
-          color: isDark ? DARK_BADGE_TEXT : BADGE_TEXT,
-          fontFamily: typography.fonts.inter,
-          fontWeight: 700,
-          fontSize: 12,
-          lineHeight: "16px",
-          letterSpacing: "0.05em",
-        }}
-      >
-        THE CONCEPT
-      </span>
-    </div>
-  );
-}
-
-function ConceptHeading({
-  fontSize,
-  lineHeight,
-  isDark,
-}: {
-  fontSize: number;
-  lineHeight: string;
-  isDark: boolean;
-}) {
-  return (
-    <h2
-      style={{
-        margin: 0,
-        maxWidth: 752,
-        fontFamily: typography.fonts.poppins,
-        fontWeight: 500,
-        fontSize,
-        lineHeight,
-        color: isDark ? colors.white : colors.black,
-        background: isDark ? DARK_HEADING_GRADIENT : "none",
-        WebkitBackgroundClip: isDark ? "text" : "border-box",
-        WebkitTextFillColor: isDark ? "transparent" : "unset",
-        backgroundClip: isDark ? "text" : "border-box",
-      }}
-    >
-      The App Store for
-      <br />
-      Autonomous Intelligence
-    </h2>
-  );
-}
-
-function ConceptBody({
-  fontSize,
-  lineHeight,
-  isDark,
-}: {
-  fontSize: number;
-  lineHeight: string;
-  isDark: boolean;
-}) {
-  return (
-    <p
-      style={{
-        margin: 0,
-        fontFamily: typography.fonts.inter,
-        fontWeight: 400,
-        fontSize,
-        lineHeight,
-        color: isDark ? colors.text.badgeUpcoming : colors.black,
-      }}
-    >
-      Shekel is the bridge between raw compute and functional automation. We
-      provide the infrastructure for developers to host agents and for
-      businesses to consume intelligence on-demand without vendor lock-in.
-    </p>
-  );
-}
-
-function ConceptList({
-  fontSize,
-  lineHeight,
-  isDark,
-}: {
-  fontSize: number;
-  lineHeight: string;
-  isDark: boolean;
-}) {
-  const [mounted, setMounted] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return (
-    <ul
-      className="m-0 list-none p-0"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 16,
-        paddingTop: 16,
-      }}
-    >
-      {LIST_ITEMS.map((item) => (
-        <li
-          key={item}
-          className="flex items-center"
-          style={{ gap: 12 }}
-          onMouseEnter={() => setHoveredItem(item)}
-          onMouseLeave={() => setHoveredItem(null)}
-        >
-          <motion.div
-            animate={
-              mounted
-                ? {
-                    scale: hoveredItem === item ? 1.08 : 1,
-                    filter:
-                      hoveredItem === item
-                        ? "none"
-                        : "brightness(0) saturate(100%) invert(32%) sepia(95%) saturate(1900%) hue-rotate(213deg) brightness(95%) contrast(94%)",
-                  }
-                : {}
-            }
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="flex-shrink-0"
-          >
-            <Image src="/section-2/check-icon.svg" alt="" width={20} height={20} />
-          </motion.div>
-          <span
+          <h2
+            className="text-slate-900 dark:text-white transition-colors duration-300"
             style={{
-              fontFamily: typography.fonts.inter,
-              fontWeight: 400,
-              fontSize,
-              lineHeight,
-              color: isDark ? colors.text.badgePurple : colors.black,
+              margin: 0,
+              fontFamily: typography.fonts.poppins,
+              fontWeight: 500,
+              fontSize: "clamp(32px, 5vw, 48px)",
+              lineHeight: "1.15",
             }}
           >
-            {item}
-          </span>
-        </li>
-      ))}
-    </ul>
+            The App Store for <br />
+            <span className="bg-clip-text text-transparent" style={{ backgroundImage: blueGrad }}>
+              Autonomous Intelligence
+            </span>
+          </h2>
+
+          <p
+            className="text-slate-600 dark:text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl"
+            style={{ fontFamily: typography.fonts.inter }}
+          >
+            Shekel is the bridge between raw compute and functional automation. We
+            provide the infrastructure for developers to host agents and for
+            businesses to consume intelligence on-demand without vendor lock-in.
+          </p>
+
+          <ul className="flex flex-col gap-4 mt-4">
+            {LIST_ITEMS.map((item) => (
+              <li key={item} className="flex items-center gap-4 group">
+                <div className="flex-shrink-0 transition-transform group-hover:scale-110">
+                  <Image 
+                    src="/section-2/check-icon.svg" 
+                    alt="" 
+                    width={20} 
+                    height={20} 
+                    className="dark:invert-0 invert opacity-60 dark:opacity-100"
+                  />
+                </div>
+                <span
+                  className="text-slate-900 dark:text-slate-200 font-medium"
+                  style={{ fontFamily: typography.fonts.inter }}
+                >
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Right Content - Staggered Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-end">
+          <div className="lg:mb-12">
+            <ConceptCard
+              bgSrc="/section-2/card-multichain-bg.svg"
+              title="Multi-Chain Sync"
+            />
+          </div>
+          <div>
+            <ConceptCard
+              bgSrc="/section-2/card-escrow-bg.svg"
+              title="Secure Escrow"
+              isTall
+            />
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }
 
-function ConceptCard({
-  bgSrc,
-  bgAlt,
-  title,
-  extraBottom,
-  isDark,
-}: {
-  bgSrc: string;
-  bgAlt: string;
-  title: string;
-  extraBottom: boolean;
-  isDark: boolean;
-}) {
-  const [mounted, setMounted] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+function ConceptCard({ bgSrc, title, isTall }: { bgSrc: string; title: string; isTall?: boolean }) {
   return (
     <motion.div
-      className="flex flex-col border shadow-xl"
-      whileHover={
-        mounted && prefersReducedMotion
-          ? undefined
-          : {
-              y: -6,
-              boxShadow: "0px 20px 34px -20px rgba(53, 72, 109, 0.42)",
-            }
-      }
-      transition={{ duration: 0.22, ease: "easeOut" }}
-      style={{
-        backgroundColor: isDark ? DARK_CARD_BG : colors.white,
-        borderColor: isDark ? DARK_CARD_BORDER : CARD_BORDER,
-        borderRadius: 16,
-        padding: 16,
-        paddingBottom: extraBottom ? 64 : 16,
-        gap: 16,
-      }}
+      whileHover={{ y: -8, transition: { duration: 0.2 } }}
+      className="flex flex-col p-5 bg-white dark:bg-[#151926] border border-black/5 dark:border-white/5 rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-none"
     >
-      <Image
-        src={bgSrc}
-        alt={bgAlt}
-        width={236}
-        height={160}
-        className="h-auto w-full"
-        style={{ borderRadius: 12 }}
-      />
+      <div className={`relative overflow-hidden rounded-2xl ${isTall ? 'aspect-[4/5]' : 'aspect-[4/3]'}`}>
+        <Image
+          src={bgSrc}
+          alt={title}
+          fill
+          className="object-cover"
+        />
+      </div>
       <span
-        style={{
-          fontFamily: typography.fonts.inter,
-          fontWeight: 600,
-          fontSize: 16,
-          lineHeight: "24px",
-          color: isDark ? colors.text.badgePurple : CARD_TITLE,
-        }}
+        className="mt-6 text-slate-900 dark:text-white font-semibold text-lg px-2 pb-2"
+        style={{ fontFamily: typography.fonts.inter }}
       >
         {title}
       </span>

@@ -2,7 +2,8 @@ import CategoryHero from "@/components/sections/category-page/CategoryHero";
 import MarketingAgentCatalog from "@/components/sections/category-page/MarketingAgentCatalog";
 import NextGenInfra from "@/components/sections/category-page/NextGenInfra";
 import CategorySimilarAgents from "@/components/sections/category-page/CategorySimilarAgents";
-import CategoryCta from "@/components/sections/category-page/CategoryCta";
+// import CategoryCta from "@/components/sections/category-page/CategoryCta";
+import CtaSection from "@/components/sections/category-page/CtaSection";
 
 export default function CategoryPage() {
   return (
@@ -16,9 +17,12 @@ export default function CategoryPage() {
         <div className="mt-12 md:mt-16">
           <CategorySimilarAgents />
         </div>
-        <div className="mt-12 md:mt-16">
+        {/* <div className="mt-12 md:mt-16">
           <CategoryCta />
-        </div>
+        </div> */}
+        
+          <CtaSection />
+       
       </main>
     </div>
   );

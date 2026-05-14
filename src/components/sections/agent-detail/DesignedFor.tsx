@@ -28,7 +28,7 @@ export default function DesignedFor() {
 function SectionDesktop() {
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block py-16 transition-colors duration-300"
+      className="relative hidden w-full overflow-hidden h-[180px] dark:bg-slate-900 md:block py-12 transition-colors duration-300"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",

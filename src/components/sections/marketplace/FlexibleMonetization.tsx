@@ -2,365 +2,128 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { colors, typography, radiuses } from "@/tokens/design-tokens";
-import { useThemeTokens } from "@/hooks/useThemeTokens";
+import { colors, typography } from "@/tokens/design-tokens";
 
-const CANVAS_W = 1280;
-const CANVAS_H = 690;
-const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
+const BLUE_GRADIENT = "linear-gradient(180deg, rgba(40,100,228,1) 0%, rgba(236,242,255,1) 100%)";
 
-const BLUE_GRADIENT =
-  "linear-gradient(180deg, rgba(40,100,228,1) 0%, rgba(236,242,255,1) 100%)";
-
-type PricingCard = {
-  tier: string;
-  title: string;
-  body: string;
-  priceMain: string;
-  priceSub: string;
-  buttonGradient: boolean;
-  highlighted?: boolean;
-  x: number;
-  width: number;
-};
-
-const CARDS: PricingCard[] = [
+const CARDS = [
   {
     tier: "ON-DEMAND",
     title: "Pay-per-use",
-    body: "Ideal for occasional tasks. Pay only for\nwhat you run.",
+    body: "Ideal for occasional tasks. Pay only for what you run.",
     priceMain: "From $2",
     priceSub: "per task",
-    buttonGradient: false,
-    x: 0,
-    width: 373.33,
+    highlighted: false,
   },
   {
     tier: "MONTHLY ACCESS",
     title: "Subscription",
-    body: "Unlimited access to premium agents\nwith predictable pricing.",
+    body: "Unlimited access to premium agents with predictable pricing.",
     priceMain: "Starts at $19",
     priceSub: "per month",
-    buttonGradient: true,
     highlighted: true,
-    x: 395.33,
-    width: 391.99,
   },
   {
     tier: "ENTRY LEVEL",
     title: "Freemium",
-    body: "Explore basic capabilities. Get a limited\nnumber of runs free every month.",
+    body: "Explore basic capabilities. Get a limited number of runs free every month.",
     priceMain: "Free",
     priceSub: "with limits",
-    buttonGradient: false,
-    x: 810.67,
-    width: 373.33,
+    highlighted: false,
   },
 ];
 
 export default function FlexibleMonetization() {
   return (
-    <>
-      <FlexibleMonetizationDesktop />
-      <FlexibleMonetizationMobile />
-    </>
-  );
-}
+    <section className="w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 transition-colors duration-300 bg-white dark:bg-black relative overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10">
+        <Image src="/section-7-marketplace/bg-lines.svg" alt="" fill className="object-cover" />
+      </div>
 
-function FlexibleMonetizationDesktop() {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <section
-      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300"
-      style={{
-        backgroundColor: isDark ? '#05070C' : colors.white,
-        borderRadius: radiuses.card,
-        aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
-        containerType: "inline-size",
-      }}
-    >
-      <div
-        className="absolute left-0 top-0"
-        style={{
-          width: CANVAS_W,
-          height: CANVAS_H,
-          transform: `scale(${SCALE})`,
-          transformOrigin: "top left",
-        }}
-      >
-        <div
-          className="absolute left-0 top-0 h-full w-full transition-colors duration-300"
-          style={{ backgroundColor: isDark ? '#05070C' : colors.white }}
-        />
-        <div
-          className="absolute"
-          style={{ left: -531, top: -228, width: 2400.92, height: 1830 }}
-        >
-          <Image src="/section-7-marketplace/bg-lines.svg" alt="" fill className={isDark ? "opacity-20" : ""} unoptimized />
+      <div className="max-w-[1280px] mx-auto relative z-10 flex flex-col gap-12">
+        
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col gap-4">
+            <h2
+              className="text-slate-900 dark:text-white transition-colors duration-300"
+              style={{
+                fontFamily: typography.fonts.poppins,
+                fontWeight: 600,
+                fontSize: "clamp(36px, 5vw, 60px)",
+                lineHeight: "1.1",
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Flexible monetization
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl leading-relaxed">
+              Choose how you want to use and pay for AI agents
+            </p>
+          </div>
+          
+          <Link href="/pricing" className="group flex items-center gap-2 w-fit">
+            <span className="font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+              Explore pricing
+            </span>
+            <Image src="/section-7-marketplace/explore-pricing-arrow.svg" alt="" width={16} height={16} className="dark:brightness-200" />
+          </Link>
         </div>
-        <div
-          className="absolute"
-          style={{
-            left: -126,
-            top: 638,
-            width: 310,
-            height: 131,
-            borderRadius: "9999px",
-            background: BLUE_GRADIENT,
-            filter: "blur(203.4px)",
-            opacity: isDark ? 0.4 : 1,
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            left: 1081,
-            top: 655,
-            width: 310,
-            height: 131,
-            borderRadius: "9999px",
-            background: BLUE_GRADIENT,
-            filter: "blur(203.4px)",
-            opacity: isDark ? 0.4 : 1,
-          }}
-        />
 
-        <div className="absolute left-0 top-0 w-[1280px] px-12 pt-[66px]">
-          <div className="flex items-end justify-between">
-            <div className="flex flex-col gap-4">
-              <h2
-                className="m-0 text-black dark:text-white transition-colors duration-300"
-                style={{
-                  fontFamily: typography.fonts.poppins,
-                  fontWeight: 500,
-                  fontSize: 60,
-                  lineHeight: "60px",
-                  letterSpacing: "-0.025em",
-                }}
-              >
-                Flexible monetization
-              </h2>
-              <p
-                className="m-0 text-black dark:text-white/60 transition-colors duration-300"
-                style={{
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 400,
-                  fontSize: 18,
-                  lineHeight: "28px",
-                }}
-              >
-                Choose how you want to use and pay for AI agents
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {CARDS.map((card) => (
+            <div
+              key={card.title}
+              className={`relative flex flex-col p-8 md:p-10 rounded-[32px] transition-all duration-500 bg-white dark:bg-zinc-900 border-2 ${
+                card.highlighted 
+                  ? "border-blue-500 shadow-2xl shadow-blue-500/10 scale-105 z-10" 
+                  : "border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/50 dark:shadow-none"
+              }`}
+            >
+              {card.highlighted && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 rounded-full text-[10px] font-bold text-white tracking-widest uppercase">
+                  MOST POPULAR
+                </div>
+              )}
+
+              <div className="flex flex-col gap-2 mb-8">
+                <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${card.highlighted ? "text-blue-500" : "text-slate-400"}`}>
+                  {card.tier}
+                </span>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  {card.title}
+                </h3>
+                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                  {card.body}
+                </p>
+              </div>
+
+              <div className="flex items-baseline gap-1 mb-8 mt-auto">
+                <span className="text-4xl font-bold text-slate-900 dark:text-white">
+                  {card.priceMain}
+                </span>
+                <span className="text-slate-400 dark:text-slate-500 font-medium">
+                  {card.priceSub}
+                </span>
+              </div>
+
+              <Link href="/agent-detail" className="block w-full">
+                <button
+                  className={`w-full py-4 rounded-2xl font-bold transition-all active:scale-[0.98] ${
+                    card.highlighted 
+                      ? "text-white shadow-lg shadow-blue-500/25" 
+                      : "bg-slate-50 dark:bg-white/5 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10"
+                  }`}
+                  style={card.highlighted ? { background: BLUE_GRADIENT } : {}}
+                >
+                  Run Agent
+                </button>
+              </Link>
             </div>
-            <Link className="inline-flex items-center gap-2 no-underline group" href="/pricing">
-              <span
-                className="text-black dark:text-white transition-colors duration-300 group-hover:text-[#2F80ED]"
-                style={{
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 600,
-                  fontSize: 16,
-                  lineHeight: "24px",
-                }}
-              >
-                Explore pricing
-              </span>
-              <Image src="/section-7-marketplace/explore-pricing-arrow.svg" alt="" width={16} height={16} className={isDark ? "brightness-200" : ""} unoptimized />
-            </Link>
-          </div>
-
-          <div className="relative mt-16 h-[351px]">
-            {CARDS.map((card) => (
-              <PricingCardView key={card.title} card={card} />
-            ))}
-          </div>
+          ))}
         </div>
-      </div>
-    </section>
-  );
-}
 
-function PricingCardView({ card }: { card: PricingCard }) {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <article
-      className="absolute rounded-2xl bg-white dark:bg-slate-900 px-8 pb-8 pt-8 transition-colors duration-300"
-      style={{
-        left: card.x,
-        top: 0,
-        width: card.width,
-        height: 351.5,
-        border: card.highlighted 
-          ? (isDark ? "2px solid #3B82F6" : "2px solid #2F80ED")
-          : (isDark ? "1px solid rgba(255,255,255,0.05)" : "1px solid rgba(255,255,255,0.08)"),
-        boxShadow: card.highlighted 
-          ? (isDark ? "0px 0px 40px -10px rgba(59,130,246,0.3)" : "0px 0px 40px -10px rgba(47,128,237,0.3)")
-          : "none",
-      }}
-    >
-      {card.highlighted ? (
-        <div
-          className="absolute"
-          style={{
-            left: "50%",
-            transform: "translateX(-50%)",
-            top: -14.71,
-            width: 123.77,
-            borderRadius: "9999px",
-            background: isDark ? "#3B82F6" : "#2F80ED",
-            padding: "4px 16px",
-            textAlign: "center",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: typography.fonts.inter,
-              fontWeight: 700,
-              fontSize: 10,
-              lineHeight: "15px",
-              letterSpacing: "0.05em",
-              color: "#fff",
-            }}
-          >
-            MOST POPULAR
-          </span>
-        </div>
-      ) : null}
-
-      <div className="pb-8">
-        <p
-          className="m-0 transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.inter,
-            fontWeight: 700,
-            fontSize: 10,
-            lineHeight: "15px",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: card.highlighted 
-              ? (isDark ? "#60A5FA" : "#2F80ED")
-              : (isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)"),
-          }}
-        >
-          {card.tier}
-        </p>
-        <h3
-          className="m-0 pt-2 text-black dark:text-white transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.poppins,
-            fontWeight: 700,
-            fontSize: 24,
-            lineHeight: "32px",
-          }}
-        >
-          {card.title}
-        </h3>
-        <p
-          className="m-0 whitespace-pre-line pt-2 text-[rgba(0,0,0,0.6)] dark:text-gray-400 transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.inter,
-            fontWeight: 400,
-            fontSize: 16,
-            lineHeight: "26px",
-          }}
-        >
-          {card.body}
-        </p>
-      </div>
-
-      <div className="flex items-baseline gap-1">
-        <span
-          className="text-black dark:text-white transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.poppins,
-            fontWeight: 700,
-            fontSize: 36,
-            lineHeight: "40px",
-          }}
-        >
-          {card.priceMain}
-        </span>
-        <span
-          className="text-[rgba(0,0,0,0.4)] dark:text-white/40 transition-colors duration-300"
-          style={{
-            fontFamily: typography.fonts.inter,
-            fontWeight: 400,
-            fontSize: 14,
-            lineHeight: "20px",
-          }}
-        >
-          {card.priceSub}
-        </span>
-      </div>
-
-      <Link href="/agent-detail">
-        <button
-          className="mt-8 w-full rounded-2xl border-0 py-4 hover:opacity-90 active:scale-95 transition-all"
-          style={{ background: card.buttonGradient ? BLUE_GRADIENT : (isDark ? "#3B82F6" : "#2F80ED") }}
-        >
-          <span
-            style={{
-              fontFamily: typography.fonts.inter,
-              fontWeight: 600,
-              fontSize: 16,
-              lineHeight: "24px",
-              color: "#fff",
-            }}
-          >
-            Run Agent
-          </span>
-        </button>
-      </Link>
-    </article>
-  );
-}
-
-function FlexibleMonetizationMobile() {
-  const { isDark } = useThemeTokens();
-  
-  return (
-    <section className="block bg-white dark:bg-[#05070C] px-6 py-14 md:hidden transition-colors duration-300">
-      <h2
-        className="m-0 text-black dark:text-white transition-colors duration-300"
-        style={{
-          fontFamily: typography.fonts.poppins,
-          fontWeight: 500,
-          fontSize: "clamp(34px, 9vw, 46px)",
-          lineHeight: "1.05",
-        }}
-      >
-        Flexible monetization
-      </h2>
-      <p
-        className="m-0 pt-3 text-black dark:text-white/60 transition-colors duration-300"
-        style={{
-          fontFamily: typography.fonts.inter,
-          fontWeight: 400,
-          fontSize: 16,
-          lineHeight: "24px",
-        }}
-      >
-        Choose how you want to use and pay for AI agents
-      </p>
-
-      <div className="mt-6 grid grid-cols-1 gap-4">
-        {CARDS.map((card) => (
-          <div key={`m-${card.title}`} className="rounded-2xl border p-5 bg-white dark:bg-slate-900 transition-colors duration-300" style={{ borderColor: isDark ? 'rgba(255,255,255,0.05)' : "rgba(0,0,0,0.08)" }}>
-            <p className="m-0 text-[10px] font-bold uppercase tracking-[0.2em] text-black/50 dark:text-white/40">{card.tier}</p>
-            <h3 className="m-0 pt-2 text-2xl font-bold text-black dark:text-white">{card.title}</h3>
-            <p className="m-0 whitespace-pre-line pt-2 text-base leading-6 text-black/70 dark:text-gray-400">{card.body}</p>
-            <div className="pt-4">
-              <span className="text-3xl font-bold text-black dark:text-white">{card.priceMain}</span>
-              <span className="pl-1 text-sm text-black/50 dark:text-white/40">{card.priceSub}</span>
-            </div>
-            <Link href="/agent-detail">
-              <button className="mt-4 w-full rounded-2xl border-0 py-3 text-white transition-opacity hover:opacity-90" style={{ background: card.buttonGradient ? BLUE_GRADIENT : (isDark ? "#3B82F6" : "#2F80ED") }}>
-                Run Agent
-              </button>
-            </Link>
-          </div>
-        ))}
       </div>
     </section>
   );

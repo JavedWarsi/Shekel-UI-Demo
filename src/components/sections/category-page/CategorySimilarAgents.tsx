@@ -5,16 +5,7 @@ import Link from "next/link";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
 
 // Figma: 506:4546  Section - Similar Agents
-// Canvas: 1280 × 366  (content inset: 24px L/R → 1232px)
-
-const CANVAS_W = 1280;
-const CANVAS_H = 366;
-const SCALE = `calc(100cqw / ${CANVAS_W}px)`;
-const GAP = 40;
-const CARD_W = 384;
-const G = `linear-gradient(180deg, ${colors.brand.blueStart} 0%, ${colors.brand.blueEnd} 100%)`;
-
-const CARDS: { name: string; rating: string; icon: "glow" | "glow2" | "graph" }[] = [
+const CARDS = [
   { name: "CopyGenius Pro", rating: "4.7", icon: "glow" },
   { name: "VideoCraft AI", rating: "4.9", icon: "glow2" },
   { name: "MetricMaster", rating: "4.5", icon: "graph" },
@@ -24,240 +15,96 @@ function CardIcon({ kind }: { kind: (typeof CARDS)[0]["icon"] }) {
   if (kind === "graph") {
     return (
       <div
-        className="flex items-center justify-center"
-        style={{
-          width: 56,
-          height: 56,
-          background: colors.white,
-          borderRadius: 12,
-          boxShadow: "0px 1px 2px 0px rgba(0,0,0,0.05)",
-        }}
+        className="flex items-center justify-center w-14 h-14 transition-colors duration-300 bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-black/5 dark:border-white/5"
       >
-        <div className="relative" style={{ width: 16.67, height: 10 }}>
+        <div className="relative w-4 h-2.5">
           <Image src="/section-4-category-page/card-3-icon.svg" alt="" fill className="object-contain" />
         </div>
       </div>
     );
   }
-  if (kind === "glow2") {
-    return (
-      <div className="relative" style={{ width: 56, height: 56 }}>
-        <div className="absolute" style={{ left: "3.5%", right: "3.5%", top: "3.5%", bottom: "5.4%" }}>
-          <Image src="/section-4-category-page/card-2-glow.svg" alt="" width={60} height={60} className="h-full w-full object-contain" />
-        </div>
-      </div>
-    );
-  }
+  const iconSrc = kind === "glow2" ? "/section-4-category-page/card-2-glow.svg" : "/section-4-category-page/card-1-glow.svg";
   return (
-    <div className="relative" style={{ width: 56, height: 56 }}>
-      <div className="absolute" style={{ left: "3.5%", right: "3.5%", top: "3.5%", bottom: "5.4%" }}>
-        <Image src="/section-4-category-page/card-1-glow.svg" alt="" width={60} height={60} className="h-full w-full object-contain" />
-      </div>
+    <div className="relative w-14 h-14">
+      <Image src={iconSrc} alt="" width={56} height={56} className="h-full w-full object-contain" />
     </div>
   );
 }
 
-function SimilarDesktop() {
+export default function CategorySimilarAgents() {
+  const blueGrad = `linear-gradient(180deg, ${colors.brand.blueStart} 0%, ${colors.brand.blueEnd} 100%)`;
+
   return (
-    <section
-      className="relative hidden w-full overflow-hidden md:block"
-      style={{
-        backgroundColor: colors.white,
-        aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
-        containerType: "inline-size",
-      }}
-    >
-      <div
-        className="absolute left-0 top-0"
-        style={{
-          width: CANVAS_W,
-          height: CANVAS_H,
-          transform: `scale(${SCALE})`,
-          transformOrigin: "top left",
-        }}
-      >
-        <div
-          className="absolute m-0 flex flex-col justify-center"
-          style={{ left: 24, top: 0, width: 420, height: 48, paddingTop: 0 }}
-        >
-          <p
+    <section className="w-full transition-colors duration-300 bg-white dark:bg-zinc-950 py-16 md:py-24">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <h2
+            className="text-slate-900 dark:text-white transition-colors duration-300"
             style={{
               margin: 0,
               fontFamily: typography.fonts.jakarta,
               fontWeight: 600,
-              fontSize: 48,
-              lineHeight: "48px",
-              color: "#191c1e",
+              fontSize: "clamp(32px, 5vw, 48px)",
+              lineHeight: "1.1",
             }}
           >
-            <span>Similar </span>
+            Similar <span className="bg-clip-text text-transparent" style={{ backgroundImage: blueGrad }}>Agents</span>
+          </h2>
+          
+          <Link
+            href="/marketplace"
+            className="group flex items-center gap-2 text-slate-900 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+          >
             <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: G }}
+              className="text-xs font-semibold uppercase tracking-[0.1em]"
+              style={{ fontFamily: typography.fonts.inter }}
             >
-              Agents
+              Explore More Agents
             </span>
-          </p>
+            <div className="relative w-2.5 h-2.5 group-hover:translate-x-1 transition-transform">
+              <Image src="/section-4-category-page/link-arrow.svg" alt="" fill className="object-contain dark:invert" />
+            </div>
+          </Link>
         </div>
-        <Link
-          href="/marketplace"
-          className="absolute flex items-center"
-          style={{ left: 24 + 1008, top: 24, gap: 7.99, textDecoration: "none" }}
-        >
-          <p
-            style={{
-              margin: 0,
-              fontFamily: typography.fonts.inter,
-              fontSize: 14,
-              lineHeight: "20px",
-              color: colors.black,
-              letterSpacing: "1.4px",
-              textTransform: "uppercase",
-            }}
-          >
-            Explore More Agents
-          </p>
-          <div className="relative" style={{ width: 8.75, height: 8.75 }}>
-            <Image src="/section-4-category-page/link-arrow.svg" alt="" width={9} height={9} className="object-contain" />
-          </div>
-        </Link>
-        {CARDS.map((c, i) => {
-          const left = 24 + i * (CARD_W + GAP);
-          return (
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {CARDS.map((card) => (
             <div
-              key={c.name}
-              className="absolute flex flex-col"
-              style={{
-                left,
-                top: 108,
-                width: CARD_W,
-                minHeight: 256.5,
-                background: "#f2f4f7",
-                borderRadius: radiuses.pill,
-                padding: 32,
-                gap: 15.5,
-              }}
+              key={card.name}
+              className="flex flex-col p-8 transition-all duration-300 bg-slate-50 dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-[32px] hover:shadow-xl hover:translate-y-[-4px]"
             >
-              <CardIcon kind={c.icon} />
-              <p
-                style={{
-                  margin: 0,
-                  fontFamily: typography.fonts.inter,
-                  fontWeight: 600,
-                  fontSize: 16,
-                  lineHeight: "24px",
-                  color: "#191c1e",
-                }}
-              >
-                {c.name}
-              </p>
-              <div className="flex items-center" style={{ gap: 4 }}>
-                <div className="relative" style={{ width: 10, height: 9.5 }}>
-                  <Image src="/section-4-category-page/star.svg" alt="" fill className="object-contain" />
-                </div>
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: typography.fonts.inter,
-                    fontSize: 12,
-                    lineHeight: "18px",
-                    color: "#727785",
-                  }}
+              <CardIcon kind={card.icon} />
+              
+              <div className="mt-6 flex flex-col gap-2">
+                <h3
+                  className="text-slate-900 dark:text-white font-semibold text-lg"
+                  style={{ fontFamily: typography.fonts.inter }}
                 >
-                  {c.rating}
-                </p>
+                  {card.name}
+                </h3>
+                <div className="flex items-center gap-1.5">
+                  <Image src="/section-4-category-page/star.svg" alt="" width={10} height={10} />
+                  <span className="text-slate-500 dark:text-slate-400 text-xs font-medium">
+                    {card.rating}
+                  </span>
+                </div>
               </div>
+
               <Link
                 href="/agent-detail"
-                className="mt-auto flex items-center justify-center"
-                style={{
-                  height: 48,
-                  width: 320,
-                  maxWidth: "100%",
-                  background: colors.white,
-                  border: "1px solid rgba(193,198,213,0.1)",
-                  borderRadius: radiuses.icon,
-                  boxShadow: "0 1px 1px rgba(0,0,0,0.05)",
-                }}
+                className="mt-8 flex items-center justify-center h-12 w-full transition-all duration-300 bg-white dark:bg-white/10 border border-black/5 dark:border-white/5 rounded-xl shadow-sm hover:shadow-md hover:bg-slate-50 dark:hover:bg-white/20 text-slate-900 dark:text-white font-semibold text-sm"
+                style={{ fontFamily: typography.fonts.inter }}
               >
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: typography.fonts.inter,
-                    fontWeight: 600,
-                    fontSize: 14,
-                    lineHeight: "21px",
-                    color: "#191c1e",
-                  }}
-                >
-                  Run Agent
-                </p>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function SimilarMobile() {
-  return (
-    <section className="w-full py-8 md:hidden" style={{ backgroundColor: colors.white }}>
-      <div className="mx-auto flex max-w-md flex-col gap-6 px-4">
-        <p style={{ fontFamily: typography.fonts.jakarta, fontSize: 28, fontWeight: 600, margin: 0 }}>
-          Similar <span className="bg-clip-text text-transparent" style={{ backgroundImage: G }}>Agents</span>
-        </p>
-        <Link href="/marketplace" className="flex items-center gap-1 text-sm uppercase" style={{ letterSpacing: 1, color: colors.black }}>
-          Explore More Agents
-          <Image src="/section-4-category-page/link-arrow.svg" alt="" width={10} height={10} />
-        </Link>
-        <div className="grid gap-4">
-          {CARDS.map((c) => (
-            <div
-              key={c.name}
-              className="flex flex-col p-4"
-              style={{ background: "#f2f4f7", borderRadius: radiuses.pill, gap: 8 }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 shrink-0">
-                  {c.icon === "graph" ? (
-                    <div className="flex h-12 w-12 items-center justify-center bg-white" style={{ borderRadius: 12, boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}>
-                      <Image src="/section-4-category-page/card-3-icon.svg" alt="" width={20} height={12} className="object-contain" />
-                    </div>
-                  ) : (
-                    <div className="relative h-12 w-12">
-                      <Image
-                        src={c.icon === "glow2" ? "/section-4-category-page/card-2-glow.svg" : "/section-4-category-page/card-1-glow.svg"}
-                        alt=""
-                        width={48}
-                        height={48}
-                        className="object-contain"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div>
-                  <p className="m-0 font-semibold" style={{ color: "#191c1e" }}>{c.name}</p>
-                  <p className="m-0 text-xs" style={{ color: "#727785" }}>★ {c.rating}</p>
-                </div>
-              </div>
-              <Link href="/agent-detail" className="mt-1 rounded-md bg-white py-2 text-center text-sm font-semibold" style={{ display: 'block', color: "#191c1e" }}>
                 Run Agent
               </Link>
             </div>
           ))}
         </div>
+
       </div>
     </section>
-  );
-}
-
-export default function CategorySimilarAgents() {
-  return (
-    <>
-      <SimilarDesktop />
-      <SimilarMobile />
-    </>
   );
 }

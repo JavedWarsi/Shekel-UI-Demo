@@ -6,12 +6,13 @@ import { useThemeTokens } from "@/hooks/useThemeTokens";
 
 export default function Cta() {
   const { isDark } = useThemeTokens();
-  
+
   return (
     <section className="relative overflow-hidden rounded-3xl bg-black px-6 py-16 md:px-16 md:py-24">
-      <Image src="/section-8-about/cta-bg.png" alt="" fill className="object-cover" />
-      <Image src="/section-8-about/cta-ellipse.svg" alt="" width={696} height={696} className="pointer-events-none absolute -left-36 -top-72 opacity-60" />
-      <div className="relative mx-auto max-w-[1080px]">
+      <Image src="/section-8-about/cta-bg.png" alt="" fill className="object-cover dark:opacity-30" />
+      <Image src="/section-8-about/cta-ellipse.svg" alt="" width={696} height={696} className="border-red-500 pointer-events-none absolute -left-36 -top-72 opacity-60" />
+      
+      <div className="relative mx-auto max-w-[1080px] pb-20">
         <h2 className="text-white" style={{ margin: 0, fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: "clamp(48px,7vw,72px)", lineHeight: "1", letterSpacing: "-0.05em", textTransform: "capitalize" }}>
           Start building with
           <br />
@@ -28,6 +29,9 @@ export default function Cta() {
         <p className="mt-12 max-w-[420px] text-[#0E0E0E] dark:text-white/60" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 10, lineHeight: "16px", letterSpacing: "0.36em", textTransform: "uppercase" }}>
           Join thousands of users and developers already using Shekel
         </p>
+        <div className="absolute overflow-visible z-[20]" style={{ left: 802, top: 0, width: 473, height: 629 }}>
+        <Image src="/section-9-workflows/side-image.png" alt="" fill className="object-cover animate-float" unoptimized />
+      </div>
       </div>
     </section>
   );

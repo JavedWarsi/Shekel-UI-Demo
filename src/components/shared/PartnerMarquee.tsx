@@ -28,7 +28,7 @@ interface PartnerMarqueeProps {
   partners?: Partner[];
   speed?: number;
   className?: string;
-  containerWidth?: number;
+  // containerWidth?: number;
   gap?: number;
 }
 
@@ -36,7 +36,7 @@ export function PartnerMarquee({
   partners = DEFAULT_PARTNERS,
   speed = 26,
   className,
-  containerWidth = 1291,
+  // containerWidth = 1291,
   gap = 56,
   style,
 }: PartnerMarqueeProps & { style?: CSSProperties }) {
@@ -51,57 +51,72 @@ export function PartnerMarquee({
 
   return (
     <div
-      className={`relative overflow-hidden transition-colors duration-300 bg-white dark:bg-black border-y border-black/10 dark:border-white/20 ${className || ""}`}
+      className={`relative overflow-hidden bg-black border-y border-white/20 ${className || ""}`}
       style={{
-        width: containerWidth,
+        // width: containerWidth,
         height: 89,
         ...style,
       }}
     >
       <motion.div
-        className="absolute left-0 top-1/2 flex w-max -translate-y-1/2 items-center"
+        className="absolute left-0 top-1/2 flex -translate-y-1/2 items-center"
+        animate={
+          shouldAnimate
+            ? {
+              x: ["0px", "-50%"],
+            }
+            : undefined
+        }
+        transition={
+          shouldAnimate
+            ? {
+              duration: speed,
+              ease: "linear",
+              repeat: Infinity,
+            }
+            : undefined
+        }
         style={{
+          width: "max-content",
+          willChange: "transform",
           transformPerspective: 1000,
           rotateX: 4,
           transformOrigin: "50% 100%",
         }}
-        animate={shouldAnimate ? { x: ["0%", "-50%"] } : undefined}
-        transition={
-          shouldAnimate
-            ? { duration: speed, ease: "linear", repeat: Infinity }
-            : undefined
-        }
       >
-        {[0, 1].map((copyIdx) => (
+        {[...partners, ...partners].map((p, i) => (
           <div
-            key={copyIdx}
-            className="flex items-center"
-            style={{ minWidth: containerWidth, height: 89, gap, padding: "0 28px" }}
+            key={`${p.name}-${i}`}
+            className="relative flex items-center justify-center flex-shrink-0"
+            style={{
+              width: p.w + gap,
+              height: 89,
+            }}
           >
-            {partners.map((p, i) => (
-              <Float
-                key={`${copyIdx}-${p.name}-${i}`}
-                motion3d
-                amplitude={3}
-                rotate={1}
-                duration={4 + (i % 3)}
-                className="relative flex-shrink-0"
-                style={{ width: p.w, height: p.h }}
+            <Float
+              motion3d
+              amplitude={3}
+              rotate={1}
+              duration={4 + (i % 3)}
+              className="relative"
+              style={{
+                width: p.w,
+                height: p.h,
+              }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className="relative h-full w-full"
               >
-                <motion.div
-                   whileHover={{ scale: 1.1, filter: "brightness(1.2)" }}
-                   className="relative h-full w-full"
-                >
-                  <Image
-                    src={p.src}
-                    alt={p.name}
-                    fill
-                    sizes={`${p.w}px`}
-                    className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300"
-                  />
-                </motion.div>
-              </Float>
-            ))}
+                <Image
+                  src={p.src}
+                  alt={p.name}
+                  fill
+                  sizes={`${p.w}px`}
+                  className="object-contain opacity-100"
+                />
+              </motion.div>
+            </Float>
           </div>
         ))}
       </motion.div>
@@ -109,11 +124,11 @@ export function PartnerMarquee({
       {/* Fade overlays */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 z-10 h-full w-[40px] bg-gradient-to-r from-white dark:from-black to-transparent transition-all duration-300"
+        className="pointer-events-none absolute left-0 top-0 z-10 h-full w-[40px] bg-gradient-to-r from-black to-transparent transition-all duration-300"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 z-10 h-full w-[40px] bg-gradient-to-l from-white dark:from-black to-transparent transition-all duration-300"
+        className="pointer-events-none absolute right-0 top-0 z-10 h-full w-[40px] bg-gradient-to-l from-black to-transparent transition-all duration-300"
       />
     </div>
   );

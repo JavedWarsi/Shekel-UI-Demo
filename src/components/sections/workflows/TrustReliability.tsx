@@ -40,7 +40,7 @@ function SectionDesktop() {
     <section
       className="relative hidden w-full overflow-hidden md:block"
       style={{
-        backgroundColor: colors.white,
+        // backgroundColor: colors.white,
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
@@ -81,7 +81,7 @@ function SectionDesktop() {
               lineHeight: "60px",
               letterSpacing: "-0.0313em",
               textAlign: "center",
-              color: colors.black,
+              // color: colors.black,
               textShadow: "0px 0px 12px rgba(171, 199, 255, 0.3)",
             }}
           >

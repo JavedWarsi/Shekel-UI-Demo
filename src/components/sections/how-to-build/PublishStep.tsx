@@ -6,9 +6,9 @@ import { CloudUpload, ArrowRight } from "lucide-react";
 
 export default function PublishStep() {
   return (
-    <section className="w-full py-32 bg-[#F8FAFC]">
+    <section className="w-full py-32 dark:bg-slate-900">
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
-        <h2 className="text-[40px] font-bold text-[#0F172A] mb-16" style={{ fontFamily: typography.fonts.inter }}>
+        <h2 className="text-[40px] font-bold text-[#0F172A] dark:text-white/80 mb-16" style={{ fontFamily: typography.fonts.inter }}>
           Publish
         </h2>
 
@@ -16,17 +16,17 @@ export default function PublishStep() {
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="bg-[#E9EDF5] rounded-[24px] p-12 md:p-20 flex flex-col items-center text-center border border-[#DCE2EF]"
+          className="bg-[#E9EDF5] dark:bg-slate-600 rounded-[24px] p-12 md:p-20 flex flex-col items-center text-center border border-[#DCE2EF]"
         >
-          <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center text-[#2864E4] mb-8 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center dark:bg-slate-800 text-[#2864E4] mb-8 shadow-sm">
             <CloudUpload size={32} />
           </div>
 
-          <h3 className="text-[24px] md:text-[28px] font-bold text-[#0F172A] mb-6">
+          <h3 className="text-[24px] md:text-[28px] font-bold text-[#0F172A] dark:text-white mb-6">
             Ready to go live?
           </h3>
 
-          <p className="text-[16px] text-[#64748B] max-w-2xl mb-12 leading-relaxed">
+          <p className="text-[16px] text-[#64748B] max-w-2xl mb-12 leading-relaxed dark:text-gray-400">
             Once you've tested your agent and configured its settings, you can push it to the live marketplace with a single click. Make it searchable and start receiving runs.
           </p>
 

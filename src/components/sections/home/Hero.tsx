@@ -51,7 +51,8 @@ const PARTNERS: Partner[] = [
 
 const BLUE_GRADIENT = `linear-gradient(180deg, ${colors.brand.blueStart} 0%, ${colors.brand.blueEnd} 100%)`;
 const BORDER_SOFT = "rgba(255,255,255,0.2)";
-
+const BUTTON_GRADIENT =
+  "linear-gradient(151deg, rgba(40,100,228,1) 29%, rgba(30,154,255,1) 86%, rgba(198,248,255,1) 100%)";
 // Figma canvas dimensions — all child coords are expressed in these pixels.
 const CANVAS_W = 1280;
 const CANVAS_H = 726;
@@ -80,6 +81,7 @@ export default function Hero() {
 function HeroDesktop() {
   const [mounted, setMounted] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  const stripActive = !prefersReducedMotion;
 
   useEffect(() => {
     setMounted(true);
@@ -88,74 +90,74 @@ function HeroDesktop() {
   const shouldAnimate = mounted && !prefersReducedMotion;
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#02040A]"
+      className="dark relative hidden w-full overflow-hidden md:block bg-black"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
       }}
     >
-          <div
-            className="absolute left-0 top-0"
-            style={{
-              width: CANVAS_W,
-              height: CANVAS_H,
-              transform: `scale(${SCALE})`,
-              transformOrigin: "top left",
-            }}
-          >
-            {/* Blurred blue ellipses */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
-              style={{
-                left: -19,
-                top: -49,
-                width: 1343,
-                height: 211,
-                background: BLUE_GRADIENT,
-                filter: "blur(1000px)",
-              }}
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
-              style={{
-                left: -98,
-                top: -139,
-                width: 163,
-                height: 163,
-                background: BLUE_GRADIENT,
-                filter: "blur(203.4px)",
-              }}
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
-              style={{
-                left: 1252,
-                top: -82,
-                width: 163,
-                height: 163,
-                background: BLUE_GRADIENT,
-                filter: "blur(214.7px)",
-              }}
-            />
-            {/* Circuit-lines SVG background (Group 9210) */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute opacity-20 dark:opacity-90 transition-opacity duration-300"
-              style={{ left: 412, top: 20, width: 1566.67, height: 1025.34 }}
-            >
-              <Image
-                src="/images/hero/circuit-lines.svg"
-                alt=""
-                fill
-                sizes="1567px"
-                className="object-contain object-left-top dark:invert-0 invert transition-all duration-300"
-                priority
-              />
-            </div>
-            {/* 4 staggered purple depth panels — over lines, behind mascot — match Figma layered glass */}
+      <div
+        className="absolute left-0 top-0"
+        style={{
+          width: CANVAS_W,
+          height: CANVAS_H,
+          transform: `scale(${SCALE})`,
+          transformOrigin: "top left",
+        }}
+      >
+        {/* Blurred blue ellipses */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
+          style={{
+            left: -19,
+            top: -49,
+            width: 1343,
+            height: 211,
+            background: BLUE_GRADIENT,
+            filter: "blur(1000px)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
+          style={{
+            left: -98,
+            top: -139,
+            width: 163,
+            height: 163,
+            background: BLUE_GRADIENT,
+            filter: "blur(203.4px)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute rounded-full opacity-40 dark:opacity-100 transition-opacity duration-300"
+          style={{
+            left: 1252,
+            top: -82,
+            width: 163,
+            height: 163,
+            background: BLUE_GRADIENT,
+            filter: "blur(214.7px)",
+          }}
+        />
+        {/* Circuit-lines SVG background (Group 9210) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute opacity-20 dark:opacity-90 transition-opacity duration-300"
+          style={{ left: 412, top: 20, width: 1566.67, height: 1025.34 }}
+        >
+          <Image
+            src="/images/hero/circuit-lines.svg"
+            alt=""
+            fill
+            sizes="1567px"
+            className="object-contain object-left-top dark:invert-0 invert transition-all duration-300"
+            priority
+          />
+        </div>
+        {/* 4 staggered purple depth panels — over lines, behind mascot — match Figma layered glass */}
 
         {/* 4 staggered purple depth panels — over lines, behind mascot — match Figma layered glass */}
         {/* Right side is flush to canvas edge (no right-side rounding), only left corners rounded */}
@@ -266,7 +268,7 @@ function HeroDesktop() {
           rotate={1.5}
           duration={7}
           motion3d
-          className="pointer-events-none absolute z-20"
+          className="pointer-events-none absolute z-20 animate-float"
           style={{
             left: 653,
             top: 40,
@@ -280,7 +282,7 @@ function HeroDesktop() {
             alt="AI robot hero illustration"
             fill
             sizes="645px"
-            className="object-contain animate-float-x dark:opacity-100 opacity-80 transition-opacity duration-300"
+            className="mt-25 object-contain animate-float-x dark:opacity-100 opacity-80 transition-opacity duration-300 relative float-y"
             priority
           />
         </Float>
@@ -288,7 +290,7 @@ function HeroDesktop() {
 
         {/* Heading line 1: "The Marketplace for" */}
         <motion.h1
-          className="absolute m-0 text-black dark:text-white transition-colors duration-300"
+          className="absolute m-0 dark:text-white transition-colors duration-300"
           initial={mounted ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
@@ -329,7 +331,7 @@ function HeroDesktop() {
             textShadow: "0 6px 30px rgba(22, 114, 223, 0.2)",
           }}
         >
-           <span className="dark:hidden">AI Agents</span>
+          <span className="dark:hidden">AI Agents</span>
         </motion.div>
         <motion.div
           className="absolute hidden dark:block"
@@ -385,18 +387,68 @@ function HeroDesktop() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.38 }}
         >
           <Link href="/connect-us">
-            <Button variant="hero">Join Waitlist</Button>
+            <Button variant="hero"
+            style={{background: BUTTON_GRADIENT,}}
+            >Join Waitlist</Button>
           </Link>
           <Link href="/marketplace">
             <Button variant="hero">Explore Platform</Button>
           </Link>
         </motion.div>
 
-        <PartnerMarquee 
-          className="absolute z-10" 
-          containerWidth={1291}
+        <PartnerMarquee
+          className="absolute z-10 w-[1291px]"
           style={{ left: -4, top: 637 }}
         />
+        {/* Logo strip — auto-scrolling marquee */}
+      {/* <div
+        className="relative overflow-hidden animate-[marquee_20s_linear_infinite] transition-colors duration-300 bg-white dark:bg-black border-y border-black/10 dark:border-white/20"
+        style={{
+          height: 72,
+        }}
+      >
+        <motion.div
+          className="absolute left-0 top-1/2 flex w-max -translate-y-1/2 items-center "
+          style={{
+            transformPerspective: 1000,
+            rotateX: 3,
+            transformOrigin: "50% 100%",
+          }}
+          animate={stripActive ? { x: ["0%", "-50%"] } : undefined}
+          transition={
+            stripActive
+              ? { duration: 20, ease: "linear", repeat: Infinity }
+              : undefined
+          }
+        >
+          {[0, 1].map((copyIdx) => (
+            <div
+              key={copyIdx}
+              className="flex items-center"
+              style={{ minWidth: 720, height: 72, gap: 32, padding: "0 24px" }}
+            >
+              {PARTNERS.map((p, i) => (
+                <Float
+                  key={`${copyIdx}-${p.name}-m`}
+                  motion3d
+                  amplitude={2}
+                  duration={3 + (i % 2)}
+                  className="relative flex-shrink-0"
+                  style={{ width: p.w * 0.75, height: p.h * 0.75 }}
+                >
+                  <Image
+                    src={p.src}
+                    alt={p.name}
+                    fill
+                    sizes={`${Math.round(p.w * 0.75)}px`}
+                    className="object-contain dark:invert-0 invert opacity-20 dark:opacity-100 transition-all duration-300"
+                  />
+                </Float>
+              ))}
+            </div>
+          ))}
+        </motion.div>
+      </div> */}
       </div>
     </section>
   );
@@ -408,7 +460,7 @@ function HeroMobile() {
 
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-white dark:bg-[#02040A]"
+      className="dark relative block w-full overflow-hidden md:hidden bg-black"
     >
       {/* Restored ambient gradient and circuit detail for mobile */}
       <div
@@ -470,7 +522,7 @@ function HeroMobile() {
 
         {/* Heading line 1 */}
         <h1
-          className="m-0 text-black dark:text-white transition-colors duration-300"
+          className="m-0 text-white transition-colors duration-300"
           style={{
             fontFamily: typography.fonts.poppins,
             fontWeight: 500,
@@ -497,7 +549,7 @@ function HeroMobile() {
             backgroundClip: "text",
           }}
         >
-           <span className="dark:hidden">AI Agents</span>
+          <span className="dark:hidden">AI Agents</span>
         </div>
         <div
           className="transition-colors duration-300 hidden dark:block"
@@ -544,13 +596,13 @@ function HeroMobile() {
 
       {/* Logo strip — auto-scrolling marquee */}
       <div
-        className="relative overflow-hidden transition-colors duration-300 bg-white dark:bg-black border-y border-black/10 dark:border-white/20"
+        className="relative overflow-hidden animate-[marquee_20s_linear_infinite] transition-colors duration-300 bg-white dark:bg-black border-y border-black/10 dark:border-white/20"
         style={{
           height: 72,
         }}
       >
         <motion.div
-          className="absolute left-0 top-1/2 flex w-max -translate-y-1/2 items-center"
+          className="absolute left-0 top-1/2 flex w-max -translate-y-1/2 items-center "
           style={{
             transformPerspective: 1000,
             rotateX: 3,

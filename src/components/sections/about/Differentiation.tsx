@@ -20,7 +20,7 @@ export default function Differentiation() {
   
   return (
     <section className="relative overflow-hidden bg-black px-6 py-20 md:px-16">
-      <Image src="/section-4-about/diff-bg.png" alt="" fill className="object-cover opacity-90" />
+      <Image src="/section-4-about/diff-bg.png" alt="" fill className="object-cover opacity-90 dark:opacity-30" />
       <Image src="/section-4-about/diff-ellipse.svg" alt="" width={696} height={696} className="pointer-events-none absolute -right-40 top-0 opacity-70" />
       <div className="relative mx-auto max-w-[1024px]">
         <h2 className="text-center text-white" style={{ margin: 0, fontFamily: typography.fonts.poppins, fontWeight: 500, fontSize: "clamp(34px,5vw,48px)", lineHeight: "40px" }}>

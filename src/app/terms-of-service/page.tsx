@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { typography } from "@/tokens/design-tokens";
-import { useThemeTokens } from "@/hooks/useThemeTokens";
 import {
   TrendingUp,
   ChartNoAxesColumn,
@@ -53,8 +52,6 @@ const TRENDING_AGENTS = [
 ];
 
 export default function TermsOfServicePage() {
-  const { isDark } = useThemeTokens();
-  
   return (
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <main className="max-w-[1200px] mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row gap-16 lg:gap-24">

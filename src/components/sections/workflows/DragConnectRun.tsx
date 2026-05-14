@@ -395,7 +395,7 @@ function SectionDesktop() {
             src="/section-3-workflows/bg-texture.png"
             alt=""
             fill
-            className="object-cover"
+            className="object-cover dark:invert-[1] "
             sizes="1841px"
           />
         </div>

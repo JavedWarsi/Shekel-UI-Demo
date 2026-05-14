@@ -125,7 +125,7 @@ function SectionHeading({
 }) {
   return (
     <h1
-      className="m-0 text-black dark:text-white transition-colors duration-300"
+      className="m-0 text-white transition-colors duration-300"
       style={{
         fontFamily: typography.fonts.inter,
         fontWeight: 600,
@@ -640,7 +640,7 @@ function SectionDesktop({
 
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#0B1120]"
+      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-[#0B1120]"
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -657,7 +657,7 @@ function SectionDesktop({
       >
         {/* Background Grid */}
         <div
-          className="absolute opacity-10 dark:opacity-100 transition-opacity duration-300"
+          className="absolute opacity-100 transition-opacity duration-300"
           style={{
             left: -145,
             top: -163,
@@ -825,10 +825,10 @@ function SectionMobile({
 
   return (
     <section
-      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-white dark:bg-[#0B1120]"
+      className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-[#0B1120]"
     >
       {/* Background elements */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-50 transition-opacity duration-300">
+      <div className="absolute inset-0 opacity-100 transition-opacity duration-300">
         <Image src="/section-1-workflows/bg-grid.png" alt="" fill className="object-cover" priority />
       </div>
       <div className="relative flex flex-col gap-10 px-6 py-20 z-10">

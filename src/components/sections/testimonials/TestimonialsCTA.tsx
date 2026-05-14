@@ -19,7 +19,7 @@ export function TestimonialsCTA() {
     <section className="relative hidden w-full overflow-visible md:block mb-30" style={{ aspectRatio: `${CANVAS_W}/${CANVAS_H}`, containerType: "inline-size" }}>
           <div className="absolute left-0 top-0 overflow-visible" style={{ width: CANVAS_W, height: CANVAS_H, transform: `scale(${SCALE})`, transformOrigin: "top left" }}>
             <div className="absolute inset-0 overflow-hidden rounded-3xl bg-black">
-              <Image src="/section-7-create-ai-agent-page/cta-bg.png" alt="" fill className="object-cover" />
+              <Image src="/section-7-create-ai-agent-page/cta-bg.png" alt="" fill className="object-cover dark:opacity-30" />
               {/* <Image
                 src="/section-7-create-ai-agent-page/robot.png"
                 alt=""

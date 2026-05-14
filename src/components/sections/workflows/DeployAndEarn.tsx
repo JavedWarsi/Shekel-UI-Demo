@@ -79,7 +79,7 @@ function SectionDesktop() {
         }}
       >
         <h2
-          className="absolute m-0 text-center"
+          className="absolute m-0 text-center dark:text-white"
           style={{
             left: 32,
             top: 128,
@@ -88,7 +88,7 @@ function SectionDesktop() {
             fontWeight: 500,
             fontSize: 48,
             lineHeight: "48px",
-            color: colors.black,
+            // color: colors.black,
           }}
         >
           Deploy workflows and
@@ -123,7 +123,7 @@ function SectionDesktop() {
 
         {/* Grid Container */}
         <div
-          className="absolute flex"
+          className="absolute flex dark:text-white"
           style={{ left: 32, top: 280, width: 1216, gap: 48 }}
         >
           {STEPS.map((step) => (
@@ -149,7 +149,7 @@ function SectionDesktop() {
                   fontWeight: 700,
                   fontSize: 20,
                   lineHeight: "28px",
-                  color: HEADING_COLOR,
+                  // color: HEADING_COLOR,
                 }}
               >
                 {step.title}

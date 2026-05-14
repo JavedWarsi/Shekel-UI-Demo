@@ -24,7 +24,8 @@ function SectionDesktop() {
   
   return (
     <section
-      className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-black"
+      // className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-black"
+      className="relative hidden w-full overflow-hidden md:block "
       style={{
         aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
         containerType: "inline-size",
@@ -40,12 +41,12 @@ function SectionDesktop() {
         }}
       >
         {/* Background */}
-        <div className="absolute transition-all duration-300" style={{ left: -315, top: -127, width: 1772, height: 1325, opacity: isDark ? 0.4 : 0.6 }}>
+        <div className="absolute transition-all duration-300 dark:opacity-40 opacity-60" style={{ left: -315, top: -127, width: 1772, height: 1325 }}>
           <Image 
             src="/section-4-agent-detail/bg.webp" 
             alt="Background" 
             fill
-            className={`object-cover pointer-events-none ${isDark ? 'brightness-50' : ''}`}
+            className="object-cover pointer-events-none dark:brightness-50"
             unoptimized
           />
         </div>
@@ -82,7 +83,7 @@ function SectionDesktop() {
             <div className="flex items-center w-full relative" style={{ gap: 16 }}>
               <div className="flex items-center relative" style={{ gap: 4 }}>
                 <div className="relative" style={{ width: 11.67, height: 11.67 }}>
-                  <Image src="/section-4-agent-detail/runs-icon.svg" alt="" fill className={`object-contain transition-all duration-300 ${isDark ? 'brightness-200' : ''}`} unoptimized />
+                  <Image src="/section-4-agent-detail/runs-icon.svg" alt="" fill className="object-contain transition-all duration-300 dark:brightness-200" unoptimized />
                 </div>
                 <span className="text-black/60 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 16, lineHeight: "24px" }}>
                   1.2k runs
@@ -125,7 +126,7 @@ function SectionDesktop() {
               </div>
               <div className="flex items-center justify-center relative hover:bg-gray-200 dark:hover:bg-white/20 active:scale-95 transition-all cursor-pointer bg-[#ECEEF1] dark:bg-white/10" style={{ padding: 16, borderRadius: 12 }}>
                 <div className="relative" style={{ width: 18, height: 20 }}>
-                  <Image src="/section-4-agent-detail/share-icon.svg" alt="" fill className={`object-contain transition-all ${isDark ? 'brightness-200' : ''}`} unoptimized />
+                  <Image src="/section-4-agent-detail/share-icon.svg" alt="" fill className="object-contain transition-all dark:brightness-200" unoptimized />
                 </div>
               </div>
             </div>
@@ -204,12 +205,12 @@ function SectionMobile() {
     <section
       className="relative block w-full overflow-hidden md:hidden transition-colors duration-300 bg-white dark:bg-black"
     >
-      <div className="absolute inset-0 w-full h-[1325px] transition-all duration-300" style={{ opacity: isDark ? 0.3 : 0.2 }}>
+      <div className="absolute inset-0 w-full h-[1325px] transition-all duration-300 dark:opacity-30 opacity-20">
         <Image 
           src="/section-4-agent-detail/bg.webp" 
           alt="Background" 
           fill
-          className={`object-cover object-top pointer-events-none ${isDark ? 'brightness-50' : ''}`}
+          className="object-cover object-top pointer-events-none dark:brightness-50"
           unoptimized
         />
       </div>
@@ -241,7 +242,7 @@ function SectionMobile() {
           <div className="flex flex-row flex-wrap gap-4">
             <div className="flex flex-row items-center gap-1.5">
               <div className="relative" style={{ width: 12, height: 12 }}>
-                <Image src="/section-4-agent-detail/runs-icon.svg" alt="Runs" fill className={`object-contain transition-all ${isDark ? 'brightness-200' : ''}`} unoptimized />
+                <Image src="/section-4-agent-detail/runs-icon.svg" alt="Runs" fill className="object-contain transition-all dark:brightness-200" unoptimized />
               </div>
               <span className="text-black/60 dark:text-white/60 transition-colors duration-300" style={{ fontFamily: typography.fonts.inter, fontWeight: 400, fontSize: 14, lineHeight: "20px" }}>1.2k runs</span>
             </div>
@@ -273,7 +274,7 @@ function SectionMobile() {
             </div>
             <div className="flex flex-col justify-center items-center hover:bg-gray-200 dark:hover:bg-white/20 active:scale-95 transition-all cursor-pointer bg-[#ECEEF1] dark:bg-white/10" style={{ padding: 16, borderRadius: 12 }}>
               <div className="relative" style={{ width: 18, height: 20 }}>
-                <Image src="/section-4-agent-detail/share-icon.svg" alt="Share" fill className={`object-contain transition-all ${isDark ? 'brightness-200' : ''}`} unoptimized />
+                <Image src="/section-4-agent-detail/share-icon.svg" alt="Share" fill className="object-contain transition-all dark:brightness-200" unoptimized />
               </div>
             </div>
           </div>
