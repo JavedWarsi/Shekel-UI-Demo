@@ -113,7 +113,7 @@ export default function Header() {
 
           <div className="hidden shrink-0 items-center gap-3 lg:flex">
             <ThemeToggle />
-            <Link href="/connect-us">
+            <Link href="/login">
               <Button variant="nav">Get Started</Button>
             </Link>
           </div>

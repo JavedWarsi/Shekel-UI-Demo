@@ -5,24 +5,24 @@ import Link from "next/link";
 import { colors, typography } from "@/tokens/design-tokens";
 import { useThemeTokens } from "@/hooks/useThemeTokens";
 
-const CANVAS_W = 1216;
-const CANVAS_H = 552;
+const CANVAS_W = 1440;
+const CANVAS_H = 600;
 
 export default function CtaFaq() {
   const { isDark } = useThemeTokens();
-  
+
   return (
     <>
       <section
         className="relative hidden w-full overflow-hidden md:block transition-colors duration-300"
         style={{
-          backgroundColor: colors.white,
+          // backgroundColor: colors.white,
           paddingTop: 32,
           paddingBottom: 96,
         }}
       >
         <div
-          className="relative w-full overflow-hidden mx-auto max-w-[1216px]"
+          className="relative w-full overflow-hidden mx-auto "
           style={{
             borderRadius: 24,
             aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,

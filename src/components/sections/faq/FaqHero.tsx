@@ -10,7 +10,7 @@ export default function FaqHero() {
     <>
       {/* DESKTOP (≥ 768px) */}
       <section
-        className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-white dark:bg-[#02040A]"
+        className="relative hidden w-full overflow-hidden md:block transition-colors duration-300 bg-[#02040A]"
         style={{
           aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
           containerType: "inline-size",
@@ -78,37 +78,49 @@ export default function FaqHero() {
 
           {/* Left rocket — blurred, angled */}
           <div
-            className="absolute transition-opacity duration-300"
+            aria-hidden
+            className="absolute opacity-100 animate-diagonalRocketFly -mt-35"
             style={{
-              left: 20, top: 178, width: 610, height: 540,
-              zIndex: 6, opacity: 0.4, // Reduced for light mode
-              filter: "blur(2.5px)",
-              transform: "rotate(13deg)",
+              left: -360,
+              top: 48,
+              width: 860,
+              height: 920,
+              filter: "blur(8.7px)",
+              pointerEvents: "none",
+              zIndex: 2,
             }}
           >
-            <Image
-              src="/section-2-faq/rocketfaq.png"
-              alt="Rocket decoration"
-              width={410} height={340}
-              className="h-full w-full object-contain dark:opacity-100 transition-opacity duration-300"
-              unoptimized
-            />
+            <div className="absolute" style={{ left: 0, top: 50, width: "100%", height: "100%" }}>
+              <Image
+                src="/section-1-pricing/bg-image.png"
+                alt=""
+                fill
+                // className={`object-contain ${isDark ? 'invert-0' : 'invert opacity-20'} `}
+                className="object-contain"
+                // sizes="1300px"
+                priority
+              />
+            </div>
           </div>
 
           {/* Right rocket — blurred, flipped */}
           <div
-            className="absolute transition-opacity duration-300"
+            className="absolute animate-diagonalRocketFly transition-opacity duration-300"
             style={{
-              left: 788, top: 398, width: 610, height: 540,
-              zIndex: 6, opacity: 0.4, // Reduced for light mode
+              left: 788,
+              top: 398,
+              width: 610,
+              height: 540,
+              zIndex: 6,
+              opacity: 0.4,
               filter: "blur(4px)",
-              transform: "rotate(13deg)",
             }}
           >
             <Image
               src="/section-2-faq/rocketfaq.png"
               alt="Rocket decoration"
-              width={410} height={340}
+              width={410}
+              height={340}
               className="h-full w-full object-contain dark:opacity-100 transition-opacity duration-300"
               unoptimized
             />
@@ -116,13 +128,21 @@ export default function FaqHero() {
 
           {/* Center astronaut + question mark */}
           <div
-            className="absolute transition-opacity duration-300"
-            style={{ left: 161, top: -54, width: 1070, height: 1040, zIndex: 8, opacity: 0.8 }}
+            className="absolute animate-bot-rise transition-opacity duration-300"
+            style={{
+              left: 161,
+              top: -54,
+              width: 1070,
+              height: 1040,
+              zIndex: 8,
+              opacity: 0.8,
+            }}
           >
             <Image
               src="/section-2-faq/faqrob.png"
               alt="FAQ Astronaut with question mark"
-              width={970} height={840}
+              width={970}
+              height={840}
               className="h-full w-full object-contain dark:opacity-100 transition-opacity duration-300"
               unoptimized
             />
@@ -142,13 +162,14 @@ export default function FaqHero() {
                 fontSize: 60,
                 lineHeight: "1.1",
                 letterSpacing: "-0.02em",
+
               }}
-              className="text-black dark:text-white bg-clip-text transition-colors duration-300"
+              className="text-white bg-clip-text transition-colors duration-300"
             >
               Frequently asked{" "}
 
-              <span style={{ background: "linear-gradient(180deg, #5374d9ff  0%, #427dfa 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", }} > questions </span>
-              </h1>
+              <span style={{ background: "linear-gradient(180deg, #5374d9ff  0%, #8fa9e2ff 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", }} > questions </span>
+            </h1>
 
             {/* Body — font-size: 20px, Inter 400, mt: 20px */}
             <div style={{ marginTop: 20, maxWidth: 672 }}>
@@ -218,19 +239,19 @@ export default function FaqHero() {
                 fontSize: 14,
                 lineHeight: "22px",
               }}
-              className="text-slate-600 dark:text-white/50 transition-colors duration-300"
+              className="text-white/50 transition-colors duration-300"
             >
               Find answers about Shekel, AI agents, and how workflows work.
             </p>
           </div>
         </div>
 
-        <div className="relative z-0 mt-4 w-full max-w-sm transition-opacity duration-300 opacity-60 dark:opacity-100">
+        <div className="relative z-0 border mt-4 w-full max-w-sm transition-opacity duration-300 opacity-60 dark:opacity-100">
           <Image
             src="/section-2-faq/faqrob.png"
             alt="FAQ Astronaut"
             width={540} height={430}
-            className="h-auto w-full object-contain"
+            className="h-auto w-full object-contain animate-float-md"
             unoptimized
           />
         </div>
