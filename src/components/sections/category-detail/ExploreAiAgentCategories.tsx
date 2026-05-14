@@ -144,7 +144,7 @@ function SectionDesktop() {
 
         <PartnerMarquee 
           className="absolute z-10"
-          containerWidth={1291}
+          // containerWidth={1291}
           style={{ left: -4, top: 627 }}
           partners={[
             { src: "/section-1-category-detail/logo-openai.png", name: "OpenAI", w: 103, h: 28 },
