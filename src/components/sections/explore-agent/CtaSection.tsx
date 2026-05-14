@@ -122,7 +122,7 @@ function SectionDesktop() {
 
         {/* Graphic Image */}
         <div
-          className="absolute perspective-[1200px]"
+          className="absolute perspective-[1200px] "
           style={{
             left: 682,
             top: -60,
@@ -130,7 +130,7 @@ function SectionDesktop() {
             height: 870,
           }}
         >
-          <div className="relative w-full h-full animate-3dFloat">
+          <div className="relative z-100 w-full h-full animate-astronaut-fly">
             <Image
               src="/section-6-explore-agent/cta-graphic.png"
               alt=""
