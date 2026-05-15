@@ -6,8 +6,9 @@ import EarningsBottomCTA from "@/components/sections/creator-earnings/BottomCTA"
 // import DashboardSidebar from "@/components/shared/DashboardSidebar";
 
 export const metadata = {
-  title: "Earnings | Creator Dashboard",
-  description: "Monitor your revenue flow and payout status.",
+  title: "Creator Earnings | Revenue Dashboard | Shekel",
+  description: "Track your earnings from AI agent sales on Shekel. View payout history, commission breakdown, and revenue trends.",
+  keywords: "AI agent creator earnings",
 };
 
 export default function CreatorEarningsPage() {

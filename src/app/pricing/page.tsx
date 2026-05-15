@@ -4,6 +4,13 @@ import TrustedTeams from "@/components/sections/pricing/TrustedTeams";
 import FaqSection from "@/components/sections/pricing/FaqSection";
 import CtaSection from "@/components/sections/pricing/CtaSection";
 
+
+export const metadata = {
+  title: "Shekel Pricing | Pay-Per-Use AI Agent Plans",
+  description: "Flexible pricing on Shekel — pay per use or subscribe. Transparent commissions for developers and affordable access for users.",
+  keywords: "ai agency pricing",
+};
+
 export default function PricingPage() {
   return (
     <div className="min-h-screen overflow-x-clip transition-colors duration-300">

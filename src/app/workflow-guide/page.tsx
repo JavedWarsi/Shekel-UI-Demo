@@ -8,8 +8,9 @@ import WorkflowFinalCTA from "@/components/sections/workflow-guide/FinalCTA";
 import CtaSection from "@/components/sections/explore-agent/CtaSection";
 
 export const metadata = {
-  title: "Workflow Guide | Shekel AI Agent Chaining",
-  description: "Master the art of agent orchestration. Learn how to design, build, and deploy complex multi-agent workflows on the Shekel network.",
+  title: "Learn how to set up powerful AI workflows on Shekel. Combine agents, set triggers, and automate your operations.",
+  description: "Learn how to set up powerful AI workflows on Shekel. Combine agents, set triggers, and automate your operations.",
+  keywords: "AI workflow guide",
 };
 
 export default function WorkflowGuidePage() {

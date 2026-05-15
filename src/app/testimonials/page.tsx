@@ -4,6 +4,7 @@ import TrendingAgents from "@/components/sections/search-result/TrendingAgents";
 export const metadata = {
   title: "Testimonials | Shekel",
   description: "Read what industry leaders and developers are saying about the Shekel AI Agent platform.",
+  keywords: "Shekel testimonials",
 };
 
 export default function TestimonialsPage() {

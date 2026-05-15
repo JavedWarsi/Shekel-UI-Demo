@@ -4,6 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+export const metadata = {
+  title: "Page Not Found | Shekel AI Marketplace",
+  description: "Oops! The page you're looking for doesn't exist. Head back to the Shekel marketplace to explore AI agents.",
+  keywords: "Shekel 404",
+};
+
+
+
 export default function NotFoundPage() {
   return (
     <main className="relative w-full min-h-screen bg-white flex flex-col items-start justify-start overflow-hidden pt-[165px]">

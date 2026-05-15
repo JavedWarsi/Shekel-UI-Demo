@@ -51,6 +51,12 @@ const TRENDING_AGENTS = [
   }
 ];
 
+export const metadata = {
+  title: "Terms and Conditions | Shekel AI Marketplace",
+  description: "Read Shekel's terms of service governing use of our AI agent marketplace, developer listings, and platform transactions.",
+  keywords: "Shekel terms of service",
+};
+
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">

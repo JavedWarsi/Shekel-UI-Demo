@@ -4,6 +4,12 @@ import ContactFormAndSupport from "@/components/sections/connect-us/ContactFormA
 import TrendingAiAgents from "@/components/sections/connect-us/TrendingAiAgents";
 import CtaSection from "@/components/sections/explore-agent/CtaSection";
 
+export const metadata = {
+  title: "Contact Shekel | AI Marketplace Support",
+  description: "Reach out to the Shekel team for support, partnerships, or developer inquiries. We're here to help you succeed.",
+  keywords: "contact Shekel support",
+};
+
 export default function ConnectUsPage() {
   return (
     <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">

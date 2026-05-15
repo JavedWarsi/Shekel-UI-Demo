@@ -2,8 +2,9 @@ import CreateAgentCta from "@/components/sections/agent-statistics/CreateAgentCt
 import PerformanceCharts from "@/components/sections/agent-statistics/PerformanceCharts";
 
 export const metadata = {
-  title: "Agent Statistics | Shekel",
-  description: "View real-time performance metrics and statistics for autonomous AI agents on the Shekel marketplace.",
+  title: "[Agent Name] Stats & Performance | Shekel",
+  description: "View real-time usage stats, ratings, and performance metrics for [Agent Name] on Shekel marketplace.",
+  keywords: "AI agent performance stats",
 };
 
 export default function AgentStatisticsPage() {

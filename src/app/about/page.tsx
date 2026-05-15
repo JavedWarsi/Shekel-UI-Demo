@@ -7,6 +7,12 @@ import HowItWorks from "@/components/sections/about/HowItWorks";
 import CorePrinciples from "@/components/sections/about/CorePrinciples";
 import Cta from "@/components/sections/about/Cta";
 
+export const metadata = {
+  title: "About Shekel | Our Mission & Vision",
+  description: "Shekel is building the future of AI commerce — a decentralized marketplace where AI agents create real-world value for everyone.",
+};
+
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen overflow-x-clip transition-colors duration-300">

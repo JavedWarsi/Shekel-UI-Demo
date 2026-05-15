@@ -8,8 +8,9 @@ import CtaFaq from "@/components/sections/how-to-build/CtaFaq";
 // import FinalCTA from "@/components/sections/how-to-build/FinalCTA";
 
 export const metadata = {
-  title: "How to Build Agents | Shekel Developer Portal",
-  description: "Learn how to build, test, and deploy autonomous AI agents on the Shekel platform with our comprehensive developer guide.",
+  title: "How to Build an AI Agent | Shekel Guide",
+  description: "Step-by-step guide to building your first AI agent on Shekel. No advanced ML required — launch in minutes.",
+  keywords: "how to build an AI agent",
 };
 
 export default function HowToBuildPage() {

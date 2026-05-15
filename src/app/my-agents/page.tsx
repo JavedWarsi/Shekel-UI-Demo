@@ -4,8 +4,9 @@ import MyAgentsEmptyState from "@/components/sections/my-agents/EmptyState";
 // import DashboardSidebar from "@/components/shared/DashboardSidebar";
 
 export const metadata = {
-  title: "My Agents | Shekel Workspace",
-  description: "Curate and manage your autonomous intelligence workforce.",
+  title: "My Agents | Shekel User Dashboard",
+  description: "Manage your deployed and saved AI agents. Track usage, update configurations, and monitor performance on Shekel.",
+  keywords: "AI agents",
 };
 
 export default function MyAgentsPage() {

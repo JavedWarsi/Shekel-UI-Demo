@@ -9,6 +9,13 @@ import TrustReliability from "@/components/sections/workflows/TrustReliability";
 import CtaSection from "@/components/sections/workflows/CtaSection";
 import ImpactWorkflows from "@/components/sections/workflows/ImpactWorkflows";
 
+export const metadata = {
+  title: "AI Agent Workflows | Automate with Shekel",
+  description: "Design and manage multi-step AI workflows on Shekel. Combine agents to automate complex tasks end-to-end.",
+  keywords: "AI agent workflow",
+};
+
+
 export default function WorkflowsPage() {
   return (
     <div className="min-h-screen overflow-x-clip transition-colors duration-300">

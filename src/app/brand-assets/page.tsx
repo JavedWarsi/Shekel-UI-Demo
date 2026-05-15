@@ -9,8 +9,9 @@ import BrandAssetsUsage from "@/components/sections/brand-assets/Usage";
 import CtaSection from "@/components/sections/explore-agent/CtaSection";
 
 export const metadata = {
-  title: "Brand Assets | Shekel Brand Guidelines",
-  description: "Official brand assets, logos, and color palettes for the Shekel platform. Download our brand kit for your marketing and product needs.",
+  title: "Shekel Brand Assets | Logos & Guidelines",
+  description: "Download official Shekel logos, color palettes, and typography guidelines. Use our brand assets with confidence.",
+  keywords: "Shekel brand assets",
 };
 
 export default function BrandAssetsPage() {

@@ -8,6 +8,14 @@ import UserReviews from "@/components/sections/agent-detail/UserReviews";
 import SimilarAgents from "@/components/sections/agent-detail/SimilarAgents";
 import CtaAgent from "@/components/sections/agent-detail/CtaAgent";
 
+
+export const metadata = {
+  title: "[Agent Name] — AI Agent | Shekel",
+  description: "Use [Agent Name] on Shekel to [primary function]. Pay per use or subscribe. Deploy in seconds, no setup needed.",
+  keywords: "enterprise ai platforms",
+};
+
+
 export default function AgentDetailPage() {
   return (
     <div className="min-h-screen overflow-x-clip text-black dark:text-white bg-white dark:bg-slate-900 transition-colors duration-300 selection:bg-blue-500/30">

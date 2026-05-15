@@ -8,8 +8,9 @@ import CreatorSuggestion from "@/components/sections/creator-my-published-agents
 import DashboardHeader from "@/components/shared/DashboardHeader";
 
 export const metadata = {
-  title: "My Published Agents | Creator Dashboard",
-  description: "View performance metrics and insights for your published AI agents.",
+  title: "My Published Agents | Shekel Creator Hub",
+  description: "View and manage all your published AI agents on Shekel. Edit listings, track engagement, and grow your agent portfolio.",
+  keywords: "ai agent creator",
 };
 
 export default function CreatorMyPublishedAgentsPage() {

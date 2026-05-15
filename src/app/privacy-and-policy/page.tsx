@@ -58,6 +58,13 @@ const TRENDING_AGENTS = [
   }
 ];
 
+
+export const metadata = {
+  title: "Privacy Policy | Shekel AI Agent Marketplace",
+  description: "Learn how Shekel collects, stores, and protects your data. Your privacy is our priority on the AI agent platform.",
+  keywords: "Shekel privacy policy",
+};
+
 export default function PrivacyPolicyPage() {
   const { isDark } = useThemeTokens();
   

@@ -26,6 +26,14 @@ import { Float } from "@/components/shared/motion/Float";
 
 // --- Mock Data ---
 
+
+export const metadata = {
+  title: "Saved Agents | Shekel Marketplace",
+  description: "View your saved AI agents on Shekel. Revisit favorites and deploy them anytime with one click.",
+  keywords: "Saved AI agents",
+};
+
+
 const SAVED_AGENTS = [
   {
     id: "1",

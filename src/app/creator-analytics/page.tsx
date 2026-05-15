@@ -8,8 +8,9 @@ import AnalyticsBottomCTA from "@/components/sections/creator-analytics/BottomCT
 import DashboardHeader from "@/components/shared/DashboardHeader";
 
 export const metadata = {
-  title: "Creator Analytics | Shekel Workspace",
-  description: "Real-time performance metrics and intelligent insights for your active AI agents.",
+  title: "Creator Analytics | Shekel Agent Insights",
+  description: "Deep-dive into your AI agent performance. Track views, conversions, revenue, and user engagement in Shekel's creator dashboard.",
+  keywords: "AI creator analytics",
 };
 
 export default function CreatorAnalyticsPage() {

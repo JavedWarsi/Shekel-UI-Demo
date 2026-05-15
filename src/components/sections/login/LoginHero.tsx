@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
     Mail,
     Lock,
@@ -10,6 +11,27 @@ import {
 } from "lucide-react";
 
 export default function LoginHero() {
+
+
+    const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Example credentials check
+    // Replace with your real API/auth logic
+    if (email === "admin@gmail.com" && password === "123456") {
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } else {
+      alert("Invalid credentials");
+    }
+  };
+
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -154,6 +176,7 @@ export default function LoginHero() {
 
                                 {/* Sign In Button */}
                                 <button
+                                    type="submit"
                                     className="w-full h-14 text-[14px] font-extrabold bg-[#0061C1] hover:bg-[#0050A1] text-white transition-all rounded-[12px] shadow-lg shadow-blue-500/20 uppercase tracking-[0.1em]"
                                 >
                                     SIGN IN

@@ -10,6 +10,11 @@ import DeveloperHub from "@/components/sections/marketplace/DeveloperHub";
 import TrustReliability from "@/components/sections/marketplace/TrustReliability";
 import CtaMarketplace from "@/components/sections/marketplace/CtaMarketplace";
 
+
+export const metadata = {
+  title: "Browse AI Agents | Shekel Marketplace",
+  description: "Explore hundreds of specialized AI agents on Shekel. Find agents for content, design, finance, automation, and more.",
+};
 export default function MarketplacePage() {
   return (
     <div className="min-h-screen overflow-x-clip transition-colors duration-300">

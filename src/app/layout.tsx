@@ -27,8 +27,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Shekel — The AI Agent Marketplace",
-  description: "Discover, deploy, and monetize high-performance decentralized intelligence. The premier ecosystem for chaining autonomous workflows across industries.",
+  // title: "Shekel — The AI Agent Marketplace",
+  title: "Shekel — Decentralized AI Agent Marketplace",
+  description: "Discover, deploy, and monetize AI agents on Shekel — the decentralized marketplace for autonomous AI tools built for every industry.",
+  // description: "Discover, deploy, and monetize high-performance decentralized intelligence. The premier ecosystem for chaining autonomous workflows across industries.",
 };
 
 export default function RootLayout({

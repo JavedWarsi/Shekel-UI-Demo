@@ -5,6 +5,12 @@ import CategorySimilarAgents from "@/components/sections/category-page/CategoryS
 // import CategoryCta from "@/components/sections/category-page/CategoryCta";
 import CtaSection from "@/components/sections/category-page/CtaSection";
 
+
+export const metadata = {
+  title: "AI Agent Categories | Shekel Marketplace",
+  description: "Browse AI agents by category on Shekel — content creation, coding, design, analytics, and more.",
+};
+
 export default function CategoryPage() {
   return (
     <div className="min-h-screen overflow-x-clip text-white selection:bg-blue-500/30">

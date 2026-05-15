@@ -7,8 +7,8 @@ import DashboardTrending from "@/components/sections/dashboard/Trending";
 // import DashboardHeader from "@/components/shared/DashboardHeader";
 
 export const metadata = {
-  title: "Dashboard Overview | Shekel",
-  description: "View your AI workflows, agent statistics, and recent activity.",
+  title: "Dashboard | Shekel AI Agent Platform",
+  description: "Your Shekel command center. Track agent usage, revenue, saved agents, and activity — all in one place.",
 };
 
 export default function DashboardPage() {

@@ -5,8 +5,8 @@ import TrendingAgents from "@/components/sections/search-result/TrendingAgents";
 import CtaFaq from "@/components/sections/search-result/CtaFaq";
 
 export const metadata = {
-  title: "Search Results | Shekel",
-  description: "Find the perfect autonomous AI agent for your specific needs on the Shekel marketplace.",
+  title: "Search Results for [Query] | Shekel",
+  description: "Showing AI agents for [query] on Shekel. Find the right AI tool fast — browse, compare, and deploy instantly.",
 };
 
 export default function SearchResultPage() {
