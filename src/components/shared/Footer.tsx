@@ -16,7 +16,7 @@ const platformLinks = [
   { label: "Create / Publish Agents", href: "/create-ai-agent-page" },
   { label: "Workflow Builder", href: "/workflows" },
   { label: "Developer", href: "/developer-builder" },
-  { label: "Documentation", href: "/how-to-build-agents" },
+  { label: "Documentation", href: "/doc/shekel_pitchdeck_final.pdf" },
 ];
 const companyLinks = [
   { label: "About", href: "/about" },
