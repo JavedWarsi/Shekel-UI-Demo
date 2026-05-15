@@ -728,7 +728,7 @@ function SectionDesktop({
         {/* Workflow Input Card */}
         <Float>
           <div
-            className="absolute"
+            className="absolute animate-float"
             style={{
               left: 791,
               top: 76,
