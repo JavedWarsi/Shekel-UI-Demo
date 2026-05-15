@@ -12,8 +12,8 @@ import ThemeToggle from "@/components/shared/ThemeToggle";
 // fill: #000000, logo at x=47 y=21, nav at x=369 gap=32, search at x=802, button at x=1092
 
 const NAV_LINKS = [
-  { label: "Browse", href: "/marketplace" },
-  { label: "Solutions", href: "/workflows" },
+  { label: "Home", href: "/marketplace" },
+  { label: "feature", href: "/workflows" },
   { label: "Pricing", href: "/pricing" },
   { label: "Developers", href: "/developer-builder" },
 ] as const;
