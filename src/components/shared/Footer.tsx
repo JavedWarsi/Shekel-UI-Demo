@@ -43,12 +43,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 px-6 py-14 md:px-[84px] lg:grid-cols-3 lg:gap-16 lg:py-[87px] xl:gap-24">
           <div className="flex w-full max-w-[331px] flex-col lg:col-span-1">
             <div className="flex flex-col gap-4">
-              <Image 
-                src="/shared/footer-brand.svg" 
-                alt="Shekel logo" 
-                width={127} 
-                height={34} 
-                className="transition-all duration-300" 
+              <Image
+                src="/shared/footer-brand.svg"
+                alt="Shekel logo"
+                width={127}
+                height={34}
+                className="transition-all duration-300"
               />
               <p className="max-w-[313px] text-[14px] leading-[22.75px] text-white/70">
                 AI-powered marketplace to discover, build, and scale intelligent agents. Built for the Nocturnal
@@ -56,12 +56,12 @@ export default function Footer() {
               </p>
             </div>
             <div className="mt-5 flex flex-col gap-[14px]">
-              <Image 
-                src="/shared/footer-social-icons.png" 
-                alt="Social icons" 
-                width={54} 
-                height={20} 
-                className="transition-all duration-300" 
+              <Image
+                src="/shared/footer-social-icons.png"
+                alt="Social icons"
+                width={54}
+                height={20}
+                className="transition-all duration-300"
               />
             </div>
           </div>
@@ -127,11 +127,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex h-auto w-full border-t border-white/10 px-6 py-8 md:h-[82px] md:items-center md:px-[84px] md:py-0">
-          <p className="text-[11px] font-medium uppercase tracking-[0.11em] text-white">
-            © 2026 Shekel Marketplace. All rights reserved.
-          </p>
+        <div className="w-full border-t border-white/10">
+          <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-4 px-6 py-5 md:h-[82px] md:flex-row md:px-[84px] md:py-0">
+
+            {/* Left Text */}
+            <p className="text-[11px] font-medium uppercase tracking-[0.11em] text-white"> © 2026 Shekel Marketplace. All rights reserved. </p>
+
+            {/* Right Text */}
+            <p className="text-center text-[11px] font-medium text-white/60 md:text-right" style={{ fontFamily: 'Inter' }}>
+              Designed & Developed by spearmint
+            </p>
+
+          </div>
         </div>
       </div>
-    </footer>  );
+    </footer>);
 }

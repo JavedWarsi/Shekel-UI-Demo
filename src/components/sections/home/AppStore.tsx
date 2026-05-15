@@ -25,7 +25,7 @@ export default function AppStore() {
       {/* Radial ellipses from Figma: Ellipse 43664/43665/43666 */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Large bottom ellipse — pinkish */}
-        <div
+        {/* <div
           className="absolute rounded-full blur-[120px] opacity-40"
           style={{
             width: "120%",
@@ -35,9 +35,9 @@ export default function AppStore() {
             background:
               "radial-gradient(ellipse at center, #f9a8d4 0%, #fbcfe8 40%, transparent 70%)",
           }}
-        />
+        /> */}
         {/* Left ellipse — blue/purple */}
-        <div
+        {/* <div
           className="absolute rounded-full blur-[100px] opacity-35"
           style={{
             width: "550px",
@@ -47,9 +47,9 @@ export default function AppStore() {
             background:
               "radial-gradient(ellipse at center, #a78bfa 0%, #c4b5fd 40%, transparent 70%)",
           }}
-        />
+        /> */}
         {/* Right ellipse — pink/rose */}
-        <div
+        {/* <div
           className="absolute rounded-full blur-[100px] opacity-35"
           style={{
             width: "550px",
@@ -59,11 +59,11 @@ export default function AppStore() {
             background:
               "radial-gradient(ellipse at center, #f9a8d4 0%, #fda4af 40%, transparent 70%)",
           }}
-        />
+        /> */}
       </div>
 
       {/* ── Main Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 border border-red-500">
         {/* 
           Two-panel flex row:
           Left:  flex-col stack (Marketplace hero card + Dev Ecosystem card)

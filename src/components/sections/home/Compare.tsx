@@ -18,44 +18,47 @@ const STANDARD_ITEMS = [
 
 export default function Compare() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 transition-colors duration-300 bg-white dark:bg-black overflow-hidden">
-      <div className="max-w-[1280px] mx-auto relative">
-        
-        {/* Background Image - Light Mode Only */}
-        <div className="absolute inset-0 pointer-events-none dark:hidden opacity-50">
-           <Image
-            src="/section-3/bg-comparison.webp"
-            alt=""
-            fill
-            className="object-cover"
-          />
-        </div>
+    <section className="relative isolate w-full overflow-hidden px-4 py-16 transition-colors duration-300 sm:px-6 lg:px-8 md:py-24 bg-white dark:bg-black">
+  
+  {/* Background Image */}
+  <div className="absolute inset-0 -z-10">
+    <Image
+      src="/section-3/bg-comparison.webp"
+      alt=""
+      fill
+      priority
+      className="object-cover object-center dark:opacity-40"
+    />
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 rounded-[40px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl">
-          
-          {/* Fragmented Panel */}
-          <ComparePanel
-            variant="fragmented"
-            headerImage="/section-3/fragmented-header.svg"
-            heading="The Fragmented Approach"
-            items={FRAGMENTED_ITEMS}
-            bulletIcon="/section-3/fragmented-bullet-icon.svg"
-            bulletSize={14}
-          />
+    {/* Optional dark overlay */}
+    <div className="absolute inset-0 bg-white/40 dark:bg-black/70" />
+  </div>
 
-          {/* Standard Panel */}
-          <ComparePanel
-            variant="standard"
-            headerImage="/section-3/shekel-header.svg"
-            heading="The Shekel UI Standard"
-            items={STANDARD_ITEMS}
-            bulletIcon="/section-3/shekel-bullet-icon.svg"
-            bulletSize={22}
-          />
+  <div className="mx-auto max-w-[1280px] relative">
+    <div className="relative z-10 grid grid-cols-1 overflow-hidden rounded-[40px] border border-slate-200 shadow-2xl dark:border-white/10 lg:grid-cols-2">
 
-        </div>
-      </div>
-    </section>
+      {/* Fragmented Panel */}
+      <ComparePanel
+        variant="fragmented"
+        headerImage="/section-3/fragmented-header.svg"
+        heading="The Fragmented Approach"
+        items={FRAGMENTED_ITEMS}
+        bulletIcon="/section-3/fragmented-bullet-icon.svg"
+        bulletSize={14}
+      />
+
+      {/* Standard Panel */}
+      <ComparePanel
+        variant="standard"
+        headerImage="/section-3/shekel-header.svg"
+        heading="The Shekel UI Standard"
+        items={STANDARD_ITEMS}
+        bulletIcon="/section-3/shekel-bullet-icon.svg"
+        bulletSize={22}
+      />
+    </div>
+  </div>
+</section>
   );
 }
 

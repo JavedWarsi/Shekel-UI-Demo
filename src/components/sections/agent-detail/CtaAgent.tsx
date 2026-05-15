@@ -77,7 +77,7 @@ function SectionDesktop() {
           </div>
 
           {/* Mascot Image (placed outside overflow-clip to allow floating over bottom edge) */}
-          <div className="absolute ml-60  pointer-events-none left-1/2 -translate-x-1/2 w-[550px] h-[550px] top-[140px] z-50">
+          <div className="absolute ml-0  pointer-events-none left-1/2 -translate-x-1/2 w-[550px] h-[550px] top-[140px] z-50">
             <Image src="/section-9-agent-detail/image 37.webp" alt="Astronaut Mascot" fill className="object-contain animate-[floatX_4s_ease-in-out_infinite] object-top" unoptimized />
           </div>
         </div>

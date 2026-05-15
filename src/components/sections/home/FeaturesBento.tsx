@@ -9,14 +9,26 @@ const BLUE_GRADIENT = "linear-gradient(180deg, rgba(40, 100, 228, 1) 0%, rgba(23
 
 export default function FeaturesBento() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 transition-colors duration-300 bg-[#f0e8ff] dark:bg-black relative overflow-hidden">
+    <section className="w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 transition-colors duration-300 dark:bg-black relative overflow-hidden">
       {/* Background Grid Pattern - Only in Light mode or subtle in dark */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10">
+      {/* <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10">
         <div className="absolute inset-0" style={{ 
           backgroundImage: "radial-gradient(#ba9eff 1px, transparent 1px)", 
           backgroundSize: "40px 40px" 
         }} />
-      </div>
+      </div> */}
+      <div className="absolute inset-0">
+    <Image
+      src="/section-3/bg-comparison.webp"
+      alt=""
+      fill
+      priority
+      className="object-cover object-center dark:opacity-30"
+    />
+
+    {/* Soft overlay */}
+    <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
+  </div>
 
       <div className="max-w-[1280px] mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[minmax(250px,auto)]">
@@ -84,10 +96,10 @@ export default function FeaturesBento() {
                 Instant, low-latency payments for every agent execution using decentralized ledger technology.
               </p>
             </div>
-            <div className="w-full md:w-auto px-10 py-8 bg-slate-50 dark:bg-black/50 border border-slate-100 dark:border-white/10 rounded-2xl flex items-center justify-center">
+            <div className="w-full h-40 md:w-auto px-10 py-8 bg-slate-50 dark:bg-black/50 border border-slate-300 dark:border-white/30 rounded-2xl flex items-center justify-center">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full animate-pulse" style={{ background: BLUE_GRADIENT }} />
-                <span className="text-xs font-mono font-bold tracking-[0.2em] text-slate-900 dark:text-blue-400 uppercase">
+                <span className="text-xs font-mono font-medium tracking-[0.2em] text-slate-900 dark:text-blue-400 uppercase">
                   NETWORK LIVE: 12.4K TPS
                 </span>
               </div>
