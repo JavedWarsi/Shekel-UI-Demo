@@ -144,7 +144,7 @@ export default function AppStore() {
                   Dev Ecosystem
                 </h4>
                 <p className="font-sans font-normal text-[14px] leading-[20px] text-black mt-2">
-                  Full SDK support for Python, JS, and Rust to integrate Shekel into any stack.
+                  A full-featured SDK in Python, JavaScript, and REST. Pre-built connectors to OpenAI, Anthropic, Gemini, and Mistral - with memory management included.
                 </p>
               </div>
             </Link>
@@ -179,8 +179,9 @@ export default function AppStore() {
                 <h4 className="font-sans font-semibold text-[20px] leading-[28px] text-black pt-3">
                   Flexible Pricing
                 </h4>
-                <p className="font-sans font-normal text-[14px] leading-[20px] text-black mt-2">
-                  Usage-based, subscription, or one-time license fees tailored to your business.
+                <p className="font-sans font-normal justify-center text-[14px] leading-[20px] text-black mt-2">
+                  Set your own pricing model: pay-per-use, subscription, freemium, or custom enterprise. Every agent, monetized on your terms.
+
                 </p>
               </div>
             </Link>
@@ -203,7 +204,8 @@ export default function AppStore() {
                   Workflow Builder
                 </h4>
                 <p className="font-sans font-normal text-[14px] leading-[20px] text-black mt-2">
-                  Visual drag-and-drop interface to connect disparate agents into full pipelines.
+                  Drag-and-drop agent chaining for complex multi-step automation. No code required. Connect any agents in the marketplace into one seamless pipeline.
+
                 </p>
               </div>
             </Link>
@@ -221,7 +223,8 @@ export default function AppStore() {
                   Global Settlement Network
                 </h3>
                 <p className="font-sans font-normal text-[16px] leading-[24px] text-black">
-                  Instant, low-latency payments for every agent execution using decentralized ledger technology.
+                  Transparent bi-weekly payouts to bank accounts or crypto wallets. Every transaction logged. Commission tiers that scale as your agent earns more.
+
                 </p>
               </div>
 

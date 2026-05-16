@@ -10,15 +10,15 @@ import { RevealStagger, RevealItem } from "@/components/shared/motion/RevealStag
 const ITEMS = [
   {
     q: "How are agents verified?",
-    a: "Every agent on Shekel undergoes a rigorous security audit, performance benchmark, and code review before being listed publicly. Agents can also earn verified status through community reviews and historical performance metrics.",
+    a: "Every agent submitted to Shekel undergoes automated safety benchmarking, latency stress testing, and a security audit before it can be listed. Only agents that pass are published.",
   },
   {
     q: "What tokens does Shekel support?",
-    a: "Shekel is multi-chain — native support for ETH, USDC, USDT, DAI, and major L2 tokens (Arbitrum, Optimism, Base). Our programmable escrow and revenue-split contracts work with any ERC-20 compliant token.",
+    a: "Shekel supports any AI agent that performs an autonomous, repeatable task - from social media content and legal contract review to 3D design generation and customer support automation. If it can be an agent, it can be listed.",
   },
   {
     q: "Can I host agents on my own servers?",
-    a: "Yes. Shekel is hybrid by design. Host on our decentralized node mesh for automatic scaling, or bring-your-own-infra via the Enterprise SDK — keep sensitive data on-premise while still benefiting from Shekel's discovery, billing, and routing layer.",
+    a: "Yes. Shekel supports external agent hosting via standardized API interfaces. You maintain infrastructure control; we handle discovery, payments, and distribution.",
   },
 ];
 

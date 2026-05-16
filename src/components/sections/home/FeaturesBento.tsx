@@ -18,21 +18,24 @@ export default function FeaturesBento() {
         }} />
       </div> */}
       <div className="absolute inset-0">
-    <Image
-      src="/section-3/bg-comparison.webp"
-      alt=""
-      fill
-      priority
-      className="object-cover object-center dark:opacity-30"
-    />
+        <Image
+          src="/section-3/bg-comparison.webp"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center dark:opacity-30"
+        />
 
-    {/* Soft overlay */}
-    <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
-  </div>
+        {/* Soft overlay */}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
+        <h2 className="">
+                    Engineered for <span className="bg-clip-text text-transparent" >Every Vertical</span>
+          </h2>
+      </div>
 
       <div className="max-w-[1280px] mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[minmax(250px,auto)]">
-          
+
           {/* AI Agent Marketplace - Large Card */}
           <div className="md:col-span-6 lg:col-span-6 flex flex-col p-8 md:p-12 bg-white dark:bg-[#1a1f2d] rounded-[32px] border border-slate-200 dark:border-white/5 shadow-xl shadow-slate-200/50 dark:shadow-none overflow-hidden relative group">
             <div className="relative z-10 flex flex-col gap-6 h-full justify-between">
@@ -41,18 +44,19 @@ export default function FeaturesBento() {
                   AI Agent Marketplace
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-md">
-                  The world&apos;s largest repository of fine-tuned, task-specific autonomous agents ready for work.
+                  The world's largest repository of verified, production-ready AI agents built for real work. Browse by category, task type, or input modality.
+
                 </p>
               </div>
               <Link href="/marketplace" className="group/link inline-flex items-center gap-2 w-fit">
                 <span className="text-blue-600 dark:text-blue-400 font-bold group-hover/link:translate-x-1 transition-transform">
                   Explore Marketplace
                 </span>
-                <Image 
-                  src="/section-6/icon-arrow.svg" 
-                  alt="" 
-                  width={16} 
-                  height={16} 
+                <Image
+                  src="/section-6/icon-arrow.svg"
+                  alt=""
+                  width={16}
+                  height={16}
                   className="invert dark:invert-0 brightness-0 saturate-100 invert-[32%] sepia-[95%] saturate-[1900%] hue-rotate-[213deg] brightness-[95%] contrast-[94%] dark:brightness-100 dark:contrast-100"
                 />
               </Link>
@@ -65,8 +69,8 @@ export default function FeaturesBento() {
           <div className="md:col-span-3 lg:col-span-3 flex flex-col p-8 bg-white dark:bg-[#151926] rounded-[32px] border border-slate-200 dark:border-white/5 shadow-xl shadow-slate-200/50 dark:shadow-none">
             <Image src="/section-6/icon-pricing.svg" alt="" width={33} height={24} className="mb-6" />
             <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Flexible Pricing</h4>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Usage-based, subscription, or one-time license fees tailored to your business.
+            <p className="text-slate-600 content-center dark:text-slate-400 leading-relaxed">
+              Set your own pricing model: pay-per-use, subscription, freemium, or custom enterprise. Every agent, monetized on your terms.
             </p>
           </div>
 
@@ -75,7 +79,8 @@ export default function FeaturesBento() {
             <Image src="/section-6/icon-workflow.svg" alt="" width={30} height={27} className="mb-6" />
             <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Workflow Builder</h4>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Visual drag-and-drop interface to connect disparate agents into full pipelines.
+              Drag-and-drop agent chaining for complex multi-step automation. No code required. Connect any agents in the marketplace into one seamless pipeline.
+
             </p>
           </div>
 
@@ -84,7 +89,7 @@ export default function FeaturesBento() {
             <Image src="/section-6/icon-dev.svg" alt="" width={30} height={24} className="mb-6" />
             <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Dev Ecosystem</h4>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Full SDK support for Python, JS, and Rust to integrate Shekel into any stack.
+              A full-featured SDK in Python, JavaScript, and REST. Pre-built connectors to OpenAI, Anthropic, Gemini, and Mistral - with memory management included.
             </p>
           </div>
 
@@ -93,7 +98,8 @@ export default function FeaturesBento() {
             <div className="flex flex-col gap-4 flex-1">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Global Settlement Network</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                Instant, low-latency payments for every agent execution using decentralized ledger technology.
+                Transparent bi-weekly payouts to bank accounts or crypto wallets. Every transaction logged. Commission tiers that scale as your agent earns more.
+
               </p>
             </div>
             <div className="w-full h-40 md:w-auto px-10 py-8 bg-slate-50 dark:bg-black/50 border border-slate-300 dark:border-white/30 rounded-2xl flex items-center justify-center">

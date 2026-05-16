@@ -37,7 +37,8 @@ export default function Concept() {
               className="font-bold text-xs tracking-widest text-[#BA9EFF]"
               style={{ fontFamily: typography.fonts.inter }}
             >
-              THE CONCEPT
+              {/* THE CONCEPT */}
+              WHY SHEKEL
             </span>
           </div>
 
@@ -61,9 +62,7 @@ export default function Concept() {
             className="text-slate-600 dark:text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl"
             style={{ fontFamily: typography.fonts.inter }}
           >
-            Shekel is the bridge between raw compute and functional automation. We
-            provide the infrastructure for developers to host agents and for
-            businesses to consume intelligence on-demand without vendor lock-in.
+            Shekel bridges the gap between what AI agents can do and how businesses actually deploy them. The first structured AI agent marketplace built for scale - combining standardized APIs, composable agent architecture, and autonomous revenue-sharing in one platform.
           </p>
 
           <ul className="flex flex-col gap-4 mt-4">
@@ -95,12 +94,15 @@ export default function Concept() {
             <ConceptCard
               bgSrc="/section-2/card-multichain-bg.svg"
               title="Multi-Chain Sync"
+              desc="Connect any AI agent stack - LangChain, AutoGen, OpenAI, Anthropic - through a unified, production-ready API interface.
+"
             />
           </div>
           <div>
             <ConceptCard
               bgSrc="/section-2/card-escrow-bg.svg"
               title="Secure Escrow"
+              desc="Every transaction on the Shekel marketplace is protected by automated escrow and on-chain settlement. Developers get paid. Every time."
               isTall
             />
           </div>
@@ -111,7 +113,7 @@ export default function Concept() {
   );
 }
 
-function ConceptCard({ bgSrc, title, isTall }: { bgSrc: string; title: string; isTall?: boolean }) {
+function ConceptCard({ bgSrc, title, desc, isTall }: { bgSrc: string; title: string; desc: string; isTall?: boolean }) {
   return (
     <motion.div
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
@@ -130,6 +132,12 @@ function ConceptCard({ bgSrc, title, isTall }: { bgSrc: string; title: string; i
         style={{ fontFamily: typography.fonts.inter }}
       >
         {title}
+      </span>
+      <span
+        className="mt-2 text-slate-900 dark:text-slate-400 font-light text-sm px-2 pb-2"
+        style={{ fontFamily: typography.fonts.inter }}
+      >
+        {desc}
       </span>
     </motion.div>
   );

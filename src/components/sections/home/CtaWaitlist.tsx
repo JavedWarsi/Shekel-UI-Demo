@@ -101,106 +101,104 @@ function CtaDesktop() {
                 transformOrigin: "top left",
               }}
             >
-        {/* Decorative blurred ellipse — Figma x=-549, y=-566, w=696, h=696 */}
-        {!isDark ? (
-          <div
-            aria-hidden
-            className="pointer-events-none absolute rounded-full"
-            style={{
-              left: -549,
-              top: -566,
-              width: 696,
-              height: 696,
-              background: BLUE_GRADIENT,
-              filter: "blur(257.5px)",
-            }}
-          />
-        ) : null}
+              {/* Decorative blurred ellipse — Figma x=-549, y=-566, w=696, h=696 */}
+              {!isDark ? (
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute rounded-full"
+                  style={{
+                    left: -549,
+                    top: -566,
+                    width: 696,
+                    height: 696,
+                    background: BLUE_GRADIENT,
+                    filter: "blur(257.5px)",
+                  }}
+                />
+              ) : null}
 
-        {/* Heading — Figma x=81, y=62, w=612, textCase TITLE */}
-        <div className="absolute" style={{ left: 81, top: 62, width: 612 }}>
-          <Reveal>
-            <h2
-              onMouseEnter={() => setIsHeadingHovered(true)}
-              onMouseLeave={() => setIsHeadingHovered(false)}
-              style={{
-                margin: 0,
-                fontFamily: typography.fonts.poppins,
-                fontWeight: 500,
-                fontSize: 60,
-                lineHeight: "60px",
-                letterSpacing: "-0.05em",
-                color: isDark ? colors.white : "#000000",
-                background: isDark
-                  ? "linear-gradient(202.88deg, rgba(255,255,255,1) 55.625%, rgba(255,255,255,0) 110.73%)"
-                  : "none",
-                WebkitBackgroundClip: isDark ? "text" : "border-box",
-                WebkitTextFillColor: isDark ? "transparent" : "unset",
-              }}
-            >
-              Join The Future Of
-              <br />
-              <span
-                style={{
-                  color: isDark ? undefined : colors.brand.blueStart,
-                  background: isDark || isHeadingHovered ? BLUE_GRADIENT : "none",
-                  WebkitBackgroundClip: isDark || isHeadingHovered ? "text" : "border-box",
-                  WebkitTextFillColor: isDark || isHeadingHovered ? "transparent" : "unset",
-                  backgroundClip: isDark || isHeadingHovered ? "text" : "border-box",
-                  transition: "color 180ms ease, background 180ms ease",
-                }}
-              >
-                AI Automation
-              </span>
-            </h2>
-          </Reveal>
-        </div>
+              {/* Heading — Figma x=81, y=62, w=612, textCase TITLE */}
+              <div className="absolute" style={{ left: 81, top: 62, width: 612 }}>
+                <Reveal>
+                  <h2
+                    onMouseEnter={() => setIsHeadingHovered(true)}
+                    onMouseLeave={() => setIsHeadingHovered(false)}
+                    style={{
+                      margin: 0,
+                      fontFamily: typography.fonts.poppins,
+                      fontWeight: 500,
+                      fontSize: 60,
+                      lineHeight: "60px",
+                      letterSpacing: "-0.05em",
+                      color: isDark ? colors.white : "#000000",
+                      background: isDark
+                        ? "linear-gradient(202.88deg, rgba(255,255,255,1) 55.625%, rgba(255,255,255,0) 110.73%)"
+                        : "none",
+                      WebkitBackgroundClip: isDark ? "text" : "border-box",
+                      WebkitTextFillColor: isDark ? "transparent" : "unset",
+                    }}
+                  >
+                    Join The Future Of
+                    <br />
+                    <span
+                      style={{
 
-        <Reveal delay={0.1}>
-          <p
-            className="absolute"
-            style={{
-              left: 84,
-              top: 251,
-              width: 463,
-              margin: 0,
-              fontFamily: typography.fonts.inter,
-              fontWeight: 400,
-              fontSize: 20,
-              lineHeight: "28px",
-              color: isDark ? "rgba(255, 255, 255, 0.73)" : "rgba(0, 0, 0, 0.73)",
-            }}
-          >
-            Get early access to the developer beta and start building the agents
-            that will power the next generation economy.
-          </p>
-        </Reveal>
+                        background: BLUE_GRADIENT,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                      }}
+                    >
+                      AI Automation
+                    </span>
+                  </h2>
+                </Reveal>
+              </div>
 
-        {isDark ? (
-          <div
-            aria-hidden
-            className="pointer-events-none absolute"
-            style={{
-              left: 560,
-              top: 58,
-              width: 620,
-              height: 430,
-              background:
-                "radial-gradient(ellipse at center, rgba(181,106,255,0.30) 0%, rgba(142,82,232,0.18) 44%, rgba(95,56,171,0.10) 68%, rgba(95,56,171,0) 100%)",
-              filter: "blur(10px)",
-              opacity: 0.85,
-            }}
-          />
-        ) : null}
+              <Reveal delay={0.1}>
+                <p
+                  className="absolute"
+                  style={{
+                    left: 84,
+                    top: 251,
+                    width: 463,
+                    margin: 0,
+                    fontFamily: typography.fonts.inter,
+                    fontWeight: 400,
+                    fontSize: 20,
+                    lineHeight: "28px",
+                    color: isDark ? "rgba(255, 255, 255, 0.73)" : "rgba(0, 0, 0, 0.73)",
+                  }}
+                >
+                  Get early access to the developer beta and start building the AI agents that will power the next generation of autonomous business.
+                </p>
+              </Reveal>
 
-        <Reveal delay={0.2}>
-          <div
-            className="absolute"
-            style={{ left: 84, top: 368, width: 448, height: 72 }}
-          >
-            <WaitlistForm isDark={isDark} />
-          </div>
-        </Reveal>
+              {isDark ? (
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute"
+                  style={{
+                    left: 560,
+                    top: 58,
+                    width: 620,
+                    height: 430,
+                    background:
+                      "radial-gradient(ellipse at center, rgba(181,106,255,0.30) 0%, rgba(142,82,232,0.18) 44%, rgba(95,56,171,0.10) 68%, rgba(95,56,171,0) 100%)",
+                    filter: "blur(10px)",
+                    opacity: 0.85,
+                  }}
+                />
+              ) : null}
+
+              <Reveal delay={0.2}>
+                <div
+                  className="absolute"
+                  style={{ left: 84, top: 368, width: 448, height: 72 }}
+                >
+                  <WaitlistForm isDark={isDark} />
+                </div>
+              </Reveal>
             </div>
           </div>
           {/* Keep mascot position, but render outside clipped layer so feet are not cut */}
@@ -305,15 +303,14 @@ function WaitlistForm({ isDark }: { isDark: boolean }) {
             fontSize: 16,
             color: "#6B7280",
             backgroundColor: isDark ? "rgba(10,14,24,0.5)" : colors.white,
-            border: `1px solid ${
-              focused
+            border: `1px solid ${focused
                 ? colors.brand.blueStart
                 : hovered
                   ? "rgba(40,100,228,0.58)"
                   : isDark
                     ? "rgba(255,255,255,0.3)"
                     : "#e5e7eb"
-            }`,
+              }`,
           }}
         />
       </motion.div>
@@ -336,16 +333,16 @@ function WaitlistForm({ isDark }: { isDark: boolean }) {
           mounted && prefersReducedMotion
             ? undefined
             : {
-                scale: 1.03,
-                background: BLUE_GRADIENT,
-                boxShadow: "0 12px 28px -6px rgba(40, 100, 228, 0.65)",
-                filter: "brightness(1.15)",
-              }
+              scale: 1.03,
+              background: BLUE_GRADIENT,
+              boxShadow: "0 12px 28px -6px rgba(40, 100, 228, 0.65)",
+              filter: "brightness(1.15)",
+            }
         }
         whileTap={mounted && prefersReducedMotion ? undefined : { scale: 0.98 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
-        Join Waitlist
+        Get Early Access
       </motion.button>
     </form>
   );
@@ -519,15 +516,14 @@ function MobileWaitlistForm({ isDark }: { isDark: boolean }) {
           fontSize: 16,
           color: "#111",
           backgroundColor: isDark ? "rgba(10,14,24,0.5)" : colors.white,
-          border: `1px solid ${
-            focused
+          border: `1px solid ${focused
               ? colors.brand.blueStart
               : hovered
                 ? "rgba(40,100,228,0.58)"
                 : isDark
                   ? "rgba(255,255,255,0.3)"
                   : "#e5e7eb"
-          }`,
+            }`,
         }}
       />
       <motion.button
@@ -546,11 +542,11 @@ function MobileWaitlistForm({ isDark }: { isDark: boolean }) {
           mounted && prefersReducedMotion
             ? undefined
             : {
-                scale: 1.03,
-                background: BLUE_GRADIENT,
-                filter: "brightness(1.15)",
-                boxShadow: "0 12px 28px -6px rgba(40, 100, 228, 0.65)",
-              }
+              scale: 1.03,
+              background: BLUE_GRADIENT,
+              filter: "brightness(1.15)",
+              boxShadow: "0 12px 28px -6px rgba(40, 100, 228, 0.65)",
+            }
         }
         whileTap={mounted && prefersReducedMotion ? undefined : { scale: 0.98 }}
       >

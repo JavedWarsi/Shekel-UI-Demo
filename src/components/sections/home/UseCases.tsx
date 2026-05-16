@@ -9,17 +9,17 @@ import { RevealStagger, RevealItem } from "@/components/shared/motion/RevealStag
 const CARDS = [
   {
     title: "Marketing",
-    desc: "Automated content strategy, hyper-personalized emails, and real-time social listening agents.",
+    desc: "Run campaign briefs, generate performance copy, and automate social content - all through specialized marketing AI agents deployed on demand.",
     img: "/section-5/marketing.png",
   },
   {
     title: "Real Estate",
-    desc: "Property valuation agents, virtual tour guides, and predictive market analysis bots.",
+    desc: "Generate 3D floor plans, write property listings, and automate buyer inquiries. From ideation to close, faster.",
     img: "/section-5/real-estate.jpg",
   },
   {
     title: "Legal",
-    desc: "Contract analysis, compliance monitoring, and case law research agents.",
+    desc: "Deploy AI agents that review contracts, surface clause-level risk, and deliver plain-English summaries - without a full legal retainer.",
     img: "/section-5/legal-overlay.png",
   },
 ];
@@ -29,7 +29,7 @@ export default function UseCases() {
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 transition-colors duration-300 bg-slate-50 dark:bg-black relative overflow-hidden">
-      
+
       {/* Ambient Glows for Dark Mode */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -left-1/4 top-0 w-1/2 h-full bg-blue-600/5 dark:bg-blue-600/10 blur-[150px] rounded-full" />
@@ -37,7 +37,7 @@ export default function UseCases() {
       </div>
 
       <div className="max-w-[1280px] mx-auto relative z-10">
-        
+
         <Reveal className="mb-16">
           <h2
             className="text-center text-slate-900 dark:text-white transition-colors duration-300"
@@ -69,7 +69,7 @@ export default function UseCases() {
                     sizes="(max-width: 768px) 100vw, 400px"
                   />
                 </div>
-                
+
                 <h3
                   className="text-slate-900 dark:text-white font-semibold text-xl mb-3"
                   style={{ fontFamily: typography.fonts.inter }}

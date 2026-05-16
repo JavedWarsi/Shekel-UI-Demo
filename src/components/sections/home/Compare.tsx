@@ -5,15 +5,15 @@ import { motion } from "framer-motion";
 import { colors, typography, radiuses } from "@/tokens/design-tokens";
 
 const FRAGMENTED_ITEMS = [
-  "Weeks of building basic chat interfaces",
-  "Inconsistent component styling across teams",
-  'Technical debt from "quick-fix" UI updates',
+  "Dozens of siloed AI tools with no shared infrastructure",
+  "No verified discovery layer for task-specific AI agents",
+  'Revenue models that lock developers out or take too much',
 ];
 
 const STANDARD_ITEMS = [
-  "Launch sophisticated AI apps in days",
-  "Unified design language across all products",
-  "Optimized for performance and heavy data",
+  "Launch production-ready AI agents in days",
+  "Unified design language across all integrations",
+  "Optimized for performance and heavy data workflows",
 ];
 
 export default function Compare() {

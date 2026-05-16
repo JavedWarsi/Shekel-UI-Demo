@@ -6,11 +6,13 @@ import { usePathname } from "next/navigation";
 import { typography } from "@/tokens/design-tokens";
 
 const productLinks = [
-  { label: "Explore Agents", href: "/marketplace" },
-  { label: "Categories", href: "/category-page" },
-  { label: "Agent Details", href: "/agent-detail" },
+  { label: "Features", href: "/features" },
+  // { label: "Categories", href: "/category-page" },
+  // { label: "Agent Details", href: "/agent-detail" },
   { label: "Pricing", href: "/pricing" },
-  { label: "AI Agents Statistics", href: "/agent-statistics" },
+  { label: "Roadmap", href: "/roadmap" },
+  { label: "SDK Documentation", href: "/doc/sdk-docs" },
+  // { label: "AI Agents Statistics", href: "/agent-statistics" },
 ];
 const platformLinks = [
   { label: "Create / Publish Agents", href: "/create-ai-agent-page" },
@@ -20,17 +22,25 @@ const platformLinks = [
 ];
 const companyLinks = [
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/connect-us" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Testimonials / Reviews", href: "/testimonials" },
-];
-const resourceLinks = [
+  { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Brand Assets / Media Kit", href: "/brand-assets" },
+  // { label: "Press", href: "/press" },
+  // { label: "Contact", href: "/connect-us" },
+  // { label: "FAQ", href: "/faq" },
+  // { label: "Testimonials / Reviews", href: "/testimonials" },
+];
+const legalLinks = [
   { label: "Privacy Policy", href: "/privacy-and-policy" },
   { label: "Terms of Service", href: "/terms-of-service" },
+  { label: "Security", href: "/security" },
 ];
+// const resourceLinks = [
+//   { label: "Blog", href: "/blog" },
+//   { label: "Case Studies", href: "/case-studies" },
+//   { label: "Brand Assets / Media Kit", href: "/brand-assets" },
+//   { label: "Privacy Policy", href: "/privacy-and-policy" },
+//   { label: "Terms of Service", href: "/terms-of-service" },
+// ];
 
 export default function Footer() {
   return (
@@ -82,7 +92,7 @@ export default function Footer() {
             </nav>
 
             <nav className="flex w-full flex-col gap-[25px]">
-              <h3
+              {/* <h3
                 className="text-[14px] leading-5 font-bold text-white"
                 style={{ fontFamily: typography.fonts.poppins }}
               >
@@ -94,7 +104,7 @@ export default function Footer() {
                     {item.label}
                   </Link>
                 ))}
-              </div>
+              </div> */}
             </nav>
 
             <nav className="flex w-full flex-col items-start gap-[15px]">
@@ -116,9 +126,12 @@ export default function Footer() {
                 className="text-[14px] leading-5 font-bold text-white"
                 style={{ fontFamily: typography.fonts.poppins }}
               >
-                Resources
+                {/* Resources */}
+                Legal
               </h3>
-              {resourceLinks.map((item) => (
+              {/* {resourceLinks.map((item) => (
+               */}
+              {legalLinks.map((item) => (
                 <Link key={item.label} href={item.href} className="text-[14px] leading-5 text-white/70 transition-colors duration-200 hover:text-white">
                   {item.label}
                 </Link>

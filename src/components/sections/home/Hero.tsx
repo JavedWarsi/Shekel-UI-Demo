@@ -373,9 +373,7 @@ function HeroDesktop() {
             lineHeight: "32.5px",
           }}
         >
-          Discover, deploy, and monetize high-performance decentralized
-          intelligence. The premier ecosystem for chaining autonomous
-          workflows across industries.
+          Discover, deploy, and monetize high-performance AI agents at scale. The premier ecosystem for agentic AI deployment - built for developers, teams, and enterprises automating the future.
         </motion.p>
 
         {/* Button row */}
@@ -389,10 +387,11 @@ function HeroDesktop() {
           <Link href="/connect-us">
             <Button variant="hero"
             style={{background: BUTTON_GRADIENT,}}
-            >Join Waitlist</Button>
+            className="transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)]"
+            >Get Early Access</Button>
           </Link>
           <Link href="/marketplace">
-            <Button variant="hero">Explore Platform</Button>
+            <Button variant="hero" className="transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.6)]">Explore Platform</Button>
           </Link>
         </motion.div>
 
@@ -578,9 +577,7 @@ function HeroMobile() {
             lineHeight: "26px",
           }}
         >
-          Discover, deploy, and monetize high-performance decentralized
-          intelligence. The premier ecosystem for chaining autonomous
-          workflows across industries.
+          Discover, deploy, and monetize high-performance AI agents at scale. The premier ecosystem for agentic AI deployment - built for developers, teams, and enterprises automating the future.
         </p>
 
         {/* Buttons */}

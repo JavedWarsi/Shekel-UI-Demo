@@ -27,7 +27,7 @@ const STICKY_TOP_OFFSET = 72;
 // as FeaturesBento. Apply it as CSS cover so it fills edge-to-edge.
 
 type TimelineItem = {
-  status: "COMPLETED" | "IN PROGRESS" | "UPCOMING";
+  status: "LIVE" | "NEXT" | "UPCOMING";
   heading: string;
   desc: string;
   statusBg: string;
@@ -40,9 +40,9 @@ type TimelineItem = {
 
 const TIMELINE: TimelineItem[] = [
   {
-    status: "COMPLETED",
+    status: "LIVE",
     heading: "Alpha Launch & Core Engine",
-    desc: "Development of the decentralized hosting protocol and basic agent API standards.",
+    desc: "Decentralized agent routing protocol and base Agent API standards. Core marketplace live.",
     statusBg: "#202534",
     statusText: "#E5E7F6",
     nodeBg: "#BA9EFF",
@@ -50,9 +50,9 @@ const TIMELINE: TimelineItem[] = [
     icon: "/section-8/icon-check.svg",
   },
   {
-    status: "IN PROGRESS",
+    status: "NEXT",
     heading: "Marketplace Beta v2.0",
-    desc: "Introducing automated revenue splitting and the visual workflow builder for all users.",
+    desc: "Workflow Builder, agent forking with revenue splits, and cloud agentic AI deployment toolkit for teams",
     statusBg: "#DCE7FF",
     statusText: "#5E8FEF",
     nodeBg: "#699CFF",
@@ -62,7 +62,7 @@ const TIMELINE: TimelineItem[] = [
   {
     status: "UPCOMING",
     heading: "Enterprise SDK & Global Node Mesh",
-    desc: "Scaling to 100k+ agents with localized edge-node hosting for sub-10ms latency.",
+    desc: "Scaling to 100+ agents with enterprise-grade SLAs. FullZapier, Slack, and Notion integrations. Global relay mesh for low-latency agentic AI deployment.",
     statusBg: "#202534",
     statusText: "#A7AAB9",
     nodeBg: "#2D2F3A",
@@ -220,6 +220,7 @@ function RoadmapDesktop() {
                     WebkitBackgroundClip: isDark ? "text" : "border-box",
                     WebkitTextFillColor: isDark ? "transparent" : "unset",
                 }}
+                className="uppercase"
               >
                 Development Roadmap
               </h2>
@@ -227,7 +228,7 @@ function RoadmapDesktop() {
 
             <div className="flex items-stretch" style={{ gap: 32 }}>
               <div
-                className="relative grid shrink-0"
+                className="relative grid shrink-0 "
                 style={{
                   width: 36,
                   height: 430,
@@ -260,7 +261,7 @@ function RoadmapDesktop() {
               </div>
 
               <div
-                className="grid flex-1"
+                className="grid w-[670px]"
                 style={{
                   height: 430,
                   gridTemplateRows: "repeat(3, minmax(0, 1fr))",
@@ -300,17 +301,17 @@ function TimelineDot({ item }: { item: TimelineItem }) {
             borderRadius: 8.64,
             backgroundColor: item.nodeBg,
             boxSizing: "border-box",
-            padding: item.status === "COMPLETED" ? "3px 4px" : "3px 3px",
+            padding: item.status === "LIVE" ? "3px 4px" : "3px 3px",
             overflow: "hidden",
           }}
         >
           <Image
             src={item.icon}
             alt=""
-            width={item.status === "COMPLETED" ? 6 : 7}
-            height={item.status === "COMPLETED" ? 5 : 7}
+            width={item.status === "LIVE" ? 6 : 7}
+            height={item.status === "LIVE" ? 5 : 7}
             style={
-              item.status === "COMPLETED"
+              item.status === "LIVE"
                 ? {
                     width: 10,
                     height: 8,

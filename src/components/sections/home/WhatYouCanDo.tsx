@@ -16,21 +16,21 @@ const workflowNodes = [
 const columns = [
   {
     heading: "Run marketing campaigns",
-    body: "Generate and automate multi-channel campaigns using AI agents.",
+    body: "Generate platform-specific content at scale. Brief in → polished campaign out.Agent: SocialCraft AI | $0.05/post or $15/month",
     link: "Explore marketing",
     href: "/marketplace",
     icon: "/section-7/icon-arrow.svg",
   },
   {
     heading: "Build intelligent workflows",
-    body: "Connect multiple AI agents to automate business processes.",
+    body: "Chain multiple AI agents together to automate complex business processes - from lead intake to deliverable output.",
     link: "Explore workflows",
     href: "/workflows",
     icon: "/section-7/icon-arrow.svg",
   },
   {
     heading: "Scale with automation",
-    body: "Deploy AI agents for support, finance, and operations.",
+    body: "Replace hours of human effort with always-on AI agents that support, execute, and scale across every workflow.",
     link: "Explore automation",
     href: "/marketplace",
     icon: "/section-7/icon-arrow-alt.svg",
@@ -52,7 +52,7 @@ export default function WhatYouCanDo() {
         
         <Reveal className="text-center">
           <h2
-            className="text-slate-900 dark:text-white transition-colors duration-300"
+            className="text-slate-900 dark:text-white transition-colors duration-300 uppercase"
             style={{
               margin: 0,
               fontFamily: typography.fonts.poppins,
@@ -81,7 +81,10 @@ export default function WhatYouCanDo() {
                 <div className="w-10 h-10 shrink-0 bg-blue-500/10 rounded-xl flex items-center justify-center">
                   <Image src="/section-7/icon-prompt.svg" alt="" width={22} height={22} />
                 </div>
-                <span className="text-slate-900 dark:text-slate-300 font-medium">Generate marketing campaign</span>
+                <span className="text-slate-900 dark:text-slate-300 font-medium">
+                  Stop Doing It Manually.
+                  {/* Generate marketing campaign */}
+                  </span>
                 <div className="ml-auto w-1 h-6 bg-blue-500 rounded-full animate-pulse" />
               </div>
 

@@ -10,19 +10,19 @@ const STEPS = [
   {
     number: "01",
     title: "Build & Publish",
-    description: "Develop your agent using our SDK and host it on decentralized nodes.",
+    description: "Develop your AI agent using our SDK and list it on the marketplace with full pricing control.",
     href: "/create-ai-agent-page",
   },
   {
     number: "02",
     title: "Discover & Use",
-    description: "Users and other agents find your services in the global registry.",
+    description: "Businesses search and access task-specific AI agents from a verified global registry.",
     href: "/marketplace",
   },
   {
     number: "03",
     title: "Monetize & Scale",
-    description: "Get paid automatically via smart contracts as your agent scales up.",
+    description: "Earn automatic payouts on every task execution. Agents work 24/7 - your revenue compounds.",
     href: "/pricing",
   },
 ];
@@ -46,7 +46,7 @@ export default function HowItWorks() {
       </div>
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <Reveal className="mx-auto mb-20 flex flex-col items-center gap-4 text-center max-w-2xl">
           <h2
             className="text-slate-900 dark:text-white transition-colors duration-300"
@@ -68,7 +68,7 @@ export default function HowItWorks() {
               lineHeight: "24px",
             }}
           >
-            From deployment to global scaling in record time.
+            From zero to deployed - in three decisive steps.
           </p>
         </Reveal>
 

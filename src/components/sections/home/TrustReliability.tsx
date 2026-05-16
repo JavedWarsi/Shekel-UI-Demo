@@ -10,22 +10,22 @@ const CARDS = [
   {
     icon: "/section-9/icon-verified.svg",
     title: "Verified Agents",
-    desc: "Every agent undergoes rigorous security and quality audit",
+    desc: "Every AI agent on Shekel passes automated quality benchmarks, safety screening, and API compliance audits before going live.",
   },
   {
     icon: "/section-9/icon-community.svg",
     title: "Community Ratings",
-    desc: "Transparent reviews and historical performance data",
+    desc: "Real ratings from verified users. Performance scorecards, uptime monitoring, and transparent developer metrics - all public.",
   },
   {
     icon: "/section-9/icon-secure.svg",
     title: "Secure Infrastructure",
-    desc: "Enterprise-grade data encryption and privacy controls",
+    desc: "Enterprise-grade security with GDPR and CCPA compliance built in. Data encrypted in transit and at rest.",
   },
   {
     icon: "/section-9/icon-scalable.svg",
     title: "Scalable Platform",
-    desc: "Execute thousands of tasks simultaneously with low latency",
+    desc: "Architecture engineered to handle thousands of concurrent agent executions - from solo devs to Fortune 500 deployments",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function TrustReliability() {
                     {card.title}
                   </h3>
                   <p
-                    className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed"
+                    className="text-slate-600 dark:text-slate-400 text-justify text-sm md:text-base leading-relaxed"
                     style={{ fontFamily: typography.fonts.inter }}
                   >
                     {card.desc}
